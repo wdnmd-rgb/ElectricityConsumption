@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/echarts.min.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="consNo"><button type="button" onclick="fun()">查找</button>
+<div style="padding-left:550px;"><h1 id="title">Hello World</h1></div>
+<div id="main" style="width: 1500px;height:800px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var time_array = [];
+    var ele_array=[];
+
+
+    // 指定图表的配置项和数据
+    var option = {
+        xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            data: time_array
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'邮件营销',
+                type:'line',
+                stack: '总量',
+                data:ele_array
+            }
+        ]
+
+
+    };
+    function fun() {
+        var consNos = $("#consNo").val();
+        $.ajax({
+            type: 'get',
+            url: 'eleConTem/queryByConsNo?consNos='+consNos,
+            success: function (result) {
+                conResult = result.data;
+                $.each(conResult,function (i,val) {
+                    time_array[i]=val.eventTime;
+                    ele_array[i]=val.ele;
+                });
+                $("#title").text(conResult[1].consName+"96点用电量");
+                myChart.setOption(option)
+            },
+            error: function (errorMsg) {
+                alert("图表请求数据失败!!");
+            }
+        });
+
+    }
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>

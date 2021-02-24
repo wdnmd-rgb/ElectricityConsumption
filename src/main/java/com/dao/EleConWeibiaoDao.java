@@ -1,0 +1,91 @@
+package com.dao;
+
+import com.entity.EleCon;
+import com.entity.EleConWeibiao;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+/**
+ * (EleConWeibiao)表数据库访问层
+ *
+ * @author makejava
+ * @since 2021-02-03 09:22:33
+ */
+public interface EleConWeibiaoDao {
+
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
+    EleConWeibiao queryById(Integer id);
+
+    /**
+     * 查询指定行数据
+     *
+     * @param offset 查询起始位置
+     * @param limit  查询条数
+     * @return 对象列表
+     */
+    List<EleConWeibiao> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+
+
+    /**
+     * 通过实体作为筛选条件查询
+     *
+     * @param eleConWeibiao 实例对象
+     * @return 对象列表
+     */
+    List<EleConWeibiao> queryAll(EleConWeibiao eleConWeibiao);
+
+    /**
+     * 新增数据
+     *
+     * @param eleConWeibiao 实例对象
+     * @return 影响行数
+     */
+    int insert(EleConWeibiao eleConWeibiao);
+
+    /**
+     * 批量新增数据（MyBatis原生foreach方法）
+     *
+     * @param entities List<EleConWeibiao> 实例对象列表
+     * @return 影响行数
+     */
+    int insertBatch(@Param("entities") List<EleConWeibiao> entities);
+
+    /**
+     * 批量新增或按主键更新数据（MyBatis原生foreach方法）
+     *
+     * @param entities List<EleConWeibiao> 实例对象列表
+     * @return 影响行数
+     */
+    int insertOrUpdateBatch(@Param("entities") List<EleConWeibiao> entities);
+
+    /**
+     * 修改数据
+     *
+     * @param eleConWeibiao 实例对象
+     * @return 影响行数
+     */
+    int update(EleConWeibiao eleConWeibiao);
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 影响行数
+     */
+    int deleteById(Integer id);
+
+    List<String> selectIdByConsNo(List<String> consNos);
+
+    List<EleConWeibiao> queryAllByConsNo(List<String> consNos);
+
+    List<EleConWeibiao> queryAllResult();
+
+
+
+}

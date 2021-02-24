@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EleConDao">
+
+    <resultMap type="com.entity.EleCon" id="EleConMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="rid" column="rid" jdbcType="VARCHAR"/>
+        <result property="eventTime" column="event_time" jdbcType="TIMESTAMP"/>
+        <result property="papRDiff" column="pap_r_diff" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EleConMap">
+        select
+          id, rid, event_time, pap_r_diff
+        from dws_peixun.ele_con
+        where id = #{id}
+    </select>
+
+    <select id="queryByRid" resultMap="EleConMap">
+        select
+          id, rid, event_time, pap_r_diff
+        from dws_peixun.ele_con
+        where rid in
+        <foreach collection="list" item="rid" index="index" open="(" close=")" separator=",">
+            #{rid}
+        </foreach>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="EleConMap">
+        select
+          id, rid, event_time, pap_r_diff
+        from dws_peixun.ele_con
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="EleConMap">
+        select
+        id, rid, event_time, pap_r_diff
+        from dws_peixun.ele_con
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="rid != null and rid != ''">
+                and rid = #{rid}
+            </if>
+            <if test="eventTime != null">
+                and event_time = #{eventTime}
+            </if>
+            <if test="papRDiff != null">
+                and pap_r_diff = #{papRDiff}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertResult" keyProperty="id" useGeneratedKeys="true">
+        insert into dws_peixun.ele_con_result(rid,event_time,pap_r_diff)
+        values
+        <foreach collection="resultList" item="entity" separator=",">
+            (#{entity.rid}, #{entity.eventTime}, #{entity.papRDiff})
+        </foreach>
+    </insert>
+
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into dws_peixun.ele_con(rid, event_time, pap_r_diff)
+        values (#{rid}, #{eventTime}, #{papRDiff})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into dws_peixun.ele_con(rid, event_time, pap_r_diff)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+        (#{entity.rid}, #{entity.eventTime}, #{entity.papRDiff})
+    </foreach>
+</insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into dws_peixun.ele_con(rid, event_time, pap_r_diff)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.rid}, #{entity.eventTime}, #{entity.papRDiff})
+        </foreach>
+        on duplicate key update
+        rid = values(rid) , event_time = values(event_time) , pap_r_diff = values(pap_r_diff)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update dws_peixun.ele_con
+        <set>
+            <if test="rid != null and rid != ''">
+                rid = #{rid},
+            </if>
+            <if test="eventTime != null">
+                event_time = #{eventTime},
+            </if>
+            <if test="papRDiff != null">
+                pap_r_diff = #{papRDiff},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from dws_peixun.ele_con where id = #{id}
+    </delete>
+
+    <delete id="deleteResult">
+        delete from dws_peixun.ele_con_result
+    </delete>
+
+</mapper>
