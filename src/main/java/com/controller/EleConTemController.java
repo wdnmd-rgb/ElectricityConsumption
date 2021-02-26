@@ -13,6 +13,8 @@ import com.util.JsonUtil;
 import com.util.Result;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -102,14 +104,17 @@ public class EleConTemController {
     }
 
     @RequestMapping("queryByConsNo")
-    public Result queryByConsNo(String consNos, String date) {
+    public Result queryByConsNo(String consNos, String areaCode,String date) {
+        Logger logger = LoggerFactory.getLogger(EleConTemController.class);
+        logger.info("SSM!!!!");
+        System.out.println("Hello World!");
         List<String> list = Arrays.asList(consNos.split(","));
         List<String> idsList = eleConWeibiaoService.selectIdByConsNo(list);
         String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
         HplcEleServiceImpl hplcEleService = HplcEleServiceImpl.getInstance();
-        String string = hplcEleService.getElecData(null, ids, null, "01", "2021-02-21");
+        String string = hplcEleService.getElecData(null, ids, null, areaCode, date);
         System.out.println(string);
-        List<Electric> list1 = JsonUtil.readJson(string);
+//        List<Electric> list1 = JsonUtil.readJson(string);
 //        List<EleCon> eleConList = eleConService.queryByRid(idsList);
 //        int flag = eleConService.insertResult(eleConList);
 //        List<EleConWeibiao> weibiaoList = new ArrayList<>();
@@ -121,7 +126,7 @@ public class EleConTemController {
 //        } else {
 //            Result.fail("获取数据失败！");
 //        }
-        return Result.success(list1);
+        return Result.success(string);
 
     }
 
