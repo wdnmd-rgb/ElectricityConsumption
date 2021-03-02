@@ -22,12 +22,31 @@
         where id = #{id}
     </select>
 
+    <!--查询单个-->
+    <select id="queryByRid" resultMap="EleConWeibiaoMap">
+        select
+          id, rid, area_name, cons_no, cons_name, event_time, pap_r_diff, t_factor
+        from dws_peixun.ele_con_weibiao
+        where rid in
+        <foreach collection="list" item="rid" index="index" open="(" close=")" separator=",">
+            #{rid}
+        </foreach>
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="EleConWeibiaoMap">
         select
           id, rid, area_name, cons_no, cons_name, event_time, pap_r_diff, t_factor
         from dws_peixun.ele_con_weibiao
         limit #{offset}, #{limit}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAreaName" resultType="java.lang.String">
+        select
+        area_no
+        from dws_peixun.area_code_type
+        where area_name = #{areaName}
     </select>
 
     <select id="selectIdByConsNo" parameterType="java.util.List" resultType="string">

@@ -1,6 +1,7 @@
 package com.util;
 
 import com.entity.EleConWeibiao;
+import com.entity.Electrics;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -8,13 +9,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ExcelUtil {
 
-    public static List<String> readExcel(String excelName) throws IOException {
+    public static Map<String,String> readExcel(String excelName) throws IOException {
         //将文件读入
         InputStream in  = new FileInputStream(new File(excelName));
         //创建工作簿
@@ -25,43 +24,44 @@ public class ExcelUtil {
         int totalRow=sheet.getLastRowNum();
         Row row=null;
         //循环读取科目
-        int num = sheet.getRow(0).getPhysicalNumberOfCells();
-        String str = "";
-        List<String> consNos = new ArrayList<>();
+        String consStr = "";
+        String areaStr = "";
+        Map<String,String> map = new HashMap<>();
         for (int i = 1; i <=totalRow; i++) {
             row = sheet.getRow(i);
-            str += row.getCell(1);
-            if(str.contains(",")){
-                List<String> list = Arrays.asList(str.split(","));
-                for (int j = 0;j<list.size();j++){
-                    consNos.add(list.get(j));
-                }
-            }else{
-                consNos.add(str);
+            consStr += row.getCell(1);
+            areaStr += row.getCell(2);
+            if(map.containsKey(areaStr)){
+                String string = map.get(areaStr);
+                map.put(areaStr,string+","+consStr);
+            }else {
+                map.put(areaStr,consStr);
             }
-            str="";
+            consStr="";
+            areaStr="";
         }
-        return consNos;
+        return map;
     }
 
-    public static HSSFWorkbook  sendExcel(List<EleConWeibiao> list){
+    public static HSSFWorkbook  sendExcel(List<Electrics> list){
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet();
         HSSFRow row1 = sheet.createRow(0);
-        String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","用电量"};
+        String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","电能总示值","倍率"};
         for (int i =0 ; i < row1Cell.length ; i++ ){
             row1.createCell(i).setCellValue(row1Cell[i]);
         }
         if(list!= null && list.size()>0){
             for(int j=0 ; j<list.size() ;j++){
                 HSSFRow rowEle = sheet.createRow(j+1);
-                EleConWeibiao eleConWeibiao = list.get(j);
-                rowEle.createCell(0).setCellValue(eleConWeibiao.getRid());
-                rowEle.createCell(1).setCellValue(eleConWeibiao.getConsNo());
-                rowEle.createCell(2).setCellValue(eleConWeibiao.getConsName());
-                rowEle.createCell(3).setCellValue(eleConWeibiao.getAreaName());
-                rowEle.createCell(4).setCellValue(eleConWeibiao.getEventTime());
-                rowEle.createCell(5).setCellValue(eleConWeibiao.getEle());
+                Electrics electrics = list.get(j);
+                rowEle.createCell(0).setCellValue(electrics.getRid());
+                rowEle.createCell(1).setCellValue(electrics.getConsNo());
+                rowEle.createCell(2).setCellValue(electrics.getConsName());
+                rowEle.createCell(3).setCellValue(electrics.getAreaName());
+                rowEle.createCell(4).setCellValue(electrics.getEventTime());
+                rowEle.createCell(5).setCellValue(electrics.getPapR());
+                rowEle.createCell(6).setCellValue(electrics.gettFactor());
             }
         }
         return workbook;

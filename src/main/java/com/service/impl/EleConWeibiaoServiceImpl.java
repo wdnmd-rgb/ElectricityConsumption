@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (EleConWeibiao)表服务实现类
@@ -90,6 +91,16 @@ public class EleConWeibiaoServiceImpl implements EleConWeibiaoService {
     @Override
     public List<EleConWeibiao> queryAllResult() {
         return this.eleConWeibiaoDao.queryAllResult();
+    }
+
+    @Override
+    public Map<String, EleConWeibiao> queryByRid(List<String> idsList) {
+        return this.eleConWeibiaoDao.queryByRid(idsList);
+    }
+
+    @Override
+    public String queryAreaName(String areaName) {
+        return this.eleConWeibiaoDao.queryAreaName(areaName);
     }
 
 

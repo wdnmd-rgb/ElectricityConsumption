@@ -1,10 +1,11 @@
 package com.dao;
 
-import com.entity.EleCon;
 import com.entity.EleConWeibiao;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (EleConWeibiao)表数据库访问层
@@ -85,6 +86,11 @@ public interface EleConWeibiaoDao {
     List<EleConWeibiao> queryAllByConsNo(List<String> consNos);
 
     List<EleConWeibiao> queryAllResult();
+
+    @MapKey("rid")
+    Map<String,EleConWeibiao> queryByRid(List<String> idsList);
+
+    String queryAreaName(String areaName);
 
 
 

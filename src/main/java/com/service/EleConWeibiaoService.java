@@ -3,6 +3,7 @@ package com.service;
 import com.entity.EleConWeibiao;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (EleConWeibiao)表服务接口
@@ -58,6 +59,10 @@ public interface EleConWeibiaoService {
     List<EleConWeibiao> queryAllByConsNo(List<String> consNos);
 
     List<EleConWeibiao> queryAllResult();
+
+    Map<String,EleConWeibiao> queryByRid(List<String> idsList);
+
+    String queryAreaName(String areaName);
 
 
 }
