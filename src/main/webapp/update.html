@@ -3,26 +3,136 @@
 <head>
     <meta charset="utf-8">
     <title>Insert title here</title>
+	<link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body>
-<form action="eleConTem/update" enctype="multipart/form-data" method="post">
-    <input type="file" name="file">
-    <input type="date"  name="date" id="mydate"/>
+<form  class="layui-form" style="padding-top: 30px;text-align:center;">
+	<div class="layui-form-item">
+		<div  class="layui-inline">
+			<button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>上传文件</button>
+		</div>
+		<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+		  <input type="text" class="layui-input" id="date" name="date">
+		</div>
+		<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+			<p class="layui-btn" id="select">查询结果</p>
+		</div>
+		<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+		  <a class="layui-btn" download="" href="" id="update">下载结果</a>
+		</div>
+		<p id="url" style="display: none"></p>
+	</div>
     <br>
-    <p>excel格式以 序号、用户编号、用户名称为表头</p>
+    <p>excel格式以 序号、用户名称、地市(如：南昌，景德镇等)、电压等级、用户编号为表头</p>
     <br>
-    <input type="submit" value="上传" onclick="fun()">
 </form>
+<div style="display: none" id="testDiv">
+	<table class="layui-hide" id="test"></table>
+</div>
+<div style="display: none" id="testDiv2">
+	<table class="layui-hide" id="test2"></table>
+</div>
+
+<script src="layui/layui.js"></script>
+<script src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-    function fun(){
-        alert("文件下载中，请稍等！")
-    }
-    Date.prototype.toDateInputValue = (function() {
-        var local = new Date(this);
-        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-        return local.toJSON().slice(0,10);
-    });
-    document.getElementById("mydate").value=new Date().toDateInputValue();
+
+	layui.use(['laydate','table','upload'], function(){
+		var dataCons = [];
+	  var laydate = layui.laydate;
+	  var table = layui.table;
+		var $ = layui.jquery
+				,upload = layui.upload;
+	  
+	  //执行一个laydate实例
+	  laydate.render({
+	    elem: '#date' ,//指定元素
+		value:new Date()
+	  });
+
+		upload.render({
+			elem: '#test3'
+			,url: 'ele/updateCons' //改成您自己的上传接口
+			,accept: 'file' //普通文件
+			,done: function(res){
+				layer.msg('上传成功');
+				console.log(res);
+				$("#url").val(res.msg);
+				dataCons=res.data;
+				table.reload('testReload', {
+					data:dataCons
+				});
+				$("#testDiv2").css("display","none");
+				$("#testDiv").css("display","");
+			}
+		});
+
+		table.render({
+			id:"testReload"
+			,elem: '#test'
+			,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			,cols: [[
+				{field:'consName',title: '用户名称'}
+				,{field:'areaName',title: '区域'}
+				,{field:'voltage',title: '电压等级'}
+				,{field:'consNo',title: '用户编号'}
+			]]
+			,page:true
+			,limit:10
+			,data:dataCons
+		});
+
+		table.render({
+			id:"testReload"
+			,elem: '#test'
+			,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			,cols: [[
+				{field:'consName',title: '用户名称'}
+				,{field:'areaName',title: '区域'}
+				,{field:'voltage',title: '电压等级'}
+				,{field:'consNo',title: '用户编号'}
+			]]
+			,page:true
+			,limit:10
+			,data:dataCons
+		});
+
+		table.render({
+			id:"testReload2"
+			,elem: '#test2'
+			,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			,cols: [[
+				{field:'rid',title: '数据ID',sort: true}
+				,{field:'consNo',title: '用户编号'}
+				,{field:'consName',title: '用户名称'}
+				,{field:'areaName',title: '区域'}
+				,{field:'tFactor', title: '倍率'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+				,{field:'eventTime', title: '时间', sort: true}
+				,{field:'papR', title: '正向有功总能示值', sort: true}
+				,{field:'papRDiff', title: '正向有功总能示值差值'}
+				,{field:'ele',title: '电量', sort: true}
+				,{field:'tgName',title: '台区名称'}
+				,{field:'orgName',title: '供电所名称'}
+			]]
+			,page:true
+			,limit:10
+		});
+
+		$("#select").click(function () {
+			$("#testDiv").css("display","none");
+			var url = $("#url").val();
+			$.post("ele/update",{"path":url},function(result){
+				var path = result.msg;
+				$("#update").attr("download",path);
+				var array = result.data;
+				table.reload('testReload2', {
+					data:array
+				});
+				$("#testDiv2").css("display","");
+			});
+		})
+
+	});
 </script>
 
 

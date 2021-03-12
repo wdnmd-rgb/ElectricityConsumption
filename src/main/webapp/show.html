@@ -5,62 +5,100 @@
     <script src="js/echarts.min.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
     <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
 </head>
-<body>
-<input type="text" id="consNo"><button type="button" onclick="fun()">查找</button>
-<div style="padding-left:550px;"><h1 id="title">Hello World</h1></div>
-<div id="main" style="width: 1500px;height:800px;"></div>
+<body style="overflow:hidden;transform-origin:top left;">
+<div style="padding-top: 30px;text-align:center;">
+	<form class="layui-form" action="" id="complain_search">
+<div class="layui-form-item">
+    <div class="layui-inline">
+        <input type="text" name="consNo" required  lay-verify="required" placeholder="请输入用户编号"
+		autocomplete="off" class="layui-input" style="width: 300px;" id="consNo">
+    </div>
+	<div class="layui-inline">
+			<select name="areaCode" lay-verify="required" id="areaCode">
+			  <option value="">请选择城市</option>
+			  <option value="01">南昌</option>
+			  <option value="02">景德镇</option>
+			  <option value="04">萍乡</option>
+			  <option value="05">九江</option>
+			  <option value="06">新余</option>
+			  <option value="07">鹰潭</option>
+			  <option value="08">赣州</option>
+			  <option value="09">上饶</option>
+			  <option value="10">吉安</option>
+			  <option value="11">抚州</option>
+			  <option value="12">宜春</option>
+			</select>
+	</div>
+	<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+	  <input type="text" class="layui-input" id="date" name="date">
+	</div>
+	<div class="layui-inline"> 
+		<button id="search" class="layui-btn" lay-submit
+				lay-filter="provinceSearch">查找</button>
+	</div>
+	</div>
+</form>
+<div style="display: none" id="testDiv">
+	<table class="layui-hide" id="test"></table>
+</div>
+</div>
+<script src="layui/layui.js"></script>
 <script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    var time_array = [];
-    var ele_array=[];
+	layui.use(['laydate', 'form','table'],function(){
+		var form = layui.form;
+		var laydate = layui.laydate;
+		var table = layui.table;
+		//执行一个laydate实例
+		laydate.render({
+			elem: '#date' ,//指定元素
+			value:new Date()
+		});
+		table.render({
+			id:"testReload"
+			,elem: '#test'
+			,url:'ele/queryByCons'
+			,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			,cols: [[
+				{field:'rid',title: '数据ID',sort: true}
+				,{field:'consNo',title: '用户编号'}
+				,{field:'consName',title: '用户名称'}
+				,{field:'areaName',title: '区域'}
+				,{field:'tFactor', title: '倍率'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+				,{field:'eventTime', title: '时间', sort: true}
+				,{field:'papR', title: '正向有功总能示值', sort: true}
+				,{field:'papRDiff', title: '正向有功总能示值差值'}
+				,{field:'ele',title: '电量', sort: true}
+				,{field:'tgName',title: '台区名称'}
+				,{field:'orgName',title: '供电所名称'}
+			]]
+			,page:true
+			,limit:10
+		});
 
+		form.render();
+		form.on('submit(provinceSearch)', function(data) {
+			var traget=document.getElementById("testDiv");
+			traget.style.display="";
+			var formData = data.field;
+			var areaCode = formData.areaCode;
+			var consNo = formData.consNo;
+			var date = formData.date;
+			console.log(areaCode+consNo+date)
+			table.reload('testReload', {
+				where: {
+					areaCode:areaCode,
+					consNo:consNo,
+					date:date
+				},
+				url: 'ele/queryByCons',
+				method: 'post',
+			});
+			return false;
+		});
+	});
 
-    // 指定图表的配置项和数据
-    var option = {
-        xAxis: {
-            type: 'category',
-            boundaryGap: true,
-            data: time_array
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [
-            {
-                name:'邮件营销',
-                type:'line',
-                stack: '总量',
-                data:ele_array
-            }
-        ]
-
-
-    };
-    function fun() {
-        var consNos = $("#consNo").val();
-        $.ajax({
-            type: 'get',
-            url: 'eleConTem/queryByConsNo?consNos='+consNos,
-            success: function (result) {
-                conResult = result.data;
-                $.each(conResult,function (i,val) {
-                    time_array[i]=val.eventTime;
-                    ele_array[i]=val.ele;
-                });
-                $("#title").text(conResult[1].consName+"96点用电量");
-                myChart.setOption(option)
-            },
-            error: function (errorMsg) {
-                alert("图表请求数据失败!!");
-            }
-        });
-
-    }
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
 </script>
 </body>
 </html>

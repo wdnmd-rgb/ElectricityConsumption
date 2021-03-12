@@ -63,6 +63,12 @@ public interface EleConWeibiaoService {
     Map<String,EleConWeibiao> queryByRid(List<String> idsList);
 
     String queryAreaName(String areaName);
+    String queryByAreaNo(String areaCode);
+
+    List<String> queryByTgOrg(String tgNo,String orgNo);
+    String queryAreaByTgOrg(String tgNo,String orgNo);
+    List<String> queryByConsNo(String consNo);
+
 
 
 }

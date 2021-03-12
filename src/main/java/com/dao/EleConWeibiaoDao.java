@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.EleConWeibiao;
+import com.util.DataSource;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,6 +14,7 @@ import java.util.Map;
  * @author makejava
  * @since 2021-02-03 09:22:33
  */
+@DataSource(value = "datasource1")
 public interface EleConWeibiaoDao {
 
     /**
@@ -91,6 +93,13 @@ public interface EleConWeibiaoDao {
     Map<String,EleConWeibiao> queryByRid(List<String> idsList);
 
     String queryAreaName(String areaName);
+
+    String queryByAreaNo(String areaCode);
+
+    List<String> queryByTgOrg(@Param("tgNo") String tgNo,@Param("orgNo") String orgNo);
+    String queryAreaByTgOrg(@Param("tgNo") String tgNo,@Param("orgNo") String orgNo);
+    List<String> queryByConsNo(String consNo);
+
 
 
 

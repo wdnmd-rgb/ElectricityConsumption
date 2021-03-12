@@ -5,12 +5,15 @@ package com.util;
 import com.alibaba.fastjson.*;
 import com.entity.EleConWeibiao;
 import com.entity.Electrics;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.grid.datacenter.model.Electric;
 import com.grid.datacenter.model.Result;
-import com.service.EleConWeibiaoService;
-import com.service.impl.EleConWeibiaoServiceImpl;
 import org.apache.commons.lang.StringUtils;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,25 +30,38 @@ public class JsonUtil {
 //    }
 
     public static List<Electrics> readJson(String json,Map<String,EleConWeibiao> map){
-        EleConWeibiaoService eleConWeibiaoService = new EleConWeibiaoServiceImpl();
         List<Electric> list= parseElectric(json);
         List<Electrics> electricsList = new ArrayList<>();
         for (Electric e:list){
             EleConWeibiao eleConWeibiao = map.get(e.getId());
-            System.out.println(eleConWeibiao);
             //System.out.println(e.getElec());
             List list1 = (List)JSONPath.read(e.getElec(), "$.");
             for(Object obj :list1){
                 Electrics electrics = new Electrics();
                 electrics.setRid(e.getId());
-                electrics.setEventTime(JSONPath.read(obj.toString(), "$.event_time").toString());
+                String time  = JSONPath.read(obj.toString(), "$.event_time").toString();
+                String point =JSONPath.read(obj.toString(), "$.point").toString();
+                time = time.replaceAll(":[0-9][0-9]",":00");
+                time = time.replaceAll(":[0-9][0-9]:",":"+point+":");
+                electrics.setEventTime(time);
                 electrics.setPapR(Double.parseDouble(JSONPath.read(obj.toString(), "$.pap_r").toString()));
                 electrics.setConsNo(eleConWeibiao.getConsNo());
                 electrics.setConsName(eleConWeibiao.getConsName());
                 electrics.setAreaName(eleConWeibiao.getAreaName());
                 electrics.settFactor(eleConWeibiao.gettFactor());
+                Double papRDiff = Double.parseDouble(JSONPath.read(obj.toString(), "$.pap_diff").toString());
+                if (papRDiff<0){
+                    electrics.setPapRDiff("暂无数据");
+                    electrics.setEle("暂无数据");
+                }else{
+                    electrics.setPapRDiff(papRDiff.toString());
+                    electrics.setEle((Double.parseDouble(electrics.getPapRDiff())*electrics.gettFactor())+"");
+                }
+                electrics.setTgNo(eleConWeibiao.getTgNo());
+                electrics.setTgName(eleConWeibiao.getTgName());
+                electrics.setOrgNo(eleConWeibiao.getOrgNo());
+                electrics.setOrgName(eleConWeibiao.getOrgName());
                 electricsList.add(electrics);
-
             }
         }
         return electricsList;
@@ -67,6 +83,20 @@ public class JsonUtil {
            }
         }
         return list;
+    }
+
+    public static String ObjectToJson(Object object)
+    {
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+        String json = gson.toJson(object);
+        return json;
+    }
+
+    public static void responseWriteJson(HttpServletResponse response, Object object)
+            throws ServletException, IOException
+    {
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().print(ObjectToJson(object));
     }
 
 }

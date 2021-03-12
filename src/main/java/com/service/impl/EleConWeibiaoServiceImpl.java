@@ -103,5 +103,25 @@ public class EleConWeibiaoServiceImpl implements EleConWeibiaoService {
         return this.eleConWeibiaoDao.queryAreaName(areaName);
     }
 
+    @Override
+    public String queryByAreaNo(String areaCode) {
+        return this.eleConWeibiaoDao.queryByAreaNo(areaCode);
+    }
+
+    @Override
+    public List<String> queryByTgOrg(String tgNo, String orgNo) {
+        return this.eleConWeibiaoDao.queryByTgOrg(tgNo,orgNo);
+    }
+
+    @Override
+    public String queryAreaByTgOrg(String tgNo, String orgNo) {
+        return this.eleConWeibiaoDao.queryAreaByTgOrg(tgNo,orgNo);
+    }
+
+    @Override
+    public List<String> queryByConsNo(String consNo) {
+        return this.eleConWeibiaoDao.queryByConsNo(consNo);
+    }
+
 
 }

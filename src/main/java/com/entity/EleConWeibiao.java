@@ -21,13 +21,18 @@ public class EleConWeibiao implements Serializable {
 
     private String consName;
 
-    private String eventTime;
+    private String tgNo;
+
+    private String tgName;
+
+    private String orgNo;
+
+    private String orgName;
 
     private Double papRDiff;
 
     private Double tFactor;
 
-    private Double ele;
 
 
     public Integer getId() {
@@ -70,14 +75,6 @@ public class EleConWeibiao implements Serializable {
         this.consName = consName;
     }
 
-    public String getEventTime() {
-        return eventTime;
-    }
-
-    public void setEventTime(String eventTime) {
-        this.eventTime = eventTime;
-    }
-
     public Double getPapRDiff() {
         return papRDiff;
     }
@@ -102,12 +99,36 @@ public class EleConWeibiao implements Serializable {
         this.tFactor = tFactor;
     }
 
-    public Double getEle() {
-        return ele;
+    public String getTgNo() {
+        return tgNo;
     }
 
-    public void setEle(Double ele) {
-        this.ele = ele;
+    public void setTgNo(String tgNo) {
+        this.tgNo = tgNo;
+    }
+
+    public String getTgName() {
+        return tgName;
+    }
+
+    public void setTgName(String tgName) {
+        this.tgName = tgName;
+    }
+
+    public String getOrgNo() {
+        return orgNo;
+    }
+
+    public void setOrgNo(String orgNo) {
+        this.orgNo = orgNo;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
     @Override
@@ -118,10 +139,12 @@ public class EleConWeibiao implements Serializable {
                 ", areaName='" + areaName + '\'' +
                 ", consNo='" + consNo + '\'' +
                 ", consName='" + consName + '\'' +
-                ", eventTime='" + eventTime + '\'' +
+                ", tgNo='" + tgNo + '\'' +
+                ", tgName='" + tgName + '\'' +
+                ", orgNo='" + orgNo + '\'' +
+                ", orgName='" + orgName + '\'' +
                 ", papRDiff=" + papRDiff +
                 ", tFactor=" + tFactor +
-                ", ele=" + ele +
                 '}';
     }
 }

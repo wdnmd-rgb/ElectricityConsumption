@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+	</head>
+	<body>
+		<form class="layui-form" style="padding-top: 30px;text-align:center;" id="complain_search">
+		<div class="layui-form-item">
+		    <div class="layui-inline">
+		        <input type="text" name="no" required  lay-verify="required" placeholder="请输入台区编号或供电所编号" 
+				autocomplete="off" class="layui-input" style="width: 300px;" id="no">
+		    </div>
+			<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+			  <input type="text" class="layui-input" id="date" name="date">
+			</div>
+			<div class="layui-inline">
+				<button id="search" class="layui-btn" lay-submit
+						lay-filter="provinceSearch">查找</button>
+			</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">选择：</label>
+				    <div class="layui-input-block">
+				      <input type="radio" name="noType"  value="tgNo" title="台区编号" checked>
+				      <input type="radio" name="noType" value="orgNo" title="供电所编号">
+				    </div>
+			</div>
+		</form>
+		<div style="display: none" id="testDiv">
+			<button  class="layui-btn" onclick="fun()">下载</button>
+			<table class="layui-hide" id="test" ></table>
+		</div>
+		<script src="js/jquery-3.4.1.js"></script>
+		<script src="layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use(['laydate', 'form','table'],function(){
+				var form = layui.form;
+				var laydate = layui.laydate;
+				var table = layui.table;
+
+				//执行一个laydate实例
+				laydate.render({
+					elem: '#date' ,//指定元素
+					value:new Date()
+				});
+				table.render({
+					id:"testReload"
+					,elem: '#test'
+					,url:'ele/queryTgOrg'
+					,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+					,cols: [[
+						{field:'rid',title: '数据ID'}
+						,{field:'consNo',title: '用户编号'}
+						,{field:'consName',title: '用户名称'}
+						,{field:'areaName',title: '区域'}
+						,{field:'tFactor', title: '倍率'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+						,{field:'eventTime', title: '时间', sort: true}
+						,{field:'papR', title: '正向有功总能示值', sort: true}
+						,{field:'papRDiff', title: '正向有功总能示值差值'}
+						,{field:'ele',title: '电量', sort: true}
+						,{field:'tgName',title: '台区名称'}
+						,{field:'orgName',title: '供电所名称'}
+					]]
+					,page:true
+					,limit:10
+				});
+
+				form.render();
+				form.on('submit(provinceSearch)', function(data) {
+					var traget=document.getElementById("testDiv");
+					traget.style.display="";
+					var formData = data.field;
+					var no = formData.no;
+					var date = formData.date;
+					var noType = $("input[name='noType']:checked").val();
+					var tgNo = "";
+					var orgNo = "";
+					if(noType == "tgNo"){
+						tgNo = no;
+					}else{
+						orgNo = no;
+					}
+					table.reload('testReload', {
+						where: {
+							tgNo:tgNo,
+							orgNo:orgNo,
+							date:date
+						},
+						url: 'ele/queryTgOrg',
+						method: 'post',
+					});
+					return false;
+				});
+
+
+			});
+			
+			function fun() {
+			    var no = $("#no").val();
+			    var noType = $("input[name='noType']:checked").val();
+			    var date1 = $("#test1").val();
+				var tgNo1 = "";
+				var orgNo1 = "";
+				if(noType == "tgNo"){
+					tgNo1 = no;
+				}else{
+					orgNo1 = no;
+				}
+				alert("文件下载中请稍后！");
+				location.href='ele/queryByTgOrg?tgNo='+tgNo1+'&orgNo='+orgNo1+'&date='+date1;
+				//$.post("ele/queryByTgOrg",{tgNo:tgNo1,orgNo:orgNo1,date:date1})
+			}
+		</script>
+	</body>
+</html>

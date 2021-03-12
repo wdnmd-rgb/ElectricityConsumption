@@ -8,6 +8,15 @@ public class Electrics {
     private Double tFactor;
     private String eventTime;
     private Double papR;
+    private String papRDiff;
+    private String ele;
+    private String tgNo;
+
+    private String tgName;
+
+    private String orgNo;
+
+    private String orgName;
 
     public String getRid() {
         return rid;
@@ -65,6 +74,54 @@ public class Electrics {
         this.papR = papR;
     }
 
+    public String getPapRDiff() {
+        return papRDiff;
+    }
+
+    public void setPapRDiff(String papRDiff) {
+        this.papRDiff = papRDiff;
+    }
+
+    public String getEle() {
+        return ele;
+    }
+
+    public void setEle(String ele) {
+        this.ele = ele;
+    }
+
+    public String getTgNo() {
+        return tgNo;
+    }
+
+    public void setTgNo(String tgNo) {
+        this.tgNo = tgNo;
+    }
+
+    public String getTgName() {
+        return tgName;
+    }
+
+    public void setTgName(String tgName) {
+        this.tgName = tgName;
+    }
+
+    public String getOrgNo() {
+        return orgNo;
+    }
+
+    public void setOrgNo(String orgNo) {
+        this.orgNo = orgNo;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
     @Override
     public String toString() {
         return "Electrics{" +
@@ -75,6 +132,12 @@ public class Electrics {
                 ", tFactor=" + tFactor +
                 ", eventTime='" + eventTime + '\'' +
                 ", papR=" + papR +
+                ", papRDiff='" + papRDiff + '\'' +
+                ", ele='" + ele + '\'' +
+                ", tgNo='" + tgNo + '\'' +
+                ", tgName='" + tgName + '\'' +
+                ", orgNo='" + orgNo + '\'' +
+                ", orgName='" + orgName + '\'' +
                 '}';
     }
 }
