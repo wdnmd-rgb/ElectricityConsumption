@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="elecon@localhost" uuid="f81ec672-08e1-4cf5-96b1-5fb7b3ca99fe">
+    <data-source source="LOCAL" name="dws_elecon@localhost" uuid="f81ec672-08e1-4cf5-96b1-5fb7b3ca99fe">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/elecon?serverTimezone=UTC</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/dws_elecon?serverTimezone=UTC</jdbc-url>
     </data-source>
   </component>
 </project>

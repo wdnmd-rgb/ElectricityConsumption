@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.RelationDao">
+
+    <resultMap type="com.entity.Relation" id="RelationMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="cityNo" column="city_no" jdbcType="VARCHAR"/>
+        <result property="cityName" column="city_name" jdbcType="VARCHAR"/>
+        <result property="countyNo" column="county_no" jdbcType="VARCHAR"/>
+        <result property="countyName" column="county_name" jdbcType="VARCHAR"/>
+        <result property="orgNo" column="org_no" jdbcType="VARCHAR"/>
+        <result property="orgName" column="org_name" jdbcType="VARCHAR"/>
+        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
+        <result property="tgName" column="tg_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="RelationMap">
+        select
+          id, city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name
+        from dws_elecon.relation
+        where id = #{id}
+    </select>
+
+    <!--查询单个-->
+    <select id="queryByTgNo" resultMap="RelationMap">
+        select
+          id, city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name
+        from dws_elecon.relation
+        where tg_no=#{tgNo}
+    </select>
+
+
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="RelationMap">
+        select
+          id, city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name
+        from dws_elecon.relation
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="RelationMap">
+        select
+        id, city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name
+        from dws_elecon.relation
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="cityNo != null and cityNo != ''">
+                and city_no = #{cityNo}
+            </if>
+            <if test="cityName != null and cityName != ''">
+                and city_name = #{cityName}
+            </if>
+            <if test="countyNo != null and countyNo != ''">
+                and county_no = #{countyNo}
+            </if>
+            <if test="countyName != null and countyName != ''">
+                and county_name = #{countyName}
+            </if>
+            <if test="orgNo != null and orgNo != ''">
+                and org_no = #{orgNo}
+            </if>
+            <if test="orgName != null and orgName != ''">
+                and org_name = #{orgName}
+            </if>
+            <if test="tgNo != null and tgNo != ''">
+                and tg_no = #{tgNo}
+            </if>
+            <if test="tgName != null and tgName != ''">
+                and tg_name = #{tgName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into dws_elecon.relation(city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name)
+        values (#{cityNo}, #{cityName}, #{countyNo}, #{countyName}, #{orgNo}, #{orgName}, #{tgNo}, #{tgName})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into dws_elecon.relation(city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.cityNo}, #{entity.cityName}, #{entity.countyNo}, #{entity.countyName}, #{entity.orgNo},
+            #{entity.orgName}, #{entity.tgNo}, #{entity.tgName})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into dws_elecon.relation(city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.cityNo}, #{entity.cityName}, #{entity.countyNo}, #{entity.countyName}, #{entity.orgNo},
+            #{entity.orgName}, #{entity.tgNo}, #{entity.tgName})
+        </foreach>
+        on duplicate key update
+        city_no = values(city_no) , city_name = values(city_name) , county_no = values(county_no) , county_name =
+        values(county_name) , org_no = values(org_no) , org_name = values(org_name) , tg_no = values(tg_no) , tg_name =
+        values(tg_name)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update dws_elecon.relation
+        <set>
+            <if test="cityNo != null and cityNo != ''">
+                city_no = #{cityNo},
+            </if>
+            <if test="cityName != null and cityName != ''">
+                city_name = #{cityName},
+            </if>
+            <if test="countyNo != null and countyNo != ''">
+                county_no = #{countyNo},
+            </if>
+            <if test="countyName != null and countyName != ''">
+                county_name = #{countyName},
+            </if>
+            <if test="orgNo != null and orgNo != ''">
+                org_no = #{orgNo},
+            </if>
+            <if test="orgName != null and orgName != ''">
+                org_name = #{orgName},
+            </if>
+            <if test="tgNo != null and tgNo != ''">
+                tg_no = #{tgNo},
+            </if>
+            <if test="tgName != null and tgName != ''">
+                tg_name = #{tgName},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from dws_elecon.relation where id = #{id}
+    </delete>
+
+</mapper>

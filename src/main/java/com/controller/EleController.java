@@ -1,18 +1,15 @@
 package com.controller;
 
 import com.dao.UserDao;
-import com.entity.Cons;
-import com.entity.EleConWeibiao;
-import com.entity.Electrics;
-import com.entity.User;
+import com.entity.*;
 import com.grid.datacenter.service.HplcEleServiceImpl;
 import com.service.EleConWeibiaoService;
-import com.util.ExcelUtil;
-import com.util.JsonUtil;
-import com.util.ListUtil;
-import com.util.Result;
+import com.service.ElectricsService;
+import com.util.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
@@ -28,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.text.ParseException;
 import java.util.*;
 
 /**
@@ -46,12 +44,17 @@ public class EleController {
     @Resource
     private EleConWeibiaoService eleConWeibiaoService;
 
+    @Resource
+    private ElectricsService electricsService;
+
     @Autowired
     private UserDao userDao;
 
     private HplcEleServiceImpl hplcEleService = HplcEleServiceImpl.getInstance();
 
     private Logger logger = LoggerFactory.getLogger(EleController.class);
+
+
 
 
     @RequiresPermissions({"update:*"})
@@ -62,7 +65,7 @@ public class EleController {
         User user = this.userDao.queryByUserName(username);
         String area = user.getArea();
         List<Electrics> electrics = new ArrayList<>();
-        String realPath = "";
+        String fileName = "";
         //将临时文件写入到真实文件中去
         try {
             //同时解析excle文件
@@ -75,6 +78,10 @@ public class EleController {
                 List<String> idsList = eleConWeibiaoService.selectIdByConsNo(consList);
                 String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
                 String areaNo = eleConWeibiaoService.queryAreaName(key);
+                System.out.println("ids："+ids+"areaNo："+areaNo+"date："+date);
+                if("".equals(ids)||"".equals(areaNo)||"".equals(date)){
+                    return;
+                }
                 long startTime2 = System.currentTimeMillis();
                 String jsonString = hplcEleService.getElecData(null,ids,null,areaNo,date);
                 long endTime2 = System.currentTimeMillis();
@@ -84,16 +91,17 @@ public class EleController {
                 List<Electrics> list1 = JsonUtil.readJson(jsonString,map);
                 electrics.addAll(list1);
             });
-            HSSFWorkbook workbook = ExcelUtil.sendExcel(electrics);
-            path = "/pot/data-center/data/file";
-            String fileName = date+"用户96点用电量.xls";
+            SXSSFWorkbook workbook = ExcelUtil.sendExcel(electrics);
+            path = request.getSession().getServletContext().getRealPath("/")+"file";
+            fileName = date+"用户96点用电量.xlsx";
             File parent = new File(path);
             if (!parent.exists()) {
                 parent.mkdirs();
             }
-            File file=new File(path,fileName);
-            realPath = path+fileName;
-            OutputStream os=new FileOutputStream(file);
+            String realPath = path+"/"+fileName;
+            File file=new File(realPath);
+            System.out.println(file);
+            FileOutputStream os=new FileOutputStream(file);
             workbook.write(os);
             long endTime = System.currentTimeMillis();
             long time = endTime-startTime;
@@ -105,8 +113,9 @@ public class EleController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return Result.success(electrics,realPath);
+        return Result.success(electrics,"file/"+fileName);
     }
+
 
     @RequestMapping("updateCons")
     public Result updateCons(@RequestParam("file") MultipartFile file,String date ,HttpServletRequest request, HttpServletResponse response){
@@ -141,57 +150,23 @@ public class EleController {
         return Result.success(list,path);
     }
 
-
-    @RequiresPermissions({"elecon:select"})
     @RequestMapping("query")
-    public Result queryByConsNo(String consNos, String areaCode,String date){
-        String username = SecurityUtils.getSubject().getPrincipal().toString();
-        User user = this.userDao.queryByUserName(username);
-        String area = user.getArea();
-        String areaName = eleConWeibiaoService.queryByAreaNo(areaCode);
-        if(!area.equals(areaName)){
-            return Result.fail("权限不足！");
-        }
+    public String queryByConsNo(String consNos, String areaCode,String date){
         List<String> list = Arrays.asList(consNos.split(","));
         List<String> idsList = eleConWeibiaoService.selectIdByConsNo(list);
         String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
+        Long start = System.currentTimeMillis();
         String string = hplcEleService.getElecData(null, ids, null, areaCode, date);
-        Map<String,EleConWeibiao> map = eleConWeibiaoService.queryByRid(idsList);
-        List<Electrics> list1 = JsonUtil.readJson(string,map);
-        return Result.success(list1);
+        Long end = System.currentTimeMillis();
+        System.out.println("从Hbase中获取数据所用时间："+(end-start));
+        return string;
     }
 
 
-
-    @RequiresPermissions({"update:*"})
-    @RequestMapping("queryByTgOrg")
-    public void queryByTgOrg(String tgNo,String orgNo,String date,HttpServletResponse response)  {
-        if(("".equals(tgNo)||tgNo == null)&("".equals(orgNo)||orgNo == null)){
-            return;
-        }
-        List<String> idsList = eleConWeibiaoService.queryByTgOrg(tgNo,orgNo);
-        String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
-        String area = eleConWeibiaoService.queryAreaByTgOrg(tgNo,orgNo);
-        String jsonStr = hplcEleService.getElecData(null,ids,null,area,date);
-        Map<String,EleConWeibiao> map = eleConWeibiaoService.queryByRid(idsList);
-        List<Electrics> list = JsonUtil.readJson(jsonStr,map);
-        OutputStream outputStream = null;
-        try {
-            outputStream = response.getOutputStream();
-            response.setHeader("Content-Disposition", "attachment;filename=" +date+new String("用户96点用电量.xls".getBytes(), "ISO-8859-1"));
-            response.setContentType("application/x-excel;charset=UTF-8");
-            HSSFWorkbook workbook = ExcelUtil.sendExcel(list);
-            workbook.write(outputStream);
-            outputStream.flush();
-            outputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @RequiresPermissions({"elecon:select"})
     @RequestMapping("queryTgOrg")
-    public void queryTgOrg(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String tgNo,String orgNo,String date,HttpServletResponse response) throws ServletException, IOException {
+    public void queryTgOrg(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String tgNo,String orgNo,String date,HttpServletResponse response,HttpServletRequest request) throws ServletException, IOException {
         Map<String,Object> map1 = new HashMap<>();
         if(("".equals(tgNo)||tgNo == null)&("".equals(orgNo)||orgNo == null)){
             map1.put("code","0");
@@ -201,19 +176,96 @@ public class EleController {
             JsonUtil.responseWriteJson(response,map1);
             return;
         }
-        List<String> idsList = eleConWeibiaoService.queryByTgOrg(tgNo,orgNo);
-        String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
-        String area = eleConWeibiaoService.queryAreaByTgOrg(tgNo,orgNo);
-        String jsonStr = hplcEleService.getElecData(null,ids,null,area,date);
-        Map<String,EleConWeibiao> map = eleConWeibiaoService.queryByRid(idsList);
-        List<Electrics> list = JsonUtil.readJson(jsonStr,map);
-        List<Electrics> list1 = ListUtil.page(list,page,limit);
-        map1.put("code","0");
-        map1.put("msg","");
-        map1.put("count",list.size());
-        map1.put("data",list1);
-        JsonUtil.responseWriteJson(response,map1);
+        Long startTime = System.currentTimeMillis();
+        List<AreaIds> areaIds = eleConWeibiaoService.queryAreaByTgOrg(tgNo, orgNo);
+        Long endTime = System.currentTimeMillis();
+        System.out.println("获取供电所台区信息所用时间："+(endTime-startTime));
+        int size = areaIds.size();
+        List<Electrics> list = new ArrayList<>();
+        for (int i =0;i<size;i++){
+            AreaIds area = areaIds.get(i);
+            String id = area.getIds();
+            List<String> ids = Arrays.asList(id.split(","));
+            int idSize = ids.size();
+            Long start = System.currentTimeMillis();
+            if (idSize>100){
+                ThreadUtil.doJob(ids,area.getArea(),date);
+            }else{
+                String jsonStr = hplcEleService.getElecData(null,area.getIds(),null,area.getArea(),date);
+                ThreadUtil.addResultList(jsonStr);
+            }
+            Long end = System.currentTimeMillis();
+            System.out.println(idSize+"从Hbase中获取数据所用时间："+(end-start));
+        }
+        Long start2 =System.currentTimeMillis();
+        Map<String,EleConWeibiao> map = eleConWeibiaoService.queryAllByTgOrg(tgNo,orgNo);
+        Long end2=System.currentTimeMillis();
+        System.out.println("从数据库获取维表数据所用时间："+(end2-start2));
+        List<String> list1 = ThreadUtil.getResultList();
+        int size1 = list1.size();
+        for (int i=0;i<size1;i++){
+            List<Electrics> electrics = JsonUtil.readJson(list1.get(i),map);
+            list.addAll(electrics);
+        }
+        ThreadUtil.setResultList(new ArrayList<>());
+        ThreadUtil.setSuccessNum(new ArrayList<>());
+        Long end3 = System.currentTimeMillis();
+        System.out.println("解析JSON并形成完整数据所用时间："+(end3-end2));
+        if(!(list.size()>0)){
+            map1.put("code","0");
+            map1.put("msg","");
+            map1.put("count","");
+            map1.put("data","");
+            JsonUtil.responseWriteJson(response,map1);
+            return;
+        }
+        List<Electrics> list2 = ListUtil.page(list,page,limit);
+        Long startTime2 = System.currentTimeMillis();
+        SXSSFWorkbook workbook = ExcelUtil.sendExcel(list);
+        String path = request.getSession().getServletContext().getRealPath("/")+"file";
+        String name ="";
+        if(("".equals(tgNo)||tgNo == null)){
+            name = list.get(1).getOrgName();
+            name = name.replace("#","");
+        }else{
+            name = list.get(1).getTgName();
+            name = name.replace("#","");
 
+        }
+        String fileName = date+name+"用户96点用电量.xlsx";
+        File parent = new File(path);
+        if (!parent.exists()) {
+            parent.mkdirs();
+        }
+        String realPath = path+"/"+fileName;
+        File file=new File(realPath);
+        System.out.println(file);
+        FileOutputStream os=new FileOutputStream(file);
+        workbook.write(os);
+        os.flush();
+        os.close();
+        Long endTime2 = System.currentTimeMillis();
+        System.out.println("形成excel所用时间："+(endTime2-startTime2));
+        String url = "";
+        double[] doubles = new double[96];
+        double[] doubles2 = new double[96];
+        Long startTime3 = System.currentTimeMillis();
+        if(("".equals(orgNo)||orgNo == null)){
+            Map<String,Object> stringObjectMap = SupplementUtil.supplement(("file/"+fileName),request,map,name);
+            doubles = (double[]) stringObjectMap.get("doubles");
+            doubles2 = (double[]) stringObjectMap.get("doubles2");
+            url = (String) stringObjectMap.get("path");
+        }
+        Long endTime4 = System.currentTimeMillis();
+        System.out.println("补点所用时间："+(endTime4-startTime3));
+        Object str[] = new Object[] {("file/"+fileName),url,doubles,doubles2,(date+name)};
+        map1.put("code","0");
+        map1.put("msg",str);
+        map1.put("count",list.size());
+        map1.put("data",list2);
+        Long endTime3 = System.currentTimeMillis();
+        System.out.println("程序所用时间："+(endTime3-startTime));
+        JsonUtil.responseWriteJson(response,map1);
     }
 
     @RequestMapping("queryByCons")
@@ -239,5 +291,5 @@ public class EleController {
         map.put("data",list1);
         JsonUtil.responseWriteJson(response,map);
     }
+    }
 
-}

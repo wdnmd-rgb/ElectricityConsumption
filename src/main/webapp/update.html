@@ -14,11 +14,11 @@
 		<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
 		  <input type="text" class="layui-input" id="date" name="date">
 		</div>
-		<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+		<div class="layui-inline" style="display: none" id="testDiv5"> <!-- 注意：这一层元素并不是必须的 -->
 			<p class="layui-btn" id="select">查询结果</p>
 		</div>
-		<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
-		  <a class="layui-btn" download="" href="" id="update">下载结果</a>
+		<div class="layui-inline" style="display: none" id="testDiv3"> <!-- 注意：这一层元素并不是必须的 -->
+		  <a class="layui-btn"  href="" download id="update">下载结果</a>
 		</div>
 		<p id="url" style="display: none"></p>
 	</div>
@@ -31,6 +31,9 @@
 </div>
 <div style="display: none" id="testDiv2">
 	<table class="layui-hide" id="test2"></table>
+</div>
+<div style="display: none;text-align:center;" id="testDiv4">
+	<p>结果正在查询中，请稍候......</p>
 </div>
 
 <script src="layui/layui.js"></script>
@@ -48,6 +51,8 @@
 	  laydate.render({
 	    elem: '#date' ,//指定元素
 		value:new Date()
+		  ,min: -10
+		  ,max:0
 	  });
 
 		upload.render({
@@ -64,6 +69,7 @@
 				});
 				$("#testDiv2").css("display","none");
 				$("#testDiv").css("display","");
+				$("#testDiv5").css("display","");
 			}
 		});
 
@@ -120,15 +126,20 @@
 
 		$("#select").click(function () {
 			$("#testDiv").css("display","none");
+			$("#testDiv4").css("display","");
+			$("#testDiv5").css("display","none");
 			var url = $("#url").val();
-			$.post("ele/update",{"path":url},function(result){
+			var date1 = $("#date").val();
+			$.post("ele/update",{"path":url,"date":date1},function(result){
 				var path = result.msg;
-				$("#update").attr("download",path);
+				$("#update").attr("href",path);
 				var array = result.data;
 				table.reload('testReload2', {
 					data:array
 				});
+				$("#testDiv4").css("display","none");
 				$("#testDiv2").css("display","");
+				$("#testDiv3").css("display","");
 			});
 		})
 

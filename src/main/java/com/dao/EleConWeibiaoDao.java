@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.entity.AreaIds;
 import com.entity.EleConWeibiao;
 import com.util.DataSource;
 import org.apache.ibatis.annotations.MapKey;
@@ -96,9 +97,13 @@ public interface EleConWeibiaoDao {
 
     String queryByAreaNo(String areaCode);
 
-    List<String> queryByTgOrg(@Param("tgNo") String tgNo,@Param("orgNo") String orgNo);
-    String queryAreaByTgOrg(@Param("tgNo") String tgNo,@Param("orgNo") String orgNo);
+    String queryByTgOrg(@Param("tgNo") String tgNo,@Param("orgNo") String orgNo);
+
+    List<AreaIds> queryAreaByTgOrg(@Param("tgNo") String tgNo, @Param("orgNo") String orgNo);
     List<String> queryByConsNo(String consNo);
+    @MapKey("rid")
+    Map<String,EleConWeibiao> queryAllByTgOrg(@Param("tgNo") String tgNo,@Param("orgNo") String orgNo);
+
 
 
 

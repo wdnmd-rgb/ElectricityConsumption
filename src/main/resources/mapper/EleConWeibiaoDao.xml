@@ -8,18 +8,27 @@
         <result property="areaName" column="area_name" jdbcType="VARCHAR"/>
         <result property="consNo" column="cons_no" jdbcType="VARCHAR"/>
         <result property="consName" column="cons_name" jdbcType="VARCHAR"/>
-        <result property="papRDiff" column="pap_r_diff" jdbcType="NUMERIC"/>
         <result property="tFactor" column="t_factor" jdbcType="NUMERIC"/>
         <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
         <result property="tgName" column="tg_name" jdbcType="VARCHAR"/>
         <result property="orgNo" column="org_no" jdbcType="VARCHAR"/>
         <result property="orgName" column="org_name" jdbcType="VARCHAR"/>
+        <result property="tmnlAssetNo" column="tmnl_asset_no" jdbcType="VARCHAR"/>
+        <result property="mpSn" column="mp_sn" jdbcType="VARCHAR"/>
+        <result property="cisTmnlAssetNo" column="cis_tmnl_asset_no" jdbcType="VARCHAR"/>
+        <result property="ct" column="ct" jdbcType="VARCHAR"/>
+        <result property="pt" column="pt" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="AreaIdsMap" type="com.entity.AreaIds">
+        <result property="area" column="area_code"></result>
+        <result property="ids" column="string"></result>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="EleConWeibiaoMap">
         select
-          id,rid,area_name,cons_no, cons_name,pap_r_diff, t_factor,tg_no,tg_name,org_no,org_name
+          id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
         from dws_elecon.ele_con_weibiao
         where id = #{id}
     </select>
@@ -33,7 +42,7 @@
     <!--查询单个-->
     <select id="queryByRid" resultMap="EleConWeibiaoMap">
         select
-        id, rid, area_name, cons_no, cons_name,pap_r_diff, t_factor,tg_no,tg_name,org_no,org_name
+        id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
         from dws_elecon.ele_con_weibiao
         where rid in
         <foreach collection="list" item="rid" index="index" open="(" close=")" separator=",">
@@ -41,9 +50,9 @@
         </foreach>
     </select>
 
-    <select id="queryByTgOrg" parameterType="java.util.List" resultType="string">
+    <select id="queryByTgOrg"  resultType="string">
         select
-        rid
+        string_agg(rid,',')
         from dws_elecon.ele_con_weibiao
         <where>
             <if test="tgNo != null and tgNo != ''">
@@ -55,11 +64,10 @@
         </where>
     </select>
 
-    <select id="queryAreaByTgOrg" resultType="java.lang.String">
+    <select id="queryAllByTgOrg"  resultMap="EleConWeibiaoMap">
         select
-        area_code
-        from dws_elecon.area_code_type
-        where area_name = (select distinct area_name from dws_elecon.ele_con_weibiao
+        id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
+        from dws_elecon.ele_con_weibiao
         <where>
             <if test="tgNo != null and tgNo != ''">
                 and tg_no = #{tgNo}
@@ -67,13 +75,28 @@
             <if test="orgNo != null and orgNo != ''">
                 and org_no = #{orgNo}
             </if>
-        </where>)
+        </where>
+    </select>
+
+    <select id="queryAreaByTgOrg" resultMap="AreaIdsMap">
+        select b.area_code,a.string from(
+        select area_name,string_agg(rid,',') string from dws_elecon.ele_con_weibiao
+        <where>
+            <if test="tgNo != null and tgNo != ''">
+                and tg_no = #{tgNo}
+            </if>
+            <if test="orgNo != null and orgNo != ''">
+                and org_no = #{orgNo}
+            </if>
+        </where>
+        group by area_name
+        )a left join dws_elecon.area_code_type b on a.area_name=b.area_name
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="EleConWeibiaoMap">
         select
-          id, rid, area_name, cons_no, cons_name,pap_r_diff, t_factor,tg_no,tg_name,org_no,org_name
+          id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
         from dws_elecon.ele_con_weibiao
         limit #{offset}, #{limit}
     </select>
@@ -101,7 +124,7 @@
     </select>
 
     <select id="queryAllByConsNo" resultMap="EleConWeibiaoMap">
-    select id, rid, area_name, cons_no, cons_name,pap_r_diff, t_factor,tg_no,tg_name,org_no,org_name
+    select id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
     from dws_elecon.ele_con_weibiao where cons_no in
     <foreach collection="list" item="no" index="index" open="(" close=")" separator=",">
         #{no}
@@ -121,7 +144,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="EleConWeibiaoMap">
         select
-        id, rid, area_name, cons_no, cons_name,pap_r_diff, t_factor,tg_no,tg_name,org_no,org_name
+        id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
         from dws_elecon.ele_con_weibiao
         <where>
             <if test="id != null">
@@ -148,58 +171,6 @@
         </where>
     </select>
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into dws_elecon.ele_con_weibiao(rid, area_name, cons_no, cons_name, event_time, pap_r_diff, t_factor)
-        values (#{rid}, #{areaName}, #{consNo}, #{consName}, #{papRDiff}, #{tFactor})
-    </insert>
-
-    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into dws_elecon.ele_con_weibiao(rid, area_name, cons_no, cons_name, pap_r_diff, t_factor)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.rid}, #{entity.areaName}, #{entity.consNo}, #{entity.consName},
-            #{entity.papRDiff}, #{entity.tFactor})
-        </foreach>
-    </insert>
-
-    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into dws_elecon.ele_con_weibiao(rid, area_name, cons_no, cons_name, pap_r_diff, t_factor)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.rid}, #{entity.areaName}, #{entity.consNo}, #{entity.consName},
-            #{entity.papRDiff}, #{entity.tFactor})
-        </foreach>
-        on duplicate key update
-        rid = values(rid) , area_name = values(area_name) , cons_no = values(cons_no) , cons_name = values(cons_name) ,
-        pap_r_diff = values(pap_r_diff) , t_factor = values(t_factor)
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update dws_elecon.ele_con_weibiao
-        <set>
-            <if test="rid != null and rid != ''">
-                rid = #{rid},
-            </if>
-            <if test="areaName != null and areaName != ''">
-                area_name = #{areaName},
-            </if>
-            <if test="consNo != null and consNo != ''">
-                cons_no = #{consNo},
-            </if>
-            <if test="consName != null and consName != ''">
-                cons_name = #{consName},
-            </if>
-            <if test="papRDiff != null">
-                pap_r_diff = #{papRDiff},
-            </if>
-            <if test="tFactor != null">
-                t_factor = #{tFactor},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">

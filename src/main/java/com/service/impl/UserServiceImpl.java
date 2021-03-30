@@ -75,7 +75,6 @@ public class UserServiceImpl implements UserService {
      * @return 是否成功
      */
     @Override
-    @Transactional
     public boolean deleteById(Integer id) {
         return this.userDao.deleteById(id) > 0;
     }
@@ -98,7 +97,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public boolean deleteUserRole(Integer id) {
         return this.userDao.deleteUserRole(id)>0;
     }

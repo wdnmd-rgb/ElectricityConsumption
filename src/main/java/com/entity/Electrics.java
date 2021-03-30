@@ -11,12 +11,14 @@ public class Electrics {
     private String papRDiff;
     private String ele;
     private String tgNo;
-
     private String tgName;
-
     private String orgNo;
-
     private String orgName;
+    private String tmnlAssetNo;
+    private String mpSn;
+    private String cisTmnlAssetNo;
+    private String ct;
+    private String pt;
 
     public String getRid() {
         return rid;
@@ -122,6 +124,46 @@ public class Electrics {
         this.orgName = orgName;
     }
 
+    public String getTmnlAssetNo() {
+        return tmnlAssetNo;
+    }
+
+    public void setTmnlAssetNo(String tmnlAssetNo) {
+        this.tmnlAssetNo = tmnlAssetNo;
+    }
+
+    public String getMpSn() {
+        return mpSn;
+    }
+
+    public void setMpSn(String mpSn) {
+        this.mpSn = mpSn;
+    }
+
+    public String getCisTmnlAssetNo() {
+        return cisTmnlAssetNo;
+    }
+
+    public void setCisTmnlAssetNo(String cisTmnlAssetNo) {
+        this.cisTmnlAssetNo = cisTmnlAssetNo;
+    }
+
+    public String getCt() {
+        return ct;
+    }
+
+    public void setCt(String ct) {
+        this.ct = ct;
+    }
+
+    public String getPt() {
+        return pt;
+    }
+
+    public void setPt(String pt) {
+        this.pt = pt;
+    }
+
     @Override
     public String toString() {
         return "Electrics{" +
@@ -138,6 +180,11 @@ public class Electrics {
                 ", tgName='" + tgName + '\'' +
                 ", orgNo='" + orgNo + '\'' +
                 ", orgName='" + orgName + '\'' +
+                ", tmnlAssetNo='" + tmnlAssetNo + '\'' +
+                ", mpSn='" + mpSn + '\'' +
+                ", cisTmnlAssetNo='" + cisTmnlAssetNo + '\'' +
+                ", ct='" + ct + '\'' +
+                ", pt='" + pt + '\'' +
                 '}';
     }
 }

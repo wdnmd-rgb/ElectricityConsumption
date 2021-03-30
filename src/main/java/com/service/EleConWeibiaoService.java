@@ -1,6 +1,8 @@
 package com.service;
 
+import com.entity.AreaIds;
 import com.entity.EleConWeibiao;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -65,9 +67,10 @@ public interface EleConWeibiaoService {
     String queryAreaName(String areaName);
     String queryByAreaNo(String areaCode);
 
-    List<String> queryByTgOrg(String tgNo,String orgNo);
-    String queryAreaByTgOrg(String tgNo,String orgNo);
+    String queryByTgOrg(String tgNo,String orgNo);
+    List<AreaIds> queryAreaByTgOrg(String tgNo, String orgNo);
     List<String> queryByConsNo(String consNo);
+    Map<String,EleConWeibiao> queryAllByTgOrg(@Param("tgNo") String tgNo, @Param("orgNo") String orgNo);
 
 
 

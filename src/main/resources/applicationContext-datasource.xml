@@ -51,13 +51,7 @@
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
           p:basePackage="com.dao" p:sqlSessionFactoryBeanName="sqlSessionFactory">
-
     </bean>
-
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
-    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
     <!-- 切面 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <bean id="dataSourceAspect" class="com.util.DataSourceAspect"></bean>

@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.dao.EleConWeibiaoDao;
+import com.entity.AreaIds;
 import com.entity.EleConWeibiao;
 import com.service.EleConWeibiaoService;
 import org.springframework.stereotype.Service;
@@ -109,18 +110,24 @@ public class EleConWeibiaoServiceImpl implements EleConWeibiaoService {
     }
 
     @Override
-    public List<String> queryByTgOrg(String tgNo, String orgNo) {
-        return this.eleConWeibiaoDao.queryByTgOrg(tgNo,orgNo);
+    public String queryByTgOrg(String tgNo, String orgNo) {
+        return this.eleConWeibiaoDao.queryByTgOrg(tgNo, orgNo);
     }
 
+
     @Override
-    public String queryAreaByTgOrg(String tgNo, String orgNo) {
+    public List<AreaIds> queryAreaByTgOrg(String tgNo, String orgNo) {
         return this.eleConWeibiaoDao.queryAreaByTgOrg(tgNo,orgNo);
     }
 
     @Override
     public List<String> queryByConsNo(String consNo) {
         return this.eleConWeibiaoDao.queryByConsNo(consNo);
+    }
+
+    @Override
+    public Map<String,EleConWeibiao> queryAllByTgOrg(String tgNo, String orgNo) {
+        return this.eleConWeibiaoDao.queryAllByTgOrg(tgNo, orgNo);
     }
 
 

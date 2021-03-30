@@ -44,6 +44,9 @@
                     <dl class="layui-nav-child">
                         <dd><a href="show.html">实时线损查询</a></dd>
                     </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="relation.html">查询台区详细信息</a></dd>
+                    </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">下载中心</a>

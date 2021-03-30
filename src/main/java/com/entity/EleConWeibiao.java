@@ -29,9 +29,17 @@ public class EleConWeibiao implements Serializable {
 
     private String orgName;
 
-    private Double papRDiff;
-
     private Double tFactor;
+
+    private String tmnlAssetNo;
+
+    private String mpSn;
+
+    private String cisTmnlAssetNo;
+
+    private String ct;
+
+    private String pt;
 
 
 
@@ -73,14 +81,6 @@ public class EleConWeibiao implements Serializable {
 
     public void setConsName(String consName) {
         this.consName = consName;
-    }
-
-    public Double getPapRDiff() {
-        return papRDiff;
-    }
-
-    public void setPapRDiff(Double papRDiff) {
-        this.papRDiff = papRDiff;
     }
 
     public Double getTFactor() {
@@ -131,6 +131,46 @@ public class EleConWeibiao implements Serializable {
         this.orgName = orgName;
     }
 
+    public String getTmnlAssetNo() {
+        return tmnlAssetNo;
+    }
+
+    public void setTmnlAssetNo(String tmnlAssetNo) {
+        this.tmnlAssetNo = tmnlAssetNo;
+    }
+
+    public String getMpSn() {
+        return mpSn;
+    }
+
+    public void setMpSn(String mpSn) {
+        this.mpSn = mpSn;
+    }
+
+    public String getCisTmnlAssetNo() {
+        return cisTmnlAssetNo;
+    }
+
+    public void setCisTmnlAssetNo(String cisTmnlAssetNo) {
+        this.cisTmnlAssetNo = cisTmnlAssetNo;
+    }
+
+    public String getCt() {
+        return ct;
+    }
+
+    public void setCt(String ct) {
+        this.ct = ct;
+    }
+
+    public String getPt() {
+        return pt;
+    }
+
+    public void setPt(String pt) {
+        this.pt = pt;
+    }
+
     @Override
     public String toString() {
         return "EleConWeibiao{" +
@@ -143,8 +183,12 @@ public class EleConWeibiao implements Serializable {
                 ", tgName='" + tgName + '\'' +
                 ", orgNo='" + orgNo + '\'' +
                 ", orgName='" + orgName + '\'' +
-                ", papRDiff=" + papRDiff +
                 ", tFactor=" + tFactor +
+                ", tmnlAssetNo='" + tmnlAssetNo + '\'' +
+                ", mpSn='" + mpSn + '\'' +
+                ", cisTmnlAssetNo='" + cisTmnlAssetNo + '\'' +
+                ", ct='" + ct + '\'' +
+                ", pt='" + pt + '\'' +
                 '}';
     }
 }

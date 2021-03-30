@@ -32,13 +32,20 @@ public class JsonUtil {
     public static List<Electrics> readJson(String json,Map<String,EleConWeibiao> map){
         List<Electric> list= parseElectric(json);
         List<Electrics> electricsList = new ArrayList<>();
-        for (Electric e:list){
-            EleConWeibiao eleConWeibiao = map.get(e.getId());
+        if (list.isEmpty()){
+            return electricsList;
+        }
+        int electricSize = list.size();
+        for (int i = 0;i<electricSize;i++){
+            Electric electric = list.get(i);
+            EleConWeibiao eleConWeibiao = map.get(electric.getId());
             //System.out.println(e.getElec());
-            List list1 = (List)JSONPath.read(e.getElec(), "$.");
-            for(Object obj :list1){
+            List list1 = (List)JSONPath.read(electric.getElec(), "$.");
+            int eleSize = list1.size();
+            for(int j =0;j<eleSize;j++){
+                Object obj = list1.get(j);
                 Electrics electrics = new Electrics();
-                electrics.setRid(e.getId());
+                electrics.setRid(electric.getId());
                 String time  = JSONPath.read(obj.toString(), "$.event_time").toString();
                 String point =JSONPath.read(obj.toString(), "$.point").toString();
                 time = time.replaceAll(":[0-9][0-9]",":00");
@@ -61,6 +68,11 @@ public class JsonUtil {
                 electrics.setTgName(eleConWeibiao.getTgName());
                 electrics.setOrgNo(eleConWeibiao.getOrgNo());
                 electrics.setOrgName(eleConWeibiao.getOrgName());
+                electrics.setTmnlAssetNo(eleConWeibiao.getTmnlAssetNo());
+                electrics.setMpSn(eleConWeibiao.getMpSn());
+                electrics.setCisTmnlAssetNo(eleConWeibiao.getCisTmnlAssetNo());
+                electrics.setCt(eleConWeibiao.getCt());
+                electrics.setPt(eleConWeibiao.getPt());
                 electricsList.add(electrics);
             }
         }
