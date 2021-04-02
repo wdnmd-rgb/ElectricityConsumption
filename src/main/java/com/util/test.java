@@ -27,11 +27,9 @@ public class test {
         pool.shutdown();
     }
     public static void main(String[] args) throws ParseException {
+        String str = "2021-03-29 08:45:00";
 
-        float a = 1.53f;
-        float b = 2.56f;
-        float c = 3.22f;
-        float d = a+b+c;
-        System.out.println(d);
+        System.out.println(str.substring(11,13));
+        System.out.println(str.substring(14,16));
     }
 }

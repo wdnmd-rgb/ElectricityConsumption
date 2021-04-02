@@ -13,17 +13,18 @@ import java.util.*;
 
 public class SupplementUtil {
 
-    public static Map<String,Object> supplement(String url, HttpServletRequest request,Map<String, EleConWeibiao> map2,String name){
+    public static Map<String,Object> supplement(String url, HttpServletRequest request,Map<String, EleConWeibiao> map2,String name,int index){
         String day = url.substring(5,15);
         String path = request.getSession().getServletContext().getRealPath("/")+"file";
-        double[] doubles = new double[96];
-        double[] doubles2 = new double[96];
+        int point = 96/index;
+        double[] doubles = new double[point];
+        double[] doubles2 = new double[point];
         try {
             Map<String,Object> map = ExcelUtil.readExcel2(request.getSession().getServletContext().getRealPath("/")+url);
             Map<String, Electrics> map1 = (Map<String, Electrics>) map.get("map");
             Set<String> set = (Set<String>) map.get("set");
             List ids = new ArrayList(set);
-            Map<String,Object> map3 = ExcelUtil.sendExcel2(map1,set,day,map2);
+            Map<String,Object> map3 = ExcelUtil.sendExcel2(map1,set,day,map2,index);
             doubles = (double[]) map3.get("doubles");
             doubles2 = (double[]) map3.get("doubles2");
             SXSSFWorkbook workbook = (SXSSFWorkbook) map3.get("workbook");

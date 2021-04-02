@@ -166,7 +166,7 @@ public class EleController {
 
     @RequiresPermissions({"elecon:select"})
     @RequestMapping("queryTgOrg")
-    public void queryTgOrg(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String tgNo,String orgNo,String date,HttpServletResponse response,HttpServletRequest request) throws ServletException, IOException {
+    public void queryTgOrg(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String tgNo,String orgNo,String date,HttpServletResponse response,HttpServletRequest request,String index) throws ServletException, IOException, ParseException {
         Map<String,Object> map1 = new HashMap<>();
         if(("".equals(tgNo)||tgNo == null)&("".equals(orgNo)||orgNo == null)){
             map1.put("code","0");
@@ -221,7 +221,7 @@ public class EleController {
         }
         List<Electrics> list2 = ListUtil.page(list,page,limit);
         Long startTime2 = System.currentTimeMillis();
-        SXSSFWorkbook workbook = ExcelUtil.sendExcel(list);
+        SXSSFWorkbook workbook = ExcelUtil.sendExcel3(list,date,Integer.parseInt(index));
         String path = request.getSession().getServletContext().getRealPath("/")+"file";
         String name ="";
         if(("".equals(tgNo)||tgNo == null)){
@@ -247,11 +247,12 @@ public class EleController {
         Long endTime2 = System.currentTimeMillis();
         System.out.println("形成excel所用时间："+(endTime2-startTime2));
         String url = "";
-        double[] doubles = new double[96];
-        double[] doubles2 = new double[96];
+        int point = 96/Integer.parseInt(index);
+        double[] doubles = new double[point];
+        double[] doubles2 = new double[point];
         Long startTime3 = System.currentTimeMillis();
         if(("".equals(orgNo)||orgNo == null)){
-            Map<String,Object> stringObjectMap = SupplementUtil.supplement(("file/"+fileName),request,map,name);
+            Map<String,Object> stringObjectMap = SupplementUtil.supplement(("file/"+fileName),request,map,name,Integer.parseInt(index));
             doubles = (double[]) stringObjectMap.get("doubles");
             doubles2 = (double[]) stringObjectMap.get("doubles2");
             url = (String) stringObjectMap.get("path");
