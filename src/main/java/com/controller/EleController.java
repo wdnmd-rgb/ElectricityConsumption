@@ -7,9 +7,7 @@ import com.service.EleConWeibiaoService;
 import com.service.ElectricsService;
 import com.util.*;
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
@@ -50,11 +48,8 @@ public class EleController {
     @Autowired
     private UserDao userDao;
 
+    //从Hbase取数的方法类
     private HplcEleServiceImpl hplcEleService = HplcEleServiceImpl.getInstance();
-
-    private Logger logger = LoggerFactory.getLogger(EleController.class);
-
-
 
 
     @RequiresPermissions({"update:*"})
@@ -219,9 +214,11 @@ public class EleController {
             JsonUtil.responseWriteJson(response,map1);
             return;
         }
-        List<Electrics> list2 = ListUtil.page(list,page,limit);
         Long startTime2 = System.currentTimeMillis();
-        SXSSFWorkbook workbook = ExcelUtil.sendExcel3(list,date,Integer.parseInt(index));
+        Map<String,Object> stringObject = ExcelUtil.sendExcel3(list,date,Integer.parseInt(index));
+        SXSSFWorkbook workbook = (SXSSFWorkbook) stringObject.get("workbook");
+        list = (List<Electrics>) stringObject.get("list");
+        List<Electrics> list2 = ListUtil.page(list,page,limit);
         String path = request.getSession().getServletContext().getRealPath("/")+"file";
         String name ="";
         if(("".equals(tgNo)||tgNo == null)){
@@ -230,9 +227,8 @@ public class EleController {
         }else{
             name = list.get(1).getTgName();
             name = name.replace("#","");
-
         }
-        String fileName = date+name+"用户96点用电量.xlsx";
+        String fileName = date+name+"用户"+(96/Integer.parseInt(index))+"点用电量.xlsx";
         File parent = new File(path);
         if (!parent.exists()) {
             parent.mkdirs();

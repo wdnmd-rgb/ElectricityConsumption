@@ -188,7 +188,7 @@ public class ExcelUtil {
         if(map.size()>0){
             for(String rid:set){
                 for (int i = 0;i<point;i++){
-                    Long time2 = time+(i*900000*point);
+                    Long time2 = time+(i*900000*(96/point));
                     String key = rid+time2;
                     Electrics electrics = map.get(key);
                     Double ele = 00.00;
@@ -274,6 +274,13 @@ public class ExcelUtil {
                         ele = (electrics.getPapR()-papRP)*electrics.gettFactor();
                         System.out.println("papRP"+papRP);
                         SXSSFRow rowEle = sheet.createRow(rows);
+                        if(i == 0){
+                            rowEle.createCell(6).setCellValue("暂无数据");
+                            rowEle.createCell(8).setCellValue("暂无数据");
+                        }else{
+                            rowEle.createCell(6).setCellValue(electrics.getPapR()-papRP);
+                            rowEle.createCell(8).setCellValue(ele);
+                        }
                         T=electrics.gettFactor();
                         rowEle.createCell(0).setCellValue(rid);
                         rowEle.createCell(1).setCellValue(electrics.getConsNo());
@@ -281,9 +288,7 @@ public class ExcelUtil {
                         rowEle.createCell(3).setCellValue(electrics.getAreaName());
                         rowEle.createCell(4).setCellValue(electrics.getEventTime());
                         rowEle.createCell(5).setCellValue(electrics.getPapR());
-                        rowEle.createCell(6).setCellValue(electrics.getPapRDiff());
                         rowEle.createCell(7).setCellValue(electrics.gettFactor());
-                        rowEle.createCell(8).setCellValue(electrics.getEle());
                         rowEle.createCell(9).setCellValue(electrics.getTgNo());
                         rowEle.createCell(10).setCellValue(electrics.getTgName());
                         rowEle.createCell(11).setCellValue(electrics.getOrgNo());
@@ -313,10 +318,12 @@ public class ExcelUtil {
         return map1;
     }
 
-    public static SXSSFWorkbook  sendExcel3(List<Electrics> list,String date,int index) throws ParseException {
+    public static  Map<String,Object>  sendExcel3(List<Electrics> list,String date,int index) throws ParseException {
         Map<String,Electrics> map = new HashMap<>();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        Map<String,Object> stringObjectMap = new HashMap<>();
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
         Date date1 = simpleDateFormat1.parse(date);
         Long time = date1.getTime();
         int size = list.size();
@@ -327,10 +334,11 @@ public class ExcelUtil {
             String id = electrics.getRid();
             String date2 = electrics.getEventTime();
             Date date3 = simpleDateFormat.parse(date2);
-            ids.add(date2);
+            ids.add(id);
             String key = id+date3.getTime();
             map.put(key,electrics);
         }
+        list = new ArrayList<>();
         SXSSFWorkbook workbook = new SXSSFWorkbook ();
         SXSSFSheet sheet = workbook.createSheet();
         SXSSFRow row1 = sheet.createRow(0);
@@ -350,6 +358,7 @@ public class ExcelUtil {
                 if(electrics != null){
                     SXSSFRow rowEle = sheet.createRow(rowNum);
                     papR= electrics.getPapR();
+                    Double papRDiff = papR-papRp;
                     rowEle.createCell(0).setCellValue(rid);
                     rowEle.createCell(1).setCellValue(electrics.getConsNo());
                     rowEle.createCell(2).setCellValue(electrics.getConsName());
@@ -359,14 +368,18 @@ public class ExcelUtil {
                         rowEle.createCell(5).setCellValue(electrics.getPapR());
                         rowEle.createCell(6).setCellValue(electrics.getPapRDiff());
                     }else{
-                        rowEle.createCell(5).setCellValue(papRp);
-                        rowEle.createCell(6).setCellValue(papR-papRp);
+                        rowEle.createCell(5).setCellValue(papR);
+                        rowEle.createCell(6).setCellValue(decimalFormat.format(papRDiff));
+                        electrics.setPapR(papR);
+                        electrics.setPapRDiff(decimalFormat.format(papRDiff));
                     }
                     rowEle.createCell(7).setCellValue(electrics.gettFactor());
                     if ("暂无数据".equals(electrics.getPapRDiff())){
                         rowEle.createCell(8).setCellValue("暂无数据");
+                        electrics.setEle("暂无数据");
                     }else{
-                        rowEle.createCell(8).setCellValue(Double.parseDouble(String.valueOf((papR-papRp)))*electrics.gettFactor());
+                        rowEle.createCell(8).setCellValue(Double.parseDouble(decimalFormat.format(papRDiff))*electrics.gettFactor());
+                        electrics.setEle(Double.parseDouble(decimalFormat.format(papRDiff))*electrics.gettFactor()+"");
                     }
                     rowEle.createCell(9).setCellValue(electrics.getTgNo());
                     rowEle.createCell(10).setCellValue(electrics.getTgName());
@@ -379,17 +392,20 @@ public class ExcelUtil {
                     rowEle.createCell(17).setCellValue(electrics.getPt());
                     papRp=papR;
                     rowNum++;
+                    list.add(electrics);
                 }
             }
         }
-        return workbook;
+        stringObjectMap.put("workbook",workbook);
+        stringObjectMap.put("list",list);
+        return stringObjectMap;
     }
 
     public static Map<String,Object> findPre(int i,Long time,String rid,Map<String,Electrics> map,int point){
         Map<String,Object> map1 = new HashMap<>();
         Double papRP = 00.00;
         for (;i>=0;i--){
-            Long time1 = time+(i*900000*point);
+            Long time1 = time+(i*900000*(96/point));
             String key = rid+time1;
             Electrics electrics = map.get(key);
             if (electrics != null){
@@ -406,7 +422,7 @@ public class ExcelUtil {
         Map<String,Object> map1 = new HashMap<>();
         Double papRN = 00.00;
         for(;i<point;i++){
-            Long time2 = time+(i*900000*point);
+            Long time2 = time+(i*900000*(96/point));
             String key = rid+time2;
             Electrics electrics = map.get(key);
             if (electrics != null){

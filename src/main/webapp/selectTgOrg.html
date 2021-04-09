@@ -38,12 +38,13 @@
 				    </div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">选择数据时间维度：</label>
-				    <div class="layui-input-block">
-				      <input type="radio" name="index"  value="1" title="96点" checked>
-				      <input type="radio" name="index" value="4" title="24点">
-					  <input type="radio" name="index" value="6" title="12点">
-				    </div>
+				<select name="index" lay-verify="required" id="index">
+					<option value="1">请选择时间间隔</option>
+					<option value="1">15分钟</option>
+					<option value="4">1小时</option>
+					<option value="8">2小时</option>
+					<option value="12">3小时</option>
+				</select>
 			</div>
 		</form>
 		<div style="display: none;padding-top: 30px;text-align:center;" id="testDiv4">
@@ -81,7 +82,7 @@
 				'20:00', '21:00', '22:00', '23:00'];
 			var data12=['00:00','02:00','04:00', '06:00', '08:00', '10:00','12:00',
 				'14:00','16:00','18:00', '20:00', '22:00'];
-			var data=[];
+			var dataTime=[];
 
 			layui.use(['laydate', 'form','table'],function(){
 				var form = layui.form;
@@ -121,13 +122,15 @@
 				form.on('submit(provinceSearch)', function(data) {
 					$("#testDiv2").css("display","none");
 					$("#testDiv3").css("display","none");
+					$("#testDiv4").css("display","none");
+					$("#testDiv5").css("display","none");
 					var traget=document.getElementById("testDiv");
 					traget.style.display="";
 					var formData = data.field;
 					var no = formData.no;
 					var date = formData.date;
 					var noType = $("input[name='noType']:checked").val();
-					var index = $("input[name='index']:checked").val();
+					var index = $("#index").val();
 					var tgNo = "";
 					var orgNo = "";
 					if(noType == "tgNo"){
@@ -155,11 +158,11 @@
 							array2=res.msg[3];
 							name = res.msg[4];
 							if(index == 1){
-								data=data96;
+								dataTime=[].concat(data96);
 							}else if(index == 4){
-								data=data24;
+								dataTime=[].concat(data24);
 							}else{
-								data=data12;
+								dataTime=[].concat(data12);
 							}
                         }
 					});
@@ -207,7 +210,7 @@
 					xAxis: {
 						type: 'category',
 						boundaryGap: false,
-						data: data
+						data: dataTime
 					},
 					yAxis: {
 						type: 'value',
