@@ -68,11 +68,13 @@ public class JsonUtil {
                 electrics.setTgName(eleConWeibiao.getTgName());
                 electrics.setOrgNo(eleConWeibiao.getOrgNo());
                 electrics.setOrgName(eleConWeibiao.getOrgName());
+                electrics.setAssetNo(eleConWeibiao.getAssetNo());
                 electrics.setTmnlAssetNo(eleConWeibiao.getTmnlAssetNo());
                 electrics.setMpSn(eleConWeibiao.getMpSn());
                 electrics.setCisTmnlAssetNo(eleConWeibiao.getCisTmnlAssetNo());
                 electrics.setCt(eleConWeibiao.getCt());
                 electrics.setPt(eleConWeibiao.getPt());
+                electrics.setTypeCode(eleConWeibiao.getTypeCode());
                 electricsList.add(electrics);
             }
         }

@@ -14,11 +14,13 @@ public class Electrics {
     private String tgName;
     private String orgNo;
     private String orgName;
+    private String assetNo;
     private String tmnlAssetNo;
     private String mpSn;
     private String cisTmnlAssetNo;
     private String ct;
     private String pt;
+    private String typeCode;
 
     public String getRid() {
         return rid;
@@ -164,6 +166,22 @@ public class Electrics {
         this.pt = pt;
     }
 
+    public String getTypeCode() {
+        return typeCode;
+    }
+
+    public void setTypeCode(String typeCode) {
+        this.typeCode = typeCode;
+    }
+
+    public String getAssetNo() {
+        return assetNo;
+    }
+
+    public void setAssetNo(String assetNo) {
+        this.assetNo = assetNo;
+    }
+
     @Override
     public String toString() {
         return "Electrics{" +
@@ -180,11 +198,13 @@ public class Electrics {
                 ", tgName='" + tgName + '\'' +
                 ", orgNo='" + orgNo + '\'' +
                 ", orgName='" + orgName + '\'' +
+                ", assetNo='" + assetNo + '\'' +
                 ", tmnlAssetNo='" + tmnlAssetNo + '\'' +
                 ", mpSn='" + mpSn + '\'' +
                 ", cisTmnlAssetNo='" + cisTmnlAssetNo + '\'' +
                 ", ct='" + ct + '\'' +
                 ", pt='" + pt + '\'' +
+                ", typeCode='" + typeCode + '\'' +
                 '}';
     }
 }

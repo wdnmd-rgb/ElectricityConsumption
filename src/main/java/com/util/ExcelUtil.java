@@ -109,7 +109,7 @@ public class ExcelUtil {
         SXSSFSheet sheet = workbook.createSheet();
         SXSSFRow row1 = sheet.createRow(0);
         String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","电能总示值","电能总示值差值","倍率","电量","台区编号",
-                "台区名称","供电所编号","供电所名称","终端资产编号","测量点号","营销终端资产编号","ct","pt"};
+                "台区名称","供电所编号","供电所名称","资产编号","终端资产编号","测量点号","营销终端资产编号","ct","pt","计量点分类"};
         for (int i =0 ; i < row1Cell.length ; i++ ){
             row1.createCell(i).setCellValue(row1Cell[i]);
         }
@@ -134,11 +134,13 @@ public class ExcelUtil {
                 rowEle.createCell(10).setCellValue(electrics.getTgName());
                 rowEle.createCell(11).setCellValue(electrics.getOrgNo());
                 rowEle.createCell(12).setCellValue(electrics.getOrgName());
-                rowEle.createCell(13).setCellValue(electrics.getTmnlAssetNo());
-                rowEle.createCell(14).setCellValue(electrics.getMpSn());
-                rowEle.createCell(15).setCellValue(electrics.getCisTmnlAssetNo());
-                rowEle.createCell(16).setCellValue(electrics.getCt());
-                rowEle.createCell(17).setCellValue(electrics.getPt());
+                rowEle.createCell(13).setCellValue(electrics.getAssetNo());
+                rowEle.createCell(14).setCellValue(electrics.getTmnlAssetNo());
+                rowEle.createCell(15).setCellValue(electrics.getMpSn());
+                rowEle.createCell(16).setCellValue(electrics.getCisTmnlAssetNo());
+                rowEle.createCell(17).setCellValue(electrics.getCt());
+                rowEle.createCell(18).setCellValue(electrics.getPt());
+                rowEle.createCell(19).setCellValue(electrics.getTypeCode());
             }
         }
         return workbook;
@@ -193,7 +195,7 @@ public class ExcelUtil {
                     Electrics electrics = map.get(key);
                     Double ele = 00.00;
                     Double papRDiff = 00.00;
-                    Double T = 00.00;
+                    String typeCode = "";
                     if (electrics == null){
                         Double papR = 00.00;
                         System.out.println("i="+i);
@@ -250,7 +252,7 @@ public class ExcelUtil {
                         ele = papRDiff*eleConWeibiao.gettFactor();
                         System.out.println("papRDiff"+papRDiff);
                         SXSSFRow rowEle = sheet.createRow(rows);
-                        T=eleConWeibiao.gettFactor();
+                        typeCode=eleConWeibiao.getTypeCode();
                         rowEle.createCell(0).setCellValue(rid);
                         rowEle.createCell(1).setCellValue(eleConWeibiao.getConsNo());
                         rowEle.createCell(2).setCellValue(eleConWeibiao.getConsName());
@@ -281,7 +283,7 @@ public class ExcelUtil {
                             rowEle.createCell(6).setCellValue(electrics.getPapR()-papRP);
                             rowEle.createCell(8).setCellValue(ele);
                         }
-                        T=electrics.gettFactor();
+                        typeCode=electrics.getTypeCode();
                         rowEle.createCell(0).setCellValue(rid);
                         rowEle.createCell(1).setCellValue(electrics.getConsNo());
                         rowEle.createCell(2).setCellValue(electrics.getConsName());
@@ -298,7 +300,7 @@ public class ExcelUtil {
                     }
                     ele= Double.valueOf(decimalFormat.format(ele));
                     System.out.println("ele："+ele);
-                    if(T!=1){
+                    if(typeCode!="01"){
                         if (i!=0){
                             doubles2[i] += ele;
                         }
@@ -343,7 +345,7 @@ public class ExcelUtil {
         SXSSFSheet sheet = workbook.createSheet();
         SXSSFRow row1 = sheet.createRow(0);
         String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","电能总示值","电能总示值差值","倍率","电量","台区编号",
-                "台区名称","供电所编号","供电所名称","终端资产编号","测量点号","营销终端资产编号","ct","pt"};
+                "台区名称","供电所编号","供电所名称","资产编号","终端资产编号","测量点号","营销终端资产编号","ct","pt","计量点标识"};
         for (int i =0 ; i < row1Cell.length ; i++ ){
             row1.createCell(i).setCellValue(row1Cell[i]);
         }
@@ -385,11 +387,13 @@ public class ExcelUtil {
                     rowEle.createCell(10).setCellValue(electrics.getTgName());
                     rowEle.createCell(11).setCellValue(electrics.getOrgNo());
                     rowEle.createCell(12).setCellValue(electrics.getOrgName());
-                    rowEle.createCell(13).setCellValue(electrics.getTmnlAssetNo());
-                    rowEle.createCell(14).setCellValue(electrics.getMpSn());
-                    rowEle.createCell(15).setCellValue(electrics.getCisTmnlAssetNo());
-                    rowEle.createCell(16).setCellValue(electrics.getCt());
-                    rowEle.createCell(17).setCellValue(electrics.getPt());
+                    rowEle.createCell(13).setCellValue(electrics.getAssetNo());
+                    rowEle.createCell(14).setCellValue(electrics.getTmnlAssetNo());
+                    rowEle.createCell(15).setCellValue(electrics.getMpSn());
+                    rowEle.createCell(16).setCellValue(electrics.getCisTmnlAssetNo());
+                    rowEle.createCell(17).setCellValue(electrics.getCt());
+                    rowEle.createCell(18).setCellValue(electrics.getPt());
+                    rowEle.createCell(19).setCellValue(electrics.getTypeCode());
                     papRp=papR;
                     rowNum++;
                     list.add(electrics);

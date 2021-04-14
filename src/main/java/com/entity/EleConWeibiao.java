@@ -31,6 +31,8 @@ public class EleConWeibiao implements Serializable {
 
     private Double tFactor;
 
+    private String assetNo;
+
     private String tmnlAssetNo;
 
     private String mpSn;
@@ -40,6 +42,8 @@ public class EleConWeibiao implements Serializable {
     private String ct;
 
     private String pt;
+
+    private String typeCode;
 
 
 
@@ -171,6 +175,22 @@ public class EleConWeibiao implements Serializable {
         this.pt = pt;
     }
 
+    public String getTypeCode() {
+        return typeCode;
+    }
+
+    public void setTypeCode(String typeCode) {
+        this.typeCode = typeCode;
+    }
+
+    public String getAssetNo() {
+        return assetNo;
+    }
+
+    public void setAssetNo(String assetNo) {
+        this.assetNo = assetNo;
+    }
+
     @Override
     public String toString() {
         return "EleConWeibiao{" +
@@ -184,11 +204,13 @@ public class EleConWeibiao implements Serializable {
                 ", orgNo='" + orgNo + '\'' +
                 ", orgName='" + orgName + '\'' +
                 ", tFactor=" + tFactor +
+                ", assetNo='" + assetNo + '\'' +
                 ", tmnlAssetNo='" + tmnlAssetNo + '\'' +
                 ", mpSn='" + mpSn + '\'' +
                 ", cisTmnlAssetNo='" + cisTmnlAssetNo + '\'' +
                 ", ct='" + ct + '\'' +
                 ", pt='" + pt + '\'' +
+                ", typeCode='" + typeCode + '\'' +
                 '}';
     }
 }
