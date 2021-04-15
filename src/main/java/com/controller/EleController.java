@@ -52,40 +52,51 @@ public class EleController {
     private HplcEleServiceImpl hplcEleService = HplcEleServiceImpl.getInstance();
 
 
+    //上传excel后发送结果excel
     @RequiresPermissions({"update:*"})
     @RequestMapping("update")
     public Result update(String path,String date ,HttpServletRequest request, HttpServletResponse response){
-        long startTime = System.currentTimeMillis();
+        //获取账号区域权限
         String username = SecurityUtils.getSubject().getPrincipal().toString();
         User user = this.userDao.queryByUserName(username);
         String area = user.getArea();
+        //结果list
         List<Electrics> electrics = new ArrayList<>();
         String fileName = "";
         //将临时文件写入到真实文件中去
         try {
-            //同时解析excle文件
+            //解析excle文件
             Map<String,String> consNos = ExcelUtil.readExcel(path,area);
+            //判断文件中的excel是否为空
             if (consNos.isEmpty()){
                 return Result.fail("无数据");
             }
+            Map<String,EleConWeibiao> eleConWeibiaoMap = new HashMap<>();
             consNos.forEach((key,value)->{
                 List<String> consList = Arrays.asList(value.split(","));
                 List<String> idsList = eleConWeibiaoService.selectIdByConsNo(consList);
+                Map<String,EleConWeibiao> map = eleConWeibiaoService.queryByRid(idsList);
+                eleConWeibiaoMap.putAll(map);
                 String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
                 String areaNo = eleConWeibiaoService.queryAreaName(key);
-                System.out.println("ids："+ids+"areaNo："+areaNo+"date："+date);
                 if("".equals(ids)||"".equals(areaNo)||"".equals(date)){
                     return;
                 }
-                long startTime2 = System.currentTimeMillis();
-                String jsonString = hplcEleService.getElecData(null,ids,null,areaNo,date);
-                long endTime2 = System.currentTimeMillis();
-                long time2 = endTime2-startTime2;
-                System.out.println(key+"："+time2);
-                Map<String,EleConWeibiao> map = eleConWeibiaoService.queryByRid(idsList);
-                List<Electrics> list1 = JsonUtil.readJson(jsonString,map);
-                electrics.addAll(list1);
+                if (idsList.size()>50){
+                    ThreadUtil.doJob(idsList,areaNo,date);
+                }else{
+                    String jsonString = hplcEleService.getElecData(null,ids,null,areaNo,date);
+                    ThreadUtil.addResultList(jsonString);
+                }
             });
+            List<String> stringList = ThreadUtil.getResultList();
+            int size = stringList.size();
+            for (int i=0;i<size;i++){
+                List<Electrics> electrics1 = JsonUtil.readJson(stringList.get(i),eleConWeibiaoMap);
+                electrics.addAll(electrics1);
+            }
+            ThreadUtil.setResultList(new ArrayList<>());
+            ThreadUtil.setSuccessNum(new ArrayList<>());
             SXSSFWorkbook workbook = ExcelUtil.sendExcel(electrics);
             path = request.getSession().getServletContext().getRealPath("/")+"file";
             fileName = date+"用户96点用电量.xlsx";
@@ -98,9 +109,6 @@ public class EleController {
             System.out.println(file);
             FileOutputStream os=new FileOutputStream(file);
             workbook.write(os);
-            long endTime = System.currentTimeMillis();
-            long time = endTime-startTime;
-            System.out.println("程序运行所用时间："+time);
             os.flush();
             os.close();
             //解析之后将返回得结果扔给消息服务器
