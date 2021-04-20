@@ -52,6 +52,96 @@ public class JsonUtil {
                 time = time.replaceAll(":[0-9][0-9]:",":"+point+":");
                 electrics.setEventTime(time);
                 electrics.setPapR(Double.parseDouble(JSONPath.read(obj.toString(), "$.pap_r").toString()));
+                Object ua =  JSONPath.read(obj.toString(), "$.ua");
+                Object ub =  JSONPath.read(obj.toString(), "$.ub");
+                Object uc =  JSONPath.read(obj.toString(), "$.uc");
+                Object ia =  JSONPath.read(obj.toString(), "$.ia");
+                Object ib =  JSONPath.read(obj.toString(), "$.ib");
+                Object ic =  JSONPath.read(obj.toString(), "$.ic");
+                Object i0 =  JSONPath.read(obj.toString(), "$.i0");
+                Object pa =  JSONPath.read(obj.toString(), "$.pa");
+                Object pb =  JSONPath.read(obj.toString(), "$.pb");
+                Object pc =  JSONPath.read(obj.toString(), "$.pc");
+                Object qa =  JSONPath.read(obj.toString(), "$.qa");
+                Object qb =  JSONPath.read(obj.toString(), "$.qb");
+                Object qc =  JSONPath.read(obj.toString(), "$.qc");
+                Object p =   JSONPath.read(obj.toString(), "$.p");
+                Object q =   JSONPath.read(obj.toString(), "$.q");
+                if ("".equals(ua)||ua == null){
+                    electrics.setUa("暂无数据");
+                }else{
+                    electrics.setUa(ua.toString());
+                }
+                if ("".equals(ub)||ub == null){
+                    electrics.setUb("暂无数据");
+                }else{
+                    electrics.setUb(ub.toString());
+                }
+                if ("".equals(uc)||uc == null){
+                    electrics.setUc("暂无数据");
+                }else{
+                    electrics.setUc(uc.toString());
+                }
+                if ("".equals(ia)||ia == null){
+                    electrics.setIa("暂无数据");
+                }else{
+                    electrics.setIa(ia.toString());
+                }
+                if ("".equals(ib)||ib == null){
+                    electrics.setIb("暂无数据");
+                }else{
+                    electrics.setIb(ib.toString());
+                }
+                if ("".equals(ic)||ic == null){
+                    electrics.setIc("暂无数据");
+                }else{
+                    electrics.setIc(ic.toString());
+                }
+                if ("".equals(i0)||i0 == null){
+                    electrics.setI0("暂无数据");
+                }else{
+                    electrics.setI0(i0.toString());
+                }
+                if ("".equals(pa)||pa == null){
+                    electrics.setPa("暂无数据");
+                }else{
+                    electrics.setPa(pa.toString());
+                }
+                if ("".equals(pb)||pb == null){
+                    electrics.setPb("暂无数据");
+                }else{
+                    electrics.setPb(pb.toString());
+                }
+                if ("".equals(pc)||pc == null){
+                    electrics.setPc("暂无数据");
+                }else{
+                    electrics.setPc(pc.toString());
+                }
+                if ("".equals(p)||p == null){
+                    electrics.setP("暂无数据");
+                }else{
+                    electrics.setP(p.toString());
+                }
+                if ("".equals(qa)||qa == null){
+                    electrics.setQa("暂无数据");
+                }else{
+                    electrics.setQa(qa.toString());
+                }
+                if ("".equals(qb)||qb == null){
+                    electrics.setQb("暂无数据");
+                }else{
+                    electrics.setQb(qb.toString());
+                }
+                if ("".equals(qc)||qc == null){
+                    electrics.setQc("暂无数据");
+                }else{
+                    electrics.setQc(qc.toString());
+                }
+                if ("".equals(q)||q == null){
+                    electrics.setQ("暂无数据");
+                }else{
+                    electrics.setQ(q.toString());
+                }
                 electrics.setConsNo(eleConWeibiao.getConsNo());
                 electrics.setConsName(eleConWeibiao.getConsName());
                 electrics.setAreaName(eleConWeibiao.getAreaName());

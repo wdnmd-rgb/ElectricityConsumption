@@ -1,11 +1,16 @@
 package com.util;
 
+import com.entity.EleConWeibiao;
+import com.entity.Electrics;
 import com.grid.datacenter.service.HplcEleServiceImpl;
+import org.apache.avro.data.Json;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.formula.functions.T;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MyThread extends Thread{
 
@@ -14,6 +19,7 @@ public class MyThread extends Thread{
         String name = Thread.currentThread().getName();
         name = name.substring(name.lastIndexOf("-")+1);
         List<String> list = ThreadUtil.getIdsTh();
+        Map<String, EleConWeibiao> map = new HashMap<>();
         int sizeTol = list.size();
         int num = Integer.valueOf(name);
         int size =  sizeTol/ThreadUtil.poolNum;
@@ -29,7 +35,8 @@ public class MyThread extends Thread{
         String date = ThreadUtil.getDate();
         String areaCode = ThreadUtil.getAreaCode();
         String json = hplcEleService.getElecData(null,ids,null,areaCode,date);
-        ThreadUtil.addResultList(json);
+        List<Electrics> list1 = JsonUtil.readJson(json,map);
+        ThreadUtil.addResult(list1);
         ThreadUtil.addSuccessNum(name);
     }
 

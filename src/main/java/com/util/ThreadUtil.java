@@ -1,16 +1,24 @@
 package com.util;
 
+import com.entity.EleConWeibiao;
+import com.entity.Electrics;
+import sun.security.krb5.internal.crypto.HmacSha1Aes128CksumType;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThreadUtil {
     private static List<String> idsTh = new ArrayList<>();
 
-    private static List<String> resultList = new ArrayList<>();
-
     private static List<String> successNum = new ArrayList<>();
+
+    private static Map<String, EleConWeibiao> eleConWeibiaoMap = new HashMap<>();
+
+    private static List<List<Electrics>> result = new ArrayList<>();
 
     private static String areaCode ="";
 
@@ -28,10 +36,6 @@ public class ThreadUtil {
         ThreadUtil.idsTh = idsTh;
     }
 
-    public static List<String> getResultList() {
-        return resultList;
-    }
-
     public static List<String> getSuccessNum() {
         return successNum;
     }
@@ -43,12 +47,6 @@ public class ThreadUtil {
         ThreadUtil.successNum.add(num);
     }
 
-    public static void setResultList(List<String> resultList) {
-        ThreadUtil.resultList = resultList;
-    }
-    public static void addResultList(String string) {
-        ThreadUtil.resultList.add(string);
-    }
 
     public static String getAreaCode() {
         return areaCode;
@@ -66,10 +64,31 @@ public class ThreadUtil {
         ThreadUtil.date = date;
     }
 
-    public static void doJob(List<String> ids, String areaCode, String date){
+    public static Map<String, EleConWeibiao> getEleConWeibiaoMap() {
+        return eleConWeibiaoMap;
+    }
+
+    public static void setEleConWeibiaoMap(Map<String, EleConWeibiao> eleConWeibiaoMap) {
+        ThreadUtil.eleConWeibiaoMap = eleConWeibiaoMap;
+    }
+
+    public static void setResult(List<List<Electrics>> lists) {
+        ThreadUtil.result=lists;
+    }
+
+    public static List<List<Electrics>> getResult() {
+        return result;
+    }
+
+    public static void addResult(List<Electrics> list) {
+        ThreadUtil.result.add(list);
+    }
+
+    public static void doJob(List<String> ids, String areaCode, String date, Map<String, EleConWeibiao> eleConWeibiaoMap){
         setIdsTh(ids);
         setAreaCode(areaCode);
         setDate(date);
+        setEleConWeibiaoMap(eleConWeibiaoMap);
         System.out.println(areaCode+date);
         for (int i = 0;i<poolNum;i++){
             Thread thread = new MyThread();

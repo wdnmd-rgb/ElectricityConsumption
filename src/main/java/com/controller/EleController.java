@@ -10,8 +10,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,37 +63,35 @@ public class EleController {
         String fileName = "";
         //将临时文件写入到真实文件中去
         try {
-            //解析excle文件
+            //解析excle文件，返回以区域为key用户编号字符串为value的map
             Map<String,String> consNos = ExcelUtil.readExcel(path,area);
             //判断文件中的excel是否为空
             if (consNos.isEmpty()){
                 return Result.fail("无数据");
             }
-            Map<String,EleConWeibiao> eleConWeibiaoMap = new HashMap<>();
             consNos.forEach((key,value)->{
                 List<String> consList = Arrays.asList(value.split(","));
                 List<String> idsList = eleConWeibiaoService.selectIdByConsNo(consList);
                 Map<String,EleConWeibiao> map = eleConWeibiaoService.queryByRid(idsList);
-                eleConWeibiaoMap.putAll(map);
                 String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
                 String areaNo = eleConWeibiaoService.queryAreaName(key);
                 if("".equals(ids)||"".equals(areaNo)||"".equals(date)){
                     return;
                 }
                 if (idsList.size()>50){
-                    ThreadUtil.doJob(idsList,areaNo,date);
+                    ThreadUtil.doJob(idsList,areaNo,date,map);
                 }else{
                     String jsonString = hplcEleService.getElecData(null,ids,null,areaNo,date);
-                    ThreadUtil.addResultList(jsonString);
+                    List<Electrics> electrics1 = JsonUtil.readJson(jsonString,map);
+                    ThreadUtil.addResult(electrics1);
                 }
             });
-            List<String> stringList = ThreadUtil.getResultList();
-            int size = stringList.size();
+            List<List<Electrics>> lists = ThreadUtil.getResult();
+            int size = lists.size();
             for (int i=0;i<size;i++){
-                List<Electrics> electrics1 = JsonUtil.readJson(stringList.get(i),eleConWeibiaoMap);
-                electrics.addAll(electrics1);
+                electrics.addAll(lists.get(i));
             }
-            ThreadUtil.setResultList(new ArrayList<>());
+            ThreadUtil.setResult(new ArrayList<>());
             ThreadUtil.setSuccessNum(new ArrayList<>());
             SXSSFWorkbook workbook = ExcelUtil.sendExcel(electrics);
             path = request.getSession().getServletContext().getRealPath("/")+"file";
@@ -185,6 +181,7 @@ public class EleController {
         System.out.println("获取供电所台区信息所用时间："+(endTime-startTime));
         int size = areaIds.size();
         List<Electrics> list = new ArrayList<>();
+        Map<String,EleConWeibiao> map = eleConWeibiaoService.queryAllByTgOrg(tgNo,orgNo);
         for (int i =0;i<size;i++){
             AreaIds area = areaIds.get(i);
             String id = area.getIds();
@@ -192,28 +189,22 @@ public class EleController {
             int idSize = ids.size();
             Long start = System.currentTimeMillis();
             if (idSize>100){
-                ThreadUtil.doJob(ids,area.getArea(),date);
+                ThreadUtil.doJob(ids,area.getArea(),date,map);
             }else{
                 String jsonStr = hplcEleService.getElecData(null,area.getIds(),null,area.getArea(),date);
-                ThreadUtil.addResultList(jsonStr);
+                List<Electrics> electrics = JsonUtil.readJson(jsonStr,map);
+                ThreadUtil.addResult(electrics);
             }
             Long end = System.currentTimeMillis();
-            System.out.println(idSize+"从Hbase中获取数据所用时间："+(end-start));
+            System.out.println(idSize+"从Hbase中获取数据并解析JSON所用时间："+(end-start));
         }
-        Long start2 =System.currentTimeMillis();
-        Map<String,EleConWeibiao> map = eleConWeibiaoService.queryAllByTgOrg(tgNo,orgNo);
-        Long end2=System.currentTimeMillis();
-        System.out.println("从数据库获取维表数据所用时间："+(end2-start2));
-        List<String> list1 = ThreadUtil.getResultList();
-        int size1 = list1.size();
+        List<List<Electrics>> lists = ThreadUtil.getResult();
+        int size1 = lists.size();
         for (int i=0;i<size1;i++){
-            List<Electrics> electrics = JsonUtil.readJson(list1.get(i),map);
-            list.addAll(electrics);
+            list.addAll(lists.get(i));
         }
-        ThreadUtil.setResultList(new ArrayList<>());
+        ThreadUtil.setResult(new ArrayList<>());
         ThreadUtil.setSuccessNum(new ArrayList<>());
-        Long end3 = System.currentTimeMillis();
-        System.out.println("解析JSON并形成完整数据所用时间："+(end3-end2));
         if(!(list.size()>0)){
             map1.put("code","0");
             map1.put("msg","");
@@ -223,7 +214,11 @@ public class EleController {
             return;
         }
         Long startTime2 = System.currentTimeMillis();
+        System.out.println("sendExcel3 start");
         Map<String,Object> stringObject = ExcelUtil.sendExcel3(list,date,Integer.parseInt(index));
+        System.out.println("sendExcel3 end");
+        Long endTimeExcel = System.currentTimeMillis();
+        System.out.println("excel3所用时间："+(endTimeExcel-startTime2));
         SXSSFWorkbook workbook = (SXSSFWorkbook) stringObject.get("workbook");
         list = (List<Electrics>) stringObject.get("list");
         List<Electrics> list2 = ListUtil.page(list,page,limit);

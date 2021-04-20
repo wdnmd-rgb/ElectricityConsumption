@@ -21,6 +21,21 @@ public class Electrics {
     private String ct;
     private String pt;
     private String typeCode;
+    private String ua;
+    private String ub;
+    private String uc;
+    private String ia;
+    private String ib;
+    private String ic;
+    private String i0;
+    private String p;
+    private String pa;
+    private String pb;
+    private String pc;
+    private String q;
+    private String qa;
+    private String qb;
+    private String qc;
 
     public String getRid() {
         return rid;
@@ -182,6 +197,126 @@ public class Electrics {
         this.assetNo = assetNo;
     }
 
+    public String getUa() {
+        return ua;
+    }
+
+    public void setUa(String ua) {
+        this.ua = ua;
+    }
+
+    public String getUb() {
+        return ub;
+    }
+
+    public void setUb(String ub) {
+        this.ub = ub;
+    }
+
+    public String getUc() {
+        return uc;
+    }
+
+    public void setUc(String uc) {
+        this.uc = uc;
+    }
+
+    public String getIa() {
+        return ia;
+    }
+
+    public void setIa(String ia) {
+        this.ia = ia;
+    }
+
+    public String getIb() {
+        return ib;
+    }
+
+    public void setIb(String ib) {
+        this.ib = ib;
+    }
+
+    public String getIc() {
+        return ic;
+    }
+
+    public void setIc(String ic) {
+        this.ic = ic;
+    }
+
+    public String getI0() {
+        return i0;
+    }
+
+    public void setI0(String i0) {
+        this.i0 = i0;
+    }
+
+    public String getP() {
+        return p;
+    }
+
+    public void setP(String p) {
+        this.p = p;
+    }
+
+    public String getPa() {
+        return pa;
+    }
+
+    public void setPa(String pa) {
+        this.pa = pa;
+    }
+
+    public String getPb() {
+        return pb;
+    }
+
+    public void setPb(String pb) {
+        this.pb = pb;
+    }
+
+    public String getPc() {
+        return pc;
+    }
+
+    public void setPc(String pc) {
+        this.pc = pc;
+    }
+
+    public String getQ() {
+        return q;
+    }
+
+    public void setQ(String q) {
+        this.q = q;
+    }
+
+    public String getQa() {
+        return qa;
+    }
+
+    public void setQa(String qa) {
+        this.qa = qa;
+    }
+
+    public String getQb() {
+        return qb;
+    }
+
+    public void setQb(String qb) {
+        this.qb = qb;
+    }
+
+    public String getQc() {
+        return qc;
+    }
+
+    public void setQc(String qc) {
+        this.qc = qc;
+    }
+
     @Override
     public String toString() {
         return "Electrics{" +
@@ -205,6 +340,21 @@ public class Electrics {
                 ", ct='" + ct + '\'' +
                 ", pt='" + pt + '\'' +
                 ", typeCode='" + typeCode + '\'' +
+                ", ua='" + ua + '\'' +
+                ", ub='" + ub + '\'' +
+                ", uc='" + uc + '\'' +
+                ", ia='" + ia + '\'' +
+                ", ib='" + ib + '\'' +
+                ", ic='" + ic + '\'' +
+                ", i0='" + i0 + '\'' +
+                ", p='" + p + '\'' +
+                ", pa='" + pa + '\'' +
+                ", pb='" + pb + '\'' +
+                ", pc='" + pc + '\'' +
+                ", q='" + q + '\'' +
+                ", qa='" + qa + '\'' +
+                ", qb='" + qb + '\'' +
+                ", qc='" + qc + '\'' +
                 '}';
     }
 }

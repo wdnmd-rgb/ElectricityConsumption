@@ -109,7 +109,8 @@ public class ExcelUtil {
         SXSSFSheet sheet = workbook.createSheet();
         SXSSFRow row1 = sheet.createRow(0);
         String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","电能总示值","电能总示值差值","倍率","电量","台区编号",
-                "台区名称","供电所编号","供电所名称","资产编号","终端资产编号","测量点号","营销终端资产编号","ct","pt","计量点分类"};
+                "台区名称","供电所编号","供电所名称","资产编号","终端资产编号","测量点号","营销终端资产编号","ct","pt","计量点分类","ua","ub","uc",
+                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc"};
         for (int i =0 ; i < row1Cell.length ; i++ ){
             row1.createCell(i).setCellValue(row1Cell[i]);
         }
@@ -141,6 +142,21 @@ public class ExcelUtil {
                 rowEle.createCell(17).setCellValue(electrics.getCt());
                 rowEle.createCell(18).setCellValue(electrics.getPt());
                 rowEle.createCell(19).setCellValue(electrics.getTypeCode());
+                rowEle.createCell(20).setCellValue(electrics.getUa());
+                rowEle.createCell(21).setCellValue(electrics.getUb());
+                rowEle.createCell(22).setCellValue(electrics.getUc());
+                rowEle.createCell(23).setCellValue(electrics.getIa());
+                rowEle.createCell(24).setCellValue(electrics.getIb());
+                rowEle.createCell(25).setCellValue(electrics.getIc());
+                rowEle.createCell(26).setCellValue(electrics.getI0());
+                rowEle.createCell(27).setCellValue(electrics.getP());
+                rowEle.createCell(28).setCellValue(electrics.getPa());
+                rowEle.createCell(29).setCellValue(electrics.getPb());
+                rowEle.createCell(30).setCellValue(electrics.getPc());
+                rowEle.createCell(31).setCellValue(electrics.getQ());
+                rowEle.createCell(32).setCellValue(electrics.getQa());
+                rowEle.createCell(33).setCellValue(electrics.getQb());
+                rowEle.createCell(34).setCellValue(electrics.getQc());
             }
         }
         return workbook;
@@ -175,30 +191,32 @@ public class ExcelUtil {
         double[] doubles = new double[point];
         double[] doubles2 = new double[point];
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
-        SXSSFWorkbook workbook = new SXSSFWorkbook ();
+        SXSSFWorkbook workbook = new SXSSFWorkbook();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = simpleDateFormat.parse(day);
         Long time = date.getTime();
         SXSSFSheet sheet = workbook.createSheet();
         SXSSFRow row1 = sheet.createRow(0);
-        String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","电能总示值","电能总示值差值","倍率","电量","台区编号","台区名称","供电所编号","供电所名称","是否缺失数据"};
+        String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","电能总示值","电能总示值差值","倍率","电量","台区编号","台区名称","供电所编号","供电所名称","是否缺失数据","资产编号","终端资产编号","测量点号","营销终端资产编号","ct","pt","计量点分类","ua","ub","uc",
+                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc"};
         for (int i =0 ; i < row1Cell.length ; i++ ){
             row1.createCell(i).setCellValue(row1Cell[i]);
         }
         int rows = 1;
         if(map.size()>0){
             for(String rid:set){
-                for (int i = 0;i<point;i++){
+                for (int i = 0;i<point;i++,rows++){
                     Long time2 = time+(i*900000*(96/point));
                     String key = rid+time2;
                     Electrics electrics = map.get(key);
                     Double ele = 00.00;
                     Double papRDiff = 00.00;
                     String typeCode = "";
+                    SXSSFRow rowEle = sheet.createRow(rows);
+                    EleConWeibiao eleConWeibiao = map2.get(rid);
                     if (electrics == null){
                         Double papR = 00.00;
-                        System.out.println("i="+i);
                         if(i==0){
                             Map<String,Object> map1 = findNext((i+1),time,rid,map,point);
                             Double papRN = (Double) map1.get("papRN");
@@ -218,64 +236,44 @@ public class ExcelUtil {
                                 int index2 = (int) map3.get("index");
                                 Double papRN = (Double) map1.get("papRN");
                                 Double papRP = (Double) map3.get("papRP");
-                                System.out.println("index："+index+"index2："+index2);
-                                System.out.println("papRN："+papRN+"papRP："+papRP);
                                 Double diff = Double.valueOf(decimalFormat.format((papRN-papRP)/(index-index2)));
-                                System.out.println("diff："+diff);
                                 papR = papRP+diff;
                                 papR = Double.valueOf(decimalFormat.format(papR));
                                 papRDiff = papR-papRP;
                                 papRDiff = Double.valueOf(decimalFormat.format(papRDiff));
-                                System.out.println("papR："+papR);
                             }else {
                                 Map<String,Object> map3 = findPre((i-1),time,rid,map,point);
                                 int index2 = (int) map3.get("index");
                                 Map<String,Object> map4 = findPre((index2-1),time,rid,map,point);
                                 Double papRP = (Double) map3.get("papRP");
                                 Double papRP2 = (Double) map4.get("papRP");
-                                System.out.println("papRP："+papRP+"papRP2："+papRP2);
                                 Double diff = papRP-papRP2;
-                                System.out.println(diff);
                                 diff = Double.valueOf(decimalFormat.format(diff));
-                                System.out.println("diff："+diff);
                                 papR = papRP+diff;
                                 papR = Double.valueOf(decimalFormat.format(papR));
                                 papRDiff = papR-papRP;
                                 papRDiff = Double.valueOf(decimalFormat.format(papRDiff));
-                                System.out.println("papR："+papR);
                             }
                         }
                         Electrics electrics1 = new Electrics();
                         electrics1.setPapR(papR);
                         map.put(key,electrics1);
-                        EleConWeibiao eleConWeibiao = map2.get(rid);
                         ele = papRDiff*eleConWeibiao.gettFactor();
-                        System.out.println("papRDiff"+papRDiff);
-                        SXSSFRow rowEle = sheet.createRow(rows);
                         typeCode=eleConWeibiao.getTypeCode();
-                        rowEle.createCell(0).setCellValue(rid);
-                        rowEle.createCell(1).setCellValue(eleConWeibiao.getConsNo());
-                        rowEle.createCell(2).setCellValue(eleConWeibiao.getConsName());
-                        rowEle.createCell(3).setCellValue(eleConWeibiao.getAreaName());
                         Date date1 = new Date(time2);
                         String date2 = simpleDateFormat2.format(date1);
                         rowEle.createCell(4).setCellValue(date2);
                         rowEle.createCell(5).setCellValue(papR);
                         rowEle.createCell(6).setCellValue(papRDiff);
-                        rowEle.createCell(7).setCellValue(eleConWeibiao.gettFactor());
                         rowEle.createCell(8).setCellValue(ele);
-                        rowEle.createCell(9).setCellValue(eleConWeibiao.getTgNo());
-                        rowEle.createCell(10).setCellValue(eleConWeibiao.getTgName());
-                        rowEle.createCell(11).setCellValue(eleConWeibiao.getOrgNo());
-                        rowEle.createCell(12).setCellValue(eleConWeibiao.getOrgName());
                         rowEle.createCell(13).setCellValue("是");
-                        rows++;
+                        for (int k=21;k<36;k++){
+                            rowEle.createCell(k).setCellValue("暂无数据");
+                        }
                     }else{
                         Map<String,Object> stringObjectMap = findPre((i-1),time,rid,map,point);
                         Double papRP = (Double) stringObjectMap.get("papRP");
                         ele = (electrics.getPapR()-papRP)*electrics.gettFactor();
-                        System.out.println("papRP"+papRP);
-                        SXSSFRow rowEle = sheet.createRow(rows);
                         if(i == 0){
                             rowEle.createCell(6).setCellValue("暂无数据");
                             rowEle.createCell(8).setCellValue("暂无数据");
@@ -284,33 +282,53 @@ public class ExcelUtil {
                             rowEle.createCell(8).setCellValue(ele);
                         }
                         typeCode=electrics.getTypeCode();
-                        rowEle.createCell(0).setCellValue(rid);
-                        rowEle.createCell(1).setCellValue(electrics.getConsNo());
-                        rowEle.createCell(2).setCellValue(electrics.getConsName());
-                        rowEle.createCell(3).setCellValue(electrics.getAreaName());
                         rowEle.createCell(4).setCellValue(electrics.getEventTime());
                         rowEle.createCell(5).setCellValue(electrics.getPapR());
-                        rowEle.createCell(7).setCellValue(electrics.gettFactor());
-                        rowEle.createCell(9).setCellValue(electrics.getTgNo());
-                        rowEle.createCell(10).setCellValue(electrics.getTgName());
-                        rowEle.createCell(11).setCellValue(electrics.getOrgNo());
-                        rowEle.createCell(12).setCellValue(electrics.getOrgName());
                         rowEle.createCell(13).setCellValue("否");
-                        rows++;
+                        rowEle.createCell(21).setCellValue(electrics.getUa());
+                        rowEle.createCell(22).setCellValue(electrics.getUb());
+                        rowEle.createCell(23).setCellValue(electrics.getUc());
+                        rowEle.createCell(24).setCellValue(electrics.getIa());
+                        rowEle.createCell(25).setCellValue(electrics.getIb());
+                        rowEle.createCell(26).setCellValue(electrics.getIc());
+                        rowEle.createCell(27).setCellValue(electrics.getI0());
+                        rowEle.createCell(28).setCellValue(electrics.getP());
+                        rowEle.createCell(29).setCellValue(electrics.getPa());
+                        rowEle.createCell(30).setCellValue(electrics.getPb());
+                        rowEle.createCell(31).setCellValue(electrics.getPc());
+                        rowEle.createCell(32).setCellValue(electrics.getQ());
+                        rowEle.createCell(33).setCellValue(electrics.getQa());
+                        rowEle.createCell(34).setCellValue(electrics.getQb());
+                        rowEle.createCell(35).setCellValue(electrics.getQc());
                     }
+                    rowEle.createCell(0).setCellValue(rid);
+                    rowEle.createCell(1).setCellValue(eleConWeibiao.getConsNo());
+                    rowEle.createCell(2).setCellValue(eleConWeibiao.getConsName());
+                    rowEle.createCell(3).setCellValue(eleConWeibiao.getAreaName());
+                    rowEle.createCell(7).setCellValue(eleConWeibiao.gettFactor());
+                    rowEle.createCell(9).setCellValue(eleConWeibiao.getTgNo());
+                    rowEle.createCell(10).setCellValue(eleConWeibiao.getTgName());
+                    rowEle.createCell(11).setCellValue(eleConWeibiao.getOrgNo());
+                    rowEle.createCell(12).setCellValue(eleConWeibiao.getOrgName());
+                    rowEle.createCell(14).setCellValue(eleConWeibiao.getAssetNo());
+                    rowEle.createCell(15).setCellValue(eleConWeibiao.getTmnlAssetNo());
+                    rowEle.createCell(16).setCellValue(eleConWeibiao.getMpSn());
+                    rowEle.createCell(17).setCellValue(eleConWeibiao.getCisTmnlAssetNo());
+                    rowEle.createCell(18).setCellValue(electrics.getCt());
+                    rowEle.createCell(19).setCellValue(electrics.getPt());
+                    rowEle.createCell(20).setCellValue(eleConWeibiao.getTypeCode());
                     ele= Double.valueOf(decimalFormat.format(ele));
-                    System.out.println("ele："+ele);
-                    if(typeCode!="01"){
-                        if (i!=0){
-                            doubles2[i] += ele;
-                        }
-                    }else{
+                    if("01".equals(typeCode)){
                         if (i!=0){
                             doubles[i] += ele;
                         }
+                    }else{
+                        if (i!=0){
+                            doubles2[i] += ele;
+                        }
                     }
-
                 }
+
             }
         }
         Map<String,Object> map1 = new HashMap<>();
@@ -340,16 +358,19 @@ public class ExcelUtil {
             String key = id+date3.getTime();
             map.put(key,electrics);
         }
+        System.out.println("key ok");
         list = new ArrayList<>();
         SXSSFWorkbook workbook = new SXSSFWorkbook ();
         SXSSFSheet sheet = workbook.createSheet();
         SXSSFRow row1 = sheet.createRow(0);
         String[] row1Cell = {"设备ID","用户编号","用户名称","地区名称","数据时间","电能总示值","电能总示值差值","倍率","电量","台区编号",
-                "台区名称","供电所编号","供电所名称","资产编号","终端资产编号","测量点号","营销终端资产编号","ct","pt","计量点标识"};
+                "台区名称","供电所编号","供电所名称","资产编号","终端资产编号","测量点号","营销终端资产编号","ct","pt","计量点分类","ua","ub","uc",
+                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc"};
         for (int i =0 ; i < row1Cell.length ; i++ ){
             row1.createCell(i).setCellValue(row1Cell[i]);
         }
         int point = (96/index);
+        System.out.println("excel start");
         for(String rid:ids){
             Double papR = 00.00;
             Double papRp = 00.00;
@@ -394,12 +415,28 @@ public class ExcelUtil {
                     rowEle.createCell(17).setCellValue(electrics.getCt());
                     rowEle.createCell(18).setCellValue(electrics.getPt());
                     rowEle.createCell(19).setCellValue(electrics.getTypeCode());
+                    rowEle.createCell(20).setCellValue(electrics.getUa());
+                    rowEle.createCell(21).setCellValue(electrics.getUb());
+                    rowEle.createCell(22).setCellValue(electrics.getUc());
+                    rowEle.createCell(23).setCellValue(electrics.getIa());
+                    rowEle.createCell(24).setCellValue(electrics.getIb());
+                    rowEle.createCell(25).setCellValue(electrics.getIc());
+                    rowEle.createCell(26).setCellValue(electrics.getI0());
+                    rowEle.createCell(27).setCellValue(electrics.getP());
+                    rowEle.createCell(28).setCellValue(electrics.getPa());
+                    rowEle.createCell(29).setCellValue(electrics.getPb());
+                    rowEle.createCell(30).setCellValue(electrics.getPc());
+                    rowEle.createCell(31).setCellValue(electrics.getQ());
+                    rowEle.createCell(32).setCellValue(electrics.getQa());
+                    rowEle.createCell(33).setCellValue(electrics.getQb());
+                    rowEle.createCell(34).setCellValue(electrics.getQc());
                     papRp=papR;
                     rowNum++;
                     list.add(electrics);
                 }
             }
         }
+        System.out.println("excel end");
         stringObjectMap.put("workbook",workbook);
         stringObjectMap.put("list",list);
         return stringObjectMap;
