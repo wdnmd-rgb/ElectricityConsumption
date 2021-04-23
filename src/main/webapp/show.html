@@ -38,6 +38,9 @@
 		<button id="search" class="layui-btn" lay-submit
 				lay-filter="provinceSearch">查找</button>
 	</div>
+	<div class="layui-inline" style="display: none" id="testDiv2"> <!-- 注意：这一层元素并不是必须的 -->
+		<a class="layui-btn"  href="" download id="update">下载结果</a>
+	</div>
 	</div>
 </form>
 <div style="display: none" id="testDiv">
@@ -63,7 +66,7 @@
 			,url:'ele/queryByCons'
 			,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
 			,cols: [[
-				{field:'rid',title: '数据ID',sort: true}
+				{field:'rid',title: '数据ID'}
 				,{field:'consNo',title: '用户编号'}
 				,{field:'consName',title: '用户名称'}
 				,{field:'areaName',title: '区域'}
@@ -72,6 +75,21 @@
 				,{field:'papR', title: '正向有功总能示值', sort: true}
 				,{field:'papRDiff', title: '正向有功总能示值差值'}
 				,{field:'ele',title: '电量', sort: true}
+				,{field:'ua', title: 'ua'}
+				,{field:'ub', title: 'ub'}
+				,{field:'uc',title: 'uc'}
+				,{field:'ia', title: 'ia'}
+				,{field:'ib', title: 'ib'}
+				,{field:'ic',title: 'ic'}
+				,{field:'i0',title: 'i0'}
+				,{field:'p',title: 'p'}
+				,{field:'pa', title: 'pa'}
+				,{field:'pb', title: 'pb'}
+				,{field:'pc',title: 'pc'}
+				,{field:'q',title: 'q'}
+				,{field:'qa', title: 'qa'}
+				,{field:'qb', title: 'qb'}
+				,{field:'qc',title: 'qc'}
 				,{field:'tgName',title: '台区名称'}
 				,{field:'orgName',title: '供电所名称'}
 			]]
@@ -83,6 +101,7 @@
 		form.on('submit(provinceSearch)', function(data) {
 			var traget=document.getElementById("testDiv");
 			traget.style.display="";
+			$("#testDiv2").css("display","none");
 			var formData = data.field;
 			var areaCode = formData.areaCode;
 			var consNo = formData.consNo;
@@ -96,6 +115,10 @@
 				},
 				url: 'ele/queryByCons',
 				method: 'post',
+				done:function (res) {
+					$("#update").attr("href",res.msg);
+					$("#testDiv2").css("display","");
+				}
 			});
 			return false;
 		});

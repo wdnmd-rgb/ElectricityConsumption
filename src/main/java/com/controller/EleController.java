@@ -92,7 +92,6 @@ public class EleController {
                 electrics.addAll(lists.get(i));
             }
             ThreadUtil.setResult(new ArrayList<>());
-            ThreadUtil.setSuccessNum(new ArrayList<>());
             SXSSFWorkbook workbook = ExcelUtil.sendExcel(electrics);
             path = request.getSession().getServletContext().getRealPath("/")+"file";
             fileName = date+"用户96点用电量.xlsx";
@@ -204,7 +203,6 @@ public class EleController {
             list.addAll(lists.get(i));
         }
         ThreadUtil.setResult(new ArrayList<>());
-        ThreadUtil.setSuccessNum(new ArrayList<>());
         if(!(list.size()>0)){
             map1.put("code","0");
             map1.put("msg","");
@@ -238,7 +236,6 @@ public class EleController {
         }
         String realPath = path+"/"+fileName;
         File file=new File(realPath);
-        System.out.println(file);
         FileOutputStream os=new FileOutputStream(file);
         workbook.write(os);
         os.flush();
@@ -251,6 +248,7 @@ public class EleController {
         double[] doubles2 = new double[point];
         Long startTime3 = System.currentTimeMillis();
         if(("".equals(orgNo)||orgNo == null)){
+            System.out.println("开始补点");
             Map<String,Object> stringObjectMap = SupplementUtil.supplement(("file/"+fileName),request,map,name,Integer.parseInt(index));
             doubles = (double[]) stringObjectMap.get("doubles");
             doubles2 = (double[]) stringObjectMap.get("doubles2");
@@ -269,7 +267,7 @@ public class EleController {
     }
 
     @RequestMapping("queryByCons")
-    public void queryByCons(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String consNo,String areaCode,String date,HttpServletResponse response) throws ServletException, IOException {
+    public void queryByCons(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String consNo,String areaCode,String date,HttpServletResponse response,HttpServletRequest request) throws ServletException, IOException, ParseException {
         Map<String,Object> map = new HashMap<>();
         if ("".equals(consNo)||consNo == null){
             map.put("code","0");
@@ -284,9 +282,24 @@ public class EleController {
         String string = hplcEleService.getElecData(null, ids, null, areaCode, date);
         Map<String,EleConWeibiao> map1 = eleConWeibiaoService.queryByRid(idsList);
         List<Electrics> list = JsonUtil.readJson(string,map1);
+        Map<String,Object> stringObjectMap = ExcelUtil.sendExcel3(list,date,1);
+        SXSSFWorkbook workbook = (SXSSFWorkbook) stringObjectMap.get("workbook");
+        String path = request.getSession().getServletContext().getRealPath("/")+"file";
+        String name =list.get(1).getConsName();
+        String fileName = date+name+"用户96点用电量.xlsx";
+        File parent = new File(path);
+        if (!parent.exists()) {
+            parent.mkdirs();
+        }
+        String realPath = path+"/"+fileName;
+        File file=new File(realPath);
+        FileOutputStream os=new FileOutputStream(file);
+        workbook.write(os);
+        os.flush();
+        os.close();
         List<Electrics> list1 = ListUtil.page(list,page,limit);
         map.put("code","0");
-        map.put("msg","");
+        map.put("msg",("file/"+fileName));
         map.put("count",list.size());
         map.put("data",list1);
         JsonUtil.responseWriteJson(response,map);

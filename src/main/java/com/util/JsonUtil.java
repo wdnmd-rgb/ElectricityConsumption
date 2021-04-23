@@ -43,6 +43,10 @@ public class JsonUtil {
             List list1 = (List)JSONPath.read(electric.getElec(), "$.");
             int eleSize = list1.size();
             for(int j =0;j<eleSize;j++){
+                if (eleConWeibiao == null){
+                    System.out.println("没有找到ID");
+                    break;
+                }
                 Object obj = list1.get(j);
                 Electrics electrics = new Electrics();
                 electrics.setRid(electric.getId());

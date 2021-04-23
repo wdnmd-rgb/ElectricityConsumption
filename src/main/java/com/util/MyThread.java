@@ -19,7 +19,7 @@ public class MyThread extends Thread{
         String name = Thread.currentThread().getName();
         name = name.substring(name.lastIndexOf("-")+1);
         List<String> list = ThreadUtil.getIdsTh();
-        Map<String, EleConWeibiao> map = new HashMap<>();
+        Map<String, EleConWeibiao> map = ThreadUtil.getEleConWeibiaoMap();
         int sizeTol = list.size();
         int num = Integer.valueOf(name);
         int size =  sizeTol/ThreadUtil.poolNum;

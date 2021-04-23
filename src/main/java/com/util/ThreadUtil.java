@@ -98,6 +98,7 @@ public class ThreadUtil {
         while (true){
             int size = successNum.size();
             if (size == poolNum){
+                ThreadUtil.setSuccessNum(new ArrayList<>());
                 break;
             }else{
                 try {

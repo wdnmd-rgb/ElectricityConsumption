@@ -314,8 +314,8 @@ public class ExcelUtil {
                     rowEle.createCell(15).setCellValue(eleConWeibiao.getTmnlAssetNo());
                     rowEle.createCell(16).setCellValue(eleConWeibiao.getMpSn());
                     rowEle.createCell(17).setCellValue(eleConWeibiao.getCisTmnlAssetNo());
-                    rowEle.createCell(18).setCellValue(electrics.getCt());
-                    rowEle.createCell(19).setCellValue(electrics.getPt());
+                    rowEle.createCell(18).setCellValue(eleConWeibiao.getCt());
+                    rowEle.createCell(19).setCellValue(eleConWeibiao.getPt());
                     rowEle.createCell(20).setCellValue(eleConWeibiao.getTypeCode());
                     ele= Double.valueOf(decimalFormat.format(ele));
                     if("01".equals(typeCode)){
