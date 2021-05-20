@@ -47,6 +47,7 @@ public class EleConWeibiao implements Serializable {
 
 
 
+
     public Integer getId() {
         return id;
     }

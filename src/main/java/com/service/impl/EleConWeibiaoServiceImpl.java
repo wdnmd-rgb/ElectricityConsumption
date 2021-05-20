@@ -130,5 +130,10 @@ public class EleConWeibiaoServiceImpl implements EleConWeibiaoService {
         return this.eleConWeibiaoDao.queryAllByTgOrg(tgNo, orgNo);
     }
 
+    @Override
+    public int insertBatch(List<String> list) {
+        return this.eleConWeibiaoDao.insertBatch(list);
+    }
+
 
 }

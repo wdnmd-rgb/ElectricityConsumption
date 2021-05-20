@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/echarts.min.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body style="overflow:hidden;transform-origin:top left;">
+<div style="padding-top: 30px;text-align:center;">
+    <form class="layui-form" action="" id="complain_search">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <input type="text" name="date" required  lay-verify="required" placeholder="请输入日期"
+                       autocomplete="off" class="layui-input" style="width: 300px;" id="date">
+            </div>
+            <div class="layui-inline">
+                <button id="search" class="layui-btn" lay-submit
+                        lay-filter="provinceSearch" onclick="start()">start</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    function start() {
+        $.post("consEle/toDws",{"date":$("#date").val()},function (result) {
+            alert(result);
+        })
+    }
+</script>
+</body>
+</html>

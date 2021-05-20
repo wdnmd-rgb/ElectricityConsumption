@@ -175,6 +175,273 @@ public class JsonUtil {
         return electricsList;
     }
 
+    public static List<Electrics> readJson2(String json,Map<String,EleConWeibiao> map){
+        List<Electric> list= parseElectric(json);
+        List<Electrics> electricsList = new ArrayList<>();
+        if (list.isEmpty()){
+            return electricsList;
+        }
+        int electricSize = list.size();
+        for (int i = 0;i<electricSize;i++){
+            Electric electric = list.get(i);
+            EleConWeibiao eleConWeibiao = map.get(electric.getId());
+            //System.out.println(e.getElec());
+            List list1 = (List)JSONPath.read(electric.getElec(), "$.");
+            int eleSize = list1.size();
+            for(int j =0;j<eleSize;j++){
+                if (eleConWeibiao == null){
+                    System.out.println("没有找到ID");
+                    break;
+                }
+                Object obj = list1.get(j);
+                Electrics electrics = new Electrics();
+                electrics.setRid(electric.getId());
+                String time  = JSONPath.read(obj.toString(), "$.event_time").toString();
+                String point =JSONPath.read(obj.toString(), "$.point").toString();
+                if (!point.equals("00")){
+                    continue;
+                }
+                time = time.replaceAll(":[0-9][0-9]",":00");
+                time = time.replaceAll(":[0-9][0-9]:",":"+point+":");
+                electrics.setEventTime(time);
+                electrics.setPapR(Double.parseDouble(JSONPath.read(obj.toString(), "$.pap_r").toString()));
+                Object ua =  JSONPath.read(obj.toString(), "$.ua");
+                Object ub =  JSONPath.read(obj.toString(), "$.ub");
+                Object uc =  JSONPath.read(obj.toString(), "$.uc");
+                Object ia =  JSONPath.read(obj.toString(), "$.ia");
+                Object ib =  JSONPath.read(obj.toString(), "$.ib");
+                Object ic =  JSONPath.read(obj.toString(), "$.ic");
+                Object i0 =  JSONPath.read(obj.toString(), "$.i0");
+                Object pa =  JSONPath.read(obj.toString(), "$.pa");
+                Object pb =  JSONPath.read(obj.toString(), "$.pb");
+                Object pc =  JSONPath.read(obj.toString(), "$.pc");
+                Object qa =  JSONPath.read(obj.toString(), "$.qa");
+                Object qb =  JSONPath.read(obj.toString(), "$.qb");
+                Object qc =  JSONPath.read(obj.toString(), "$.qc");
+                Object p =   JSONPath.read(obj.toString(), "$.p");
+                Object q =   JSONPath.read(obj.toString(), "$.q");
+                if ("".equals(ua)||ua == null){
+                    electrics.setUa("暂无数据");
+                }else{
+                    electrics.setUa(ua.toString());
+                }
+                if ("".equals(ub)||ub == null){
+                    electrics.setUb("暂无数据");
+                }else{
+                    electrics.setUb(ub.toString());
+                }
+                if ("".equals(uc)||uc == null){
+                    electrics.setUc("暂无数据");
+                }else{
+                    electrics.setUc(uc.toString());
+                }
+                if ("".equals(ia)||ia == null){
+                    electrics.setIa("暂无数据");
+                }else{
+                    electrics.setIa(ia.toString());
+                }
+                if ("".equals(ib)||ib == null){
+                    electrics.setIb("暂无数据");
+                }else{
+                    electrics.setIb(ib.toString());
+                }
+                if ("".equals(ic)||ic == null){
+                    electrics.setIc("暂无数据");
+                }else{
+                    electrics.setIc(ic.toString());
+                }
+                if ("".equals(i0)||i0 == null){
+                    electrics.setI0("暂无数据");
+                }else{
+                    electrics.setI0(i0.toString());
+                }
+                if ("".equals(pa)||pa == null){
+                    electrics.setPa("暂无数据");
+                }else{
+                    electrics.setPa(pa.toString());
+                }
+                if ("".equals(pb)||pb == null){
+                    electrics.setPb("暂无数据");
+                }else{
+                    electrics.setPb(pb.toString());
+                }
+                if ("".equals(pc)||pc == null){
+                    electrics.setPc("暂无数据");
+                }else{
+                    electrics.setPc(pc.toString());
+                }
+                if ("".equals(p)||p == null){
+                    electrics.setP("暂无数据");
+                }else{
+                    electrics.setP(p.toString());
+                }
+                if ("".equals(qa)||qa == null){
+                    electrics.setQa("暂无数据");
+                }else{
+                    electrics.setQa(qa.toString());
+                }
+                if ("".equals(qb)||qb == null){
+                    electrics.setQb("暂无数据");
+                }else{
+                    electrics.setQb(qb.toString());
+                }
+                if ("".equals(qc)||qc == null){
+                    electrics.setQc("暂无数据");
+                }else{
+                    electrics.setQc(qc.toString());
+                }
+                if ("".equals(q)||q == null){
+                    electrics.setQ("暂无数据");
+                }else{
+                    electrics.setQ(q.toString());
+                }
+                electrics.setConsNo(eleConWeibiao.getConsNo());
+                electrics.setConsName(eleConWeibiao.getConsName());
+                electrics.setAreaName(eleConWeibiao.getAreaName());
+                electrics.settFactor(eleConWeibiao.gettFactor());
+                Double papRDiff = Double.parseDouble(JSONPath.read(obj.toString(), "$.pap_diff").toString());
+                if (papRDiff<0){
+                    electrics.setPapRDiff("暂无数据");
+                    electrics.setEle("暂无数据");
+                }else{
+                    electrics.setPapRDiff(papRDiff.toString());
+                    electrics.setEle((Double.parseDouble(electrics.getPapRDiff())*electrics.gettFactor())+"");
+                }
+                electrics.setTgNo(eleConWeibiao.getTgNo());
+                electrics.setTgName(eleConWeibiao.getTgName());
+                electrics.setOrgNo(eleConWeibiao.getOrgNo());
+                electrics.setOrgName(eleConWeibiao.getOrgName());
+                electrics.setAssetNo(eleConWeibiao.getAssetNo());
+                electrics.setTmnlAssetNo(eleConWeibiao.getTmnlAssetNo());
+                electrics.setMpSn(eleConWeibiao.getMpSn());
+                electrics.setCisTmnlAssetNo(eleConWeibiao.getCisTmnlAssetNo());
+                electrics.setCt(eleConWeibiao.getCt());
+                electrics.setPt(eleConWeibiao.getPt());
+                electrics.setTypeCode(eleConWeibiao.getTypeCode());
+                electricsList.add(electrics);
+            }
+        }
+        return electricsList;
+    }
+
+    public static List<ConsEle> readJson2(String json){
+        List<Electric> list= parseElectric(json);
+        List<ConsEle> consEles = new ArrayList<>();
+        if (list.isEmpty()){
+            return consEles;
+        }
+        int electricSize = list.size();
+        for (int i = 0;i<electricSize;i++){
+            Electric electric = list.get(i);
+            //System.out.println(e.getElec());
+            List list1 = (List)JSONPath.read(electric.getElec(), "$.");
+            int eleSize = list1.size();
+            for(int j =0;j<eleSize;j++){
+                Object obj = list1.get(j);
+                ConsEle consEle = new ConsEle();
+                consEle.setRid(electric.getId());
+                String time  = JSONPath.read(obj.toString(), "$.event_time").toString();
+                String point =JSONPath.read(obj.toString(), "$.point").toString();
+                time = time.replaceAll(":[0-9][0-9]",":00");
+                time = time.replaceAll(":[0-9][0-9]:",":"+point+":");
+                consEle.setEventTime(time);
+                consEle.setPapR(Double.parseDouble(JSONPath.read(obj.toString(), "$.pap_r").toString()));
+                Object ua =  JSONPath.read(obj.toString(), "$.ua");
+                Object ub =  JSONPath.read(obj.toString(), "$.ub");
+                Object uc =  JSONPath.read(obj.toString(), "$.uc");
+                Object ia =  JSONPath.read(obj.toString(), "$.ia");
+                Object ib =  JSONPath.read(obj.toString(), "$.ib");
+                Object ic =  JSONPath.read(obj.toString(), "$.ic");
+                Object i0 =  JSONPath.read(obj.toString(), "$.i0");
+                Object pa =  JSONPath.read(obj.toString(), "$.pa");
+                Object pb =  JSONPath.read(obj.toString(), "$.pb");
+                Object pc =  JSONPath.read(obj.toString(), "$.pc");
+                Object qa =  JSONPath.read(obj.toString(), "$.qa");
+                Object qb =  JSONPath.read(obj.toString(), "$.qb");
+                Object qc =  JSONPath.read(obj.toString(), "$.qc");
+                Object p =   JSONPath.read(obj.toString(), "$.p");
+                Object q =   JSONPath.read(obj.toString(), "$.q");
+                if ("".equals(ua)||ua == null){
+                    consEle.setUa("暂无数据");
+                }else{
+                    consEle.setUa(ua.toString());
+                }
+                if ("".equals(ub)||ub == null){
+                    consEle.setUb("暂无数据");
+                }else{
+                    consEle.setUb(ub.toString());
+                }
+                if ("".equals(uc)||uc == null){
+                    consEle.setUc("暂无数据");
+                }else{
+                    consEle.setUc(uc.toString());
+                }
+                if ("".equals(ia)||ia == null){
+                    consEle.setIa("暂无数据");
+                }else{
+                    consEle.setIa(ia.toString());
+                }
+                if ("".equals(ib)||ib == null){
+                    consEle.setIb("暂无数据");
+                }else{
+                    consEle.setIb(ib.toString());
+                }
+                if ("".equals(ic)||ic == null){
+                    consEle.setIc("暂无数据");
+                }else{
+                    consEle.setIc(ic.toString());
+                }
+                if ("".equals(i0)||i0 == null){
+                    consEle.setI0("暂无数据");
+                }else{
+                    consEle.setI0(i0.toString());
+                }
+                if ("".equals(pa)||pa == null){
+                    consEle.setPa("暂无数据");
+                }else{
+                    consEle.setPa(pa.toString());
+                }
+                if ("".equals(pb)||pb == null){
+                    consEle.setPb("暂无数据");
+                }else{
+                    consEle.setPb(pb.toString());
+                }
+                if ("".equals(pc)||pc == null){
+                    consEle.setPc("暂无数据");
+                }else{
+                    consEle.setPc(pc.toString());
+                }
+                if ("".equals(p)||p == null){
+                    consEle.setP("暂无数据");
+                }else{
+                    consEle.setP(p.toString());
+                }
+                if ("".equals(qa)||qa == null){
+                    consEle.setQa("暂无数据");
+                }else{
+                    consEle.setQa(qa.toString());
+                }
+                if ("".equals(qb)||qb == null){
+                    consEle.setQb("暂无数据");
+                }else{
+                    consEle.setQb(qb.toString());
+                }
+                if ("".equals(qc)||qc == null){
+                    consEle.setQc("暂无数据");
+                }else{
+                    consEle.setQc(qc.toString());
+                }
+                if ("".equals(q)||q == null){
+                    consEle.setQ("暂无数据");
+                }else{
+                    consEle.setQ(q.toString());
+                }
+                consEles.add(consEle);
+            }
+        }
+        return consEles;
+    }
+
     public static List<Electric> parseElectric(String json){
 
         String replaceAll = json.replaceAll("\\\\\"", "\"");

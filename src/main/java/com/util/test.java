@@ -27,9 +27,18 @@ public class test {
         pool.shutdown();
     }
     public static void main(String[] args) throws ParseException {
-        String str = "2021-03-29 08:45:00";
-
-        System.out.println(str.substring(11,13));
-        System.out.println(str.substring(14,16));
+        String date = "20210402";
+        StringBuffer stringBuffe = new StringBuffer(date);
+        stringBuffe.insert(4,"-");
+        stringBuffe.insert(7,"-");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = df.parse(stringBuffe.toString());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date1);
+        calendar.add(Calendar.DAY_OF_MONTH,-1);
+        Date date2 = calendar.getTime();
+        System.out.println(date1.toString());
+        System.out.println(df.format(date2));
+        System.out.println(stringBuffe);
     }
 }

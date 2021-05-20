@@ -84,18 +84,26 @@ public class ExcelUtil {
             String key = rid+(date.getTime());
             Electrics electrics = new Electrics();
             electrics.setRid(rid);
-            electrics.setConsNo(row.getCell(1)+"");
-            electrics.setConsName(row.getCell(2)+"");
-            electrics.setAreaName(row.getCell(3)+"");
             electrics.setEventTime(time);
             electrics.setPapR(Double.parseDouble(row.getCell(5)+""));
             electrics.setPapRDiff(row.getCell(6)+"");
             electrics.settFactor(Double.parseDouble(row.getCell(7)+""));
             electrics.setEle(row.getCell(8)+"");
-            electrics.setTgNo(row.getCell(9)+"");
-            electrics.setTgName(row.getCell(10)+"");
-            electrics.setOrgNo(row.getCell(11)+"");
-            electrics.setOrgName(row.getCell(12)+"");
+            electrics.setUa(row.getCell(20)+"");
+            electrics.setUb(row.getCell(21)+"");
+            electrics.setUc(row.getCell(22)+"");
+            electrics.setIa(row.getCell(23)+"");
+            electrics.setIb(row.getCell(24)+"");
+            electrics.setIc(row.getCell(25)+"");
+            electrics.setI0(row.getCell(26)+"");
+            electrics.setP(row.getCell(27)+"");
+            electrics.setPa(row.getCell(28)+"");
+            electrics.setPb(row.getCell(29)+"");
+            electrics.setPc(row.getCell(30)+"");
+            electrics.setQ(row.getCell(31)+"");
+            electrics.setQa(row.getCell(32)+"");
+            electrics.setQb(row.getCell(33)+"");
+            electrics.setQc(row.getCell(34)+"");
             map.put(key,electrics);
             set.add(rid);
         }
@@ -212,7 +220,6 @@ public class ExcelUtil {
                     Electrics electrics = map.get(key);
                     Double ele = 00.00;
                     Double papRDiff = 00.00;
-                    String typeCode = "";
                     SXSSFRow rowEle = sheet.createRow(rows);
                     EleConWeibiao eleConWeibiao = map2.get(rid);
                     if (electrics == null){
@@ -259,7 +266,6 @@ public class ExcelUtil {
                         electrics1.setPapR(papR);
                         map.put(key,electrics1);
                         ele = papRDiff*eleConWeibiao.gettFactor();
-                        typeCode=eleConWeibiao.getTypeCode();
                         Date date1 = new Date(time2);
                         String date2 = simpleDateFormat2.format(date1);
                         rowEle.createCell(4).setCellValue(date2);
@@ -281,7 +287,6 @@ public class ExcelUtil {
                             rowEle.createCell(6).setCellValue(electrics.getPapR()-papRP);
                             rowEle.createCell(8).setCellValue(ele);
                         }
-                        typeCode=electrics.getTypeCode();
                         rowEle.createCell(4).setCellValue(electrics.getEventTime());
                         rowEle.createCell(5).setCellValue(electrics.getPapR());
                         rowEle.createCell(13).setCellValue("否");
@@ -318,7 +323,7 @@ public class ExcelUtil {
                     rowEle.createCell(19).setCellValue(eleConWeibiao.getPt());
                     rowEle.createCell(20).setCellValue(eleConWeibiao.getTypeCode());
                     ele= Double.valueOf(decimalFormat.format(ele));
-                    if("01".equals(typeCode)){
+                    if("01".equals(eleConWeibiao.getTypeCode())){
                         if (i!=0){
                             doubles[i] += ele;
                         }
@@ -358,7 +363,6 @@ public class ExcelUtil {
             String key = id+date3.getTime();
             map.put(key,electrics);
         }
-        System.out.println("key ok");
         list = new ArrayList<>();
         SXSSFWorkbook workbook = new SXSSFWorkbook ();
         SXSSFSheet sheet = workbook.createSheet();
@@ -370,7 +374,6 @@ public class ExcelUtil {
             row1.createCell(i).setCellValue(row1Cell[i]);
         }
         int point = (96/index);
-        System.out.println("excel start");
         for(String rid:ids){
             Double papR = 00.00;
             Double papRp = 00.00;
@@ -432,11 +435,11 @@ public class ExcelUtil {
                     rowEle.createCell(34).setCellValue(electrics.getQc());
                     papRp=papR;
                     rowNum++;
+                    System.out.println(electrics);
                     list.add(electrics);
                 }
             }
         }
-        System.out.println("excel end");
         stringObjectMap.put("workbook",workbook);
         stringObjectMap.put("list",list);
         return stringObjectMap;

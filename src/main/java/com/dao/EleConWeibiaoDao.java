@@ -52,13 +52,7 @@ public interface EleConWeibiaoDao {
      */
     int insert(EleConWeibiao eleConWeibiao);
 
-    /**
-     * 批量新增数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<EleConWeibiao> 实例对象列表
-     * @return 影响行数
-     */
-    int insertBatch(@Param("entities") List<EleConWeibiao> entities);
+
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
@@ -104,6 +98,7 @@ public interface EleConWeibiaoDao {
     @MapKey("rid")
     Map<String,EleConWeibiao> queryAllByTgOrg(@Param("tgNo") String tgNo,@Param("orgNo") String orgNo);
 
+    int insertBatch(@Param("list") List<String> list);
 
 
 

@@ -72,6 +72,7 @@ public interface EleConWeibiaoService {
     List<String> queryByConsNo(String consNo);
     Map<String,EleConWeibiao> queryAllByTgOrg(@Param("tgNo") String tgNo, @Param("orgNo") String orgNo);
 
+    int insertBatch(@Param("list") List<String> list);
 
 
 }

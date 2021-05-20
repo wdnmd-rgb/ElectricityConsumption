@@ -42,7 +42,10 @@
                 <li class="layui-nav-item  layui-nav-itemed">
                     <a href="javascript:;">实时线损查询</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="show.html">实时线损查询</a></dd>
+                    <dd><a href="show.html">单用户查询</a></dd>
+                </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="realEle.html">台区供电所实时电流电压查询</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
                         <dd><a href="relation.html">查询台区详细信息</a></dd>
