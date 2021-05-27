@@ -182,8 +182,8 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into dws_elecon.DWS_ELECON_TEMPORARY(addr)
         values
-        <foreach collection="list" item="addr" open="(" close=")" separator=",">
-            #{addr}
+        <foreach collection="list" item="addr" separator=",">
+            (#{addr})
         </foreach>
     </insert>
 </mapper>

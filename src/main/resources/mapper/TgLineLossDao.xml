@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TgLineLossDao">
+
+    <resultMap type="com.entity.TgLineLoss" id="TgLineLossMap">
+        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
+        <result property="ppq" column="ppq" jdbcType="NUMERIC"/>
+        <result property="upq" column="upq" jdbcType="NUMERIC"/>
+        <result property="lossPq" column="loss_pq" jdbcType="NUMERIC"/>
+        <result property="lossPer" column="loss_per" jdbcType="NUMERIC"/>
+        <result property="eventTime" column="event_time" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap type="com.entity.TgResult" id="TgResultMap">
+        <result property="orgName" column="org_name" jdbcType="VARCHAR"/>
+        <result property="tgName" column="tg_name" jdbcType="VARCHAR"/>
+        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
+        <result property="eventTime" column="event_time" jdbcType="VARCHAR"/>
+        <result property="count" column="count" jdbcType="VARCHAR"/>
+        <result property="realCount" column="real_count" jdbcType="VARCHAR"/>
+        <result property="remark0" column="remark0" jdbcType="VARCHAR"/>
+        <result property="remark1" column="remark1" jdbcType="VARCHAR"/>
+        <result property="remark2" column="remark2" jdbcType="VARCHAR"/>
+        <result property="remark3" column="remark3" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap type="com.entity.ConsEle" id="ConsEleMap">
+        <result property="rid" column="rid" jdbcType="VARCHAR"/>
+        <result property="consNo" column="cons_no" jdbcType="VARCHAR"/>
+        <result property="consName" column="cons_name" jdbcType="VARCHAR"/>
+        <result property="tFactor" column="t_factor" jdbcType="NUMERIC"/>
+        <result property="eventTime" column="event_time" jdbcType="VARCHAR"/>
+        <result property="papR" column="pap_r" jdbcType="NUMERIC"/>
+        <result property="papRDiff" column="pap_r_diff" jdbcType="NUMERIC"/>
+        <result property="ele" column="ele" jdbcType="NUMERIC"/>
+        <result property="ua" column="ua" jdbcType="VARCHAR"/>
+        <result property="ub" column="ub" jdbcType="VARCHAR"/>
+        <result property="uc" column="uc" jdbcType="VARCHAR"/>
+        <result property="ia" column="ia" jdbcType="VARCHAR"/>
+        <result property="ib" column="ib" jdbcType="VARCHAR"/>
+        <result property="ic" column="ic" jdbcType="VARCHAR"/>
+        <result property="i0" column="i0" jdbcType="VARCHAR"/>
+        <result property="pa" column="pa" jdbcType="VARCHAR"/>
+        <result property="pb" column="pb" jdbcType="VARCHAR"/>
+        <result property="pc" column="pc" jdbcType="VARCHAR"/>
+        <result property="p" column="p" jdbcType="VARCHAR"/>
+        <result property="qa" column="qa" jdbcType="VARCHAR"/>
+        <result property="qb" column="qb" jdbcType="VARCHAR"/>
+        <result property="qc" column="qc" jdbcType="VARCHAR"/>
+        <result property="q" column="q" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryTgLineLoss" resultMap="TgLineLossMap">
+        select tg_no,ppq,upq,loss_pq,loss_per,event_time,remark from dws_elecon.dws_elecon_tg_loss
+        where tg_no=#{tgNo} and event_time like CONCAT('%',#{eventTime},'%') order by event_time
+    </select>
+    <select id="queryTgResult" resultMap="TgResultMap">
+        select org_name,tg_name,tg_no,event_time,count,real_count,remark0,remark1,remark2,remark3 from dws_elecon.dws_elecon_monitoring_tg_result
+        where tg_no=#{tgNo} and event_time like CONCAT('%',#{eventTime},'%')
+    </select>
+    <select id="queryConsEle" resultMap="ConsEleMap">
+        select a.rid,b.cons_no,b.cons_name,b.t_factor,a.event_time,a.pap_r,a.pap_r_diff,a.ele,
+        a.ua,a.ub,a.uc,a.ia,a.ib,a.ic,a.i0,a.pa,a.pb,a.pc,a.p,a.qa,a.qb,a.qc,a.q
+        from dws_elecon.dws_elecon_cons_ele_result a,dws_elecon.dws_elecon_record b
+         where a.event_time like CONCAT('%',#{eventTime},'%') and b.tg_no=#{tgNo} and a.rid=b.rid
+         order by a.rid,a.event_time
+    </select>
+</mapper>

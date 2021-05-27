@@ -1,8 +1,6 @@
 package com.util;
 
-import com.entity.Cons;
-import com.entity.EleConWeibiao;
-import com.entity.Electrics;
+import com.entity.*;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -443,6 +441,86 @@ public class ExcelUtil {
         stringObjectMap.put("workbook",workbook);
         stringObjectMap.put("list",list);
         return stringObjectMap;
+    }
+
+    public static  SXSSFWorkbook  sendExcel4(List<ConsEle> consEles, List<TgLineLoss> lineLosses,TgResult tgResult) throws ParseException {
+
+        SXSSFWorkbook workbook = new SXSSFWorkbook ();
+        SXSSFSheet sheet = workbook.createSheet("台区小时级线损");
+        SXSSFSheet sheet1 = workbook.createSheet("台区用户电量明细");
+        SXSSFRow row1 = sheet.createRow(0);
+        SXSSFRow row2 = sheet.createRow(1);
+        String[] row1Cell = {"供电所名称","台区编号","台区名称","数据时间","台区用户数","实际用户数",
+                "丢失点数量","跳变点数量","负值点数量","缺失点数量"};
+        for (int i =0 ; i < row1Cell.length ; i++ ){
+            row1.createCell(i).setCellValue(row1Cell[i]);
+        }
+        row2.createCell(0).setCellValue(tgResult.getOrgName());
+        row2.createCell(1).setCellValue(tgResult.getTgNo());
+        row2.createCell(2).setCellValue(tgResult.getTgName());
+        row2.createCell(3).setCellValue(tgResult.getEventTime());
+        row2.createCell(4).setCellValue(tgResult.getCount());
+        row2.createCell(5).setCellValue(tgResult.getRealCount());
+        row2.createCell(6).setCellValue(tgResult.getRemark0());
+        row2.createCell(7).setCellValue(tgResult.getRemark1());
+        row2.createCell(8).setCellValue(tgResult.getRemark2());
+        row2.createCell(9).setCellValue(tgResult.getRemark3());
+
+        SXSSFRow row3 = sheet.createRow(3);
+        String[] row3Cell = {"台区编号","考核表电量","用户表电量","损失电量","线损率","数据时间",
+                "该时间点丢失的值"};
+        for (int i =0 ; i < row3Cell.length ; i++ ){
+            row3.createCell(i).setCellValue(row3Cell[i]);
+        }
+        int rowNum = 3;
+        int size = lineLosses.size();
+        for (int i=0;i<size;i++,rowNum++){
+            SXSSFRow row = sheet.createRow(rowNum);
+            TgLineLoss tgLineLoss = lineLosses.get(i);
+            row.createCell(0).setCellValue(tgLineLoss.getTgNo());
+            row.createCell(1).setCellValue(tgLineLoss.getPpq());
+            row.createCell(2).setCellValue(tgLineLoss.getUpq());
+            row.createCell(3).setCellValue(tgLineLoss.getLossPq());
+            row.createCell(4).setCellValue(tgLineLoss.getLossPer());
+            row.createCell(5).setCellValue(tgLineLoss.getEventTime());
+            row.createCell(6).setCellValue(tgLineLoss.getRemark());
+        }
+        SXSSFRow row4 = sheet1.createRow(0);
+        String[] rowCell = {"设备ID","用户编号","用户名称","倍率","数据时间","电能总示值","电能总示值差值","电量","ua","ub","uc",
+                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc"};
+        for (int i =0 ; i < rowCell.length ; i++ ){
+            row4.createCell(i).setCellValue(rowCell[i]);
+        }
+        rowNum = 1;
+        size = consEles.size();
+        for (int i=0;i<size;i++,rowNum++){
+            SXSSFRow row = sheet1.createRow(rowNum);
+            ConsEle consEle = consEles.get(i);
+            row.createCell(0).setCellValue(consEle.getRid());
+            row.createCell(1).setCellValue(consEle.getConsNo());
+            row.createCell(2).setCellValue(consEle.getConsName());
+            row.createCell(3).setCellValue(consEle.gettFactor());
+            row.createCell(4).setCellValue(consEle.getEventTime());
+            row.createCell(5).setCellValue(consEle.getPapR());
+            row.createCell(6).setCellValue(consEle.getPapRDiff());
+            row.createCell(7).setCellValue(consEle.getEle());
+            row.createCell(8).setCellValue(consEle.getUa());
+            row.createCell(9).setCellValue(consEle.getUb());
+            row.createCell(10).setCellValue(consEle.getUc());
+            row.createCell(11).setCellValue(consEle.getIa());
+            row.createCell(12).setCellValue(consEle.getIb());
+            row.createCell(13).setCellValue(consEle.getIc());
+            row.createCell(14).setCellValue(consEle.getI0());
+            row.createCell(15).setCellValue(consEle.getP());
+            row.createCell(16).setCellValue(consEle.getPa());
+            row.createCell(17).setCellValue(consEle.getPb());
+            row.createCell(18).setCellValue(consEle.getPc());
+            row.createCell(19).setCellValue(consEle.getQ());
+            row.createCell(20).setCellValue(consEle.getQa());
+            row.createCell(21).setCellValue(consEle.getQb());
+            row.createCell(22).setCellValue(consEle.getQc());
+        }
+        return workbook;
     }
 
     public static Map<String,Object> findPre(int i,Long time,String rid,Map<String,Electrics> map,int point){

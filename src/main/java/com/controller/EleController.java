@@ -4,7 +4,6 @@ import com.dao.UserDao;
 import com.entity.*;
 import com.grid.datacenter.service.HplcEleServiceImpl;
 import com.service.EleConWeibiaoService;
-import com.service.ElectricsService;
 import com.util.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -481,5 +480,7 @@ public class EleController {
         int num = eleConWeibiaoService.insertBatch(list);
         return Result.success(num);
     }
+
+
     }
 
