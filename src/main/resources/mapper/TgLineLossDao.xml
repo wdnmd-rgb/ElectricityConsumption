@@ -62,7 +62,7 @@
     </select>
     <select id="queryConsEle" resultMap="ConsEleMap">
         select a.rid,b.cons_no,b.cons_name,b.t_factor,a.event_time,a.pap_r,a.pap_r_diff,a.ele,
-        a.ua,a.ub,a.uc,a.ia,a.ib,a.ic,a.i0,a.pa,a.pb,a.pc,a.p,a.qa,a.qb,a.qc,a.q
+        a.ua,a.ub,a.uc,a.ia,a.ib,a.ic,a.i0,a.pa,a.pb,a.pc,a.p,a.qa,a.qb,a.qc,a.q,a.remark
         from dws_elecon.dws_elecon_cons_ele_result a,dws_elecon.dws_elecon_record b
          where a.event_time like CONCAT('%',#{eventTime},'%') and b.tg_no=#{tgNo} and a.rid=b.rid
          order by a.rid,a.event_time

@@ -444,7 +444,6 @@ public class ExcelUtil {
     }
 
     public static  SXSSFWorkbook  sendExcel4(List<ConsEle> consEles, List<TgLineLoss> lineLosses,TgResult tgResult) throws ParseException {
-
         SXSSFWorkbook workbook = new SXSSFWorkbook ();
         SXSSFSheet sheet = workbook.createSheet("台区小时级线损");
         SXSSFSheet sheet1 = workbook.createSheet("台区用户电量明细");
@@ -472,7 +471,7 @@ public class ExcelUtil {
         for (int i =0 ; i < row3Cell.length ; i++ ){
             row3.createCell(i).setCellValue(row3Cell[i]);
         }
-        int rowNum = 3;
+        int rowNum = 4;
         int size = lineLosses.size();
         for (int i=0;i<size;i++,rowNum++){
             SXSSFRow row = sheet.createRow(rowNum);
@@ -487,7 +486,7 @@ public class ExcelUtil {
         }
         SXSSFRow row4 = sheet1.createRow(0);
         String[] rowCell = {"设备ID","用户编号","用户名称","倍率","数据时间","电能总示值","电能总示值差值","电量","ua","ub","uc",
-                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc"};
+                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc","remark"};
         for (int i =0 ; i < rowCell.length ; i++ ){
             row4.createCell(i).setCellValue(rowCell[i]);
         }
@@ -519,6 +518,7 @@ public class ExcelUtil {
             row.createCell(20).setCellValue(consEle.getQa());
             row.createCell(21).setCellValue(consEle.getQb());
             row.createCell(22).setCellValue(consEle.getQc());
+            row.createCell(23).setCellValue(consEle.getRemark());
         }
         return workbook;
     }
