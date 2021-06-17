@@ -25,6 +25,11 @@ public class ConsEle {
     private String qc;
     private String q;
     private String remark;
+    private String typeCode;
+    private String rap;
+    private Double rapR;
+    private Double rapRDiff;
+    private Double rapEle;
 
     public String getRid() {
         return rid;
@@ -210,11 +215,51 @@ public class ConsEle {
         this.q = q;
     }
 
-    public String getRemark() {
+    public String getRemark()
+    {
         return remark;
     }
-
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getTypeCode() {
+        return typeCode;
+    }
+
+    public void setTypeCode(String typeCode) {
+        this.typeCode = typeCode;
+    }
+
+    public String getRap() {
+        return rap;
+    }
+
+    public void setRap(String rap) {
+        this.rap = rap;
+    }
+
+    public Double getRapR() {
+        return rapR;
+    }
+
+    public void setRapR(Double rapR) {
+        this.rapR = rapR;
+    }
+
+    public Double getRapRDiff() {
+        return rapRDiff;
+    }
+
+    public void setRapRDiff(Double rapRDiff) {
+        this.rapRDiff = rapRDiff;
+    }
+
+    public Double getRapEle() {
+        return rapEle;
+    }
+
+    public void setRapEle(Double rapEle) {
+        this.rapEle = rapEle;
     }
 }

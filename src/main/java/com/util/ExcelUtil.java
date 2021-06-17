@@ -342,25 +342,14 @@ public class ExcelUtil {
     }
 
     public static  Map<String,Object>  sendExcel3(List<Electrics> list,String date,int index) throws ParseException {
-        Map<String,Electrics> map = new HashMap<>();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        Map<String,Object> stringObjectMap = new HashMap<>();
+        Map<String,Object> stringObjectMap = TimeUtil.makeMap(list);
+        Map<String,Electrics> map = (Map<String, Electrics>) stringObjectMap.get("map");
+        Set<String> ids = (Set<String>) stringObjectMap.get("set");
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         Date date1 = simpleDateFormat1.parse(date);
         Long time = date1.getTime();
-        int size = list.size();
         int rowNum = 1;
-        Set<String> ids = new HashSet<>();
-        for (int i=0;i<size;i++){
-            Electrics electrics = list.get(i);
-            String id = electrics.getRid();
-            String date2 = electrics.getEventTime();
-            Date date3 = simpleDateFormat.parse(date2);
-            ids.add(id);
-            String key = id+date3.getTime();
-            map.put(key,electrics);
-        }
         list = new ArrayList<>();
         SXSSFWorkbook workbook = new SXSSFWorkbook ();
         SXSSFSheet sheet = workbook.createSheet();
@@ -466,7 +455,8 @@ public class ExcelUtil {
         row2.createCell(9).setCellValue(tgResult.getRemark3());
 
         SXSSFRow row3 = sheet.createRow(3);
-        String[] row3Cell = {"台区编号","考核表电量","用户表电量","损失电量","线损率","数据时间",
+        String[] row3Cell = {"数据时间","考核表电量","用户表电量","损失电量","线损率(%)",
+                "考核表电量(累计)","用户表电量(累计)","损失电量(累计)","线损率(累计%)",
                 "该时间点丢失的值"};
         for (int i =0 ; i < row3Cell.length ; i++ ){
             row3.createCell(i).setCellValue(row3Cell[i]);
@@ -476,17 +466,20 @@ public class ExcelUtil {
         for (int i=0;i<size;i++,rowNum++){
             SXSSFRow row = sheet.createRow(rowNum);
             TgLineLoss tgLineLoss = lineLosses.get(i);
-            row.createCell(0).setCellValue(tgLineLoss.getTgNo());
+            row.createCell(0).setCellValue(tgLineLoss.getEventTime());
             row.createCell(1).setCellValue(tgLineLoss.getPpq());
             row.createCell(2).setCellValue(tgLineLoss.getUpq());
             row.createCell(3).setCellValue(tgLineLoss.getLossPq());
             row.createCell(4).setCellValue(tgLineLoss.getLossPer());
-            row.createCell(5).setCellValue(tgLineLoss.getEventTime());
-            row.createCell(6).setCellValue(tgLineLoss.getRemark());
+            row.createCell(5).setCellValue(tgLineLoss.getPpqTol());
+            row.createCell(6).setCellValue(tgLineLoss.getUpqTol());
+            row.createCell(7).setCellValue(tgLineLoss.getLossPqTol());
+            row.createCell(8).setCellValue(tgLineLoss.getLossPerTol());
+            row.createCell(9).setCellValue(tgLineLoss.getRemark());
         }
         SXSSFRow row4 = sheet1.createRow(0);
         String[] rowCell = {"设备ID","用户编号","用户名称","倍率","数据时间","电能总示值","电能总示值差值","电量","ua","ub","uc",
-                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc","remark"};
+                "ia","ib","ic","i0","p","pa","pb","pc","q","qa","qb","qc","remark","rap","rapR","rapDiff","rapEle"};
         for (int i =0 ; i < rowCell.length ; i++ ){
             row4.createCell(i).setCellValue(rowCell[i]);
         }
@@ -519,6 +512,10 @@ public class ExcelUtil {
             row.createCell(21).setCellValue(consEle.getQb());
             row.createCell(22).setCellValue(consEle.getQc());
             row.createCell(23).setCellValue(consEle.getRemark());
+            row.createCell(24).setCellValue(consEle.getRap());
+            row.createCell(25).setCellValue(consEle.getRapR());
+            row.createCell(26).setCellValue(consEle.getRapRDiff());
+            row.createCell(27).setCellValue(consEle.getRapEle());
         }
         return workbook;
     }

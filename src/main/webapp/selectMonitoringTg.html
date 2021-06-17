@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" style="padding-top: 30px;text-align:center;" id="complain_search">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <input type="text" name="no" required lay-verify="required" placeholder="请输入台区编号"
+                   autocomplete="off" class="layui-input" style="width: 300px;" id="no">
+        </div>
+        <div class="layui-inline">
+            <button id="search" class="layui-btn" lay-submit
+                    lay-filter="provinceSearch">查找
+            </button>
+        </div>
+    </div>
+</form>
+<form class="layui-form" style="padding-top: 30px;text-align:center;display: none;" id="add">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <input type="text" name="no" required lay-verify="required" placeholder="请输入台区编号"
+                   autocomplete="off" class="layui-input" style="width: 300px;" id="tgNo">
+        </div>
+        <div class="layui-inline">
+            <button id="submit" class="layui-btn" lay-submit
+                    lay-filter="formDemo">添加
+            </button>
+        </div>
+    </div>
+</form>
+<button class="layui-btn" onclick="fun()">
+    添加监控台区
+</button>
+<div id="testDiv">
+    <table class="layui-hide" id="test"></table>
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="layui/layui.js"></script>
+<script src="js/echarts.min.js"></script>
+<script type="text/javascript">
+    function fun(){
+        $("#add").css("display", "none");
+        layer.open({
+            type: 1,
+            skin: 'layui-layer-rim', //加上边框
+            area: ['420px', '240px'], //宽高
+            content: $("#add")
+        });
+    }
+    layui.use(['form', 'table'], function () {
+        var form = layui.form;
+        var table = layui.table;
+
+        form.on('submit(formDemo)', function(data){
+            var f = data.field;
+            $.post("tgLine/addMonitoringTg",{"tgNo":f.tgNo},function (result) {
+                if(result == 0){
+                    alert("输入台区编号有误，该台区不存在！");
+                }else if(result == 1){
+                    alert("该台区已在监控台区列表！");
+                }else if(result == true){
+                    alert("添加成功！");
+                }else if(result == false){
+                    alert("添加失败！");
+                }
+            })
+            return false;
+        });
+        table.render({
+            id: "testReload"
+            , elem: '#test'
+            , url: 'tgLine/queryMonitoringTg'
+            , cols: [[
+                {field: 'cityName', title: '市公司名称'}
+                , {field: 'countyName', title: '县公司名称'}
+                , {field: 'orgNo', title: '供电所编号'}
+                , {field: 'orgName', title: '供电所名称'}
+                , {field: 'tgNo', title: '台区编号'}
+                , {field: 'tgName', title: '台区名称'}
+                , {field: 'xsLx', title: '线损类型'}
+                , {field: 'fsLX', title: '负损类型'}
+            ]]
+            ,page: true
+        });
+
+        form.render();
+        form.on('submit(provinceSearch)', function (data) {
+            var formData = data.field;
+            var no = formData.no;
+            table.reload('testReload', {
+                where: {
+                    tgNo: no
+                },
+                url: 'tgLine/queryMonitoringTg',
+                method: 'post'
+            });
+            return false;
+        });
+    });
+
+</script>
+</body>
+</html>

@@ -15,22 +15,6 @@
         <input type="text" name="consNo" required  lay-verify="required" placeholder="请输入用户编号"
 		autocomplete="off" class="layui-input" style="width: 300px;" id="consNo">
     </div>
-	<div class="layui-inline">
-			<select name="areaCode" lay-verify="required" id="areaCode">
-			  <option value="">请选择城市</option>
-			  <option value="01">南昌</option>
-			  <option value="02">景德镇</option>
-			  <option value="04">萍乡</option>
-			  <option value="05">九江</option>
-			  <option value="06">新余</option>
-			  <option value="07">鹰潭</option>
-			  <option value="08">赣州</option>
-			  <option value="09">上饶</option>
-			  <option value="10">吉安</option>
-			  <option value="11">抚州</option>
-			  <option value="12">宜春</option>
-			</select>
-	</div>
 	<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
 	  <input type="text" class="layui-input" id="date" name="date">
 	</div>
@@ -41,11 +25,23 @@
 	<div class="layui-inline" style="display: none" id="testDiv2"> <!-- 注意：这一层元素并不是必须的 -->
 		<a class="layui-btn"  href="" download id="update">下载结果</a>
 	</div>
+	<div class="layui-inline" style="display: none" id="testDiv5"> <!-- 注意：这一层元素并不是必须的 -->
+		<button type="button" class="layui-btn" onclick="change()">查看电流电压图</button>
+	</div>
+	<div class="layui-inline" style="display: none" id="testDiv6"> <!-- 注意：这一层元素并不是必须的 -->
+		<button type="button" class="layui-btn" onclick="change2()">查看表格</button>
+	</div>
 	</div>
 </form>
 <div style="display: none" id="testDiv">
 	<table class="layui-hide" id="test"></table>
 </div>
+	<div style="display: none;padding-top: 30px;text-align:center;" id="testDiv3">
+		<div id="main" style="width: 1500px;height:700px;"></div>
+	</div>
+	<div style="display: none;padding-top: 30px;text-align:center;" id="testDiv4">
+		<div id="main1" style="width: 1500px;height:700px;"></div>
+	</div>
 </div>
 <script src="layui/layui.js"></script>
 <script type="text/javascript">
@@ -99,9 +95,18 @@
 
 		form.render();
 		form.on('submit(provinceSearch)', function(data) {
+			var loading = layer.load(0, {
+				shade: false,
+				time: 100*1000
+			});
 			var traget=document.getElementById("testDiv");
 			traget.style.display="";
+			$("#testDiv").css("display","none");
 			$("#testDiv2").css("display","none");
+			$("#testDiv3").css("display","none");
+			$("#testDiv4").css("display","none");
+			$("#testDiv5").css("display","none");
+			$("#testDiv6").css("display","none");
 			var formData = data.field;
 			var areaCode = formData.areaCode;
 			var consNo = formData.consNo;
@@ -109,21 +114,99 @@
 			console.log(areaCode+consNo+date)
 			table.reload('testReload', {
 				where: {
-					areaCode:areaCode,
 					consNo:consNo,
 					date:date
 				},
 				url: 'ele/queryByCons',
 				method: 'post',
 				done:function (res) {
-					$("#update").attr("href",res.msg);
+					$("#update").attr("href",res.msg[0]);
+					show("main",res.msg[1],res.msg[2],res.msg[3],res.msg[4],res.msg[4],"电压图","ua","ub","uc","uc");
+					show("main1",res.msg[1],res.msg[5],res.msg[6],res.msg[7],res.msg[8],"电流图","ia","ib","ic","i0")
+					layer.close(loading);
+					$("#testDiv").css("display","");
 					$("#testDiv2").css("display","");
+					$("#testDiv5").css("display","");
 				}
 			});
 			return false;
 		});
 	});
 
+	function show(id,time,array1,array2,array3,array4,name,name1,name2,name3,name4) {
+		var chartDom = document.getElementById(id);
+		var myChart = echarts.init(chartDom);
+		var option;
+		option = {
+			title: {
+				text: name,
+				x: 'center',
+				y: 'top'
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data: [name1, name2,name3],
+				top:'30'
+			},
+			toolbox: {
+				show: true,
+				feature: {
+					dataZoom: {
+						yAxisIndex: 'none'
+					},
+					dataView: {readOnly: false},
+					magicType: {type: ['line', 'bar']},
+					restore: {},
+					saveAsImage: {}
+				}
+			},
+			xAxis: {
+				type: 'category',
+				boundaryGap: false,
+				data: time
+			},
+			yAxis: {
+				type: 'value'
+			},
+			series: [
+				{
+					name: name1,
+					type: 'line',
+					data: array1
+				},
+				{
+					name: name2,
+					type: 'line',
+					data: array2
+				},{
+					name: name3,
+					type: 'line',
+					data: array3
+				},{
+					name: name4,
+					type: 'line',
+					data: array4
+				}
+			]
+		};
+		myChart.setOption(option);
+	}
+	function change() {
+		$("#testDiv").css("display", "none");
+		$("#testDiv3").css("display", "");
+		$("#testDiv4").css("display", "");
+		$("#testDiv5").css("display", "none");
+		$("#testDiv6").css("display", "");
+	}
+	function change2() {
+		$("#testDiv3").css("display", "none");
+		$("#testDiv4").css("display", "none");
+		$("#testDiv").css("display", "");
+		$("#testDiv6").css("display", "none");
+		$("#testDiv5").css("display", "");
+	}
 </script>
 </body>
 </html>

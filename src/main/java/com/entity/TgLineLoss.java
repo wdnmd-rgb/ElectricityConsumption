@@ -6,8 +6,12 @@ public class TgLineLoss {
     private Double upq;
     private Double lossPq;
     private Double lossPer;
+    private Double ppqTol;
+    private Double upqTol;
+    private Double lossPqTol;
+    private Double lossPerTol;
     private String eventTime;
-    private String remark;
+    private int remark;
 
     public String getTgNo() {
         return tgNo;
@@ -57,12 +61,44 @@ public class TgLineLoss {
         this.eventTime = eventTime;
     }
 
-    public String getRemark() {
+    public int getRemark() {
         return remark;
     }
 
-    public void setRemark(String remark) {
+    public void setRemark(int remark) {
         this.remark = remark;
+    }
+
+    public Double getPpqTol() {
+        return ppqTol;
+    }
+
+    public void setPpqTol(Double ppqTol) {
+        this.ppqTol = ppqTol;
+    }
+
+    public Double getUpqTol() {
+        return upqTol;
+    }
+
+    public void setUpqTol(Double upqTol) {
+        this.upqTol = upqTol;
+    }
+
+    public Double getLossPqTol() {
+        return lossPqTol;
+    }
+
+    public void setLossPqTol(Double lossPqTol) {
+        this.lossPqTol = lossPqTol;
+    }
+
+    public Double getLossPerTol() {
+        return lossPerTol;
+    }
+
+    public void setLossPerTol(Double lossPerTol) {
+        this.lossPerTol = lossPerTol;
     }
 
     @Override
@@ -73,8 +109,12 @@ public class TgLineLoss {
                 ", upq=" + upq +
                 ", lossPq=" + lossPq +
                 ", lossPer=" + lossPer +
-                ", eventTime=" + eventTime +
-                ", remark='" + remark + '\'' +
+                ", ppqTol=" + ppqTol +
+                ", upqTol=" + upqTol +
+                ", lossPqTol=" + lossPqTol +
+                ", lossPerTol=" + lossPerTol +
+                ", eventTime='" + eventTime + '\'' +
+                ", remark=" + remark +
                 '}';
     }
 }

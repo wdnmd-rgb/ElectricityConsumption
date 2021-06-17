@@ -2,27 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.TgLineLossDao">
 
-    <resultMap type="com.entity.TgLineLoss" id="TgLineLossMap">
-        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
-        <result property="ppq" column="ppq" jdbcType="NUMERIC"/>
-        <result property="upq" column="upq" jdbcType="NUMERIC"/>
-        <result property="lossPq" column="loss_pq" jdbcType="NUMERIC"/>
-        <result property="lossPer" column="loss_per" jdbcType="NUMERIC"/>
-        <result property="eventTime" column="event_time" jdbcType="VARCHAR"/>
-        <result property="remark" column="remark" jdbcType="VARCHAR"/>
-    </resultMap>
+    <!--    <resultMap type="com.entity.TgLineLoss" id="TgLineLossMap">-->
+    <!--        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>-->
+    <!--        <result property="ppq" column="ppq" jdbcType="NUMERIC"/>-->
+    <!--        <result property="upq" column="upq" jdbcType="NUMERIC"/>-->
+    <!--        <result property="lossPq" column="loss_pq" jdbcType="NUMERIC"/>-->
+    <!--        <result property="lossPer" column="loss_per" jdbcType="NUMERIC"/>-->
+    <!--        <result property="eventTime" column="event_time" jdbcType="VARCHAR"/>-->
+    <!--        <result property="remark" column="remark" jdbcType="VARCHAR"/>-->
+    <!--    </resultMap>-->
 
     <resultMap type="com.entity.TgResult" id="TgResultMap">
         <result property="orgName" column="org_name" jdbcType="VARCHAR"/>
         <result property="tgName" column="tg_name" jdbcType="VARCHAR"/>
         <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
         <result property="eventTime" column="event_time" jdbcType="VARCHAR"/>
-        <result property="count" column="count" jdbcType="VARCHAR"/>
-        <result property="realCount" column="real_count" jdbcType="VARCHAR"/>
-        <result property="remark0" column="remark0" jdbcType="VARCHAR"/>
-        <result property="remark1" column="remark1" jdbcType="VARCHAR"/>
-        <result property="remark2" column="remark2" jdbcType="VARCHAR"/>
-        <result property="remark3" column="remark3" jdbcType="VARCHAR"/>
+        <result property="count" column="count" jdbcType="INTEGER"/>
+        <result property="realCount" column="real_count" jdbcType="INTEGER"/>
+        <result property="remark0" column="remark0" jdbcType="INTEGER"/>
+        <result property="remark1" column="remark1" jdbcType="INTEGER"/>
+        <result property="remark2" column="remark2" jdbcType="INTEGER"/>
+        <result property="remark3" column="remark3" jdbcType="INTEGER"/>
+        <result property="ppq" column="ppq" jdbcType="NUMERIC"/>
+        <result property="upq" column="upq" jdbcType="NUMERIC"/>
+        <result property="lossPq" column="loss_pq" jdbcType="NUMERIC"/>
+        <result property="rate" column="lineloss_rate" jdbcType="NUMERIC"/>
     </resultMap>
 
     <resultMap type="com.entity.ConsEle" id="ConsEleMap">
@@ -50,21 +54,78 @@
         <result property="qc" column="qc" jdbcType="VARCHAR"/>
         <result property="q" column="q" jdbcType="VARCHAR"/>
         <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="typeCode" column="type_code" jdbcType="VARCHAR"/>
+        <result property="rap" column="rap" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="MonitoringTgMap" type="com.entity.MonitoringTg">
+        <result property="cityName" column="city_name" jdbcType="VARCHAR"/>
+        <result property="countyName" column="county_name" jdbcType="VARCHAR"/>
+        <result property="orgNo" column="org_no" jdbcType="VARCHAR"/>
+        <result property="orgName" column="org_name" jdbcType="VARCHAR"/>
+        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
+        <result property="tgName" column="tg_name" jdbcType="VARCHAR"/>
+        <result property="xsLx" column="xs_lx" jdbcType="VARCHAR"/>
+        <result property="fsLX" column="fs_lX" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="queryTgLineLoss" resultMap="TgLineLossMap">
-        select tg_no,ppq,upq,loss_pq,loss_per,event_time,remark from dws_elecon.dws_elecon_tg_loss
-        where tg_no=#{tgNo} and event_time like CONCAT('%',#{eventTime},'%') order by event_time
-    </select>
+    <!--    <select id="queryTgLineLoss" resultMap="TgLineLossMap">-->
+    <!--        select tg_no,ppq,upq,loss_pq,loss_per,event_time,remark from dws_elecon.dws_elecon_tg_loss-->
+    <!--        where tg_no=#{tgNo} and event_time like CONCAT('%',#{eventTime},'%') order by event_time-->
+    <!--    </select>-->
+    <!--    <select id="queryTgResult" resultMap="TgResultMap">-->
+    <!--        select org_name,tg_name,tg_no,event_time,count,real_count,remark0,remark1,remark2,remark3 from dws_elecon.dws_elecon_monitoring_tg_result-->
+    <!--        where tg_no=#{tgNo} and event_time like CONCAT('%',#{eventTime},'%')-->
+    <!--    </select>-->
     <select id="queryTgResult" resultMap="TgResultMap">
-        select org_name,tg_name,tg_no,event_time,count,real_count,remark0,remark1,remark2,remark3 from dws_elecon.dws_elecon_monitoring_tg_result
-        where tg_no=#{tgNo} and event_time like CONCAT('%',#{eventTime},'%')
-    </select>
+            select a.*,b.ppq,b.upq,b.loss_pq,b.lineloss_rate from(
+            select org_name,tg_name,tg_no,count(*) as count from dws_elecon.dws_elecon_record
+            where tg_no=#{tgNo} group by org_name,tg_name,tg_no) a,buf_amr_sea.tx_tq_zb_new b
+            where a.tg_no=b.tg_no and b.stat_date=#{date}
+        </select>
+    <select id="queryTgResult2" resultMap="TgResultMap">
+            select org_name,tg_name,tg_no,count(*) as count from dws_elecon.dws_elecon_record
+            where tg_no=#{tgNo} group by org_name,tg_name,tg_no
+        </select>
     <select id="queryConsEle" resultMap="ConsEleMap">
         select a.rid,b.cons_no,b.cons_name,b.t_factor,a.event_time,a.pap_r,a.pap_r_diff,a.ele,
-        a.ua,a.ub,a.uc,a.ia,a.ib,a.ic,a.i0,a.pa,a.pb,a.pc,a.p,a.qa,a.qb,a.qc,a.q,a.remark
+        a.ua,a.ub,a.uc,a.ia,a.ib,a.ic,a.i0,a.pa,a.pb,a.pc,a.p,a.qa,a.qb,a.qc,a.q,a.remark,b.type_code,b.rap
         from dws_elecon.dws_elecon_cons_ele_result a,dws_elecon.dws_elecon_record b
          where a.event_time like CONCAT('%',#{eventTime},'%') and b.tg_no=#{tgNo} and a.rid=b.rid
          order by a.rid,a.event_time
     </select>
+    <select id="queryMonitoringTg" resultMap="MonitoringTgMap">
+        select city_name,county_name,org_no,org_name,tg_no,tg_name,xs_lx,fs_lX
+        from dws_elecon.dws_elecon_monitoring_tg
+        <where>
+            <if test="tgNo != null">
+                and tg_no = #{tgNo}
+            </if>
+        </where>
+
+    </select>
+    <select id="selectMonitoringTgNum" resultType="java.lang.Integer">
+        select count (*)
+        from dws_elecon.dws_elecon_monitoring_tg
+        <where>
+            <if test="tgNo != null">
+                and tg_no = #{tgNo}
+            </if>
+        </where>
+    </select>
+    <select id="selectTgNum" resultType="java.lang.Integer">
+        select count (*)
+        from dws_elecon.dws_elecon_record
+        <where>
+        <if test="tgNo != null">
+            and tg_no = #{tgNo}
+        </if>
+    </where>
+    </select>
+
+    <insert id="addMonitoringTg" keyProperty="id" useGeneratedKeys="true">
+        insert into dws_elecon.dws_elecon_monitoring_tg(city_name,county_name,org_no,org_name,tg_no,tg_name,xs_lx,fs_lX)(
+        select a.city_name,a.county_name,a.org_no,a.org_name,a.tg_no,a.tg_name,b.xs_lx,b.fs_lx from
+        dws_elecon.relation a,buf_amr_sea.tx_tq_zb_new b where a.tg_no = #{tgNo} and a.tg_no=b.tg_no and b.stat_date='20210522'
+        )
+    </insert>
 </mapper>

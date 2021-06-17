@@ -44,7 +44,8 @@
     <!--查询单个-->
     <select id="queryByRid" resultMap="EleConWeibiaoMap">
         select
-        id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
+        id,rid,area_name,cons_no, cons_name,
+        t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
         from dws_elecon.DWS_ELECON_RECORD
         where rid in
         <foreach collection="list" item="rid" index="index" open="(" close=")" separator=",">
@@ -52,7 +53,7 @@
         </foreach>
     </select>
 
-    <select id="queryByTgOrg"  resultType="string">
+    <select id="queryByTgOrg" resultType="string">
         select
         string_agg(rid,',')
         from dws_elecon.DWS_ELECON_RECORD
@@ -66,9 +67,10 @@
         </where>
     </select>
 
-    <select id="queryAllByTgOrg"  resultMap="EleConWeibiaoMap">
+    <select id="queryAllByTgOrg" resultMap="EleConWeibiaoMap">
         select
-        id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
+        id,rid,area_name,cons_no, cons_name,
+        t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
         from dws_elecon.DWS_ELECON_RECORD
         <where>
             <if test="tgNo != null and tgNo != ''">
@@ -110,6 +112,12 @@
         from dws_elecon.area_code_type
         where area_name = #{areaName}
     </select>
+    <select id="queryAreaCode" resultType="java.lang.String">
+        select
+        area_code from dws_elecon.area_code_type
+        where area_name = (select area_name from dws_elecon.dws_elecon_record
+        where cons_no = #{consNo})
+    </select>
 
     <select id="queryByAreaNo" resultType="java.lang.String">
         select
@@ -126,27 +134,29 @@
     </select>
 
     <select id="queryAllByConsNo" resultMap="EleConWeibiaoMap">
-    select id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
-    from dws_elecon.DWS_ELECON_RECORD where cons_no in
-    <foreach collection="list" item="no" index="index" open="(" close=")" separator=",">
-        #{no}
-    </foreach>
-</select>
+        select id,rid,area_name,cons_no, cons_name,
+        t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
+        from dws_elecon.DWS_ELECON_RECORD where cons_no in
+        <foreach collection="list" item="no" index="index" open="(" close=")" separator=",">
+            #{no}
+        </foreach>
+    </select>
 
-<!--    <select id="queryAllResult" resultMap="EleConWeibiaoMap">-->
-<!--        select a.rid, a.area_name, a.cons_no, a.cons_name, a.event_time,b.pap_r_diff,a.t_factor,-->
-<!--        case-->
-<!--        when b.pap_r_diff*a.t_factor is null then 0-->
-<!--        when b.pap_r_diff*a.t_factor<![CDATA[>=]]>0 then b.pap_r_diff*a.t_factor-->
-<!--        when b.pap_r_diff*a.t_factor<![CDATA[<]]>0 then 0 end as ele-->
-<!--        from (select * from dws_elecon.DWS_ELECON_RECORD where rid in (select rid from dws_elecon.ele_con_result group by rid)) a-->
-<!--        left join dws_elecon.ele_con_result b on a.event_time = to_char(b.event_time,'hh24:mi:ss')-->
-<!--        order by a.rid,a.event_time-->
-<!--    </select>-->
+    <!--    <select id="queryAllResult" resultMap="EleConWeibiaoMap">-->
+    <!--        select a.rid, a.area_name, a.cons_no, a.cons_name, a.event_time,b.pap_r_diff,a.t_factor,-->
+    <!--        case-->
+    <!--        when b.pap_r_diff*a.t_factor is null then 0-->
+    <!--        when b.pap_r_diff*a.t_factor<![CDATA[>=]]>0 then b.pap_r_diff*a.t_factor-->
+    <!--        when b.pap_r_diff*a.t_factor<![CDATA[<]]>0 then 0 end as ele-->
+    <!--        from (select * from dws_elecon.DWS_ELECON_RECORD where rid in (select rid from dws_elecon.ele_con_result group by rid)) a-->
+    <!--        left join dws_elecon.ele_con_result b on a.event_time = to_char(b.event_time,'hh24:mi:ss')-->
+    <!--        order by a.rid,a.event_time-->
+    <!--    </select>-->
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="EleConWeibiaoMap">
         select
-        id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
+        id,rid,area_name,cons_no, cons_name,
+        t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
         from dws_elecon.DWS_ELECON_RECORD
         <where>
             <if test="id != null">

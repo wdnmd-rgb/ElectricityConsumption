@@ -160,8 +160,6 @@ public class EleController {
         return string;
     }
 
-
-
     @RequiresPermissions({"elecon:select"})
     @RequestMapping("queryRealEle")
     public void queryRealEle(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String tgNo,String orgNo,String date,HttpServletResponse response,HttpServletRequest request,String index) {
@@ -388,7 +386,7 @@ public class EleController {
     }
 
     @RequestMapping("queryByCons")
-    public void queryByCons(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String consNo,String areaCode,String date,HttpServletResponse response,HttpServletRequest request) throws ServletException, IOException, ParseException {
+    public void queryByCons(@RequestParam(required=false, defaultValue="1") Integer page, Integer limit,String consNo,String date,HttpServletResponse response,HttpServletRequest request) throws ServletException, IOException, ParseException {
         Map<String,Object> map = new HashMap<>();
         if ("".equals(consNo)||consNo == null){
             map.put("code","0");
@@ -400,6 +398,7 @@ public class EleController {
         }
         List<String> idsList = this.eleConWeibiaoService.queryByConsNo(consNo);
         String ids = StringUtils.join(Arrays.asList(idsList.toArray()), ",");
+        String areaCode = eleConWeibiaoService.queryAreaCode(consNo);
         String string = hplcEleService.getElecData(null, ids, null, areaCode, date);
         Map<String,EleConWeibiao> map1 = eleConWeibiaoService.queryByRid(idsList);
         List<Electrics> list = JsonUtil.readJson(string,map1);
@@ -426,9 +425,13 @@ public class EleController {
         workbook.write(os);
         os.flush();
         os.close();
+        stringObjectMap=TimeUtil.sort(date,list);
         List<Electrics> list1 = ListUtil.page(list,page,limit);
+        Object object[] = new Object[]{("file/"+fileName),stringObjectMap.get("times"),stringObjectMap.get("uas"),stringObjectMap.get("ubs"),
+                stringObjectMap.get("ucs"),stringObjectMap.get("ias"),stringObjectMap.get("ibs"),stringObjectMap.get("ics"),stringObjectMap.get("i0s"),
+        stringObjectMap.get("pas"),stringObjectMap.get("pbs"),stringObjectMap.get("pcs"),stringObjectMap.get("ps")};
         map.put("code","0");
-        map.put("msg",("file/"+fileName));
+        map.put("msg",object);
         map.put("count",list.size());
         map.put("data",list1);
         JsonUtil.responseWriteJson(response,map);

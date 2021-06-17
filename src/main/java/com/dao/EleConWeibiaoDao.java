@@ -100,6 +100,8 @@ public interface EleConWeibiaoDao {
 
     int insertBatch(@Param("list") List<String> list);
 
+    String queryAreaCode(String consNo);
+
 
 
 

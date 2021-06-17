@@ -1,15 +1,20 @@
 package com.controller;
 
 import com.entity.ConsEle;
+import com.entity.MonitoringTg;
 import com.entity.TgLineLoss;
 import com.entity.TgResult;
+import com.service.EleConWeibiaoService;
 import com.service.TgLineLossService;
 import com.util.ExcelUtil;
 import com.util.JsonUtil;
 import com.util.Result;
 import com.util.TgLineLossUtil;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -21,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,15 +38,33 @@ public class TgLineLossController {
     @Resource
     private TgLineLossService tgLineLossService;
 
+
+    @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryTgLineLoss")
     public void queryTgLineLoss(String tgNo, String date, int index,HttpServletResponse response, HttpServletRequest request){
         Map<String,Object> map = new HashMap<>();
         String fileName = "";
         map.put("code","0");
+        List<TgLineLoss> lineLosses = new ArrayList<>();
+        String[] time = new String [(24/index)-1];
+        Double[] ppq = new Double[(24/index)-1];
+        Double[] upq = new Double[(24/index)-1];
+        Double[] lossPer = new Double[(24/index)-1];
+        Double[] ppqTol = new Double[(24/index)-1];
+        Double[] upqTol = new Double[(24/index)-1];
+        Double[] lossPerTol = new Double[(24/index)-1];
+        Integer[] remarks = new Integer[(24/index)-1];
         Long startTime = System.currentTimeMillis();
-        List<TgLineLoss> lineLosses = tgLineLossService.queryTgLineLoss(tgNo,date);
-        Long endTime = System.currentTimeMillis();
-        System.out.println("获取TgLineLoss："+(endTime-startTime));
+        List<ConsEle> consEles = tgLineLossService.queryConsEle(tgNo,date);
+        TgResult tgResult = new TgResult();
+        try {
+            Map<String,Object> stringObjectMap = TgLineLossUtil.doJob(consEles,date,index);
+            lineLosses = (List<TgLineLoss>) stringObjectMap.get("lineLosses");
+            tgResult = (TgResult) stringObjectMap.get("tgResult");
+            consEles=( List<ConsEle>) stringObjectMap.get("consEles");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         if (!(lineLosses.size()>0)){
             map.put("msg","");
             map.put("count","");
@@ -54,35 +78,41 @@ public class TgLineLossController {
             }
             return;
         }
-        String[] time = new String [(24/index)-1];
-        Double[] ppq = new Double[(24/index)-1];
-        Double[] upq = new Double[(24/index)-1];
-        Double[] lossPer = new Double[(24/index)-1];
-        Long startTime2 = System.currentTimeMillis();
-        try {
-            lineLosses = TgLineLossUtil.doJob(lineLosses,date,index);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         Long endTime2 = System.currentTimeMillis();
-        System.out.println("时间间隔："+(endTime2-startTime2));
+        System.out.println("时间间隔："+(endTime2-startTime));
         for (int i =0;i<lineLosses.size();i++){
             TgLineLoss tgLineLoss = lineLosses.get(i);
             time[i] = tgLineLoss.getEventTime();
             ppq[i] = tgLineLoss.getPpq();
             upq[i] = tgLineLoss.getUpq();
             lossPer[i]=tgLineLoss.getLossPer();
+            ppqTol[i] = tgLineLoss.getPpqTol();
+            upqTol[i] = tgLineLoss.getUpqTol();
+            lossPerTol[i]=tgLineLoss.getLossPerTol();
+            remarks[i]=tgLineLoss.getRemark();
         }
         Long endTime3 = System.currentTimeMillis();
-        System.out.println("给数组赋值："+(endTime3-endTime2));
-        List<TgResult> tgResults = tgLineLossService.queryTgResult(tgNo,date);
-        List<ConsEle> consEles = tgLineLossService.queryConsEle(tgNo,date);
+        String date1 = date.replaceAll("-","");
+        List<TgResult> tgResults = tgLineLossService.queryTgResult(tgNo,date1);
+        if (tgResults.size() == 0){
+            tgResults = tgLineLossService.queryTgResult2(tgNo);
+        }
+        TgResult tgResult1 =  tgResults.get(0);
+        tgResult1.setRealCount(tgResult.getRealCount());
+        tgResult1.setEventTime(tgResult.getEventTime());
+        tgResult1.setRemark0(tgResult.getRemark0());
+        tgResult1.setRemark1(tgResult.getRemark1());
+        tgResult1.setRemark2(tgResult.getRemark2());
+        tgResult1.setRemark3(tgResult.getRemark3());
+        tgResults.remove(0);
+        tgResults.add(tgResult1);
         Long endTime4 = System.currentTimeMillis();
         System.out.println("获取tgResults、consEles："+(endTime4-endTime3));
         try {
-            SXSSFWorkbook workbook = ExcelUtil.sendExcel4(consEles,lineLosses,tgResults.get(0));
+            SXSSFWorkbook workbook = ExcelUtil.sendExcel4(consEles,lineLosses,tgResult1);
             String path = request.getSession().getServletContext().getRealPath("/")+"file";
-            String name =tgResults.get(0).getTgName();
+            String name =tgResult1.getTgName();
+            name = name.replace("#","");
             fileName = date+name+"小时级线损明细.xlsx";
             File parent = new File(path);
             if (!parent.exists()) {
@@ -103,7 +133,7 @@ public class TgLineLossController {
         }
         Long endTime5 = System.currentTimeMillis();
         System.out.println("获取Excel："+(endTime5-endTime4));
-        Object[] obj = new Object[]{time,ppq,upq,lossPer,("file/"+fileName)};
+        Object[] obj = new Object[]{time,ppq,upq,lossPer,("file/"+fileName),remarks,ppqTol,upqTol,lossPerTol};
         map.put("msg",obj);
         map.put("count","");
         map.put("data",tgResults);
@@ -116,5 +146,41 @@ public class TgLineLossController {
         }
         return;
 
+    }
+    @RequiresPermissions({"tgLineLoss:select"})
+    @RequestMapping("queryMonitoringTg")
+    public void queryMonitoringTg(String tgNo, @RequestParam(defaultValue = "1") Integer page, Integer limit,HttpServletResponse response){
+        Map<String,Object> resultMap = new HashMap<>();
+        List<MonitoringTg> monitoringTgs = tgLineLossService.queryMonitoringTg(tgNo,page,limit);
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count",tgLineLossService.selectMonitoringTgNum(tgNo));
+        resultMap.put("data", monitoringTgs);
+        try {
+            JsonUtil.responseWriteJson(response,resultMap);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequiresPermissions({"tgLineLoss:add"})
+    @ResponseBody
+    @RequestMapping("addMonitoringTg")
+    public String addMonitoringTg(String tgNo){
+        int num = tgLineLossService.selectTgNum(tgNo);
+        if (num == 0){
+            return "0";
+        }
+        num = tgLineLossService.selectMonitoringTgNum(tgNo);
+        if (num > 0){
+            return "1";
+        }
+        boolean flag = tgLineLossService.addMonitoringTg(tgNo);
+        if (flag){
+            return "true";
+        }
+        return "false";
     }
 }

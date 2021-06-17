@@ -135,5 +135,10 @@ public class EleConWeibiaoServiceImpl implements EleConWeibiaoService {
         return this.eleConWeibiaoDao.insertBatch(list);
     }
 
+    @Override
+    public String queryAreaCode(String consNo) {
+        return this.eleConWeibiaoDao.queryAreaCode(consNo);
+    }
+
 
 }

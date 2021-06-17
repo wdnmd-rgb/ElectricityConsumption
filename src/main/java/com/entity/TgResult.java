@@ -5,12 +5,16 @@ public class TgResult {
     private String tgName;
     private String tgNo;
     private String eventTime;
-    private String count;
-    private String realCount;
-    private String remark0;
-    private String remark1;
-    private String remark2;
-    private String remark3;
+    private Double ppq;
+    private Double upq;
+    private Double lossPq;
+    private Double rate;
+    private int count;
+    private int realCount;
+    private int remark0;
+    private int remark1;
+    private int remark2;
+    private int remark3;
 
     public String getOrgName() {
         return orgName;
@@ -44,51 +48,103 @@ public class TgResult {
         this.eventTime = eventTime;
     }
 
-    public String getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(String count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
-    public String getRealCount() {
+    public int getRealCount() {
         return realCount;
     }
 
-    public void setRealCount(String realCount) {
+    public void setRealCount(int realCount) {
         this.realCount = realCount;
     }
 
-    public String getRemark0() {
+    public int getRemark0() {
         return remark0;
     }
 
-    public void setRemark0(String remark0) {
+    public void setRemark0(int remark0) {
         this.remark0 = remark0;
     }
 
-    public String getRemark1() {
+    public int getRemark1() {
         return remark1;
     }
 
-    public void setRemark1(String remark1) {
+    public void setRemark1(int remark1) {
         this.remark1 = remark1;
     }
 
-    public String getRemark2() {
+    public int getRemark2() {
         return remark2;
     }
 
-    public void setRemark2(String remark2) {
+    public void setRemark2(int remark2) {
         this.remark2 = remark2;
     }
 
-    public String getRemark3() {
+    public int getRemark3() {
         return remark3;
     }
 
-    public void setRemark3(String remark3) {
+    public void setRemark3(int remark3) {
         this.remark3 = remark3;
+    }
+
+    public Double getPpq() {
+        return ppq;
+    }
+
+    public void setPpq(Double ppq) {
+        this.ppq = ppq;
+    }
+
+    public Double getUpq() {
+        return upq;
+    }
+
+    public void setUpq(Double upq) {
+        this.upq = upq;
+    }
+
+    public Double getLossPq() {
+        return lossPq;
+    }
+
+    public void setLossPq(Double lossPq) {
+        this.lossPq = lossPq;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    @Override
+    public String toString() {
+        return "TgResult{" +
+                "orgName='" + orgName + '\'' +
+                ", tgName='" + tgName + '\'' +
+                ", tgNo='" + tgNo + '\'' +
+                ", eventTime='" + eventTime + '\'' +
+                ", ppq=" + ppq +
+                ", upq=" + upq +
+                ", lossPq=" + lossPq +
+                ", rate=" + rate +
+                ", count=" + count +
+                ", realCount=" + realCount +
+                ", remark0=" + remark0 +
+                ", remark1=" + remark1 +
+                ", remark2=" + remark2 +
+                ", remark3=" + remark3 +
+                '}';
     }
 }
