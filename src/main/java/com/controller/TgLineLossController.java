@@ -1,9 +1,6 @@
 package com.controller;
 
-import com.entity.ConsEle;
-import com.entity.MonitoringTg;
-import com.entity.TgLineLoss;
-import com.entity.TgResult;
+import com.entity.*;
 import com.service.EleConWeibiaoService;
 import com.service.TgLineLossService;
 import com.util.ExcelUtil;
@@ -149,7 +146,7 @@ public class TgLineLossController {
     }
     @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryMonitoringTg")
-    public void queryMonitoringTg(String tgNo, @RequestParam(defaultValue = "1") Integer page, Integer limit,HttpServletResponse response){
+    public void queryMonitoringTg(String tgNo, @RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
         Map<String,Object> resultMap = new HashMap<>();
         List<MonitoringTg> monitoringTgs = tgLineLossService.queryMonitoringTg(tgNo,page,limit);
         resultMap.put("code", 0);
@@ -168,19 +165,71 @@ public class TgLineLossController {
     @RequiresPermissions({"tgLineLoss:add"})
     @ResponseBody
     @RequestMapping("addMonitoringTg")
-    public String addMonitoringTg(String tgNo){
+    public Result addMonitoringTg(String tgNo){
         int num = tgLineLossService.selectTgNum(tgNo);
         if (num == 0){
-            return "0";
+            return Result.fail("输入台区编号有误，该台区不存在！");
         }
         num = tgLineLossService.selectMonitoringTgNum(tgNo);
         if (num > 0){
-            return "1";
+            return Result.fail("该台区已在监控台区列表！");
         }
         boolean flag = tgLineLossService.addMonitoringTg(tgNo);
         if (flag){
-            return "true";
+            return Result.success();
         }
-        return "false";
+        return Result.fail("添加失败！");
+    }
+
+    @RequiresPermissions({"tgLineLoss:select"})
+    @RequestMapping("queryTgReport")
+    public void queryTgReport(String tgNo,String date,@RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
+        List<TgReport> list = tgLineLossService.queryTgReport(tgNo,date,page,limit);
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count",tgLineLossService.selectTgReportNum(tgNo, date));
+        resultMap.put("data", list);
+        try {
+            JsonUtil.responseWriteJson(response,resultMap);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequiresPermissions({"tgLineLoss:select"})
+    @RequestMapping("queryOrgReport")
+    public void queryOrgReport(OrgReport orgReport,@RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
+        List<OrgReport> list = tgLineLossService.queryOrgReport(orgReport,page,limit);
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count",tgLineLossService.selectOrgReportNum(orgReport));
+        resultMap.put("data", list);
+        try {
+            JsonUtil.responseWriteJson(response,resultMap);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequiresPermissions({"tgLineLoss:select"})
+    @RequestMapping("queryTgConsReport")
+    public void queryTgConsReport(TgConsReport tgConsReport,@RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
+        List<TgConsReport> list = tgLineLossService.queryTgConsReport(tgConsReport,page,limit);
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count",tgLineLossService.selectTgConsReportNum(tgConsReport));
+        resultMap.put("data", list);
+        try {
+            JsonUtil.responseWriteJson(response,resultMap);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

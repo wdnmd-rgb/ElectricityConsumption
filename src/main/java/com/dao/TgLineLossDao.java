@@ -1,9 +1,6 @@
 package com.dao;
 
-import com.entity.ConsEle;
-import com.entity.MonitoringTg;
-import com.entity.TgLineLoss;
-import com.entity.TgResult;
+import com.entity.*;
 import com.util.DataSource;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,4 +16,10 @@ public interface TgLineLossDao {
     int selectMonitoringTgNum(String tgNo);
     int addMonitoringTg(String tgNo);
     int selectTgNum(String tgNo);
+    List<TgReport> queryTgReport(@Param("tgNo") String tgNo,@Param("date")String date);
+    int selectTgReportNum(@Param("tgNo") String tgNo,@Param("date")String date);
+    List<OrgReport> queryOrgReport(OrgReport orgReport);
+    int selectOrgReportNum(OrgReport orgReport);
+    List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport);
+    int selectTgConsReportNum(TgConsReport tgConsReport);
 }

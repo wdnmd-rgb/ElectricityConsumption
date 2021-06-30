@@ -1,9 +1,6 @@
 package com.service;
 
-import com.entity.ConsEle;
-import com.entity.MonitoringTg;
-import com.entity.TgLineLoss;
-import com.entity.TgResult;
+import com.entity.*;
 
 import java.util.List;
 
@@ -16,4 +13,10 @@ public interface TgLineLossService {
     int selectMonitoringTgNum(String tgNo);
     boolean addMonitoringTg(String tgNo);
     int selectTgNum(String tgNo);
+    List<TgReport> queryTgReport(String tgNo,String date,Integer pageNum,Integer pageSize);
+    int selectTgReportNum(String tgNo,String date);
+    List<OrgReport> queryOrgReport(OrgReport orgReport,Integer pageNum,Integer pageSize);
+    int selectOrgReportNum(OrgReport orgReport);
+    List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport,Integer pageNum,Integer pageSize);
+    int selectTgConsReportNum(TgConsReport tgConsReport);
 }

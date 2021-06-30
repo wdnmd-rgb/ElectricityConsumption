@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+<div id="testDiv">
+    <table class="layui-hide" id="test"></table>
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    var titleTpl = function (d) {
+        var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec" onclick="jump(d)" >'+d.monitoringCount+'</a>';
+        return html;
+    }
+    function jump(d){
+        console.log(d)
+        var orgNo = d.orgNo;
+        var url = "tgConsReport.html?orgNo="+orgNo;//此处拼接内容
+        window.location.href = url;
+    }
+
+    layui.use([ 'table'], function () {
+        var table = layui.table;
+
+        table.render({
+            id: "testReload"
+            , elem: '#test'
+            , url: 'tgLine/queryOrgReport'
+            , cols: [[
+                {field: 'cityName', title: '市公司名称'}
+                , {field: 'countyName', title: '县公司名称'}
+                , {field: 'orgNo', title: '供电所编号'}
+                , {field: 'orgName', title: '供电所名称'}
+                , {field: 'tgCount', title: '台区数量'}
+                , {field: 'hplcCount', title: 'hplc台区数量'}
+                , {field: 'monitoringCount', title: '监控台区数量',templet: titleTpl}
+                , {field: 'A', title: '优秀稳定台区'}
+                , {field: 'B', title: '合理耗损台区'}
+                , {field: 'C', title: '精益治损台区'}
+                , {field: 'D', title: '高损攻坚台区'}
+                , {field: 'E', title: '供售异常台区'}
+                , {field: 'releCount', title: '相关性次数'}
+            ]]
+            ,page: true
+        });
+
+    });
+
+</script>
+</body>
+</html>

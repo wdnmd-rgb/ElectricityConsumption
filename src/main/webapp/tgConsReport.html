@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script>
+        $(function(){
+            getData1();
+        });
+
+        function getData1(){
+            var orgNo = $.query.get("orgNo");
+            document.getElementById("orgNo").value=orgNo;
+            document.getElementById("search").click();
+        }
+    </script>
+</head>
+<body>
+<form class="layui-form" action="" id="complain_search">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <input type="text" name="orgNo" required lay-verify="required" placeholder="请输入供电所编号"
+                   autocomplete="off" class="layui-input" style="width: 300px;" id="orgNo">
+        </div>
+        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+            <input type="text" class="layui-input" id="date" name="date">
+        </div>
+        <div class="layui-inline">
+            <button id="search" class="layui-btn" lay-submit
+                    lay-filter="provinceSearch">查找
+            </button>
+        </div>
+    </div>
+</form>
+<div id="testDiv">
+    <table class="layui-hide" id="test"></table>
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    var titleTpl = function (d) {
+        var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec" onclick="jump(d)" >'+d.tgNo+'</a>';
+        return html;
+    }
+    var titleTpl2 = function (d) {
+        var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec" onclick="jump(d)" >'+d.consName+'</a>';
+        return html;
+    }
+    function jump(d){
+        console.log(d)
+        var tgNo = d.tgNo;
+        var date = "";
+        var url = "jumpTgLineLoss.html?tgNo="+tgNo+"&date="+date;//此处拼接内容
+        window.location.href = url;
+    }
+
+    layui.use(['form','table','laydate'], function () {
+        var table = layui.table;
+        var form = layui.form;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#date',//指定元素
+            value: getRecentDay(-1)
+            , min: -10
+            , max: -1
+        });
+        table.render({
+            id: "testReload"
+            , elem: '#test'
+            , url: 'tgLine/queryTgConsReport'
+            , cols: [[
+                {field: 'orgNo', title: '供电所编号'}
+                , {field: 'tgName', title: '台区名称'}
+                , {field: 'tgNo', title: '台区编号',templet: titleTpl}
+                , {field: 'tgTypeName', title: '类别定义'}
+                , {field: 'tgClass', title: '细分标签'}
+                , {field: 'tgClassComment', title: '分类规则'}
+                , {field: 'mergeLinelossRate', title: '目标线损率'}
+                , {field: 'linelossRateInterval', title: '目标线损率区间'}
+                , {field: 'consNo', title: '用户编号'}
+                , {field: 'rid', title: '设备ID'}
+                , {field: 'consName', title: '用户名称',templet: titleTpl2}
+                , {field: 'tFactor', title: '倍率'}
+                , {field: 'assetNo', title: '资产编号'}
+                , {field: 'ele', title: '当天电量'}
+                , {field: 'pearson', title: '相关系数'}
+                , {field: 'dateDay', title: '时间'}
+            ]]
+            ,page: true
+        });
+
+        form.render();
+        form.on('submit(provinceSearch)', function (data) {
+            var formData = data.field;
+            var orgNo = formData.orgNo;
+            var date = formData.date;
+            table.reload('testReload', {
+                where: {
+                    orgNo: orgNo,
+                    date:date
+                },
+                url: 'tgLine/queryTgConsReport',
+                method: 'post'
+            });
+            return false;
+        });
+
+    });
+    function getRecentDay(day) {
+        var today = new Date();
+        var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+        today.setTime(targetday_milliseconds);
+        var tYear = today.getFullYear();
+        var tMonth = today.getMonth();
+        var tDate = today.getDate();
+        tMonth = doHandleMonth(tMonth + 1);
+        tDate = doHandleMonth(tDate);
+
+        return tYear + "-" + tMonth + "-" + tDate;
+    }
+
+    function doHandleMonth(month) {
+        var m = month;
+        if (month.toString().length == 1) {
+            m = "0" + month;
+        }
+        return m;
+    }
+
+</script>
+</body>
+</html>

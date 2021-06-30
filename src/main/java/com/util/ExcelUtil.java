@@ -422,7 +422,6 @@ public class ExcelUtil {
                     rowEle.createCell(34).setCellValue(electrics.getQc());
                     papRp=papR;
                     rowNum++;
-                    System.out.println(electrics);
                     list.add(electrics);
                 }
             }
@@ -513,9 +512,9 @@ public class ExcelUtil {
             row.createCell(22).setCellValue(consEle.getQc());
             row.createCell(23).setCellValue(consEle.getRemark());
             row.createCell(24).setCellValue(consEle.getRap());
-            row.createCell(25).setCellValue(consEle.getRapR());
-            row.createCell(26).setCellValue(consEle.getRapRDiff());
-            row.createCell(27).setCellValue(consEle.getRapEle());
+            row.createCell(25).setCellValue(consEle.getRapR()+"");
+            row.createCell(26).setCellValue(consEle.getRapRDiff()+"");
+            row.createCell(27).setCellValue(consEle.getRapEle()+"");
         }
         return workbook;
     }

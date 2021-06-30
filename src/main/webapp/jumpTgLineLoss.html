@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" style="padding-top: 30px;text-align:center;" id="complain_search">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <input type="text" name="no" required lay-verify="required" placeholder="请输入台区编号"
+                   autocomplete="off" class="layui-input" style="width: 300px;" id="no">
+        </div>
+        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+            <input type="text" class="layui-input" id="date" name="date">
+        </div>
+        <div class="layui-inline">
+            <select name="index" lay-verify="required" id="index">
+                <option value="1">请选择时间间隔</option>
+                <option value="1">1小时</option>
+                <option value="2">2小时</option>
+                <option value="3">3小时</option>
+            </select>
+        </div>
+        <div class="layui-inline">
+            <button id="search" class="layui-btn" lay-submit
+                    lay-filter="provinceSearch">查找
+            </button>
+        </div>
+        <div class="layui-inline" style="display: none" id="testDiv2"> <!-- 注意：这一层元素并不是必须的 -->
+            <a class="layui-btn" href="" download id="update">下载明细</a>
+        </div>
+        <div class="layui-inline" style="display: none" id="testDiv3"> <!-- 注意：这一层元素并不是必须的 -->
+            <button type="button" class="layui-btn" onclick="change()">切换累计图</button>
+        </div>
+        <div class="layui-inline" style="display: none" id="testDiv5"> <!-- 注意：这一层元素并不是必须的 -->
+            <button type="button" class="layui-btn" onclick="change2()">切换分时图</button>
+        </div>
+    </div>
+</form>
+<div style="display: none" id="testDiv">
+    <table class="layui-hide" id="test"></table>
+</div>
+<div style="display: none;padding-top: 30px;text-align:center;" id="testDiv4">
+    <div id="main" style="width: 1500px;height:700px;"></div>
+</div>
+<div style="display: none;padding-top: 30px;text-align:center;" id="testDiv1">
+    <div id="main1" style="width: 1500px;height:700px;"></div>
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="layui/layui.js"></script>
+<script src="js/echarts.min.js"></script>
+<script type="text/javascript">
+
+
+    layui.use(['laydate', 'form', 'table'], function () {
+        var form = layui.form;
+        var laydate = layui.laydate;
+        var table = layui.table;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#date',//指定元素
+            value: getRecentDay(-1)
+            , min: -10
+            , max: -1
+        });
+        table.render({
+            id: "testReload"
+            , elem: '#test'
+            , url: 'tgLine/queryTgLineLoss'
+            , cols: [[
+                {field: 'orgName', title: '供电所名称',width:180}
+                , {field: 'tgName', title: '台区名称',width:220}
+                , {field: 'tgNo', title: '台区编号',width:100}
+                , {field: 'eventTime', title: '时间',width:100}
+                , {field: 'count', title: '台区用户数',width:100}
+                , {field: 'realCount', title: '实际用户数',width:100}
+                , {field: 'remark0', title: '丢失点数量',width:100}
+                , {field: 'remark1', title: '跳变点数量',width:100}
+                , {field: 'remark2', title: '负值点数量',width:100}
+                , {field: 'remark3', title: '缺失点数量',width:100}
+                , {field: 'ppq', title: '考核电量',width:100}
+                , {field: 'upq', title: '用户电量',width:100}
+                , {field: 'lossPq', title: '损失电量',width:100}
+                , {field: 'rate', title: '线损率(%)',width:100}
+            ]]
+        });
+
+        form.render();
+        form.on('submit(provinceSearch)', function (data) {
+            $("#testDiv2").css("display", "none");
+            $("#testDiv1").css("display", "none");
+            $("#testDiv4").css("display", "none");
+            $("#testDiv3").css("display", "none");
+            $("#testDiv5").css("display", "none");
+            $("#testDiv").css("display", "none");
+            var loading = layer.load(0, {
+                shade: false,
+                time: 100*1000
+            });
+            var formData = data.field;
+            var no = formData.no;
+            var date = formData.date;
+            var index = $("#index").val();
+            table.reload('testReload', {
+                where: {
+                    tgNo: no,
+                    date: date,
+                    index:index
+                },
+                url: 'tgLine/queryTgLineLoss',
+                method: 'post',
+                done: function (res) {
+                    console.log(res.msg);
+                    $("#update").attr("href", res.msg[4]);
+                    show("main",res.msg[0],res.msg[1],res.msg[2],res.msg[3],res.msg[5]);
+                    show("main1",res.msg[0],res.msg[6],res.msg[7],res.msg[8],res.msg[5]);
+                    layer.close(loading);
+                    $("#testDiv").css("display", "");
+                    $("#testDiv2").css("display", "");
+                    $("#testDiv4").css("display", "");
+                    $("#testDiv3").css("display", "");
+                }
+            });
+            return false;
+        });
+
+
+    });
+
+    function show(id,time,array1,array2,array3,array4) {
+        var chartDom = document.getElementById(id);
+        var myChart = echarts.init(chartDom);
+        var option;
+        option = {
+            title: {
+                text: name,
+                x: 'center',
+                y: 'top'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['考核表电量', '用户表电量','线损率','缺点数']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: time
+            },
+            yAxis: [
+                {
+                    name:'电量',
+                    type: 'value',
+                    offset: 30,
+                    axisLabel: {
+                        formatter: '{value}'
+                    },
+                    position: 'right'
+                },
+                {
+                    name:'线损率',
+                    type: 'value',
+                    offset: 30,
+                    axisLabel: {
+                        formatter: '{value}%'
+                    },
+                    position: 'left'
+                },
+                {
+                    name:'缺点数',
+                    type: 'value',
+                    offset: 80,
+                    axisLabel: {
+                        formatter: '{value}'
+                    },
+                    position: 'left'
+                }
+            ],
+            series: [
+                {
+                    name: '考核表电量',
+                    type: 'bar',
+                    yAxisIndex:0,
+                    barWidth : 20,
+                    data: array1
+                },
+                {
+                    name: '用户表电量',
+                    type: 'bar',
+                    yAxisIndex:0,
+                    barWidth : 20,
+                    data: array2
+                },{
+                    name: '线损率',
+                    type: 'line',
+                    yAxisIndex:1,
+                    data: array3
+                },{
+                    name: '缺点数',
+                    type: 'line',
+                    yAxisIndex:2,
+                    data: array4
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+    function change() {
+        $("#testDiv3").css("display", "none");
+        $("#testDiv4").css("display", "none");
+        $("#testDiv1").css("display", "");
+        $("#testDiv5").css("display", "");
+    }
+    function change2() {
+        $("#testDiv5").css("display", "none");
+        $("#testDiv1").css("display", "none");
+        $("#testDiv4").css("display", "");
+        $("#testDiv3").css("display", "");
+    }
+    function getRecentDay(day) {
+        var today = new Date();
+        var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+        today.setTime(targetday_milliseconds);
+        var tYear = today.getFullYear();
+        var tMonth = today.getMonth();
+        var tDate = today.getDate();
+        tMonth = doHandleMonth(tMonth + 1);
+        tDate = doHandleMonth(tDate);
+
+        return tYear + "-" + tMonth + "-" + tDate;
+    }
+
+    function doHandleMonth(month) {
+        var m = month;
+        if (month.toString().length == 1) {
+            m = "0" + month;
+        }
+        return m;
+    }
+</script>
+</body>
+</html>

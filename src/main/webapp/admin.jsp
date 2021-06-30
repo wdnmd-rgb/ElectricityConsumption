@@ -48,6 +48,9 @@
                         <dd><a href="selectTgLineLoss.html">台区小时级线损查询</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
+                        <dd><a href="tgReport.html">查看线损台区情况</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
                         <dd><a href="selectMonitoringTg.html">查询监控台区</a></dd>
                     </dl>
                     <dl class="layui-nav-child">

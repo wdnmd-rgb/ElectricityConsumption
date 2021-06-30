@@ -55,6 +55,7 @@ public class TimeUtil {
         String [] pbs = new String[list.size()];
         String [] pcs = new String[list.size()];
         String [] ps = new String[list.size()];
+        String [] ele = new String[list.size()];
         for(String rid:ids){
             for (int i =0,j=0;i<96;i++){
                 Long time2 = time+(i*900000);
@@ -73,6 +74,7 @@ public class TimeUtil {
                     pbs[j]=electrics.getPb();
                     pcs[j]=electrics.getPc();
                     ps[j]=electrics.getP();
+                    ele[j]=electrics.getEle();
                     j++;
                 }
 
@@ -91,6 +93,7 @@ public class TimeUtil {
         stringObjectMap.put("pbs",pbs);
         stringObjectMap.put("pcs",pcs);
         stringObjectMap.put("ps",ps);
+        stringObjectMap.put("ele",ele);
         return stringObjectMap;
     }
 

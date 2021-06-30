@@ -67,6 +67,51 @@
         <result property="xsLx" column="xs_lx" jdbcType="VARCHAR"/>
         <result property="fsLX" column="fs_lX" jdbcType="VARCHAR"/>
     </resultMap>
+    <resultMap id="TgReportMap" type="com.entity.TgReport">
+        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
+        <result property="ppq" column="ppq" jdbcType="VARCHAR"/>
+        <result property="upq" column="upq" jdbcType="VARCHAR"/>
+        <result property="lossPq" column="loss_pq" jdbcType="VARCHAR"/>
+        <result property="lossPer" column="loss_per" jdbcType="VARCHAR"/>
+        <result property="dateDay" column="date_day" jdbcType="VARCHAR"/>
+        <result property="count" column="count" jdbcType="VARCHAR"/>
+        <result property="realCount" column="real_count" jdbcType="VARCHAR"/>
+        <result property="suspicious" column="suspicious" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="OrgReportMap" type="com.entity.OrgReport">
+        <result property="cityName" column="city_name" jdbcType="VARCHAR"/>
+        <result property="countyName" column="county_name" jdbcType="VARCHAR"/>
+        <result property="orgNo" column="org_no" jdbcType="VARCHAR"/>
+        <result property="orgName" column="org_name" jdbcType="VARCHAR"/>
+        <result property="tgCount" column="tg_count" jdbcType="NUMERIC"/>
+        <result property="hplcCount" column="hplc_count" jdbcType="NUMERIC"/>
+        <result property="monitoringCount" column="monitoring_count" jdbcType="NUMERIC"/>
+        <result property="a" column="a" jdbcType="NUMERIC"/>
+        <result property="b" column="b" jdbcType="NUMERIC"/>
+        <result property="c" column="c" jdbcType="NUMERIC"/>
+        <result property="d" column="d" jdbcType="NUMERIC"/>
+        <result property="e" column="e" jdbcType="NUMERIC"/>
+        <result property="releCount" column="rele_count" jdbcType="NUMERIC"/>
+        <result property="statMonth" column="stat_month" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="TgConsReportMap" type="com.entity.TgConsReport">
+        <result property="orgNo" column="org_no" jdbcType="VARCHAR"/>
+        <result property="tgName" column="tg_name" jdbcType="VARCHAR"/>
+        <result property="tgNo" column="tg_no" jdbcType="VARCHAR"/>
+        <result property="tgTypeName" column="tg_type_name" jdbcType="VARCHAR"/>
+        <result property="tgClass" column="tg_class" jdbcType="VARCHAR"/>
+        <result property="tgClassComment" column="tg_class_comment" jdbcType="VARCHAR"/>
+        <result property="mergeLinelossRate" column="merge_lineloss_rate" jdbcType="VARCHAR"/>
+        <result property="linelossRateInterval" column="lineloss_rate_interval" jdbcType="VARCHAR"/>
+        <result property="consNo" column="cons_no" jdbcType="VARCHAR"/>
+        <result property="rid" column="rid" jdbcType="VARCHAR"/>
+        <result property="consName" column="cons_name" jdbcType="VARCHAR"/>
+        <result property="tFactor" column="t_factor" jdbcType="NUMERIC"/>
+        <result property="assetNo" column="asset_no" jdbcType="VARCHAR"/>
+        <result property="ele" column="ele" jdbcType="NUMERIC"/>
+        <result property="pearson" column="pearson" jdbcType="NUMERIC"/>
+        <result property="dateDay" column="date_day" jdbcType="VARCHAR"/>
+    </resultMap>
 
     <!--    <select id="queryTgLineLoss" resultMap="TgLineLossMap">-->
     <!--        select tg_no,ppq,upq,loss_pq,loss_per,event_time,remark from dws_elecon.dws_elecon_tg_loss-->
@@ -121,11 +166,101 @@
         </if>
     </where>
     </select>
-
+    <select id="queryTgReport" resultMap="TgReportMap">
+        select tg_no,ppq,upq,loss_pq,loss_per,date_day,count,real_count,suspicious
+        from dws_elecon.dws_elecon_tg_report
+        <where>
+            <if test="tgNo != null">
+                and tg_no = #{tgNo}
+            </if>
+            <if test="date != null">
+                and date_day = #{date}
+            </if>
+        </where>
+    </select>
+    <select id="selectTgReportNum" resultType="java.lang.Integer">
+        select count(*)
+        from dws_elecon.dws_elecon_tg_report
+        <where>
+            <if test="tgNo != null">
+                and tg_no = #{tgNo}
+            </if>
+            <if test="date != null">
+                and date_day = #{date}
+            </if>
+        </where>
+    </select>
     <insert id="addMonitoringTg" keyProperty="id" useGeneratedKeys="true">
         insert into dws_elecon.dws_elecon_monitoring_tg(city_name,county_name,org_no,org_name,tg_no,tg_name,xs_lx,fs_lX)(
         select a.city_name,a.county_name,a.org_no,a.org_name,a.tg_no,a.tg_name,b.xs_lx,b.fs_lx from
         dws_elecon.relation a,buf_amr_sea.tx_tq_zb_new b where a.tg_no = #{tgNo} and a.tg_no=b.tg_no and b.stat_date='20210522'
         )
     </insert>
+    <select id="queryOrgReport" resultMap="OrgReportMap">
+        select city_name,county_name,org_no,org_name,tg_count,hplc_count,monitoring_count,a,b,c,d,e,rele_count,stat_month
+        from dws_elecon.dws_elecon_org_report
+        <where>
+            <if test="cityName != null">
+                and city_name = #{cityName}
+            </if>
+            <if test="countyName != null">
+                and county_name = #{countyName}
+            </if>
+            <if test="orgNo != null">
+                and org_no = #{orgNo}
+            </if>
+            <if test="statMonth != null">
+                and stat_month = #{statMonth}
+            </if>
+        </where>
+    </select>
+    <select id="selectOrgReportNum" resultType="java.lang.Integer">
+        select count(*)
+        from dws_elecon.dws_elecon_org_report
+        <where>
+            <if test="cityName != null">
+                and city_name = #{cityName}
+            </if>
+            <if test="countyName != null">
+                and county_name = #{countyName}
+            </if>
+            <if test="orgNo != null">
+                and org_no = #{orgNo}
+            </if>
+            <if test="statMonth != null">
+                and stat_month = #{statMonth}
+            </if>
+        </where>
+    </select>
+    <select id="queryTgConsReport" resultMap="TgConsReportMap">
+        select b.org_name,b.tg_name,b.tg_no,b.tg_type_name,b.tg_class,b.tg_class_comment,b.merge_lineloss_rate,b.lineloss_rate_interval,
+        a.cons_no,a.rid,a.cons_name,a.t_factor,a.asset_no,a.ele,a.pearson,a.date_day
+        from dws_elecon.dws_elecon_cons_report a,buf_khbq_khxf.line_loss_class_report_detail b
+        <where>
+            <if test="1 == 1">
+                and a.tg_no=b.tg_no and b.stat_month = (select max(stat_month) from buf_khbq_khxf.line_loss_class_report_detail)
+            </if>
+            <if test="dateDay != null">
+                and date_day = #{dateDay}
+            </if>
+            <if test="orgNo != null">
+                and org_no = #{orgNo}
+            </if>
+        </where>
+    </select>
+    <select id="selectTgConsReportNum" resultType="java.lang.Integer">
+        select count(*)
+        from dws_elecon.dws_elecon_cons_report a,buf_khbq_khxf.line_loss_class_report_detail b
+        <where>
+            <if test="1 == 1">
+                and a.tg_no=b.tg_no and b.stat_month = (select max(stat_month) from buf_khbq_khxf.line_loss_class_report_detail)
+            </if>
+            <if test="dateDay != null">
+                and date_day = #{dateDay}
+            </if>
+            <if test="orgNo != null">
+                and org_no = #{orgNo}
+            </if>
+        </where>
+    </select>
 </mapper>

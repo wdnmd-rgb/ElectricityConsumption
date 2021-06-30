@@ -22,7 +22,7 @@
 <form class="layui-form" style="padding-top: 30px;text-align:center;display: none;" id="add">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <input type="text" name="no" required lay-verify="required" placeholder="请输入台区编号"
+            <input type="text" name="tgNo" required lay-verify="required" placeholder="请输入台区编号"
                    autocomplete="off" class="layui-input" style="width: 300px;" id="tgNo">
         </div>
         <div class="layui-inline">
@@ -40,7 +40,6 @@
 </div>
 <script src="js/jquery-3.4.1.js"></script>
 <script src="layui/layui.js"></script>
-<script src="js/echarts.min.js"></script>
 <script type="text/javascript">
     function fun(){
         $("#add").css("display", "none");
@@ -58,16 +57,12 @@
         form.on('submit(formDemo)', function(data){
             var f = data.field;
             $.post("tgLine/addMonitoringTg",{"tgNo":f.tgNo},function (result) {
-                if(result == 0){
-                    alert("输入台区编号有误，该台区不存在！");
-                }else if(result == 1){
-                    alert("该台区已在监控台区列表！");
-                }else if(result == true){
+                if(result.code == 200){
                     alert("添加成功！");
-                }else if(result == false){
-                    alert("添加失败！");
+                }else{
+                    alert(result.msg);
                 }
-            })
+            });
             return false;
         });
         table.render({

@@ -1,10 +1,7 @@
 package com.service.impl;
 
 import com.dao.TgLineLossDao;
-import com.entity.ConsEle;
-import com.entity.MonitoringTg;
-import com.entity.TgLineLoss;
-import com.entity.TgResult;
+import com.entity.*;
 import com.github.pagehelper.PageHelper;
 import com.service.TgLineLossService;
 import org.springframework.stereotype.Service;
@@ -55,5 +52,38 @@ public class TgLineLossServiceImpl implements TgLineLossService {
     @Override
     public int selectTgNum(String tgNo) {
         return tgLineLossDao.selectTgNum(tgNo);
+    }
+
+    @Override
+    public List<TgReport> queryTgReport(String tgNo, String date,Integer pageNum,Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return tgLineLossDao.queryTgReport(tgNo,date);
+    }
+
+    @Override
+    public int selectTgReportNum(String tgNo, String date) {
+        return tgLineLossDao.selectTgReportNum(tgNo, date);
+    }
+
+    @Override
+    public List<OrgReport> queryOrgReport(OrgReport orgReport,Integer pageNum,Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return tgLineLossDao.queryOrgReport(orgReport);
+    }
+
+    @Override
+    public int selectOrgReportNum(OrgReport orgReport) {
+        return tgLineLossDao.selectOrgReportNum(orgReport);
+    }
+
+    @Override
+    public List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return tgLineLossDao.queryTgConsReport(tgConsReport);
+    }
+
+    @Override
+    public int selectTgConsReportNum(TgConsReport tgConsReport) {
+        return tgLineLossDao.selectTgConsReportNum(tgConsReport);
     }
 }

@@ -429,7 +429,7 @@ public class EleController {
         List<Electrics> list1 = ListUtil.page(list,page,limit);
         Object object[] = new Object[]{("file/"+fileName),stringObjectMap.get("times"),stringObjectMap.get("uas"),stringObjectMap.get("ubs"),
                 stringObjectMap.get("ucs"),stringObjectMap.get("ias"),stringObjectMap.get("ibs"),stringObjectMap.get("ics"),stringObjectMap.get("i0s"),
-        stringObjectMap.get("pas"),stringObjectMap.get("pbs"),stringObjectMap.get("pcs"),stringObjectMap.get("ps")};
+        stringObjectMap.get("pas"),stringObjectMap.get("pbs"),stringObjectMap.get("pcs"),stringObjectMap.get("ps"),stringObjectMap.get("ele")};
         map.put("code","0");
         map.put("msg",object);
         map.put("count",list.size());
