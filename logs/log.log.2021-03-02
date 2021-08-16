@@ -1,0 +1,28 @@
+2021-03-02 10:47:05  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-02 10:47:05  [ localhost-startStop-1:222 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@39381af0'
+2021-03-02 10:47:05  [ localhost-startStop-1:376 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConDao.xml]'
+2021-03-02 10:47:05  [ localhost-startStop-1:398 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConTemDao.xml]'
+2021-03-02 10:47:05  [ localhost-startStop-1:413 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-02 10:47:06  [ localhost-startStop-1:1020 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-02 10:47:06  [ localhost-startStop-1:1021 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-02 10:47:06  [ localhost-startStop-1:1042 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-02 10:47:06  [ localhost-startStop-1:1067 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-02 10:47:06  [ localhost-startStop-1:1068 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-02 10:47:06  [ localhost-startStop-1:1069 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-02 10:47:06  [ localhost-startStop-1:1094 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-02 10:47:06  [ localhost-startStop-1:1107 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-02 10:47:13  [ http-bio-8080-exec-4:8060 ] - [ INFO ]  Hello World!!!
+2021-03-02 14:01:16  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-02 14:01:16  [ localhost-startStop-1:192 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@7c523ca'
+2021-03-02 14:01:16  [ localhost-startStop-1:306 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConDao.xml]'
+2021-03-02 14:01:16  [ localhost-startStop-1:318 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConTemDao.xml]'
+2021-03-02 14:01:16  [ localhost-startStop-1:332 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-02 14:01:16  [ localhost-startStop-1:727 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-02 14:01:16  [ localhost-startStop-1:727 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-02 14:01:16  [ localhost-startStop-1:735 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-02 14:01:16  [ localhost-startStop-1:743 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-02 14:01:16  [ localhost-startStop-1:743 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-02 14:01:16  [ localhost-startStop-1:744 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-02 14:01:16  [ localhost-startStop-1:761 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-02 14:01:16  [ localhost-startStop-1:768 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-02 14:01:23  [ http-bio-8080-exec-1:7010 ] - [ INFO ]  Hello World!!!

@@ -1,0 +1,13 @@
+2021-03-03 10:51:33  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-03 10:51:34  [ localhost-startStop-1:204 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@630e8cc4'
+2021-03-03 10:51:34  [ localhost-startStop-1:408 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-03 10:51:34  [ localhost-startStop-1:427 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UsersDao.xml]'
+2021-03-03 10:51:34  [ localhost-startStop-1:986 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-03 10:51:34  [ localhost-startStop-1:986 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-03 10:51:34  [ localhost-startStop-1:996 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-03 10:51:34  [ localhost-startStop-1:1007 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-03 10:51:34  [ localhost-startStop-1:1008 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-03 10:51:34  [ localhost-startStop-1:1009 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-03 10:51:34  [ localhost-startStop-1:1031 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-03 10:51:34  [ localhost-startStop-1:1037 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-03 10:51:39  [ http-bio-8080-exec-2:5270 ] - [ INFO ]  Hello World!!!

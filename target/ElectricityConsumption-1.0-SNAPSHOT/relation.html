@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+	</head>
+	<body>
+		<form class="layui-form" style="padding-top: 30px;text-align:center;" id="complain_search">
+		<div class="layui-form-item">
+		    <div class="layui-inline">
+		        <input type="text" name="no" required  lay-verify="required" placeholder="请输入台区编号" 
+				autocomplete="off" class="layui-input" style="width: 300px;" id="no">
+		    </div>
+			<div class="layui-inline">
+				<button id="search" class="layui-btn" lay-submit
+						lay-filter="provinceSearch">查找</button>
+			</div>
+			</div>
+		</form>
+		<div style="display: none" id="testDiv">
+			<table class="layui-hide" id="test" ></table>
+		</div>
+		<script src="js/jquery-3.4.1.js"></script>
+		<script src="layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use(['laydate', 'form','table'],function(){
+				var form = layui.form;
+				var table = layui.table;
+
+				table.render({
+					id:"testReload"
+					,elem: '#test'
+					,url:'relation/queryByTgNo'
+					,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+					,cols: [[
+						{field:'cityNo',title: '市公司编号'}
+						,{field:'cityName',title: '市公司名称'}
+						,{field:'countyNo',title: '县公司编号'}
+						,{field:'countyName',title: '县公司名称'}
+						,{field:'orgNo', title: '供电所编号'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+						,{field:'orgName', title: '供电所名称'}
+						,{field:'tgNo', title: '台区编号'}
+						,{field:'tgName', title: '台区名称'}
+					]]
+				});
+
+				form.render();
+				form.on('submit(provinceSearch)', function(data) {
+					var formData = data.field;
+					var no = formData.no;
+					table.reload('testReload', {
+						where: {
+							tgNo:no
+						},
+						url: 'relation/queryByTgNo',
+						method: 'post',
+                        done:function (res) {
+                            $("#testDiv").css("display","");
+                        }
+					});
+					return false;
+				});
+
+
+			});
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,180 @@
+2021-03-23 10:32:07  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-23 10:32:07  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-23 10:32:07  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'electricsDao' and 'com.dao.ElectricsDao' mapperInterface
+2021-03-23 10:32:07  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'permissionDao' and 'com.dao.PermissionDao' mapperInterface
+2021-03-23 10:32:07  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'relationDao' and 'com.dao.RelationDao' mapperInterface
+2021-03-23 10:32:07  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'roleDao' and 'com.dao.RoleDao' mapperInterface
+2021-03-23 10:32:07  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-23 10:32:08  [ localhost-startStop-1:550 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-23 10:32:08  [ localhost-startStop-1:750 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-23 10:32:08  [ localhost-startStop-1:760 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\ElectricsDao.xml]'
+2021-03-23 10:32:08  [ localhost-startStop-1:770 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\PermissionDao.xml]'
+2021-03-23 10:32:08  [ localhost-startStop-1:780 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\RelationDao.xml]'
+2021-03-23 10:32:08  [ localhost-startStop-1:790 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\RoleDao.xml]'
+2021-03-23 10:32:08  [ localhost-startStop-1:810 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-23 10:32:08  [ localhost-startStop-1:854 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-23 10:32:08  [ localhost-startStop-1:855 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-23 10:32:08  [ localhost-startStop-1:857 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-23 10:32:08  [ localhost-startStop-1:1239 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-23 10:32:08  [ localhost-startStop-1:1257 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-23 10:32:08  [ localhost-startStop-1:1258 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-23 10:32:08  [ localhost-startStop-1:1260 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-23 10:32:08  [ localhost-startStop-1:1260 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-23 10:32:08  [ localhost-startStop-1:1261 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-23 10:32:08  [ localhost-startStop-1:1261 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-23 10:32:08  [ localhost-startStop-1:1262 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-23 10:32:08  [ localhost-startStop-1:1263 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-23 10:32:08  [ localhost-startStop-1:1264 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-23 10:32:08  [ localhost-startStop-1:1265 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-23 10:32:08  [ localhost-startStop-1:1266 ] - [ DEBUG ]  Creating chain [/selectTgOrg.html] from String definition [authc,perms["elecon:select"]]
+2021-03-23 10:32:08  [ localhost-startStop-1:1266 ] - [ DEBUG ]  Attempting to apply path [/selectTgOrg.html] to filter [authc] with config [null]
+2021-03-23 10:32:08  [ localhost-startStop-1:1267 ] - [ DEBUG ]  Attempting to apply path [/selectTgOrg.html] to filter [perms] with config [elecon:select]
+2021-03-23 10:32:09  [ localhost-startStop-1:1805 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 10:32:09  [ localhost-startStop-1:1805 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-23 10:32:09  [ localhost-startStop-1:1835 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-23 10:32:09  [ localhost-startStop-1:1845 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-23 10:32:09  [ localhost-startStop-1:1845 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-23 10:32:09  [ localhost-startStop-1:1845 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-23 10:32:09  [ localhost-startStop-1:1875 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-23 10:32:09  [ localhost-startStop-1:1885 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:85821 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:85831 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@676fa43d] was not registered for synchronization because synchronization is not active
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86101 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@30dd672d] will not be managed by Spring
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86101 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86121 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86141 ] - [ DEBUG ]  <==      Total: 1
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86141 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@676fa43d]
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86151 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86151 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86151 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86151 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86151 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86161 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Mon, 22-Mar-2021 02:33:33 GMT]
+2021-03-23 10:33:33  [ http-bio-8080-exec-2:86161 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-23 11:19:49  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-23 11:19:49  [ localhost-startStop-1:29 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-23 11:19:49  [ localhost-startStop-1:30 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'electricsDao' and 'com.dao.ElectricsDao' mapperInterface
+2021-03-23 11:19:49  [ localhost-startStop-1:30 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'permissionDao' and 'com.dao.PermissionDao' mapperInterface
+2021-03-23 11:19:49  [ localhost-startStop-1:30 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'relationDao' and 'com.dao.RelationDao' mapperInterface
+2021-03-23 11:19:49  [ localhost-startStop-1:31 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'roleDao' and 'com.dao.RoleDao' mapperInterface
+2021-03-23 11:19:49  [ localhost-startStop-1:31 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-23 11:19:49  [ localhost-startStop-1:481 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-23 11:19:50  [ localhost-startStop-1:720 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-23 11:19:50  [ localhost-startStop-1:730 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\ElectricsDao.xml]'
+2021-03-23 11:19:50  [ localhost-startStop-1:743 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\PermissionDao.xml]'
+2021-03-23 11:19:50  [ localhost-startStop-1:753 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\RelationDao.xml]'
+2021-03-23 11:19:50  [ localhost-startStop-1:765 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\RoleDao.xml]'
+2021-03-23 11:19:50  [ localhost-startStop-1:780 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-23 11:19:50  [ localhost-startStop-1:826 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-23 11:19:50  [ localhost-startStop-1:826 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-23 11:19:50  [ localhost-startStop-1:827 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-23 11:19:50  [ localhost-startStop-1:1211 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Creating chain [/selectTgOrg.html] from String definition [authc,perms["elecon:select"]]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/selectTgOrg.html] to filter [authc] with config [null]
+2021-03-23 11:19:50  [ localhost-startStop-1:1232 ] - [ DEBUG ]  Attempting to apply path [/selectTgOrg.html] to filter [perms] with config [elecon:select]
+2021-03-23 11:19:51  [ localhost-startStop-1:1813 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 11:19:51  [ localhost-startStop-1:1813 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-23 11:19:51  [ localhost-startStop-1:1823 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-23 11:19:51  [ localhost-startStop-1:1843 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-23 11:19:51  [ localhost-startStop-1:1843 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-23 11:19:51  [ localhost-startStop-1:1843 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-23 11:19:51  [ localhost-startStop-1:1863 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-23 11:19:51  [ localhost-startStop-1:1885 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5188 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5198 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21be06d8] was not registered for synchronization because synchronization is not active
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5450 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@644645a0] will not be managed by Spring
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5461 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5472 ] - [ DEBUG ]  ==> Parameters: (String)
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5482 ] - [ DEBUG ]  <==      Total: 0
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5482 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21be06d8]
+2021-03-23 11:19:54  [ http-bio-8080-exec-2:5492 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Mon, 22-Mar-2021 03:19:54 GMT]
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:14983 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:14984 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c7a6eae] was not registered for synchronization because synchronization is not active
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:14991 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@73c7db1] will not be managed by Spring
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:14991 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:14991 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:15001 ] - [ DEBUG ]  <==      Total: 1
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:15001 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c7a6eae]
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:15001 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:15001 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:15001 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:15001 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-23 11:20:04  [ http-bio-8080-exec-3:15001 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Mon, 22-Mar-2021 03:20:04 GMT]
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19596 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19597 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b802efb] was not registered for synchronization because synchronization is not active
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19605 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@142d069] will not be managed by Spring
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19605 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19606 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19607 ] - [ DEBUG ]  <==      Total: 1
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19608 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1b802efb]
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19608 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19609 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19609 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19610 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19610 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19618 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Mon, 22-Mar-2021 03:20:08 GMT]
+2021-03-23 11:20:08  [ http-bio-8080-exec-4:19619 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-23 11:22:09  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-23 11:22:09  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-23 11:22:09  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'electricsDao' and 'com.dao.ElectricsDao' mapperInterface
+2021-03-23 11:22:09  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'permissionDao' and 'com.dao.PermissionDao' mapperInterface
+2021-03-23 11:22:09  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'relationDao' and 'com.dao.RelationDao' mapperInterface
+2021-03-23 11:22:09  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'roleDao' and 'com.dao.RoleDao' mapperInterface
+2021-03-23 11:22:09  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-23 11:22:09  [ localhost-startStop-1:390 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-23 11:22:09  [ localhost-startStop-1:540 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-23 11:22:09  [ localhost-startStop-1:550 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\ElectricsDao.xml]'
+2021-03-23 11:22:09  [ localhost-startStop-1:560 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\PermissionDao.xml]'
+2021-03-23 11:22:09  [ localhost-startStop-1:570 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\RelationDao.xml]'
+2021-03-23 11:22:09  [ localhost-startStop-1:580 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\RoleDao.xml]'
+2021-03-23 11:22:09  [ localhost-startStop-1:590 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-23 11:22:09  [ localhost-startStop-1:640 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-23 11:22:09  [ localhost-startStop-1:640 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-23 11:22:09  [ localhost-startStop-1:640 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-23 11:22:10  [ localhost-startStop-1:940 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Creating chain [/selectTgOrg.html] from String definition [authc,perms["elecon:select"]]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/selectTgOrg.html] to filter [authc] with config [null]
+2021-03-23 11:22:10  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/selectTgOrg.html] to filter [perms] with config [elecon:select]
+2021-03-23 11:22:10  [ localhost-startStop-1:1700 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-23 11:22:10  [ localhost-startStop-1:1700 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-23 11:22:10  [ localhost-startStop-1:1710 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-23 11:22:10  [ localhost-startStop-1:1720 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-23 11:22:10  [ localhost-startStop-1:1720 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-23 11:22:10  [ localhost-startStop-1:1720 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-23 11:22:10  [ localhost-startStop-1:1740 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-23 11:22:10  [ localhost-startStop-1:1750 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-23 11:22:21  [ http-bio-8080-exec-4:12717 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-23 11:22:21  [ http-bio-8080-exec-4:12724 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61f6d374] was not registered for synchronization because synchronization is not active
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:12961 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@457854cc] will not be managed by Spring
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:12967 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:12984 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13000 ] - [ DEBUG ]  <==      Total: 1
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13001 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61f6d374]
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13007 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13007 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13007 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13008 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13008 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13009 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13009 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Mon, 22-Mar-2021 03:22:22 GMT]
+2021-03-23 11:22:22  [ http-bio-8080-exec-4:13010 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.

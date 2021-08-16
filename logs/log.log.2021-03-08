@@ -1,0 +1,220 @@
+2021-03-08 10:56:31  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 10:56:31  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 10:56:31  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 10:56:32  [ localhost-startStop-1:719 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 10:56:32  [ localhost-startStop-1:919 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 11:00:19  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 11:00:19  [ localhost-startStop-1:8 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 11:00:19  [ localhost-startStop-1:9 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 11:00:19  [ localhost-startStop-1:449 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 11:00:19  [ localhost-startStop-1:613 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 11:04:01  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 11:04:01  [ localhost-startStop-1:6 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 11:04:01  [ localhost-startStop-1:7 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 11:04:02  [ localhost-startStop-1:431 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 11:04:02  [ localhost-startStop-1:581 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 11:04:02  [ localhost-startStop-1:591 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-08 11:04:02  [ localhost-startStop-1:631 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-08 11:04:02  [ localhost-startStop-1:631 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-08 11:04:02  [ localhost-startStop-1:631 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-08 11:04:02  [ localhost-startStop-1:1201 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-08 11:04:02  [ localhost-startStop-1:1221 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-08 11:04:02  [ localhost-startStop-1:1221 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-08 11:04:02  [ localhost-startStop-1:1221 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-08 11:04:02  [ localhost-startStop-1:1221 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-08 11:04:02  [ localhost-startStop-1:1221 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-08 11:04:02  [ localhost-startStop-1:1221 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-08 11:04:02  [ localhost-startStop-1:1221 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-08 11:04:02  [ localhost-startStop-1:1231 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-08 11:04:02  [ localhost-startStop-1:1231 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-08 11:04:02  [ localhost-startStop-1:1231 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-08 11:04:03  [ localhost-startStop-1:1666 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-08 11:04:03  [ localhost-startStop-1:1666 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-08 11:04:03  [ localhost-startStop-1:1676 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-08 11:04:03  [ localhost-startStop-1:1685 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-08 11:04:03  [ localhost-startStop-1:1686 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-08 11:04:03  [ localhost-startStop-1:1687 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-08 11:04:03  [ localhost-startStop-1:1708 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-08 11:04:03  [ localhost-startStop-1:1717 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-08 15:14:30  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 15:14:30  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 15:14:30  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 15:14:30  [ localhost-startStop-1:450 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 15:14:30  [ localhost-startStop-1:600 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 15:14:30  [ localhost-startStop-1:610 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-08 15:14:30  [ localhost-startStop-1:650 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-08 15:14:30  [ localhost-startStop-1:650 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-08 15:14:30  [ localhost-startStop-1:650 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-08 15:14:31  [ localhost-startStop-1:940 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-08 15:14:31  [ localhost-startStop-1:960 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-08 15:14:31  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-08 15:14:31  [ localhost-startStop-1:960 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-08 15:14:31  [ localhost-startStop-1:960 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-08 15:14:31  [ localhost-startStop-1:970 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-08 15:14:31  [ localhost-startStop-1:970 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-08 15:14:31  [ localhost-startStop-1:970 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-08 15:14:31  [ localhost-startStop-1:970 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-08 15:14:31  [ localhost-startStop-1:970 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-08 15:14:31  [ localhost-startStop-1:970 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-08 15:14:31  [ localhost-startStop-1:1470 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-08 15:14:31  [ localhost-startStop-1:1470 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-08 15:14:31  [ localhost-startStop-1:1490 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-08 15:14:31  [ localhost-startStop-1:1500 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-08 15:14:31  [ localhost-startStop-1:1500 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-08 15:14:31  [ localhost-startStop-1:1500 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-08 15:14:31  [ localhost-startStop-1:1530 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-08 15:14:31  [ localhost-startStop-1:1540 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-08 16:29:44  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 16:29:44  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 16:29:44  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 16:29:45  [ localhost-startStop-1:456 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 16:29:45  [ localhost-startStop-1:683 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 16:29:45  [ localhost-startStop-1:695 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-08 16:29:45  [ localhost-startStop-1:732 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-08 16:29:45  [ localhost-startStop-1:733 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-08 16:29:45  [ localhost-startStop-1:733 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-08 16:29:45  [ localhost-startStop-1:1017 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-08 16:29:45  [ localhost-startStop-1:1035 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-08 16:29:45  [ localhost-startStop-1:1036 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-08 16:29:45  [ localhost-startStop-1:1038 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-08 16:29:45  [ localhost-startStop-1:1038 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-08 16:29:45  [ localhost-startStop-1:1041 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-08 16:29:45  [ localhost-startStop-1:1044 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-08 16:29:45  [ localhost-startStop-1:1046 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-08 16:29:45  [ localhost-startStop-1:1046 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-08 16:29:45  [ localhost-startStop-1:1046 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-08 16:29:45  [ localhost-startStop-1:1047 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-08 16:29:46  [ localhost-startStop-1:1537 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-08 16:29:46  [ localhost-startStop-1:1538 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-08 16:29:46  [ localhost-startStop-1:1546 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-08 16:29:46  [ localhost-startStop-1:1555 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-08 16:29:46  [ localhost-startStop-1:1557 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-08 16:29:46  [ localhost-startStop-1:1558 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-08 16:29:46  [ localhost-startStop-1:1579 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-08 16:29:46  [ localhost-startStop-1:1586 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-08 16:30:09  [ http-bio-8080-exec-3:24542 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-08 16:30:09  [ http-bio-8080-exec-3:24551 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75455205] was not registered for synchronization because synchronization is not active
+2021-03-08 16:30:09  [ http-bio-8080-exec-3:24779 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@155add55] will not be managed by Spring
+2021-03-08 16:30:09  [ http-bio-8080-exec-3:24784 ] - [ DEBUG ]  ==>  Preparing: select id from ele_con.test WHERE tg_no = ? and org_no = ? 
+2021-03-08 16:30:09  [ http-bio-8080-exec-3:24800 ] - [ DEBUG ]  ==> Parameters: 2525(String), (String)
+2021-03-08 16:30:09  [ http-bio-8080-exec-3:24804 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75455205]
+2021-03-08 16:36:59  [ http-bio-8080-exec-10:435023 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-08 16:36:59  [ http-bio-8080-exec-10:435024 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77cf7a30] was not registered for synchronization because synchronization is not active
+2021-03-08 16:36:59  [ http-bio-8080-exec-10:435041 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@61083425] will not be managed by Spring
+2021-03-08 16:36:59  [ http-bio-8080-exec-10:435041 ] - [ DEBUG ]  ==>  Preparing: select id from ele_con.test 
+2021-03-08 16:36:59  [ http-bio-8080-exec-10:435042 ] - [ DEBUG ]  ==> Parameters: 
+2021-03-08 16:36:59  [ http-bio-8080-exec-10:435044 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77cf7a30]
+2021-03-08 16:37:17  [ http-bio-8080-exec-9:452936 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-08 16:37:17  [ http-bio-8080-exec-9:452937 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@863cc98] was not registered for synchronization because synchronization is not active
+2021-03-08 16:37:17  [ http-bio-8080-exec-9:452948 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@2d3fe424] will not be managed by Spring
+2021-03-08 16:37:17  [ http-bio-8080-exec-9:452948 ] - [ DEBUG ]  ==>  Preparing: select id from ele_con.test 
+2021-03-08 16:37:17  [ http-bio-8080-exec-9:452949 ] - [ DEBUG ]  ==> Parameters: 
+2021-03-08 16:37:17  [ http-bio-8080-exec-9:452951 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@863cc98]
+2021-03-08 16:38:34  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 16:38:34  [ localhost-startStop-1:6 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 16:38:34  [ localhost-startStop-1:7 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 16:38:35  [ localhost-startStop-1:390 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 16:38:35  [ localhost-startStop-1:578 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 16:38:35  [ localhost-startStop-1:589 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-08 16:38:35  [ localhost-startStop-1:629 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-08 16:38:35  [ localhost-startStop-1:629 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-08 16:38:35  [ localhost-startStop-1:629 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-08 16:38:35  [ localhost-startStop-1:862 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-08 16:38:35  [ localhost-startStop-1:879 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-08 16:38:35  [ localhost-startStop-1:879 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-08 16:38:35  [ localhost-startStop-1:880 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-08 16:38:35  [ localhost-startStop-1:881 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-08 16:38:35  [ localhost-startStop-1:881 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-08 16:38:35  [ localhost-startStop-1:881 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-08 16:38:35  [ localhost-startStop-1:882 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-08 16:38:35  [ localhost-startStop-1:886 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-08 16:38:35  [ localhost-startStop-1:886 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-08 16:38:35  [ localhost-startStop-1:886 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-08 16:38:36  [ localhost-startStop-1:1554 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-08 16:38:36  [ localhost-startStop-1:1554 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-08 16:38:36  [ localhost-startStop-1:1565 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-08 16:38:36  [ localhost-startStop-1:1574 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-08 16:38:36  [ localhost-startStop-1:1575 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-08 16:38:36  [ localhost-startStop-1:1578 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-08 16:38:36  [ localhost-startStop-1:1603 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-08 16:38:36  [ localhost-startStop-1:1612 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-08 16:38:58  [ http-bio-8080-exec-3:24066 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-08 16:38:58  [ http-bio-8080-exec-3:24075 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6cc6c1e1] was not registered for synchronization because synchronization is not active
+2021-03-08 16:38:59  [ http-bio-8080-exec-3:24330 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@92e6cca] will not be managed by Spring
+2021-03-08 16:38:59  [ http-bio-8080-exec-3:24336 ] - [ DEBUG ]  ==>  Preparing: select id from ele_con.test WHERE tg_no = ? 
+2021-03-08 16:38:59  [ http-bio-8080-exec-3:24357 ] - [ DEBUG ]  ==> Parameters: 2525(String)
+2021-03-08 16:38:59  [ http-bio-8080-exec-3:24361 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6cc6c1e1]
+2021-03-08 16:43:22  [ http-bio-8080-exec-7:288158 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-08 16:43:22  [ http-bio-8080-exec-7:288159 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46f9e02a] was not registered for synchronization because synchronization is not active
+2021-03-08 16:43:22  [ http-bio-8080-exec-7:288177 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@4092fa81] will not be managed by Spring
+2021-03-08 16:43:22  [ http-bio-8080-exec-7:288177 ] - [ DEBUG ]  ==>  Preparing: select id from ele_con.test WHERE tg_no = ? 
+2021-03-08 16:43:22  [ http-bio-8080-exec-7:288178 ] - [ DEBUG ]  ==> Parameters: 2525(String)
+2021-03-08 16:43:22  [ http-bio-8080-exec-7:288180 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@46f9e02a]
+2021-03-08 16:44:12  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 16:44:12  [ localhost-startStop-1:10 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 16:44:12  [ localhost-startStop-1:11 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 16:44:13  [ localhost-startStop-1:495 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 16:44:13  [ localhost-startStop-1:648 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 16:44:13  [ localhost-startStop-1:661 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-08 16:44:13  [ localhost-startStop-1:695 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-08 16:44:13  [ localhost-startStop-1:696 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-08 16:44:13  [ localhost-startStop-1:696 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-08 16:44:13  [ localhost-startStop-1:996 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-08 16:44:13  [ localhost-startStop-1:1021 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-08 16:44:13  [ localhost-startStop-1:1021 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-08 16:44:13  [ localhost-startStop-1:1023 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-08 16:44:13  [ localhost-startStop-1:1023 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-08 16:44:13  [ localhost-startStop-1:1024 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-08 16:44:13  [ localhost-startStop-1:1025 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-08 16:44:13  [ localhost-startStop-1:1027 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-08 16:44:13  [ localhost-startStop-1:1028 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-08 16:44:13  [ localhost-startStop-1:1029 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-08 16:44:13  [ localhost-startStop-1:1029 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-08 16:44:14  [ localhost-startStop-1:1415 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-08 16:44:14  [ localhost-startStop-1:1416 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-08 16:44:14  [ localhost-startStop-1:1426 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-08 16:44:14  [ localhost-startStop-1:1435 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-08 16:44:14  [ localhost-startStop-1:1436 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-08 16:44:14  [ localhost-startStop-1:1437 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-08 16:44:14  [ localhost-startStop-1:1458 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-08 16:44:14  [ localhost-startStop-1:1466 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-08 16:44:36  [ http-bio-8080-exec-3:23477 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-08 16:44:36  [ http-bio-8080-exec-3:23486 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11cb4030] was not registered for synchronization because synchronization is not active
+2021-03-08 16:44:36  [ http-bio-8080-exec-3:23726 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@608e376f] will not be managed by Spring
+2021-03-08 16:44:36  [ http-bio-8080-exec-3:23731 ] - [ DEBUG ]  ==>  Preparing: select id from ele_con.test WHERE tg_no = ? 
+2021-03-08 16:44:36  [ http-bio-8080-exec-3:23750 ] - [ DEBUG ]  ==> Parameters: 3636(String)
+2021-03-08 16:44:36  [ http-bio-8080-exec-3:23753 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11cb4030]
+2021-03-08 16:45:39  [ http-bio-8080-exec-7:86766 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-08 16:45:39  [ http-bio-8080-exec-7:86767 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75b510b4] was not registered for synchronization because synchronization is not active
+2021-03-08 16:45:39  [ http-bio-8080-exec-7:86779 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@5a92d44a] will not be managed by Spring
+2021-03-08 16:45:39  [ http-bio-8080-exec-7:86780 ] - [ DEBUG ]  ==>  Preparing: select id from ele_con.test WHERE tg_no = ? 
+2021-03-08 16:45:39  [ http-bio-8080-exec-7:86780 ] - [ DEBUG ]  ==> Parameters: 2525(String)
+2021-03-08 16:45:39  [ http-bio-8080-exec-7:86782 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75b510b4]
+2021-03-08 16:51:05  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-08 16:51:05  [ localhost-startStop-1:8 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'eleConWeibiaoDao' and 'com.dao.EleConWeibiaoDao' mapperInterface
+2021-03-08 16:51:05  [ localhost-startStop-1:16 ] - [ DEBUG ]  Creating MapperFactoryBean with name 'userDao' and 'com.dao.UserDao' mapperInterface
+2021-03-08 16:51:05  [ localhost-startStop-1:490 ] - [ DEBUG ]  Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2021-03-08 16:51:05  [ localhost-startStop-1:655 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-08 16:51:05  [ localhost-startStop-1:901 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-08 16:51:06  [ localhost-startStop-1:974 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-08 16:51:06  [ localhost-startStop-1:975 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-08 16:51:06  [ localhost-startStop-1:975 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-08 16:51:06  [ localhost-startStop-1:1280 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-08 16:51:06  [ localhost-startStop-1:1296 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-08 16:51:06  [ localhost-startStop-1:1297 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-08 16:51:06  [ localhost-startStop-1:1298 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-08 16:51:06  [ localhost-startStop-1:1298 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-08 16:51:06  [ localhost-startStop-1:1299 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-08 16:51:06  [ localhost-startStop-1:1299 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-08 16:51:06  [ localhost-startStop-1:1300 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-08 16:51:06  [ localhost-startStop-1:1301 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-08 16:51:06  [ localhost-startStop-1:1301 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-08 16:51:06  [ localhost-startStop-1:1302 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-08 16:51:06  [ localhost-startStop-1:1716 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-08 16:51:06  [ localhost-startStop-1:1717 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-08 16:51:06  [ localhost-startStop-1:1727 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-08 16:51:06  [ localhost-startStop-1:1737 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-08 16:51:06  [ localhost-startStop-1:1738 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-08 16:51:06  [ localhost-startStop-1:1739 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-08 16:51:06  [ localhost-startStop-1:1762 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-08 16:51:06  [ localhost-startStop-1:1770 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.

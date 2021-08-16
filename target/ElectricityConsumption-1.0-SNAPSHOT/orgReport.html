@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="" id="complain_search">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <input type="text" name="orgNo" required lay-verify="required" placeholder="请输入供电所编号"
+                   autocomplete="off" class="layui-input" style="width: 300px;" id="orgNo">
+        </div>
+        <div class="layui-inline">
+            <button id="search" class="layui-btn" lay-submit
+                    lay-filter="provinceSearch">查找
+            </button>
+        </div>
+    </div>
+</form>
+<div id="testDiv">
+    <table class="layui-hide" id="test"></table>
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    var orgNo = "";
+    var titleTpl = function (d) {
+        var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec"  name="jump">'+d.orgNo+'</a>';
+        return html;
+    }
+
+    layui.use(['form','table'], function () {
+        var table = layui.table;
+        var form = layui.form;
+
+        table.render({
+            id: "testReload"
+            , elem: '#test'
+            , url: 'tgLine/queryOrgReport'
+            , method: 'post'
+            , cols: [[
+                {field: 'cityName', title: '市公司名称'}
+                , {field: 'countyName', title: '县公司名称'}
+                , {field: 'orgNo', title: '供电所编号',templet: titleTpl}
+                , {field: 'orgName', title: '供电所名称'}
+                , {field: 'tgCount', title: '台区数量'}
+                , {field: 'hplcCount', title: 'hplc台区数量'}
+                , {field: 'monitoringCount', title: '监控台区数量'}
+                , {field: 'a', title: '优秀稳定台区'}
+                , {field: 'b', title: '合理耗损台区'}
+                , {field: 'c', title: '精益治损台区'}
+                , {field: 'd', title: '高损攻坚台区'}
+                , {field: 'e', title: '供售异常台区'}
+                , {field: 'releCount', title: '相关性次数'}
+            ]]
+            ,page: true
+            ,done:function(){
+                $('a[name="jump"]').on('click',function(){
+                    var orgNo=$(this).html();
+                    var url = "tgConsReport.html";//此处拼接内容
+                    document.cookie=("orgNo="+orgNo);
+                    document.cookie=("date="+getRecentDay(-1));
+                    document.cookie="name=a";
+                    window.location.href = url;
+                })
+            }
+        });
+        form.render();
+        form.on('submit(provinceSearch)', function (data) {
+            var formData = data.field;
+            var orgNo = formData.orgNo;
+            table.reload('testReload', {
+                where: {
+                    orgNo: orgNo
+                },
+                url: 'tgLine/queryOrgReport',
+                method: 'post'
+            });
+            return false;
+        });
+        table.on('row(test)', function(obj){
+            var data = obj.data;
+            orgNo = data.orgNo;
+        });
+
+    });
+    function getRecentDay(day) {
+        var today = new Date();
+        var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+        today.setTime(targetday_milliseconds);
+        var tYear = today.getFullYear();
+        var tMonth = today.getMonth();
+        var tDate = today.getDate();
+        tMonth = doHandleMonth(tMonth + 1);
+        tDate = doHandleMonth(tDate);
+
+        return tYear + "-" + tMonth + "-" + tDate;
+    }
+
+    function doHandleMonth(month) {
+        var m = month;
+        if (month.toString().length == 1) {
+            m = "0" + month;
+        }
+        return m;
+    }
+
+</script>
+</body>
+</html>

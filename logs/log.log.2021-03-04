@@ -1,0 +1,1162 @@
+2021-03-04 11:09:48  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 11:09:48  [ localhost-startStop-1:256 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@30fa007b'
+2021-03-04 11:09:48  [ localhost-startStop-1:385 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 11:09:48  [ localhost-startStop-1:424 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 11:14:07  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 11:14:07  [ localhost-startStop-1:245 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@2d88cdb8'
+2021-03-04 11:14:07  [ localhost-startStop-1:349 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 11:14:07  [ localhost-startStop-1:361 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 11:14:07  [ localhost-startStop-1:374 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 11:14:07  [ localhost-startStop-1:375 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 11:14:07  [ localhost-startStop-1:376 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 11:14:07  [ localhost-startStop-1:593 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 11:14:07  [ localhost-startStop-1:611 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 11:14:07  [ localhost-startStop-1:611 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:612 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 11:14:07  [ localhost-startStop-1:613 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:614 ] - [ DEBUG ]  Creating chain [/admin_depart.jsp] from String definition [authc,perms["department:select"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:615 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:622 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [perms] with config [department:select]
+2021-03-04 11:14:07  [ localhost-startStop-1:622 ] - [ DEBUG ]  Creating chain [/admin_depart_update.jsp] from String definition [authc,perms["department:update"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:624 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:624 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [perms] with config [department:update]
+2021-03-04 11:14:07  [ localhost-startStop-1:625 ] - [ DEBUG ]  Creating chain [/admin_depart_add.jsp] from String definition [authc,perms["department:add"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:625 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:626 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [perms] with config [department:add]
+2021-03-04 11:14:07  [ localhost-startStop-1:626 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:626 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:627 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 11:14:07  [ localhost-startStop-1:627 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:628 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:628 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 11:14:07  [ localhost-startStop-1:629 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:629 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:630 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 11:14:07  [ localhost-startStop-1:630 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:631 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:631 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 11:14:07  [ localhost-startStop-1:632 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:632 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:632 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 11:14:07  [ localhost-startStop-1:633 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:633 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:634 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 11:14:07  [ localhost-startStop-1:634 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:635 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:635 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 11:14:07  [ localhost-startStop-1:635 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:636 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:636 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 11:14:07  [ localhost-startStop-1:637 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:637 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:638 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 11:14:07  [ localhost-startStop-1:638 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:638 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:638 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 11:14:07  [ localhost-startStop-1:639 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:639 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:640 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 11:14:07  [ localhost-startStop-1:640 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:640 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:641 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 11:14:07  [ localhost-startStop-1:641 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:641 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:641 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 11:14:07  [ localhost-startStop-1:642 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:642 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:643 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 11:14:07  [ localhost-startStop-1:643 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:643 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:644 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 11:14:07  [ localhost-startStop-1:644 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:644 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:644 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 11:14:07  [ localhost-startStop-1:645 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 11:14:07  [ localhost-startStop-1:645 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:14:07  [ localhost-startStop-1:645 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 11:14:08  [ localhost-startStop-1:1067 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 11:14:08  [ localhost-startStop-1:1068 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 11:14:08  [ localhost-startStop-1:1084 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 11:14:08  [ localhost-startStop-1:1098 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 11:14:08  [ localhost-startStop-1:1099 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 11:14:08  [ localhost-startStop-1:1100 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 11:14:08  [ localhost-startStop-1:1123 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 11:14:08  [ localhost-startStop-1:1130 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 11:15:55  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 11:15:56  [ localhost-startStop-1:219 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@3f61d797'
+2021-03-04 11:15:56  [ localhost-startStop-1:331 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 11:15:56  [ localhost-startStop-1:343 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 11:15:56  [ localhost-startStop-1:355 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 11:15:56  [ localhost-startStop-1:355 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 11:15:56  [ localhost-startStop-1:355 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 11:15:56  [ localhost-startStop-1:537 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 11:15:56  [ localhost-startStop-1:897 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 11:15:56  [ localhost-startStop-1:897 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 11:15:56  [ localhost-startStop-1:906 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 11:15:56  [ localhost-startStop-1:914 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 11:15:56  [ localhost-startStop-1:915 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 11:15:56  [ localhost-startStop-1:916 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 11:15:56  [ localhost-startStop-1:937 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 11:15:56  [ localhost-startStop-1:945 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 11:26:51  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 11:26:51  [ localhost-startStop-1:226 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@bb85176'
+2021-03-04 11:26:51  [ localhost-startStop-1:348 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 11:26:51  [ localhost-startStop-1:365 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 11:26:51  [ localhost-startStop-1:382 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 11:26:51  [ localhost-startStop-1:383 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 11:26:51  [ localhost-startStop-1:383 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 11:26:51  [ localhost-startStop-1:547 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 11:26:51  [ localhost-startStop-1:566 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 11:26:51  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:568 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 11:26:51  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:569 ] - [ DEBUG ]  Creating chain [/admin_depart.jsp] from String definition [authc,perms["department:select"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [perms] with config [department:select]
+2021-03-04 11:26:51  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/admin_depart_update.jsp] from String definition [authc,perms["department:update"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [perms] with config [department:update]
+2021-03-04 11:26:51  [ localhost-startStop-1:574 ] - [ DEBUG ]  Creating chain [/admin_depart_add.jsp] from String definition [authc,perms["department:add"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [perms] with config [department:add]
+2021-03-04 11:26:51  [ localhost-startStop-1:577 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:577 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:578 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 11:26:51  [ localhost-startStop-1:581 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:581 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:582 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 11:26:51  [ localhost-startStop-1:583 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:585 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 11:26:51  [ localhost-startStop-1:585 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:586 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:586 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 11:26:51  [ localhost-startStop-1:586 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:587 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:587 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 11:26:51  [ localhost-startStop-1:587 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:588 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:588 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 11:26:51  [ localhost-startStop-1:588 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:589 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:589 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 11:26:51  [ localhost-startStop-1:589 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:590 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:590 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 11:26:51  [ localhost-startStop-1:590 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:591 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:591 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 11:26:51  [ localhost-startStop-1:591 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:591 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:591 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 11:26:51  [ localhost-startStop-1:592 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:592 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:592 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 11:26:51  [ localhost-startStop-1:592 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 11:26:51  [ localhost-startStop-1:593 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 11:26:51  [ localhost-startStop-1:594 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:594 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:594 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 11:26:51  [ localhost-startStop-1:595 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:595 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:596 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 11:26:51  [ localhost-startStop-1:596 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:597 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:597 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 11:26:51  [ localhost-startStop-1:597 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 11:26:51  [ localhost-startStop-1:598 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:26:51  [ localhost-startStop-1:598 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 11:26:52  [ localhost-startStop-1:965 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 11:26:52  [ localhost-startStop-1:966 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 11:26:52  [ localhost-startStop-1:974 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 11:26:52  [ localhost-startStop-1:982 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 11:26:52  [ localhost-startStop-1:983 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 11:26:52  [ localhost-startStop-1:984 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 11:26:52  [ localhost-startStop-1:1003 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 11:26:52  [ localhost-startStop-1:1011 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 11:27:22  [ http-bio-8080-exec-4:31126 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 11:27:22  [ http-bio-8080-exec-4:31136 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7c40cb2] was not registered for synchronization because synchronization is not active
+2021-03-04 11:27:22  [ http-bio-8080-exec-4:31245 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 11:27:32  [ Druid-ConnectionPool-Create-91830786:41277 ] - [ ERROR ]  create connection SQLException, url: jdbc:postgresql://25.60.253.231:8000/sjzt, errorCode 0, state 08001
+org.postgresql.util.PSQLException: 尝试连线已失败。
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:257)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:195)
+	at org.postgresql.Driver.makeConnection(Driver.java:452)
+	at org.postgresql.Driver.connect(Driver.java:254)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1513)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1578)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2466)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:69)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:156)
+	... 7 more
+2021-03-04 11:27:33  [ http-bio-8080-exec-2:41763 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 11:27:33  [ http-bio-8080-exec-2:41763 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4ef72e4c] was not registered for synchronization because synchronization is not active
+2021-03-04 11:27:42  [ Druid-ConnectionPool-Create-91830786:51284 ] - [ ERROR ]  create connection SQLException, url: jdbc:postgresql://25.60.253.231:8000/sjzt, errorCode 0, state 08001
+org.postgresql.util.PSQLException: 尝试连线已失败。
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:257)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:195)
+	at org.postgresql.Driver.makeConnection(Driver.java:452)
+	at org.postgresql.Driver.connect(Driver.java:254)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1513)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1578)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2466)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:69)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:156)
+	... 7 more
+2021-03-04 11:27:53  [ Druid-ConnectionPool-Create-91830786:61786 ] - [ ERROR ]  create connection SQLException, url: jdbc:postgresql://25.60.253.231:8000/sjzt, errorCode 0, state 08001
+org.postgresql.util.PSQLException: 尝试连线已失败。
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:257)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:195)
+	at org.postgresql.Driver.makeConnection(Driver.java:452)
+	at org.postgresql.Driver.connect(Driver.java:254)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1513)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1578)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2466)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:69)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:156)
+	... 7 more
+2021-03-04 11:28:03  [ Druid-ConnectionPool-Create-91830786:72290 ] - [ ERROR ]  create connection SQLException, url: jdbc:postgresql://25.60.253.231:8000/sjzt, errorCode 0, state 08001
+org.postgresql.util.PSQLException: 尝试连线已失败。
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:257)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:195)
+	at org.postgresql.Driver.makeConnection(Driver.java:452)
+	at org.postgresql.Driver.connect(Driver.java:254)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1513)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1578)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2466)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:69)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:156)
+	... 7 more
+2021-03-04 11:28:46  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 11:28:46  [ localhost-startStop-1:238 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@6051207d'
+2021-03-04 11:28:46  [ localhost-startStop-1:347 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 11:28:46  [ localhost-startStop-1:360 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 11:28:46  [ localhost-startStop-1:373 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 11:28:46  [ localhost-startStop-1:373 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 11:28:46  [ localhost-startStop-1:374 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 11:28:46  [ localhost-startStop-1:537 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 11:28:46  [ localhost-startStop-1:557 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 11:28:46  [ localhost-startStop-1:557 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:560 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 11:28:46  [ localhost-startStop-1:561 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:561 ] - [ DEBUG ]  Creating chain [/admin_depart.jsp] from String definition [authc,perms["department:select"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [perms] with config [department:select]
+2021-03-04 11:28:46  [ localhost-startStop-1:563 ] - [ DEBUG ]  Creating chain [/admin_depart_update.jsp] from String definition [authc,perms["department:update"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [perms] with config [department:update]
+2021-03-04 11:28:46  [ localhost-startStop-1:565 ] - [ DEBUG ]  Creating chain [/admin_depart_add.jsp] from String definition [authc,perms["department:add"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [perms] with config [department:add]
+2021-03-04 11:28:46  [ localhost-startStop-1:566 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 11:28:46  [ localhost-startStop-1:567 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 11:28:46  [ localhost-startStop-1:569 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:571 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 11:28:46  [ localhost-startStop-1:571 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 11:28:46  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 11:28:46  [ localhost-startStop-1:574 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 11:28:46  [ localhost-startStop-1:575 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:577 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 11:28:46  [ localhost-startStop-1:577 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:578 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:579 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 11:28:46  [ localhost-startStop-1:580 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:580 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:580 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 11:28:46  [ localhost-startStop-1:581 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:581 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:581 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 11:28:46  [ localhost-startStop-1:582 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:582 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:582 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 11:28:46  [ localhost-startStop-1:582 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 11:28:46  [ localhost-startStop-1:583 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 11:28:46  [ localhost-startStop-1:584 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:584 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:584 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 11:28:46  [ localhost-startStop-1:585 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:585 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:585 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 11:28:46  [ localhost-startStop-1:586 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:586 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:586 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 11:28:46  [ localhost-startStop-1:586 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 11:28:46  [ localhost-startStop-1:586 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 11:28:46  [ localhost-startStop-1:587 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 11:28:47  [ localhost-startStop-1:975 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 11:28:47  [ localhost-startStop-1:975 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 11:28:47  [ localhost-startStop-1:985 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 11:28:47  [ localhost-startStop-1:996 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 11:28:47  [ localhost-startStop-1:998 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 11:28:47  [ localhost-startStop-1:999 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 11:28:47  [ localhost-startStop-1:1024 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 11:28:47  [ localhost-startStop-1:1033 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65369 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65379 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c0c7524] was not registered for synchronization because synchronization is not active
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65510 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65694 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@248d973b] will not be managed by Spring
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65699 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65720 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65740 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65741 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5c0c7524]
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65748 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65748 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65749 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65749 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65750 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65759 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 03:29:51 GMT]
+2021-03-04 11:29:51  [ http-bio-8080-exec-3:65760 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:04:54  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:04:55  [ localhost-startStop-1:332 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@68871e51'
+2021-03-04 14:04:55  [ localhost-startStop-1:449 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:04:55  [ localhost-startStop-1:461 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:04:55  [ localhost-startStop-1:473 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:04:55  [ localhost-startStop-1:474 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:04:55  [ localhost-startStop-1:474 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:04:55  [ localhost-startStop-1:664 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:04:55  [ localhost-startStop-1:684 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:04:55  [ localhost-startStop-1:684 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:686 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:04:55  [ localhost-startStop-1:686 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:686 ] - [ DEBUG ]  Creating chain [/admin_depart.jsp] from String definition [authc,perms["department:select"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:687 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:690 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [perms] with config [department:select]
+2021-03-04 14:04:55  [ localhost-startStop-1:691 ] - [ DEBUG ]  Creating chain [/admin_depart_update.jsp] from String definition [authc,perms["department:update"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:692 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:693 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [perms] with config [department:update]
+2021-03-04 14:04:55  [ localhost-startStop-1:693 ] - [ DEBUG ]  Creating chain [/admin_depart_add.jsp] from String definition [authc,perms["department:add"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:694 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:694 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [perms] with config [department:add]
+2021-03-04 14:04:55  [ localhost-startStop-1:694 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:695 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:695 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 14:04:55  [ localhost-startStop-1:695 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:696 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:696 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 14:04:55  [ localhost-startStop-1:696 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:697 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:697 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 14:04:55  [ localhost-startStop-1:697 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:698 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:698 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 14:04:55  [ localhost-startStop-1:698 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:699 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:700 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 14:04:55  [ localhost-startStop-1:701 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:701 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:703 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 14:04:55  [ localhost-startStop-1:704 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:704 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:705 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 14:04:55  [ localhost-startStop-1:705 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:705 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:705 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 14:04:55  [ localhost-startStop-1:706 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:706 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:706 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 14:04:55  [ localhost-startStop-1:706 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:706 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:706 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 14:04:55  [ localhost-startStop-1:707 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:707 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:707 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 14:04:55  [ localhost-startStop-1:708 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:708 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:708 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 14:04:55  [ localhost-startStop-1:709 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:709 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:709 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 14:04:55  [ localhost-startStop-1:710 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:710 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:710 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 14:04:55  [ localhost-startStop-1:710 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:711 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:711 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 14:04:55  [ localhost-startStop-1:711 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:711 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:712 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 14:04:55  [ localhost-startStop-1:712 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 14:04:55  [ localhost-startStop-1:712 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:04:55  [ localhost-startStop-1:712 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 14:04:55  [ localhost-startStop-1:1104 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:04:55  [ localhost-startStop-1:1104 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:04:55  [ localhost-startStop-1:1113 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:04:55  [ localhost-startStop-1:1122 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:04:55  [ localhost-startStop-1:1123 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:04:55  [ localhost-startStop-1:1123 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:04:56  [ localhost-startStop-1:1145 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:04:56  [ localhost-startStop-1:1154 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:05:15  [ http-bio-8080-exec-4:20948 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:05:15  [ http-bio-8080-exec-4:20958 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ef27eaf] was not registered for synchronization because synchronization is not active
+2021-03-04 14:05:15  [ http-bio-8080-exec-4:21059 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21244 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a3dc93d] will not be managed by Spring
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21250 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21270 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21289 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21290 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ef27eaf]
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21295 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21296 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21296 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21296 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21297 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21298 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21298 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:05:16 GMT]
+2021-03-04 14:05:16  [ http-bio-8080-exec-4:21299 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30068 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30069 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30070 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30071 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40b34064] was not registered for synchronization because synchronization is not active
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30071 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a3dc93d] will not be managed by Spring
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30071 ] - [ DEBUG ]  ==>  Preparing: select name from elecon.role where id in (select role_id from elecon.user_role where user_id = (select id from elecon.user where username = ?)) 
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30072 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30080 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30080 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40b34064]
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30081 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30081 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@59b1ab74] was not registered for synchronization because synchronization is not active
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30082 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a3dc93d] will not be managed by Spring
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30082 ] - [ DEBUG ]  ==>  Preparing: select p.name from permission p inner join role_perms rp on p.id = rp.perm_id inner join role r on rp.role_id = r.id inner join user_role ur on r.id= ur.role_id inner join user u on ur.user_id = u.u_loname where u.u_loname = ? 
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30082 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30086 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@59b1ab74]
+2021-03-04 14:05:24  [ http-bio-8080-exec-9:30114 ] - [ DEBUG ]  Filter execution resulted in an unexpected Exception (not IOException or ServletException as the Filter API recommends).  Wrapping in ServletException and propagating.
+2021-03-04 14:10:47  [ localhost-startStop-1:1 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:10:47  [ localhost-startStop-1:219 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@6a3b02d0'
+2021-03-04 14:10:47  [ localhost-startStop-1:332 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:10:47  [ localhost-startStop-1:369 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:10:47  [ localhost-startStop-1:384 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:10:47  [ localhost-startStop-1:384 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:10:48  [ localhost-startStop-1:385 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:10:48  [ localhost-startStop-1:557 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:10:48  [ localhost-startStop-1:574 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:10:48  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:576 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:577 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 14:10:48  [ localhost-startStop-1:577 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:10:48  [ localhost-startStop-1:578 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:578 ] - [ DEBUG ]  Creating chain [/admin_depart.jsp] from String definition [authc,perms["department:select"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:580 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:580 ] - [ DEBUG ]  Attempting to apply path [/admin_depart.jsp] to filter [perms] with config [department:select]
+2021-03-04 14:10:48  [ localhost-startStop-1:581 ] - [ DEBUG ]  Creating chain [/admin_depart_update.jsp] from String definition [authc,perms["department:update"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:581 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:582 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_update.jsp] to filter [perms] with config [department:update]
+2021-03-04 14:10:48  [ localhost-startStop-1:582 ] - [ DEBUG ]  Creating chain [/admin_depart_add.jsp] from String definition [authc,perms["department:add"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_depart_add.jsp] to filter [perms] with config [department:add]
+2021-03-04 14:10:48  [ localhost-startStop-1:583 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:583 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:584 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 14:10:48  [ localhost-startStop-1:584 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:585 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:585 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 14:10:48  [ localhost-startStop-1:586 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:586 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:587 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 14:10:48  [ localhost-startStop-1:587 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:587 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:587 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 14:10:48  [ localhost-startStop-1:587 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:588 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:588 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 14:10:48  [ localhost-startStop-1:588 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:588 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:589 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 14:10:48  [ localhost-startStop-1:589 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:589 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:590 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 14:10:48  [ localhost-startStop-1:590 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:591 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:591 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 14:10:48  [ localhost-startStop-1:591 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:591 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:592 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 14:10:48  [ localhost-startStop-1:592 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 14:10:48  [ localhost-startStop-1:593 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:593 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 14:10:48  [ localhost-startStop-1:594 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:594 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:594 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 14:10:48  [ localhost-startStop-1:594 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:594 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:595 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 14:10:48  [ localhost-startStop-1:595 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:595 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:595 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 14:10:48  [ localhost-startStop-1:595 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:596 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:596 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 14:10:48  [ localhost-startStop-1:596 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:596 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:597 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 14:10:48  [ localhost-startStop-1:597 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 14:10:48  [ localhost-startStop-1:597 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:10:48  [ localhost-startStop-1:597 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 14:10:48  [ localhost-startStop-1:1089 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:10:48  [ localhost-startStop-1:1092 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:10:48  [ localhost-startStop-1:1113 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:10:48  [ localhost-startStop-1:1125 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:10:48  [ localhost-startStop-1:1127 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:10:48  [ localhost-startStop-1:1128 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:10:48  [ localhost-startStop-1:1152 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:10:48  [ localhost-startStop-1:1161 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:19687 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:19696 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@329fee1] was not registered for synchronization because synchronization is not active
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:19807 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:19990 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@7d21eece] will not be managed by Spring
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:19995 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20015 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20033 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20035 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@329fee1]
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20040 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20040 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20041 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20041 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20042 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20042 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20043 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:11:07 GMT]
+2021-03-04 14:11:07  [ http-bio-8080-exec-4:20043 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68856 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68857 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68858 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68858 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6f7b04c] was not registered for synchronization because synchronization is not active
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68859 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@7d21eece] will not be managed by Spring
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68860 ] - [ DEBUG ]  ==>  Preparing: select name from elecon.role where id in (select role_id from elecon.user_role where user_id = (select id from elecon.user where username = ?)) 
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68861 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68865 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68866 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6f7b04c]
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68867 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68867 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7ef0e95f] was not registered for synchronization because synchronization is not active
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68868 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@7d21eece] will not be managed by Spring
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68868 ] - [ DEBUG ]  ==>  Preparing: select p.name from permission p inner join role_perms rp on p.id = rp.perm_id inner join role r on rp.role_id = r.id inner join user_role ur on r.id= ur.role_id inner join user u on ur.user_id = u.u_loname where u.u_loname = ? 
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68869 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68871 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7ef0e95f]
+2021-03-04 14:11:56  [ http-bio-8080-exec-9:68903 ] - [ DEBUG ]  Filter execution resulted in an unexpected Exception (not IOException or ServletException as the Filter API recommends).  Wrapping in ServletException and propagating.
+2021-03-04 14:14:19  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:14:19  [ localhost-startStop-1:219 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@c169a3f'
+2021-03-04 14:14:19  [ localhost-startStop-1:355 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:14:19  [ localhost-startStop-1:377 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:14:19  [ localhost-startStop-1:394 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:14:19  [ localhost-startStop-1:394 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:14:19  [ localhost-startStop-1:395 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:14:19  [ localhost-startStop-1:587 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:14:19  [ localhost-startStop-1:605 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:14:19  [ localhost-startStop-1:606 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:608 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:608 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:609 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 14:14:19  [ localhost-startStop-1:610 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:14:19  [ localhost-startStop-1:611 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:611 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:613 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:613 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 14:14:19  [ localhost-startStop-1:614 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:614 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:615 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 14:14:19  [ localhost-startStop-1:615 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:616 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:616 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 14:14:19  [ localhost-startStop-1:617 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:617 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:618 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 14:14:19  [ localhost-startStop-1:618 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:618 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:619 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 14:14:19  [ localhost-startStop-1:620 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:620 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:620 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 14:14:19  [ localhost-startStop-1:621 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:621 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:622 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 14:14:19  [ localhost-startStop-1:622 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:624 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:625 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 14:14:19  [ localhost-startStop-1:625 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:625 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:625 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 14:14:19  [ localhost-startStop-1:626 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:627 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:627 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 14:14:19  [ localhost-startStop-1:628 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:629 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:629 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 14:14:19  [ localhost-startStop-1:630 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:630 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:630 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 14:14:19  [ localhost-startStop-1:631 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:631 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:631 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 14:14:19  [ localhost-startStop-1:631 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:631 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:632 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 14:14:19  [ localhost-startStop-1:632 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:632 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:632 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 14:14:19  [ localhost-startStop-1:633 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:633 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:633 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 14:14:19  [ localhost-startStop-1:633 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 14:14:19  [ localhost-startStop-1:633 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:14:19  [ localhost-startStop-1:634 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 14:14:20  [ localhost-startStop-1:1061 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:14:20  [ localhost-startStop-1:1062 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:14:20  [ localhost-startStop-1:1073 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:14:20  [ localhost-startStop-1:1083 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:14:20  [ localhost-startStop-1:1084 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:14:20  [ localhost-startStop-1:1085 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:14:20  [ localhost-startStop-1:1109 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:14:20  [ localhost-startStop-1:1118 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:14:51  [ http-bio-8080-exec-4:32633 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:14:51  [ http-bio-8080-exec-4:32643 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32988610] was not registered for synchronization because synchronization is not active
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32756 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32936 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@6373821a] will not be managed by Spring
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32943 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32964 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32981 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32982 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32988610]
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32987 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32988 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32988 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32988 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32990 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32990 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32991 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:14:52 GMT]
+2021-03-04 14:14:52  [ http-bio-8080-exec-4:32992 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38734 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38735 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38735 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38736 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f804918] was not registered for synchronization because synchronization is not active
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38737 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@6373821a] will not be managed by Spring
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38737 ] - [ DEBUG ]  ==>  Preparing: select name from elecon.role where id in (select role_id from elecon.user_role where user_id = (select id from elecon.user where username = ?)) 
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38738 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38740 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38742 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2f804918]
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38742 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38742 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@53cd42ea] was not registered for synchronization because synchronization is not active
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38743 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@6373821a] will not be managed by Spring
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38743 ] - [ DEBUG ]  ==>  Preparing: select p.name from permission p inner join role_perms rp on p.id = rp.perm_id inner join role r on rp.role_id = r.id inner join user_role ur on r.id= ur.role_id inner join user u on ur.user_id = u.id where u.username = ? 
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38744 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38745 ] - [ DEBUG ]  <==      Total: 2
+2021-03-04 14:14:58  [ http-bio-8080-exec-6:38745 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@53cd42ea]
+2021-03-04 14:16:21  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:16:21  [ localhost-startStop-1:224 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@6051207d'
+2021-03-04 14:16:21  [ localhost-startStop-1:341 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:16:21  [ localhost-startStop-1:357 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:16:21  [ localhost-startStop-1:370 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:16:21  [ localhost-startStop-1:370 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:16:21  [ localhost-startStop-1:370 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:16:22  [ localhost-startStop-1:538 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:16:22  [ localhost-startStop-1:560 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:16:22  [ localhost-startStop-1:560 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:562 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 14:16:22  [ localhost-startStop-1:562 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:16:22  [ localhost-startStop-1:563 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:563 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 14:16:22  [ localhost-startStop-1:564 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 14:16:22  [ localhost-startStop-1:564 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 14:16:22  [ localhost-startStop-1:565 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 14:16:22  [ localhost-startStop-1:565 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 14:16:22  [ localhost-startStop-1:566 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 14:16:22  [ localhost-startStop-1:566 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 14:16:22  [ localhost-startStop-1:567 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 14:16:22  [ localhost-startStop-1:567 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 14:16:22  [ localhost-startStop-1:568 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 14:16:22  [ localhost-startStop-1:569 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 14:16:22  [ localhost-startStop-1:573 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 14:16:22  [ localhost-startStop-1:574 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 14:16:22  [ localhost-startStop-1:574 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:575 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 14:16:22  [ localhost-startStop-1:575 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 14:16:22  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:16:22  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 14:16:22  [ localhost-startStop-1:1081 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:16:22  [ localhost-startStop-1:1081 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:16:22  [ localhost-startStop-1:1090 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:16:22  [ localhost-startStop-1:1100 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:16:22  [ localhost-startStop-1:1100 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:16:22  [ localhost-startStop-1:1102 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:16:22  [ localhost-startStop-1:1124 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:16:22  [ localhost-startStop-1:1132 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:16:32  [ http-bio-8080-exec-3:11447 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:16:32  [ http-bio-8080-exec-3:11458 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6378112f] was not registered for synchronization because synchronization is not active
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11563 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11744 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@9d4a69c] will not be managed by Spring
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11749 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11769 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11786 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11787 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6378112f]
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11791 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11792 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11792 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11792 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11793 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11801 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:16:33 GMT]
+2021-03-04 14:16:33  [ http-bio-8080-exec-3:11801 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:18:24  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:18:24  [ localhost-startStop-1:220 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@68559c37'
+2021-03-04 14:18:24  [ localhost-startStop-1:317 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:18:24  [ localhost-startStop-1:327 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:18:24  [ localhost-startStop-1:339 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:18:24  [ localhost-startStop-1:339 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:18:24  [ localhost-startStop-1:339 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:18:24  [ localhost-startStop-1:530 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:18:24  [ localhost-startStop-1:548 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:18:24  [ localhost-startStop-1:549 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:550 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:550 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:551 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 14:18:24  [ localhost-startStop-1:551 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:18:24  [ localhost-startStop-1:551 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:551 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:552 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:552 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 14:18:24  [ localhost-startStop-1:557 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:559 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:559 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 14:18:24  [ localhost-startStop-1:559 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:561 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:561 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 14:18:24  [ localhost-startStop-1:561 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:561 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 14:18:24  [ localhost-startStop-1:562 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 14:18:24  [ localhost-startStop-1:565 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 14:18:24  [ localhost-startStop-1:566 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 14:18:24  [ localhost-startStop-1:566 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 14:18:24  [ localhost-startStop-1:567 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 14:18:24  [ localhost-startStop-1:569 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 14:18:24  [ localhost-startStop-1:569 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 14:18:24  [ localhost-startStop-1:570 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 14:18:24  [ localhost-startStop-1:570 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:571 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 14:18:24  [ localhost-startStop-1:571 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:571 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:571 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 14:18:24  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 14:18:24  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 14:18:24  [ localhost-startStop-1:573 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 14:18:24  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:18:24  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 14:18:25  [ localhost-startStop-1:1087 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:18:25  [ localhost-startStop-1:1088 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:18:25  [ localhost-startStop-1:1100 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:18:25  [ localhost-startStop-1:1116 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:18:25  [ localhost-startStop-1:1117 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:18:25  [ localhost-startStop-1:1119 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:18:25  [ localhost-startStop-1:1159 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:18:25  [ localhost-startStop-1:1174 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:18:39  [ http-bio-8080-exec-4:15778 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:15788 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@63d8fc25] was not registered for synchronization because synchronization is not active
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:15886 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16072 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@9a49de8] will not be managed by Spring
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16076 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16094 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16111 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16112 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@63d8fc25]
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16118 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16118 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16118 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16119 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16120 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16120 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16121 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:18:40 GMT]
+2021-03-04 14:18:40  [ http-bio-8080-exec-4:16121 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:18:46  [ http-bio-8080-exec-6:21836 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:18:46 GMT]
+2021-03-04 14:18:46  [ http-bio-8080-exec-6:21837 ] - [ DEBUG ]  Logging out subject with primary principal zhangsan
+2021-03-04 14:18:46  [ http-bio-8080-exec-6:21837 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:18:46  [ http-bio-8080-exec-6:21838 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:23:57  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:23:57  [ localhost-startStop-1:233 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@648c466'
+2021-03-04 14:23:57  [ localhost-startStop-1:345 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:23:57  [ localhost-startStop-1:357 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:23:57  [ localhost-startStop-1:369 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:23:57  [ localhost-startStop-1:370 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:23:57  [ localhost-startStop-1:370 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:23:57  [ localhost-startStop-1:529 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:23:57  [ localhost-startStop-1:552 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:23:57  [ localhost-startStop-1:552 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:554 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:554 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:554 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 14:23:57  [ localhost-startStop-1:555 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:23:57  [ localhost-startStop-1:555 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:556 ] - [ DEBUG ]  Creating chain [/admin_notice.jsp] from String definition [authc,perms["notice:select"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:557 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:557 ] - [ DEBUG ]  Attempting to apply path [/admin_notice.jsp] to filter [perms] with config [notice:select]
+2021-03-04 14:23:57  [ localhost-startStop-1:558 ] - [ DEBUG ]  Creating chain [/admin_notice_update.jsp] from String definition [authc,perms["notice:update"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:558 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:559 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_update.jsp] to filter [perms] with config [notice:update]
+2021-03-04 14:23:57  [ localhost-startStop-1:559 ] - [ DEBUG ]  Creating chain [/admin_notice_add.jsp] from String definition [authc,perms["notice:add"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:560 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:560 ] - [ DEBUG ]  Attempting to apply path [/admin_notice_add.jsp] to filter [perms] with config [notice:add]
+2021-03-04 14:23:57  [ localhost-startStop-1:561 ] - [ DEBUG ]  Creating chain [/admin_employee.jsp] from String definition [authc,perms["employee:select"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:561 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/admin_employee.jsp] to filter [perms] with config [employee:select]
+2021-03-04 14:23:57  [ localhost-startStop-1:562 ] - [ DEBUG ]  Creating chain [/admin_employee_update.jsp] from String definition [authc,perms["employee:update"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:562 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:563 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_update.jsp] to filter [perms] with config [employee:update]
+2021-03-04 14:23:57  [ localhost-startStop-1:563 ] - [ DEBUG ]  Creating chain [/admin_employee_add.jsp] from String definition [authc,perms["employee:add"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:564 ] - [ DEBUG ]  Attempting to apply path [/admin_employee_add.jsp] to filter [perms] with config [employee:add]
+2021-03-04 14:23:57  [ localhost-startStop-1:566 ] - [ DEBUG ]  Creating chain [/admin_post.jsp] from String definition [authc,perms["post:select"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:566 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:567 ] - [ DEBUG ]  Attempting to apply path [/admin_post.jsp] to filter [perms] with config [post:select]
+2021-03-04 14:23:57  [ localhost-startStop-1:567 ] - [ DEBUG ]  Creating chain [/admin_post_update.jsp] from String definition [authc,perms["post:update"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:568 ] - [ DEBUG ]  Attempting to apply path [/admin_post_update.jsp] to filter [perms] with config [post:update]
+2021-03-04 14:23:57  [ localhost-startStop-1:569 ] - [ DEBUG ]  Creating chain [/admin_post_add.jsp] from String definition [authc,perms["post:add"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/admin_post_add.jsp] to filter [perms] with config [post:add]
+2021-03-04 14:23:57  [ localhost-startStop-1:570 ] - [ DEBUG ]  Creating chain [/admin_user.jsp] from String definition [authc,perms["user:select"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:571 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:571 ] - [ DEBUG ]  Attempting to apply path [/admin_user.jsp] to filter [perms] with config [user:select]
+2021-03-04 14:23:57  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/admin_user_update.jsp] from String definition [authc,perms["user:update"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_user_update.jsp] to filter [perms] with config [user:update]
+2021-03-04 14:23:57  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/admin_user_add.jsp] from String definition [authc,perms["user:add"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_user_add.jsp] to filter [perms] with config [user:add]
+2021-03-04 14:23:57  [ localhost-startStop-1:573 ] - [ DEBUG ]  Creating chain [/admin_role.jsp] from String definition [authc,perms["role:select"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_role.jsp] to filter [perms] with config [role:select]
+2021-03-04 14:23:57  [ localhost-startStop-1:574 ] - [ DEBUG ]  Creating chain [/admin_role_perms.jsp] from String definition [authc,perms["role:update"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin_role_perms.jsp] to filter [perms] with config [role:update]
+2021-03-04 14:23:57  [ localhost-startStop-1:575 ] - [ DEBUG ]  Creating chain [/admin_role_add.jsp] from String definition [authc,perms["role:add"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:575 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:575 ] - [ DEBUG ]  Attempting to apply path [/admin_role_add.jsp] to filter [perms] with config [role:add]
+2021-03-04 14:23:57  [ localhost-startStop-1:575 ] - [ DEBUG ]  Creating chain [/admin_file.jsp] from String definition [authc,perms["file:select"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_file.jsp] to filter [perms] with config [file:select]
+2021-03-04 14:23:57  [ localhost-startStop-1:576 ] - [ DEBUG ]  Creating chain [/admin_file_add.jsp] from String definition [authc,perms["file:upload"]]
+2021-03-04 14:23:57  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [authc] with config [null]
+2021-03-04 14:23:57  [ localhost-startStop-1:577 ] - [ DEBUG ]  Attempting to apply path [/admin_file_add.jsp] to filter [perms] with config [file:upload]
+2021-03-04 14:23:58  [ localhost-startStop-1:943 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:23:58  [ localhost-startStop-1:944 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:23:58  [ localhost-startStop-1:955 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:23:58  [ localhost-startStop-1:964 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:23:58  [ localhost-startStop-1:965 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:23:58  [ localhost-startStop-1:966 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:23:58  [ localhost-startStop-1:988 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:23:58  [ localhost-startStop-1:995 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:24:58  [ http-bio-8080-exec-1:61500 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:24:58 GMT]
+2021-03-04 14:25:18  [ http-bio-8080-exec-5:81548 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:25:18  [ http-bio-8080-exec-5:81556 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4832b999] was not registered for synchronization because synchronization is not active
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81669 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81855 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@497ee256] will not be managed by Spring
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81861 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81879 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81896 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81897 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4832b999]
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81900 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81901 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81901 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81901 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81902 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81903 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81903 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:25:19 GMT]
+2021-03-04 14:25:19  [ http-bio-8080-exec-5:81904 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:25:23  [ http-bio-8080-exec-7:86079 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:25:23 GMT]
+2021-03-04 14:25:23  [ http-bio-8080-exec-7:86079 ] - [ DEBUG ]  Logging out subject with primary principal zhangsan
+2021-03-04 14:25:23  [ http-bio-8080-exec-7:86080 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:25:23  [ http-bio-8080-exec-7:86080 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:35:24  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:35:24  [ localhost-startStop-1:242 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@f983520'
+2021-03-04 14:35:24  [ localhost-startStop-1:340 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:35:24  [ localhost-startStop-1:350 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:35:24  [ localhost-startStop-1:362 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:35:24  [ localhost-startStop-1:362 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:35:24  [ localhost-startStop-1:363 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:35:24  [ localhost-startStop-1:526 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:35:24  [ localhost-startStop-1:547 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:35:24  [ localhost-startStop-1:548 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:35:24  [ localhost-startStop-1:550 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:35:24  [ localhost-startStop-1:550 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:35:24  [ localhost-startStop-1:551 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 14:35:24  [ localhost-startStop-1:551 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 14:35:24  [ localhost-startStop-1:551 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 14:35:24  [ localhost-startStop-1:552 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-04 14:35:24  [ localhost-startStop-1:553 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-04 14:35:24  [ localhost-startStop-1:554 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-04 14:35:25  [ localhost-startStop-1:970 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:35:25  [ localhost-startStop-1:971 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:35:25  [ localhost-startStop-1:980 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:35:25  [ localhost-startStop-1:988 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:35:25  [ localhost-startStop-1:989 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:35:25  [ localhost-startStop-1:989 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:35:25  [ localhost-startStop-1:1009 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:35:25  [ localhost-startStop-1:1016 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:37:04  [ http-bio-8080-exec-3:100577 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:37:04  [ http-bio-8080-exec-3:100586 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3d60c25b] was not registered for synchronization because synchronization is not active
+2021-03-04 14:37:04  [ http-bio-8080-exec-3:100699 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:37:04  [ http-bio-8080-exec-3:100883 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@7476cece] will not be managed by Spring
+2021-03-04 14:37:04  [ http-bio-8080-exec-3:100889 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100911 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100929 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100930 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3d60c25b]
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100936 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100936 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100937 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100937 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100938 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100946 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:37:05 GMT]
+2021-03-04 14:37:05  [ http-bio-8080-exec-3:100946 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104892 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104893 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104896 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104896 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7009e868] was not registered for synchronization because synchronization is not active
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104897 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@7476cece] will not be managed by Spring
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104897 ] - [ DEBUG ]  ==>  Preparing: select name from elecon.role where id in (select role_id from elecon.user_role where user_id = (select id from elecon.user where username = ?)) 
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104898 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104905 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104905 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7009e868]
+2021-03-04 14:37:08  [ http-bio-8080-exec-5:104906 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:37:09  [ http-bio-8080-exec-5:104907 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@427bb3bb] was not registered for synchronization because synchronization is not active
+2021-03-04 14:37:09  [ http-bio-8080-exec-5:104907 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@7476cece] will not be managed by Spring
+2021-03-04 14:37:09  [ http-bio-8080-exec-5:104907 ] - [ DEBUG ]  ==>  Preparing: select p.name from permission p inner join role_perms rp on p.id = rp.perm_id inner join role r on rp.role_id = r.id inner join user_role ur on r.id= ur.role_id inner join user u on ur.user_id = u.id where u.username = ? 
+2021-03-04 14:37:09  [ http-bio-8080-exec-5:104908 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:37:09  [ http-bio-8080-exec-5:104908 ] - [ DEBUG ]  <==      Total: 3
+2021-03-04 14:37:09  [ http-bio-8080-exec-5:104909 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@427bb3bb]
+2021-03-04 14:44:04  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 14:44:04  [ localhost-startStop-1:255 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@189fc201'
+2021-03-04 14:44:04  [ localhost-startStop-1:361 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 14:44:04  [ localhost-startStop-1:373 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 14:44:04  [ localhost-startStop-1:386 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 14:44:04  [ localhost-startStop-1:386 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 14:44:04  [ localhost-startStop-1:386 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 14:44:04  [ localhost-startStop-1:552 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 14:44:04  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 14:44:04  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 14:44:04  [ localhost-startStop-1:574 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 14:44:04  [ localhost-startStop-1:574 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 14:44:04  [ localhost-startStop-1:575 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 14:44:04  [ localhost-startStop-1:575 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 14:44:04  [ localhost-startStop-1:576 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 14:44:04  [ localhost-startStop-1:576 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-04 14:44:04  [ localhost-startStop-1:577 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-04 14:44:04  [ localhost-startStop-1:578 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-04 14:44:05  [ localhost-startStop-1:949 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 14:44:05  [ localhost-startStop-1:950 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 14:44:05  [ localhost-startStop-1:960 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 14:44:05  [ localhost-startStop-1:969 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 14:44:05  [ localhost-startStop-1:970 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 14:44:05  [ localhost-startStop-1:970 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 14:44:05  [ localhost-startStop-1:991 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 14:44:05  [ localhost-startStop-1:999 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357305 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357318 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7fbb24c3] was not registered for synchronization because synchronization is not active
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357428 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357647 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@15dc95a0] will not be managed by Spring
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357651 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357672 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357690 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357691 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7fbb24c3]
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357696 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357696 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357696 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357696 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357697 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357698 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357698 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 06:50:01 GMT]
+2021-03-04 14:50:01  [ http-bio-8080-exec-4:357699 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 15:02:56  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 15:02:56  [ localhost-startStop-1:229 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@41f37c64'
+2021-03-04 15:02:56  [ localhost-startStop-1:334 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 15:02:56  [ localhost-startStop-1:345 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 15:02:56  [ localhost-startStop-1:357 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 15:02:56  [ localhost-startStop-1:357 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 15:02:56  [ localhost-startStop-1:357 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 15:02:56  [ localhost-startStop-1:542 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 15:02:56  [ localhost-startStop-1:565 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 15:02:56  [ localhost-startStop-1:565 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 15:02:56  [ localhost-startStop-1:568 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 15:02:56  [ localhost-startStop-1:569 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 15:02:56  [ localhost-startStop-1:569 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 15:02:56  [ localhost-startStop-1:570 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 15:02:56  [ localhost-startStop-1:572 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 15:02:56  [ localhost-startStop-1:572 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-04 15:02:56  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-04 15:02:56  [ localhost-startStop-1:573 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-04 15:02:57  [ localhost-startStop-1:954 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 15:02:57  [ localhost-startStop-1:954 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 15:02:57  [ localhost-startStop-1:965 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 15:02:57  [ localhost-startStop-1:975 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 15:02:57  [ localhost-startStop-1:976 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 15:02:57  [ localhost-startStop-1:977 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 15:02:57  [ localhost-startStop-1:1003 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 15:02:57  [ localhost-startStop-1:1013 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 15:03:06  [ http-bio-8080-exec-4:10788 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 15:03:06  [ http-bio-8080-exec-4:10798 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@549746ac] was not registered for synchronization because synchronization is not active
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:10899 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11092 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@624bc66d] will not be managed by Spring
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11097 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11117 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11133 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11135 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@549746ac]
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11139 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11139 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11139 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11140 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11140 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11141 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11141 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 07:03:07 GMT]
+2021-03-04 15:03:07  [ http-bio-8080-exec-4:11141 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.
+2021-03-04 15:04:05  [ localhost-startStop-1:0 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021-03-04 15:04:05  [ localhost-startStop-1:241 ] - [ DEBUG ]  Registered plugin: 'com.github.pagehelper.PageInterceptor@78d85f74'
+2021-03-04 15:04:05  [ localhost-startStop-1:394 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\EleConWeibiaoDao.xml]'
+2021-03-04 15:04:05  [ localhost-startStop-1:404 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\Users\Administrator\IdeaProjects\ElectricityConsumption\target\classes\mapper\UserDao.xml]'
+2021-03-04 15:04:05  [ localhost-startStop-1:419 ] - [ DEBUG ]  Initializing bean [myRemal]...
+2021-03-04 15:04:05  [ localhost-startStop-1:419 ] - [ DEBUG ]  No authorizationCache instance set.  Checking for a cacheManager...
+2021-03-04 15:04:05  [ localhost-startStop-1:420 ] - [ DEBUG ]  No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2021-03-04 15:04:05  [ localhost-startStop-1:582 ] - [ DEBUG ]  Creating Shiro Filter instance.
+2021-03-04 15:04:05  [ localhost-startStop-1:601 ] - [ DEBUG ]  Creating chain [/index.html] from String definition [anon]
+2021-03-04 15:04:05  [ localhost-startStop-1:601 ] - [ DEBUG ]  Attempting to apply path [/index.html] to filter [anon] with config [null]
+2021-03-04 15:04:05  [ localhost-startStop-1:603 ] - [ DEBUG ]  Creating chain [/admin.jsp] from String definition [authc]
+2021-03-04 15:04:05  [ localhost-startStop-1:603 ] - [ DEBUG ]  Attempting to apply path [/admin.jsp] to filter [authc] with config [null]
+2021-03-04 15:04:05  [ localhost-startStop-1:603 ] - [ DEBUG ]  Creating chain [/update.html] from String definition [authc,perms["update:*"]]
+2021-03-04 15:04:05  [ localhost-startStop-1:604 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [authc] with config [null]
+2021-03-04 15:04:05  [ localhost-startStop-1:604 ] - [ DEBUG ]  Attempting to apply path [/update.html] to filter [perms] with config [update:*]
+2021-03-04 15:04:05  [ localhost-startStop-1:605 ] - [ DEBUG ]  Creating chain [/show.html] from String definition [authc,perms["elecon:select"]]
+2021-03-04 15:04:05  [ localhost-startStop-1:606 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [authc] with config [null]
+2021-03-04 15:04:05  [ localhost-startStop-1:608 ] - [ DEBUG ]  Attempting to apply path [/show.html] to filter [perms] with config [elecon:select]
+2021-03-04 15:04:06  [ localhost-startStop-1:977 ] - [ DEBUG ]  Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2021-03-04 15:04:06  [ localhost-startStop-1:977 ] - [ INFO ]  HV000001: Hibernate Validator 5.1.3.Final
+2021-03-04 15:04:06  [ localhost-startStop-1:986 ] - [ DEBUG ]  Found javax.persistence.Persistence on classpath, but no method 'getPersistenceUtil'. Assuming JPA 1 environment. All properties will per default be traversable.
+2021-03-04 15:04:06  [ localhost-startStop-1:996 ] - [ DEBUG ]  Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2021-03-04 15:04:06  [ localhost-startStop-1:997 ] - [ DEBUG ]  Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
+2021-03-04 15:04:06  [ localhost-startStop-1:1000 ] - [ DEBUG ]  Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+2021-03-04 15:04:06  [ localhost-startStop-1:1021 ] - [ DEBUG ]  Trying to load META-INF/validation.xml for XML based Validator configuration.
+2021-03-04 15:04:06  [ localhost-startStop-1:1029 ] - [ DEBUG ]  No META-INF/validation.xml found. Using annotation based configuration only.
+2021-03-04 15:04:22  [ http-bio-8080-exec-4:17688 ] - [ DEBUG ]  Creating a new SqlSession
+2021-03-04 15:04:22  [ http-bio-8080-exec-4:17697 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@160aab34] was not registered for synchronization because synchronization is not active
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:17794 ] - [ INFO ]  {dataSource-1} inited
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:17978 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@e5575ff] will not be managed by Spring
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:17982 ] - [ DEBUG ]  ==>  Preparing: select * from elecon.user where username = ?; 
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18001 ] - [ DEBUG ]  ==> Parameters: zhangsan(String)
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18018 ] - [ DEBUG ]  <==      Total: 1
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18019 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@160aab34]
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18024 ] - [ DEBUG ]  Looked up AuthenticationInfo [zhangsan] from doGetAuthenticationInfo
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18024 ] - [ DEBUG ]  AuthenticationInfo caching is disabled for info [zhangsan].  Submitted token: [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18024 ] - [ DEBUG ]  Performing credentials equality check for tokenCredentials of type [[C and accountCredentials of type [java.lang.String]
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18024 ] - [ DEBUG ]  Both credentials arguments can be easily converted to byte arrays.  Performing array equals comparison
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18025 ] - [ DEBUG ]  Authentication successful for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false].  Returned account [zhangsan]
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18026 ] - [ DEBUG ]  Context already contains a session.  Returning.
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18026 ] - [ DEBUG ]  Added HttpServletResponse Cookie [rememberMe=deleteMe; Path=/; Max-Age=0; Expires=Wed, 03-Mar-2021 07:04:23 GMT]
+2021-03-04 15:04:23  [ http-bio-8080-exec-4:18026 ] - [ DEBUG ]  AuthenticationToken did not indicate RememberMe is requested.  RememberMe functionality will not be executed for corresponding account.

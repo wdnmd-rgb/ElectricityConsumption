@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/echarts.min.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body style="overflow:hidden;transform-origin:top left;">
+<div style="padding-top: 30px;text-align:center;">
+    <form class="layui-form" action="" id="complain_search">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <input type="text" name="consNo" required lay-verify="required" placeholder="请输入用户编号"
+                       autocomplete="off" class="layui-input" style="width: 300px;" id="consNo">
+            </div>
+            <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+                <input type="text" class="layui-input" id="date" name="date">
+            </div>
+            <div class="layui-inline">
+                <button id="search" class="layui-btn" lay-submit
+                        lay-filter="provinceSearch">查找
+                </button>
+            </div>
+            <div class="layui-inline" style="display: none" id="testDiv2"> <!-- 注意：这一层元素并不是必须的 -->
+                <a class="layui-btn" href="" download id="update">下载结果</a>
+            </div>
+        </div>
+    </form>
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="display: none" id="testDiv3">
+        <ul class="layui-tab-title">
+            <li class="layui-this">数据表格</li>
+			<li>电量图</li>
+            <li>电压图</li>
+            <li>电流图</li>
+            <li>有功功率图</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 100px;">
+            <div class="layui-tab-item layui-show">
+                <div  id="testDiv">
+                    <table class="layui-hide" id="test"></table>
+                </div>
+            </div>
+			<div class="layui-tab-item">
+				<div style="padding-top: 30px;text-align:center;">
+					<div id="main3" style="width: 1500px;height:700px;"></div>
+				</div>
+			</div>
+            <div class="layui-tab-item">
+                <div style="padding-top: 30px;text-align:center;">
+                    <div id="main" style="width: 1500px;height:700px;"></div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div style="padding-top: 30px;text-align:center;">
+                    <div id="main1" style="width: 1500px;height:700px;"></div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div style="padding-top: 30px;text-align:center;">
+                    <div id="main2" style="width: 1500px;height:700px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['laydate', 'form', 'table','element'], function () {
+		var $ = layui.jquery
+				,element = layui.element;
+        var form = layui.form;
+        var laydate = layui.laydate;
+        var table = layui.table;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#date',//指定元素
+            value: new Date()
+            , min: -10
+            , max: 0
+        });
+        table.render({
+            id: "testReload"
+            , elem: '#test'
+            , url: 'ele/queryByCons'
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                {field: 'rid', title: '数据ID'}
+                , {field: 'consNo', title: '用户编号'}
+                , {field: 'consName', title: '用户名称'}
+                , {field: 'areaName', title: '区域'}
+                , {field: 'tFactor', title: '倍率'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                , {field: 'eventTime', title: '时间', sort: true}
+                , {field: 'papR', title: '正向有功总能示值', sort: true}
+                , {field: 'papRDiff', title: '正向有功总能示值差值'}
+                , {field: 'ele', title: '电量', sort: true}
+                , {field: 'ua', title: 'ua'}
+                , {field: 'ub', title: 'ub'}
+                , {field: 'uc', title: 'uc'}
+                , {field: 'ia', title: 'ia'}
+                , {field: 'ib', title: 'ib'}
+                , {field: 'ic', title: 'ic'}
+                , {field: 'i0', title: 'i0'}
+                , {field: 'p', title: 'p'}
+                , {field: 'pa', title: 'pa'}
+                , {field: 'pb', title: 'pb'}
+                , {field: 'pc', title: 'pc'}
+                , {field: 'q', title: 'q'}
+                , {field: 'qa', title: 'qa'}
+                , {field: 'qb', title: 'qb'}
+                , {field: 'qc', title: 'qc'}
+                , {field: 'tgName', title: '台区名称'}
+                , {field: 'orgName', title: '供电所名称'}
+            ]]
+            , page: true
+            , limit: 10
+        });
+
+        form.render();
+        form.on('submit(provinceSearch)', function (data) {
+            var loading = layer.load(0, {
+                shade: false,
+                time: 100 * 1000
+            });
+            var traget = document.getElementById("testDiv");
+            traget.style.display = "";
+            $("#testDiv2").css("display", "none");
+			$("#testDiv3").css("display", "none");
+            var formData = data.field;
+            var areaCode = formData.areaCode;
+            var consNo = formData.consNo;
+            var date = formData.date;
+            console.log(areaCode + consNo + date)
+            table.reload('testReload', {
+                where: {
+                    consNo: consNo,
+                    date: date
+                },
+                url: 'ele/queryByCons',
+                method: 'post',
+                done: function (res) {
+                    $("#update").attr("href", res.msg[0]);
+                    show("main", res.msg[1], res.msg[2], res.msg[3], res.msg[4], null,  "ua", "ub", "uc", null);
+                    show("main1", res.msg[1], res.msg[5], res.msg[6], res.msg[7], res.msg[8],  "ia", "ib", "ic", "i0");
+					show("main2", res.msg[1], res.msg[9], res.msg[10], res.msg[11], res.msg[12], "pa", "pb", "pc", "p");
+					show("main3", res.msg[1], res.msg[13], null, null, null, "ele", null, null, null);
+                    layer.close(loading);
+                    $("#testDiv2").css("display", "");
+					$("#testDiv3").css("display", "");
+                }
+            });
+            return false;
+        });
+    });
+
+    function show(id, time, array1, array2, array3, array4, name1, name2, name3, name4) {
+        var chartDom = document.getElementById(id);
+        var myChart = echarts.init(chartDom);
+        var option;
+        option = {
+            title: {
+                text: '',
+                x: 'center',
+                y: 'top'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: [name1, name2, name3,name4],
+                top: '30'
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: time
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: name1,
+                    type: 'line',
+                    data: array1
+                },
+                {
+                    name: name2,
+                    type: 'line',
+                    data: array2
+                }, {
+                    name: name3,
+                    type: 'line',
+                    data: array3
+                }, {
+                    name: name4,
+                    type: 'line',
+                    data: array4
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+</script>
+</body>
+</html>
