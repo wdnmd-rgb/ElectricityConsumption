@@ -18,7 +18,7 @@
     <select id="queryById" resultMap="RelationMap">
         select
           id, city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name
-        from dws_elecon.relation
+        from dws_elecon.dim_cst_relation_yf
         where id = #{id}
     </select>
 
@@ -26,7 +26,7 @@
     <select id="queryByTgNo" resultMap="RelationMap">
         select
           id, city_no, city_name, county_no, county_name, org_no, org_name, tg_no, tg_name
-        from dws_elecon.relation
+        from dws_elecon.dim_cst_relation_yf
         where tg_no=#{tgNo}
     </select>
 

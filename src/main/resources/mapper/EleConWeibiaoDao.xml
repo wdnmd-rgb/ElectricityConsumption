@@ -31,13 +31,13 @@
     <select id="queryById" resultMap="EleConWeibiaoMap">
         select
           id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
-        from dws_elecon.DWS_ELECON_RECORD
+        from dws_elecon.dim_cst_record_yf
         where id = #{id}
     </select>
     <select id="queryByConsNo" parameterType="java.util.List" resultType="string">
         select
           distinct rid
-        from dws_elecon.DWS_ELECON_RECORD
+        from dws_elecon.dim_cst_record_yf
         where cons_no = #{consNo}
     </select>
 
@@ -46,7 +46,7 @@
         select
         id,rid,area_name,cons_no, cons_name,
         t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
-        from dws_elecon.DWS_ELECON_RECORD
+        from dws_elecon.dim_cst_record_yf
         where rid in
         <foreach collection="list" item="rid" index="index" open="(" close=")" separator=",">
             #{rid}
@@ -56,7 +56,7 @@
     <select id="queryByTgOrg" resultType="string">
         select
         string_agg(rid,',')
-        from dws_elecon.DWS_ELECON_RECORD
+        from dws_elecon.dim_cst_record_yf
         <where>
             <if test="tgNo != null and tgNo != ''">
                 and tg_no = #{tgNo}
@@ -71,7 +71,7 @@
         select
         id,rid,area_name,cons_no, cons_name,
         t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
-        from dws_elecon.DWS_ELECON_RECORD
+        from dws_elecon.dim_cst_record_yf
         <where>
             <if test="tgNo != null and tgNo != ''">
                 and tg_no = #{tgNo}
@@ -84,7 +84,7 @@
 
     <select id="queryAreaByTgOrg" resultMap="AreaIdsMap">
         select b.area_code,a.string from(
-        select area_name,string_agg(rid,',') string from dws_elecon.DWS_ELECON_RECORD
+        select area_name,string_agg(rid,',') string from dws_elecon.dim_cst_record_yf
         <where>
             <if test="tgNo != null and tgNo != ''">
                 and tg_no = #{tgNo}
@@ -94,14 +94,14 @@
             </if>
         </where>
         group by area_name
-        )a left join dws_elecon.area_code_type b on a.area_name=b.area_name
+        )a left join dws_elecon.dim_cst_elecon_area_code_type_df b on a.area_name=b.area_name
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="EleConWeibiaoMap">
         select
           id,rid,area_name,cons_no, cons_name, t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
-        from dws_elecon.DWS_ELECON_RECORD
+        from dws_elecon.dim_cst_record_yf
         limit #{offset}, #{limit}
     </select>
 
@@ -109,25 +109,25 @@
     <select id="queryAreaName" resultType="java.lang.String">
         select
         area_code
-        from dws_elecon.area_code_type
+        from dws_elecon.dim_cst_elecon_area_code_type_df
         where area_name = #{areaName}
     </select>
     <select id="queryAreaCode" resultType="java.lang.String">
         select
-        area_code from dws_elecon.area_code_type
-        where area_name = (select area_name from dws_elecon.dws_elecon_record
+        area_code from dws_elecon.dim_cst_elecon_area_code_type_df
+        where area_name = (select area_name from dws_elecon.dim_cst_record_yf
         where cons_no = #{consNo})
     </select>
 
     <select id="queryByAreaNo" resultType="java.lang.String">
         select
         area_name
-        from dws_elecon.area_code_type
+        from dws_elecon.dim_cst_elecon_area_code_type_df
         where area_code = #{areaCode}
     </select>
 
     <select id="selectIdByConsNo" parameterType="java.util.List" resultType="string">
-        select rid from dws_elecon.DWS_ELECON_RECORD where cons_no in
+        select rid from dws_elecon.dim_cst_record_yf where cons_no in
         <foreach collection="list" item="no" index="index" open="(" close=")" separator=",">
             #{no}
         </foreach>
@@ -136,7 +136,7 @@
     <select id="queryAllByConsNo" resultMap="EleConWeibiaoMap">
         select id,rid,area_name,cons_no, cons_name,
         t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt,type_code
-        from dws_elecon.DWS_ELECON_RECORD where cons_no in
+        from dws_elecon.dim_cst_record_yf where cons_no in
         <foreach collection="list" item="no" index="index" open="(" close=")" separator=",">
             #{no}
         </foreach>
@@ -148,7 +148,7 @@
     <!--        when b.pap_r_diff*a.t_factor is null then 0-->
     <!--        when b.pap_r_diff*a.t_factor<![CDATA[>=]]>0 then b.pap_r_diff*a.t_factor-->
     <!--        when b.pap_r_diff*a.t_factor<![CDATA[<]]>0 then 0 end as ele-->
-    <!--        from (select * from dws_elecon.DWS_ELECON_RECORD where rid in (select rid from dws_elecon.ele_con_result group by rid)) a-->
+    <!--        from (select * from dws_elecon.dim_cst_record_yf where rid in (select rid from dws_elecon.ele_con_result group by rid)) a-->
     <!--        left join dws_elecon.ele_con_result b on a.event_time = to_char(b.event_time,'hh24:mi:ss')-->
     <!--        order by a.rid,a.event_time-->
     <!--    </select>-->
@@ -157,7 +157,7 @@
         select
         id,rid,area_name,cons_no, cons_name,
         t_factor,tg_no,tg_name,org_no,org_name,asset_no,tmnl_asset_no,mp_sn,cis_tmnl_asset_no,ct,pt
-        from dws_elecon.DWS_ELECON_RECORD
+        from dws_elecon.dim_cst_record_yf
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -186,14 +186,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from dws_elecon.DWS_ELECON_RECORD where id = #{id}
+        delete from dws_elecon.dim_cst_record_yf where id = #{id}
     </delete>
 
-    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into dws_elecon.DWS_ELECON_TEMPORARY(addr)
-        values
-        <foreach collection="list" item="addr" separator=",">
-            (#{addr})
-        </foreach>
-    </insert>
 </mapper>

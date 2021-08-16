@@ -18,8 +18,8 @@ public interface TgLineLossDao {
     int selectTgNum(String tgNo);
     List<TgReport> queryTgReport(@Param("tgNo") String tgNo,@Param("date")String date);
     int selectTgReportNum(@Param("tgNo") String tgNo,@Param("date")String date);
-    List<OrgReport> queryOrgReport(OrgReport orgReport);
-    int selectOrgReportNum(OrgReport orgReport);
+    List<OrgReport> queryOrgReport(String orgNo);
+    int selectOrgReportNum(String orgNo);
     List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport);
     int selectTgConsReportNum(TgConsReport tgConsReport);
 }

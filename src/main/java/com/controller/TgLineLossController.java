@@ -38,36 +38,36 @@ public class TgLineLossController {
 
     @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryTgLineLoss")
-    public void queryTgLineLoss(String tgNo, String date, int index,HttpServletResponse response, HttpServletRequest request){
-        Map<String,Object> map = new HashMap<>();
+    public void queryTgLineLoss(String tgNo, String date, int index, HttpServletResponse response, HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<>();
         String fileName = "";
-        map.put("code","0");
+        map.put("code", "0");
         List<TgLineLoss> lineLosses = new ArrayList<>();
-        String[] time = new String [(24/index)-1];
-        Double[] ppq = new Double[(24/index)-1];
-        Double[] upq = new Double[(24/index)-1];
-        Double[] lossPer = new Double[(24/index)-1];
-        Double[] ppqTol = new Double[(24/index)-1];
-        Double[] upqTol = new Double[(24/index)-1];
-        Double[] lossPerTol = new Double[(24/index)-1];
-        Integer[] remarks = new Integer[(24/index)-1];
+        String[] time = new String[(24 / index) - 1];
+        Double[] ppq = new Double[(24 / index) - 1];
+        Double[] upq = new Double[(24 / index) - 1];
+        Double[] lossPer = new Double[(24 / index) - 1];
+        Double[] ppqTol = new Double[(24 / index) - 1];
+        Double[] upqTol = new Double[(24 / index) - 1];
+        Double[] lossPerTol = new Double[(24 / index) - 1];
+        Integer[] remarks = new Integer[(24 / index) - 1];
         Long startTime = System.currentTimeMillis();
-        List<ConsEle> consEles = tgLineLossService.queryConsEle(tgNo,date);
+        List<ConsEle> consEles = tgLineLossService.queryConsEle(tgNo, date);
         TgResult tgResult = new TgResult();
         try {
-            Map<String,Object> stringObjectMap = TgLineLossUtil.doJob(consEles,date,index);
+            Map<String, Object> stringObjectMap = TgLineLossUtil.doJob(consEles, date, index);
             lineLosses = (List<TgLineLoss>) stringObjectMap.get("lineLosses");
             tgResult = (TgResult) stringObjectMap.get("tgResult");
-            consEles=( List<ConsEle>) stringObjectMap.get("consEles");
+            consEles = (List<ConsEle>) stringObjectMap.get("consEles");
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (!(lineLosses.size()>0)){
-            map.put("msg","");
-            map.put("count","");
-            map.put("data","");
+        if (!(lineLosses.size() > 0)) {
+            map.put("msg", "");
+            map.put("count", "");
+            map.put("data", "");
             try {
-                JsonUtil.responseWriteJson(response,map);
+                JsonUtil.responseWriteJson(response, map);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -76,25 +76,25 @@ public class TgLineLossController {
             return;
         }
         Long endTime2 = System.currentTimeMillis();
-        System.out.println("时间间隔："+(endTime2-startTime));
-        for (int i =0;i<lineLosses.size();i++){
+        System.out.println("时间间隔：" + (endTime2 - startTime));
+        for (int i = 0; i < lineLosses.size(); i++) {
             TgLineLoss tgLineLoss = lineLosses.get(i);
             time[i] = tgLineLoss.getEventTime();
             ppq[i] = tgLineLoss.getPpq();
             upq[i] = tgLineLoss.getUpq();
-            lossPer[i]=tgLineLoss.getLossPer();
+            lossPer[i] = tgLineLoss.getLossPer();
             ppqTol[i] = tgLineLoss.getPpqTol();
             upqTol[i] = tgLineLoss.getUpqTol();
-            lossPerTol[i]=tgLineLoss.getLossPerTol();
-            remarks[i]=tgLineLoss.getRemark();
+            lossPerTol[i] = tgLineLoss.getLossPerTol();
+            remarks[i] = tgLineLoss.getRemark();
         }
         Long endTime3 = System.currentTimeMillis();
-        String date1 = date.replaceAll("-","");
-        List<TgResult> tgResults = tgLineLossService.queryTgResult(tgNo,date1);
-        if (tgResults.size() == 0){
+        String date1 = date.replaceAll("-", "");
+        List<TgResult> tgResults = tgLineLossService.queryTgResult(tgNo, date1);
+        if (tgResults.size() == 0) {
             tgResults = tgLineLossService.queryTgResult2(tgNo);
         }
-        TgResult tgResult1 =  tgResults.get(0);
+        TgResult tgResult1 = tgResults.get(0);
         tgResult1.setRealCount(tgResult.getRealCount());
         tgResult1.setEventTime(tgResult.getEventTime());
         tgResult1.setRemark0(tgResult.getRemark0());
@@ -104,20 +104,20 @@ public class TgLineLossController {
         tgResults.remove(0);
         tgResults.add(tgResult1);
         Long endTime4 = System.currentTimeMillis();
-        System.out.println("获取tgResults、consEles："+(endTime4-endTime3));
+        System.out.println("获取tgResults、consEles：" + (endTime4 - endTime3));
         try {
-            SXSSFWorkbook workbook = ExcelUtil.sendExcel4(consEles,lineLosses,tgResult1);
-            String path = request.getSession().getServletContext().getRealPath("/")+"file";
-            String name =tgResult1.getTgName();
-            name = name.replace("#","");
-            fileName = date+name+"小时级线损明细.xlsx";
+            SXSSFWorkbook workbook = ExcelUtil.sendExcel4(consEles, lineLosses, tgResult1);
+            String path = request.getSession().getServletContext().getRealPath("/") + "file";
+            String name = tgResult1.getTgName();
+            name = name.replace("#", "");
+            fileName = date + name + "小时级线损明细.xlsx";
             File parent = new File(path);
             if (!parent.exists()) {
                 parent.mkdirs();
             }
-            String realPath = path+"/"+fileName;
-            File file=new File(realPath);
-            FileOutputStream os=new FileOutputStream(file);
+            String realPath = path + "/" + fileName;
+            File file = new File(realPath);
+            FileOutputStream os = new FileOutputStream(file);
             workbook.write(os);
             os.flush();
             os.close();
@@ -129,13 +129,13 @@ public class TgLineLossController {
             e.printStackTrace();
         }
         Long endTime5 = System.currentTimeMillis();
-        System.out.println("获取Excel："+(endTime5-endTime4));
-        Object[] obj = new Object[]{time,ppq,upq,lossPer,("file/"+fileName),remarks,ppqTol,upqTol,lossPerTol};
-        map.put("msg",obj);
-        map.put("count","");
-        map.put("data",tgResults);
+        System.out.println("获取Excel：" + (endTime5 - endTime4));
+        Object[] obj = new Object[]{time, ppq, upq, lossPer, ("file/" + fileName), remarks, ppqTol, upqTol, lossPerTol};
+        map.put("msg", obj);
+        map.put("count", "");
+        map.put("data", tgResults);
         try {
-            JsonUtil.responseWriteJson(response,map);
+            JsonUtil.responseWriteJson(response, map);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -144,17 +144,18 @@ public class TgLineLossController {
         return;
 
     }
+
     @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryMonitoringTg")
-    public void queryMonitoringTg(String tgNo, @RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
-        Map<String,Object> resultMap = new HashMap<>();
-        List<MonitoringTg> monitoringTgs = tgLineLossService.queryMonitoringTg(tgNo,page,limit);
+    public void queryMonitoringTg(String tgNo, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response) {
+        Map<String, Object> resultMap = new HashMap<>();
+        List<MonitoringTg> monitoringTgs = tgLineLossService.queryMonitoringTg(tgNo, page, limit);
         resultMap.put("code", 0);
         resultMap.put("msg", "");
-        resultMap.put("count",tgLineLossService.selectMonitoringTgNum(tgNo));
+        resultMap.put("count", tgLineLossService.selectMonitoringTgNum(tgNo));
         resultMap.put("data", monitoringTgs);
         try {
-            JsonUtil.responseWriteJson(response,resultMap);
+            JsonUtil.responseWriteJson(response, resultMap);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -165,17 +166,17 @@ public class TgLineLossController {
     @RequiresPermissions({"tgLineLoss:add"})
     @ResponseBody
     @RequestMapping("addMonitoringTg")
-    public Result addMonitoringTg(String tgNo){
+    public Result addMonitoringTg(String tgNo) {
         int num = tgLineLossService.selectTgNum(tgNo);
-        if (num == 0){
+        if (num == 0) {
             return Result.fail("输入台区编号有误，该台区不存在！");
         }
         num = tgLineLossService.selectMonitoringTgNum(tgNo);
-        if (num > 0){
+        if (num > 0) {
             return Result.fail("该台区已在监控台区列表！");
         }
         boolean flag = tgLineLossService.addMonitoringTg(tgNo);
-        if (flag){
+        if (flag) {
             return Result.success();
         }
         return Result.fail("添加失败！");
@@ -183,49 +184,71 @@ public class TgLineLossController {
 
     @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryTgReport")
-    public void queryTgReport(String tgNo,String date,@RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
-        List<TgReport> list = tgLineLossService.queryTgReport(tgNo,date,page,limit);
-        Map<String,Object> resultMap = new HashMap<>();
+    public void queryTgReport(String tgNo, String date, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response) {
+        List<TgReport> list = tgLineLossService.queryTgReport(tgNo, date, page, limit);
+        Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("code", 0);
         resultMap.put("msg", "");
-        resultMap.put("count",tgLineLossService.selectTgReportNum(tgNo, date));
+        resultMap.put("count", tgLineLossService.selectTgReportNum(tgNo, date));
         resultMap.put("data", list);
         try {
-            JsonUtil.responseWriteJson(response,resultMap);
+            JsonUtil.responseWriteJson(response, resultMap);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryOrgReport")
-    public void queryOrgReport(OrgReport orgReport,@RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
-        List<OrgReport> list = tgLineLossService.queryOrgReport(orgReport,page,limit);
-        Map<String,Object> resultMap = new HashMap<>();
+    public void queryOrgReport(String orgNo, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response) {
+        System.out.println("in");
+        List<OrgReport> list = tgLineLossService.queryOrgReport(orgNo, page, limit);
+        Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("code", 0);
         resultMap.put("msg", "");
-        resultMap.put("count",tgLineLossService.selectOrgReportNum(orgReport));
+        resultMap.put("count", tgLineLossService.selectOrgReportNum(orgNo));
         resultMap.put("data", list);
         try {
-            JsonUtil.responseWriteJson(response,resultMap);
+            JsonUtil.responseWriteJson(response, resultMap);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryTgConsReport")
-    public void queryTgConsReport(TgConsReport tgConsReport,@RequestParam(defaultValue = "1") Integer page,  @RequestParam(defaultValue = "10")Integer limit,HttpServletResponse response){
-        List<TgConsReport> list = tgLineLossService.queryTgConsReport(tgConsReport,page,limit);
-        Map<String,Object> resultMap = new HashMap<>();
+    public void queryTgConsReport(TgConsReport tgConsReport, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response, HttpServletRequest request) {
+        List<TgConsReport> list = tgLineLossService.queryTgConsReport(tgConsReport, page, limit);
+        List<TgConsReport> tgConsReports = tgLineLossService.queryTgConsReport(tgConsReport);
+        String fileName = "";
+        try {
+            SXSSFWorkbook workbook = ExcelUtil.sendConsReport(tgConsReports);
+            String path = request.getSession().getServletContext().getRealPath("/") + "file";
+            fileName = tgConsReport.getDateDay() +"  "+tgConsReport.getOrgNo() + "供电所相关性用户清单.xlsx";
+            File parent = new File(path);
+            if (!parent.exists()) {
+                parent.mkdirs();
+            }
+            String realPath = path + "/" + fileName;
+            File file = new File(realPath);
+            FileOutputStream os = new FileOutputStream(file);
+            workbook.write(os);
+            os.flush();
+            os.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("code", 0);
-        resultMap.put("msg", "");
-        resultMap.put("count",tgLineLossService.selectTgConsReportNum(tgConsReport));
+        resultMap.put("msg", "file/"+fileName);
+        resultMap.put("count", tgLineLossService.selectTgConsReportNum(tgConsReport));
         resultMap.put("data", list);
         try {
-            JsonUtil.responseWriteJson(response,resultMap);
+            JsonUtil.responseWriteJson(response, resultMap);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

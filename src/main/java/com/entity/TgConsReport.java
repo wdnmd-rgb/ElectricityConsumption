@@ -1,7 +1,10 @@
 package com.entity;
 
 public class TgConsReport {
+    private String cityName;
+    private String countyName;
     private String orgNo;
+    private String orgName;
     private String tgName;
     private String tgNo;
     private String tgTypeName;
@@ -17,6 +20,13 @@ public class TgConsReport {
     private Double ele;
     private Double pearson;
     private String dateDay;
+    private String eleArray;
+    private String tgEleArray;
+    private String dateDayStart;
+    private Double lossEle;
+    private Double lossPerAvg;
+    private String timeArray;
+
 
     public String getOrgNo() {
         return orgNo;
@@ -144,5 +154,108 @@ public class TgConsReport {
 
     public void setDateDay(String dateDay) {
         this.dateDay = dateDay;
+    }
+
+    public String getEleArray() {
+        return eleArray;
+    }
+
+    public void setEleArray(String eleArray) {
+        this.eleArray = eleArray;
+    }
+
+    public String getTgEleArray() {
+        return tgEleArray;
+    }
+
+    public void setTgEleArray(String tgEleArray) {
+        this.tgEleArray = tgEleArray;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getCountyName() {
+        return countyName;
+    }
+
+    public void setCountyName(String countyName) {
+        this.countyName = countyName;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
+    public String getDateDayStart() {
+        return dateDayStart;
+    }
+
+    public void setDateDayStart(String dateDayStart) {
+        this.dateDayStart = dateDayStart;
+    }
+
+    public Double getLossEle() {
+        return lossEle;
+    }
+
+    public void setLossEle(Double lossEle) {
+        this.lossEle = lossEle;
+    }
+
+    public Double getLossPerAvg() {
+        return lossPerAvg;
+    }
+
+    public void setLossPerAvg(Double lossPerAvg) {
+        this.lossPerAvg = lossPerAvg;
+    }
+
+    public String getTimeArray() {
+        return timeArray;
+    }
+
+    public void setTimeArray(String timeArray) {
+        this.timeArray = timeArray;
+    }
+
+    @Override
+    public String toString() {
+        return "TgConsReport{" +
+                "cityName='" + cityName + '\'' +
+                ", countyName='" + countyName + '\'' +
+                ", orgNo='" + orgNo + '\'' +
+                ", orgName='" + orgName + '\'' +
+                ", tgName='" + tgName + '\'' +
+                ", tgNo='" + tgNo + '\'' +
+                ", tgTypeName='" + tgTypeName + '\'' +
+                ", tgClass='" + tgClass + '\'' +
+                ", tgClassComment='" + tgClassComment + '\'' +
+                ", mergeLinelossRate='" + mergeLinelossRate + '\'' +
+                ", linelossRateInterval='" + linelossRateInterval + '\'' +
+                ", consNo='" + consNo + '\'' +
+                ", rid='" + rid + '\'' +
+                ", consName='" + consName + '\'' +
+                ", tFactor=" + tFactor +
+                ", assetNo='" + assetNo + '\'' +
+                ", ele=" + ele +
+                ", pearson=" + pearson +
+                ", dateDay='" + dateDay + '\'' +
+                ", eleArray='" + eleArray + '\'' +
+                ", tgEleArray='" + tgEleArray + '\'' +
+                ", dateDayStart='" + dateDayStart + '\'' +
+                ", lossEle=" + lossEle +
+                ", lossPerAvg=" + lossPerAvg +
+                ", timeArray='" + timeArray + '\'' +
+                '}';
     }
 }

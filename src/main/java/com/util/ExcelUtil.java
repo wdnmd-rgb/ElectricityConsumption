@@ -553,4 +553,47 @@ public class ExcelUtil {
         return map1;
     }
 
+    public static  SXSSFWorkbook  sendConsReport(List<TgConsReport> tgConsReports) {
+        SXSSFWorkbook workbook = new SXSSFWorkbook ();
+        SXSSFSheet sheet = workbook.createSheet("台区小时级线损");
+        SXSSFRow row1 = sheet.createRow(0);
+        String[] row1Cell = {"市公司名称","县公司名称","供电所编号","供电所名称","台区名称","台区编号",
+                "设备ID","倍率","用户编号","用户名称","相关性系数","起始时间","终止时间","用户电量","台区损失电量",
+                "台区平均线损率","资产编号","细分标签","分类规则","目标线损率","目标线损率区间","用户电量数组","台区损失电量数组"};
+        for (int i =0 ; i < row1Cell.length ; i++ ){
+            row1.createCell(i).setCellValue(row1Cell[i]);
+        }
+        int size = tgConsReports.size();
+        if (size>0&&(tgConsReports != null)){
+            for (int i = 0;i<size;i++){
+                SXSSFRow row = sheet.createRow(i+1);
+                TgConsReport tgConsReport = tgConsReports.get(i);
+                row.createCell(0).setCellValue(tgConsReport.getCityName());
+                row.createCell(1).setCellValue(tgConsReport.getCountyName());
+                row.createCell(2).setCellValue(tgConsReport.getOrgNo());
+                row.createCell(3).setCellValue(tgConsReport.getOrgName());
+                row.createCell(4).setCellValue(tgConsReport.getTgName());
+                row.createCell(5).setCellValue(tgConsReport.getTgNo());
+                row.createCell(6).setCellValue(tgConsReport.getRid());
+                row.createCell(7).setCellValue(tgConsReport.gettFactor());
+                row.createCell(8).setCellValue(tgConsReport.getConsNo());
+                row.createCell(9).setCellValue(tgConsReport.getConsName());
+                row.createCell(10).setCellValue(tgConsReport.getPearson());
+                row.createCell(11).setCellValue(tgConsReport.getDateDayStart());
+                row.createCell(12).setCellValue(tgConsReport.getDateDay());
+                row.createCell(13).setCellValue(tgConsReport.getEle());
+                row.createCell(14).setCellValue(tgConsReport.getLossEle());
+                row.createCell(15).setCellValue(tgConsReport.getLossPerAvg());
+                row.createCell(16).setCellValue(tgConsReport.getAssetNo());
+                row.createCell(17).setCellValue(tgConsReport.getTgClass());
+                row.createCell(18).setCellValue(tgConsReport.getTgClassComment());
+                row.createCell(19).setCellValue(tgConsReport.getMergeLinelossRate());
+                row.createCell(20).setCellValue(tgConsReport.getLinelossRateInterval());
+                row.createCell(21).setCellValue(tgConsReport.getEleArray());
+                row.createCell(22).setCellValue(tgConsReport.getTgEleArray());
+            }
+        }
+        return workbook;
+    }
+
 }

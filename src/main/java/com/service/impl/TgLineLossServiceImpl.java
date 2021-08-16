@@ -17,12 +17,10 @@ public class TgLineLossServiceImpl implements TgLineLossService {
     public List<TgLineLoss> queryTgLineLoss(String tgNo, String eventTime) {
         return tgLineLossDao.queryTgLineLoss(tgNo,eventTime);
     }
-
     @Override
     public List<TgResult> queryTgResult(String tgNo,String date) {
         return tgLineLossDao.queryTgResult(tgNo,date);
     }
-
     @Override
     public List<TgResult> queryTgResult2(String tgNo) {
         return tgLineLossDao.queryTgResult2(tgNo);
@@ -66,19 +64,24 @@ public class TgLineLossServiceImpl implements TgLineLossService {
     }
 
     @Override
-    public List<OrgReport> queryOrgReport(OrgReport orgReport,Integer pageNum,Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        return tgLineLossDao.queryOrgReport(orgReport);
+    public List<OrgReport> queryOrgReport(String orgNo,Integer pageNum,Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize,true).setOrderBy("id desc");
+        return tgLineLossDao.queryOrgReport(orgNo);
     }
 
     @Override
-    public int selectOrgReportNum(OrgReport orgReport) {
-        return tgLineLossDao.selectOrgReportNum(orgReport);
+    public int selectOrgReportNum(String orgNo) {
+        return tgLineLossDao.selectOrgReportNum(orgNo);
     }
 
     @Override
     public List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport, Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum,pageSize,true).setOrderBy("cons_no desc");
+        return tgLineLossDao.queryTgConsReport(tgConsReport);
+    }
+
+    @Override
+    public List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport) {
         return tgLineLossDao.queryTgConsReport(tgConsReport);
     }
 

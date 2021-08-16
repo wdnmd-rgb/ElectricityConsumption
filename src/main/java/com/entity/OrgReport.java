@@ -14,6 +14,7 @@ public class OrgReport {
     private int d;
     private int e;
     private int releCount;
+    private String statMonth;
 
     public String getCityName() {
         return cityName;
@@ -117,5 +118,33 @@ public class OrgReport {
 
     public void setReleCount(int releCount) {
         this.releCount = releCount;
+    }
+
+    public String getStatMonth() {
+        return statMonth;
+    }
+
+    public void setStatMonth(String statMonth) {
+        this.statMonth = statMonth;
+    }
+
+    @Override
+    public String toString() {
+        return "OrgReport{" +
+                "cityName='" + cityName + '\'' +
+                ", countyName='" + countyName + '\'' +
+                ", orgNo='" + orgNo + '\'' +
+                ", orgName='" + orgName + '\'' +
+                ", tgCount=" + tgCount +
+                ", hplcCount=" + hplcCount +
+                ", monitoringCount=" + monitoringCount +
+                ", a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                ", d=" + d +
+                ", e=" + e +
+                ", releCount=" + releCount +
+                ", statMonth='" + statMonth + '\'' +
+                '}';
     }
 }

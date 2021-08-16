@@ -15,8 +15,9 @@ public interface TgLineLossService {
     int selectTgNum(String tgNo);
     List<TgReport> queryTgReport(String tgNo,String date,Integer pageNum,Integer pageSize);
     int selectTgReportNum(String tgNo,String date);
-    List<OrgReport> queryOrgReport(OrgReport orgReport,Integer pageNum,Integer pageSize);
-    int selectOrgReportNum(OrgReport orgReport);
+    List<OrgReport> queryOrgReport(String orgNo,Integer pageNum,Integer pageSize);
+    int selectOrgReportNum(String orgNo);
     List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport,Integer pageNum,Integer pageSize);
+    List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport);
     int selectTgConsReportNum(TgConsReport tgConsReport);
 }
