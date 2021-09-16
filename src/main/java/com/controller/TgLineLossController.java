@@ -255,4 +255,34 @@ public class TgLineLossController {
             e.printStackTrace();
         }
     }
+
+    @RequiresPermissions({"tgLineLoss:select"})
+    @RequestMapping("queryTgLossReport")
+    public void queryTgLossReport(TgLossReport tgLossReport, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response) {
+        List<TgLossReport> list = tgLineLossService.queryTgLossReport(tgLossReport, page, limit);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count", tgLineLossService.selectTgLossReportNum(tgLossReport));
+        resultMap.put("data", list);
+        try {
+            JsonUtil.responseWriteJson(response, resultMap);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("queryRelation")
+    public void queryCityNo(Relation relation, HttpServletResponse response){
+        List<Relation> list = tgLineLossService.queryRelation(relation);
+        try {
+            JsonUtil.responseWriteJson(response,list);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

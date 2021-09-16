@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body{
+            padding: 20px;
+        }
+        .layui-btn1{
+            width: 120px;
+        }
+    </style>
 </head>
 <body>
 <form class="layui-form" style="padding-top: 30px;text-align:center;" id="complain_search">
@@ -32,13 +41,13 @@
         </div>
     </div>
 </form>
-<button class="layui-btn" onclick="fun()">
+<button class="layui-btn layui-btn1" onclick="fun()">
     添加监控台区
 </button>
 <div id="testDiv">
-    <table class="layui-hide" id="test"></table>
+    <table class="layui-hide " id="test"></table>
 </div>
-<script src="js/jquery-3.4.1.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="layui/layui.js"></script>
 <script type="text/javascript">
     function fun(){

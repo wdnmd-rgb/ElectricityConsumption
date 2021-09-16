@@ -21,7 +21,7 @@ public class ViewController {
     {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        return "redirect:../admin.jsp";
+        return "redirect:../index.html";
     }
 
     @RequestMapping("user/selectOne")

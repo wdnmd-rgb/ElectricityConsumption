@@ -9,6 +9,7 @@ public class MonitoringTg {
     private String tgName;
     private String xsLx;
     private String fsLX;
+    private String remark;
 
     public String getCityName() {
         return cityName;
@@ -72,5 +73,13 @@ public class MonitoringTg {
 
     public void setFsLX(String fsLX) {
         this.fsLX = fsLX;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

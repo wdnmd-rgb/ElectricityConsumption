@@ -1,112 +1,473 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/layuimini.css">
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        
+        .btn-a {
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 32px;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: linear-gradient(#F2F1F2 20%, #DEDFDE 80%);
+            box-shadow: 0 0 3px 0px #ccc;
+        }
+        
+        #searchs {
+            margin-top: 40px;
+        }
+        
+        .layui-btn1 {
+            width: 120px;
+        }
+        
+        .layui-inline {
+            margin: 20px;
+        }
+        /* 表格特效 */
+        
+        .layui-inline1 {
+            margin-left: -0px;
+        }
+        /* 横条样式 */
+        
+        .bar {
+            width: 105%;
+            height: 28px;
+            margin-left: -20px;
+            line-height: 28px;
+            background: linear-gradient(#D4EEF4 40%, #bad6e7 60%);
+        }
+    </style>
 </head>
+
 <body>
-<form class="layui-form" action="" id="complain_search">
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <input type="text" name="orgNo" required lay-verify="required" placeholder="请输入供电所编号"
-                   autocomplete="off" class="layui-input" style="width: 300px;" id="orgNo">
-        </div>
-        <div class="layui-inline">
-            <button id="search" class="layui-btn" lay-submit
-                    lay-filter="provinceSearch">查找
-            </button>
+    <!-- <div class="layuimini-container">
+        <div class="layuimini-main">
+            <form class="layui-form" action="" style="padding:20px;">
+                <div class="layui-form-item" id="area-picker">
+                    <div class="layui-form-label">网点地址</div>
+                    <div class="layui-input-inline" style="width: 200px;">
+                        <select name="province" class="province-selector" data-value="广东省" lay-filter="province-1">
+                            <option value="">请选择省</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline" style="width: 200px;">
+                        <select name="city" class="city-selector" data-value="深圳市" lay-filter="city-1">
+                            <option value="">请选择市</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline" style="width: 200px;">
+                        <select name="county" class="county-selector" data-value="龙岗区" lay-filter="county-1">
+                            <option value="">请选择区</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline" style="width: 200px;">
+                        <select name="areas" class="areas-selector" data-value="龙岗区" lay-filter="areas-1">
+                            <option value="">请选择区</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</form>
-<div id="testDiv">
-    <table class="layui-hide" id="test"></table>
-</div>
-<script src="js/jquery-3.4.1.js"></script>
-<script src="layui/layui.js"></script>
-<script type="text/javascript">
-    var orgNo = "";
-    var titleTpl = function (d) {
-        var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec"  name="jump">'+d.orgNo+'</a>';
-        return html;
-    }
 
-    layui.use(['form','table'], function () {
-        var table = layui.table;
-        var form = layui.form;
+ -->
+    <form class="layui-form" action="" id="complain_search">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <!-- 表单联动效果 -->
+                <form class="layui-form" action="">
+                    <div class="layui-input-inline">
+                        <select name="province" lay-filter="province" class="province"> 
+                  <option value="0">请选择省</option> 
+                 </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="city" lay-filter="city" class="city" disabled> 
+                  <option value="0">请选择市</option> 
+                 </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="county" lay-filter="county" class="county" disabled> 
+                  <option value="0">请选择县</option> 
+                 </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="area" lay-filter="area" class="county" disabled> 
+                  <option value="0">请选择台区</option> 
+                 </select>
+                    </div>
+                </form>
+                <br/>
+                <div class="layui-inline layui-inline1">
+                    <!-- 注意：这一层元素并不是必须的 -->
+                    <input type="text" class="layui-input" id="date" name="date">
+                </div>
+                <div class="layui-inline">
+                    <button id="search" class="layui-btn" lay-submit lay-filter="provinceSearch">查找
+             </button>
+                </div>
+                <div class="layui-inline" id="testDiv2" style="display: none;">
+                    <!-- 注意：这一层元素并不是必须的 -->
+                    <a class="btn-a" href="" download id="update">下载结果</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="testDiv" style="display: none;">
+        <table class="layui-hide" id="test"></table>
+    </div>
+    <div id="searchs">
+    </div>
+    <!-- 横条样式 -->
+    <div class="bar">
 
-        table.render({
-            id: "testReload"
-            , elem: '#test'
-            , url: 'tgLine/queryOrgReport'
-            , method: 'post'
-            , cols: [[
-                {field: 'cityName', title: '市公司名称'}
-                , {field: 'countyName', title: '县公司名称'}
-                , {field: 'orgNo', title: '供电所编号',templet: titleTpl}
-                , {field: 'orgName', title: '供电所名称'}
-                , {field: 'tgCount', title: '台区数量'}
-                , {field: 'hplcCount', title: 'hplc台区数量'}
-                , {field: 'monitoringCount', title: '监控台区数量'}
-                , {field: 'a', title: '优秀稳定台区'}
-                , {field: 'b', title: '合理耗损台区'}
-                , {field: 'c', title: '精益治损台区'}
-                , {field: 'd', title: '高损攻坚台区'}
-                , {field: 'e', title: '供售异常台区'}
-                , {field: 'releCount', title: '相关性次数'}
-            ]]
-            ,page: true
-            ,done:function(){
-                $('a[name="jump"]').on('click',function(){
-                    var orgNo=$(this).html();
-                    var url = "tgConsReport.html";//此处拼接内容
-                    document.cookie=("orgNo="+orgNo);
-                    document.cookie=("date="+getRecentDay(-1));
-                    document.cookie="name=a";
-                    window.location.href = url;
-                })
-            }
-        });
-        form.render();
-        form.on('submit(provinceSearch)', function (data) {
-            var formData = data.field;
-            var orgNo = formData.orgNo;
-            table.reload('testReload', {
-                where: {
-                    orgNo: orgNo
-                },
-                url: 'tgLine/queryOrgReport',
-                method: 'post'
-            });
-            return false;
-        });
-        table.on('row(test)', function(obj){
-            var data = obj.data;
-            orgNo = data.orgNo;
-        });
-
-    });
-    function getRecentDay(day) {
-        var today = new Date();
-        var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
-        today.setTime(targetday_milliseconds);
-        var tYear = today.getFullYear();
-        var tMonth = today.getMonth();
-        var tDate = today.getDate();
-        tMonth = doHandleMonth(tMonth + 1);
-        tDate = doHandleMonth(tDate);
-
-        return tYear + "-" + tMonth + "-" + tDate;
-    }
-
-    function doHandleMonth(month) {
-        var m = month;
-        if (month.toString().length == 1) {
-            m = "0" + month;
+    </div>
+    <!-- 表格样式 -->
+    <div class="layui-tab layui-tab-card" lay-filter="demo">
+        <ul class="layui-tab-title">
+            <li class="layui-this">网站设置</li>
+            <li>用户管理</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 100%;">
+            <div class="layui-tab-item layui-show">
+                <!-- 表格数据 -->
+                <table id="demo" lay-filter="test"></table>
+            </div>
+            <div class="layui-tab-item">
+                <!-- 表格数据 -->
+                <table id="test2" lay-filter="test2"></table>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="./js/lay-config.js"></script>
+    <script type="text/javascript">
+        var orgNo = "";
+        var titleTpl = function(d) {
+            var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec"  name="jump">' + d.orgNo + '</a>';
+            return html;
         }
-        return m;
-    }
 
-</script>
+        layui.use(['form', 'table', 'layarea', 'dropdown', 'element'], function() {
+            (function() {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: "tgLine/queryRelation",
+                    datatype: "JSON",
+                    success: function(data) {
+                        $("#province").html('');
+                        var list = data.data;
+                        var provincesHtml = "<option value='0'>请选择市公司名称</option>";
+                        console.log(data);
+                        $.each(list, function(index, province) {
+                            provincesHtml += '<option value="' + province.cityNo + '" >' + province.cityName + '</option>';
+                        });
+                        $("#province").html(provincesHtml);
+                        form.render('select');
+                    }
+                });
+            })();
+            var laydate = layui.laydate,
+                table = layui.table,
+                form = layui.form,
+                element = layui.element,
+                layarea = layui.layarea;
+
+            // 地区联动
+            layarea.render({
+                elem: '#area-picker',
+                change: function(res) {
+                    //选择结果
+                    console.log(res);
+                }
+            });
+
+            //时间联动
+
+            //执行一个laydate实例---->日期对象
+            laydate.render({
+                elem: '#date', //指定元素
+                value: new Date(),
+                min: -10,
+                max: 0
+            });
+            /* table.render({
+                id: "testReload",
+                elem: '#test',
+                url: 'tgLine/queryOrgReport',
+                method: 'post',
+                cols: [
+                    [{
+                        field: 'cityName',
+                        title: '市公司名称'
+                    }, {
+                        field: 'countyName',
+                        title: '县公司名称'
+                    }, {
+                        field: 'orgNo',
+                        title: '供电所编号',
+                        templet: titleTpl
+                    }, {
+                        field: 'orgName',
+                        title: '供电所名称'
+                    }, {
+                        field: 'tgCount',
+                        title: '台区数量'
+                    }, {
+                        field: 'hplcCount',
+                        title: 'hplc台区数量'
+                    }, {
+                        field: 'monitoringCount',
+                        title: '监控台区数量'
+                    }, {
+                        field: 'a',
+                        title: '优秀稳定台区'
+                    }, {
+                        field: 'b',
+                        title: '合理耗损台区'
+                    }, {
+                        field: 'c',
+                        title: '精益治损台区'
+                    }, {
+                        field: 'd',
+                        title: '高损攻坚台区'
+                    }, {
+                        field: 'e',
+                        title: '供售异常台区'
+                    }, {
+                        field: 'releCount',
+                        title: '相关性次数'
+                    }]
+                ],
+                page: true,
+                done: function() {
+                    $('a[name="jump"]').on('click', function() {
+                        var orgNo = $(this).html();
+                        var url = "tgConsReport.html"; //此处拼接内容
+                        document.cookie = ("orgNo=" + orgNo);
+                        document.cookie = ("date=" + getRecentDay(-1));
+                        document.cookie = "name=a";
+                        window.location.href = url;
+                    })
+                }
+            });
+            */
+            table.render({
+                elem: "#demo", // elem属性用来绑定id值
+                url: "js/user.json", // 数据接口
+                page: true,
+                height: 325,
+                cols: [
+                    [
+                        // 设置序号
+                        {
+                            field: 'A',
+                            type: "numbers"
+                        },
+                        // 设置复选框
+                        {
+                            field: 'A',
+                            type: "checkbox"
+                        }, {
+                            field: "id",
+                            title: "用户编号",
+                            sort: true,
+                            width: 150,
+                            event: 'viewReport'
+                        }, {
+                            field: "username",
+                            title: "用户姓名",
+                            edit: 'text'
+                        }, {
+                            field: "sex",
+                            title: "性别",
+                            sort: true
+                        }, {
+                            field: "city",
+                            title: "城市"
+                        }, {
+                            field: "sign",
+                            title: "签名"
+                        }, {
+                            title: "操作",
+                            toolbar: "#barDemo"
+                        }
+                    ]
+                ],
+            });
+
+            form.render();
+            form.on('submit(provinceSearch)', function(data) {
+                var formData = data.field;
+                var orgNo = formData.orgNo;
+                table.reload('testReload', {
+                    where: {
+                        orgNo: orgNo
+                    },
+                    url: 'tgLine/queryOrgReport',
+                    method: 'post'
+                });
+                return false;
+            });
+
+
+            table.on('row(test)', function(obj) {
+                var data = obj.data;
+                orgNo = data.orgNo;
+                // 获取事件名
+                var eventName = obj.event;
+                console.log(eventName)
+            });
+
+            table.on("tool(test)", function(obj) {
+                // console.log(obj);
+                var eventName = obj.event;
+                // console.log(eventName);
+                if (eventName == 'viewReport') {
+                    $(".layui-this").removeClass('layui-this').siblings("li").css({
+                        backgroundColor: '#fff'
+                    }).addClass('layui.this2');
+                    $(".layui-show").removeClass('layui-show').siblings("div").addClass('layui-show');
+                }
+            });
+
+            //一些事件监听
+            element.on('tab(demo)', function(data) {
+                // console.log(data)
+                // console.log(data.index); //得到当前Tab的所在下标
+                if (data.index == 0) {
+                    $('.layui-tab-title li').eq(1).css({
+                            backgroundColor: '#FAFAFA'
+                        })
+                        // searchCon(pageNum, pageSize,gradeId,subjectId);
+                } else if (data.index == 1) {
+                    $('.layui-tab-title li').eq(1).css({
+                        backgroundColor: '#fff'
+                    });
+                }
+            });
+
+
+            form.on('select(province)', function(data) {
+                var cityid = data.value;
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: "/Order/city",
+                    data: {
+                        cityid: cityid
+                    },
+                    datatype: "JSON",
+                    success: function(data) {
+                        $("#city").html('');
+                        $("#district").html('');
+                        var list = data.data;
+                        var citysHtml = "<option value='0'>请选择城市</option>";
+                        $.each(list, function(index, city) {
+                            citysHtml += '<option value="' + city.id + '" >' + city.name + '</option>';
+                        });
+                        $("#city").html(citysHtml);
+                        form.render('select');
+                    }
+                });
+
+            });
+            form.on('select(city)', function(data) {
+                var cityid = data.value;
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: "/Order/district",
+                    data: {
+                        cityid: cityid
+                    },
+                    datatype: "JSON",
+                    success: function(data) {
+                        // var json =  JSON.parse(data);
+                        var list = data.data;
+                        $("#district").empty();
+                        $("#district").append("<option value='0'>请选择地区</option>");
+                        $.each(list, function(index) {
+                            $("#district").append("<option value=" + list[index].id + ">" + list[index].name + "</option>");
+                        });
+                        form.render('select');
+                    }
+                });
+            });
+
+            function getRecentDay(day) {
+                var today = new Date();
+                var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+                today.setTime(targetday_milliseconds);
+                var tYear = today.getFullYear();
+                var tMonth = today.getMonth();
+                var tDate = today.getDate();
+                tMonth = doHandleMonth(tMonth + 1);
+                tDate = doHandleMonth(tDate);
+
+                return tYear + "-" + tMonth + "-" + tDate;
+            }
+
+            function doHandleMonth(month) {
+                var m = month;
+                if (month.toString().length == 1) {
+                    m = "0" + month;
+                }
+                return m;
+            }
+
+            // // 超链接跳转
+            // $("#search").click(function(){
+            //     $("#right-bottom").load('tgConsReport.html')
+            // })
+
+            $("#search").click(function() {
+                //    $("选择元素").delay(时间值).hide(动画持续时间) 
+                $("#testDiv2").delay(600).show(600)
+                $("#testDiv").show()
+            })
+
+            //下拉效果
+
+            //超链接跳转
+
+
+            $("#search").click(function() {
+                $("#searchs").load('tgConsReport.html')
+            })
+
+            //   三级联动
+            // layui.config({
+            //     base: "./js/address.js" //address.js的路径 
+            // }).use(['layer', 'jquery', "address"], function() {
+            //     var layer = layui.layer,
+            //         $ = layui.jquery,
+            //         address = layui.address();
+            // });
+        })
+    </script>
 </body>
+
 </html>

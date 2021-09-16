@@ -1,60 +1,121 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="layui/css/layui.css">
-    <link rel="stylesheet" href="css/base.css">
-</head>
-<body>
-<form class="layui-form" style="padding-top: 30px;text-align:center;" id="complain_search">
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <input type="text" name="no" required lay-verify="required" placeholder="请输入台区编号"
-                   autocomplete="off" class="layui-input" style="width: 300px;" id="no">
-        </div>
-        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
-            <input type="text" class="layui-input" id="date" name="date">
-        </div>
-        <div class="layui-inline">
-            <select name="index" lay-verify="required" id="index">
-                <option value="1">请选择时间间隔</option>
-                <option value="1">1小时</option>
-                <option value="2">2小时</option>
-                <option value="3">3小时</option>
-            </select>
-        </div>
-        <div class="layui-inline">
-            <button id="search" class="layui-btn" lay-submit
-                    lay-filter="provinceSearch">查找
-            </button>
-        </div>
-        <div class="layui-inline" style="display: none" id="testDiv2"> <!-- 注意：这一层元素并不是必须的 -->
-            <a class="layui-btn" href="" download id="update">下载明细</a>
-        </div>
-        <div class="layui-inline" style="display: none" id="testDiv3"> <!-- 注意：这一层元素并不是必须的 -->
-            <button type="button" class="layui-btn" onclick="change()">切换累计图</button>
-        </div>
-        <div class="layui-inline" style="display: none" id="testDiv5"> <!-- 注意：这一层元素并不是必须的 -->
-            <button type="button" class="layui-btn" onclick="change2()">切换分时图</button>
-        </div>
-    </div>
-</form>
-<div style="display: none" id="testDiv">
-    <table class="layui-hide" id="test"></table>
-</div>
-<div style="display: none;padding-top: 30px;text-align:center;" id="testDiv4">
-    <div id="main" style="width: 1500px;height:700px;"></div>
-</div>
-<div style="display: none;padding-top: 30px;text-align:center;" id="testDiv1">
-    <div id="main1" style="width: 1500px;height:700px;"></div>
-</div>
-<script src="js/jquery.min.js"></script>
-<script src="layui/layui.js"></script>
-<script src="js/echarts.min.js"></script>
-<script type="text/javascript">
 
+    layui.use('element', function(){
+        var element = layui.element;
+        var active={
+            tabAdd:function(url,id,name){
+                element.tabAdd('contentnav',{
+                    title:name,
+                    content:'<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;"></iframe>',
+                    id:id
+                });
+                rightMenu();
+                iframeWH();
+            },
+            tabChange:function(id){
+                element.tabChange('contentnav',id);
+            },
+            tabDelete:function(id){
+                element.tabDelete('contentnav',id);
+            },
+            tabDeleteAll:function(ids){
+                $.each(ids,function(index,item){
+                    element.tabDelete('contentnav',item);
+                });
+            }
+        };
+        $(".site-url").on('click',function(){
+            var nav=$(this);
+            var length = $("ul.layui-tab-title li").length;
+            if(length<=0){
+                active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+            }else{
+                var isData=false;
+                $.each($("ul.layui-tab-title li"),function(){
+                    if($(this).attr("lay-id")==nav.attr("data-id")){
+                        isData=true;
+                    }
+                });
+                if(isData==false){
+                    active.tabAdd(nav.attr("data-url"),nav.attr("data-id"),nav.attr("data-title"));
+                }
+                active.tabChange(nav.attr("data-id"));
+            }
+        });
+        function rightMenu(){
+            //右击弹出
+            $(".layui-tab-title li").on('contextmenu',function(e){
+                var menu=$(".rightmenu");
+                menu.find("li").attr('data-id',$(this).attr("lay-id"));
+                l = e.clientX;
+                t = e.clientY;
+                menu.css({ left:l, top:t}).show();
+                return false;
+            });
+            //左键点击隐藏
+            $("body,.layui-tab-title li").click(function(){
+                $(".rightmenu").hide();
+            });
+        }
+        $(".rightmenu li").click(function(){
+            if($(this).attr("data-type")=="closethis"){
+                active.tabDelete($(this).attr("data-id"));
+            }else if($(this).attr("data-type")=="closeall"){
+                var tabtitle = $(".layui-tab-title li");
+                var ids = new Array();
+                tabtitle.each(function(i){
+                    ids.push($(this).attr("lay-id"));
+                });
+                //如果关闭所有 ，即将所有的lay-id放进数组，执行tabDeleteAll
+                active.tabDeleteAll(ids);
+            }
+            $('.rightmenu').hide(); //最后再隐藏右键菜单
+        });
+        function iframeWH(){
+            var H = $(window).height()-80;
+            $("iframe").css("height",H+"px");
+        }
+        $(window).resize(function(){
+            iframeWH();
+        });
 
+         // 左侧栏向左折叠
+         $("#menuBar").on('click', function () {
+                if ($("body").hasClass("mini-sidebar")) {
+                    $("body").removeClass("mini-sidebar");
+                    $('.layui-nav-tree').animate({width:'100px'},300);
+                    $('.tabs').animate({'margin-left':'100px'},300)
+                    $(this).addClass("layui-icon-shrink-right");
+                    $(this).removeClass("layui-icon-spread-left");
+                } else {
+                    $("body").addClass("mini-sidebar");
+                    $('.layui-nav-tree').animate({width:'200px'},300);
+                    $(this).removeClass("layui-icon-shrink-right");
+                    $('.tabs').animate({'margin-left':'200px'},300)
+                    $(this).addClass("layui-icon-spread-left");
+                }
+            });
+    }); 
+
+    //修改密码
+    $('.modify').click(function(){
+        layer.open({
+       title: '修改密码'
+      ,content: `<form class="layui-form" action="">
+                   <div class="layui-form-item">
+                      <label class="layui-form-label">账号:</label>
+                         <div class="layui-input-block">
+                             <input type="text" name="title" required  lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input inputs">
+                     </div>
+                     <div class="layui-form-item">
+                     <label class="layui-form-label">密码:</label>
+                     <div class="layui-input-inline">
+                       <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                     </div>
+                  </div>`
+});
+    })
+
+    // 首页内容
     layui.use(['laydate', 'form', 'table'], function () {
         var form = layui.form;
         var laydate = layui.laydate;
@@ -234,6 +295,3 @@
         $("#testDiv4").css("display", "");
         $("#testDiv3").css("display", "");
     }
-</script>
-</body>
-</html>

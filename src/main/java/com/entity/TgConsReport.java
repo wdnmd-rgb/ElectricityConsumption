@@ -26,6 +26,7 @@ public class TgConsReport {
     private Double lossEle;
     private Double lossPerAvg;
     private String timeArray;
+    private String maxIndex;
 
 
     public String getOrgNo() {
@@ -228,6 +229,14 @@ public class TgConsReport {
         this.timeArray = timeArray;
     }
 
+    public String getMaxIndex() {
+        return maxIndex;
+    }
+
+    public void setMaxIndex(String maxIndex) {
+        this.maxIndex = maxIndex;
+    }
+
     @Override
     public String toString() {
         return "TgConsReport{" +
@@ -256,6 +265,7 @@ public class TgConsReport {
                 ", lossEle=" + lossEle +
                 ", lossPerAvg=" + lossPerAvg +
                 ", timeArray='" + timeArray + '\'' +
+                ", maxIndex='" + maxIndex + '\'' +
                 '}';
     }
 }

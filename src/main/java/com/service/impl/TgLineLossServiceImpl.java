@@ -89,4 +89,31 @@ public class TgLineLossServiceImpl implements TgLineLossService {
     public int selectTgConsReportNum(TgConsReport tgConsReport) {
         return tgLineLossDao.selectTgConsReportNum(tgConsReport);
     }
+
+    @Override
+    public List<TgLossReport> queryTgLossReport(TgLossReport tgLossReport,Integer pageNum,Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return tgLineLossDao.queryTgLossReport(tgLossReport);
+    }
+
+    @Override
+    public int selectTgLossReportNum(TgLossReport tgLossReport) {
+        return tgLineLossDao.selectTgLossReportNum(tgLossReport);
+    }
+
+    @Override
+    public List<ExcConsReport> queryExcConsReport(ExcConsReport excConsReport, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return tgLineLossDao.queryExcConsReport(excConsReport);
+    }
+
+    @Override
+    public int selectExcConsReportNum(ExcConsReport excConsReport) {
+        return tgLineLossDao.selectExcConsReportNum(excConsReport);
+    }
+
+    @Override
+    public List<Relation> queryRelation(Relation relation) {
+        return tgLineLossDao.queryRelation(relation);
+    }
 }

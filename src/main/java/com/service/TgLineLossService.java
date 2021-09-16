@@ -20,4 +20,9 @@ public interface TgLineLossService {
     List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport,Integer pageNum,Integer pageSize);
     List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport);
     int selectTgConsReportNum(TgConsReport tgConsReport);
+    List<TgLossReport> queryTgLossReport(TgLossReport tgLossReport,Integer pageNum,Integer pageSize);
+    int selectTgLossReportNum(TgLossReport tgLossReport);
+    List<ExcConsReport> queryExcConsReport(ExcConsReport excConsReport,Integer pageNum,Integer pageSize);
+    int selectExcConsReportNum(ExcConsReport excConsReport);
+    List<Relation> queryRelation(Relation relation);
 }

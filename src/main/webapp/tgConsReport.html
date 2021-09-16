@@ -4,9 +4,34 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="layui/css/layui.css">
-    <script>
-
-    </script>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body{
+            padding: 20px;
+        }
+       .btn-a{
+           display: inline-block;
+           width: 100px;
+           height: 30px;
+           line-height: 32px;
+           text-align: center;
+           border-radius: 4px;
+           border: 1px solid #ccc;
+           background: linear-gradient(#F2F1F2 20%,#DEDFDE 80%);
+           box-shadow: 0 0 3px 0px #ccc;
+       }
+       /* 按钮 */
+        .layui-btn{
+         width: 84px;
+         height: 30px;
+         line-height: 32px;
+         text-align: center;
+         border-radius: 4px;
+         border: 1px solid #ccc;
+         background: linear-gradient(#F2F1F2 20%,#DEDFDE 80%);
+         box-shadow: 0 0 3px 0px #ccc;
+       }
+    </style>
 </head>
 <body>
 <form class="layui-form" action="" id="complain_search">
@@ -17,19 +42,19 @@
         </div>
         <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
             <input type="text" class="layui-input" id="date" name="date">
-        </div>
+          </div>
         <div class="layui-inline">
-            <button id="search" class="layui-btn" lay-submit
+            <button id="search" class="search layui-btn" lay-submit
                     lay-filter="provinceSearch">查找
             </button>
         </div>
-        <div class="layui-inline" id="testDiv2"> <!-- 注意：这一层元素并不是必须的 -->
-            <a class="layui-btn"  href="" download id="update">下载结果</a>
+        <div class="layui-inline testDiv2" id="testDiv2" style="display:none;"> <!-- 注意：这一层元素并不是必须的 -->
+            <a class="btn-a"  href="" download id="update">下载结果</a>
         </div>
     </div>
 </form>
-<div id="testDiv">
-    <table class="layui-hide" id="test" lay-filter="test"></table>
+<div id="testDiv" style="display: block;">
+    <table class="layui-hide" id="test" lay-filter="test"  style="display: block;"></table>
 </div>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="select">查看</a>
@@ -37,7 +62,7 @@
 <div style="padding-top: 30px;display:none;text-align:center;" id="map">
     <div id="main" style="width: 1300px;height:600px;"></div>
 </div>
-<script src="js/jquery-3.4.1.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="layui/layui.js"></script>
 <script src="js/echarts.min.js"></script>
 <script type="text/javascript">
@@ -118,7 +143,6 @@
                 , done: function (res) {
                     $("#update").attr("href",res.msg);
                     $('a[name="jump"]').on('click', function () {
-                        console.log()
                         var tgNo = $(this).html();
                         var date = document.getElementById("date").value;
                         var url = "jumpTgLineLoss.html?tgNo=" + tgNo + "&date=" + date;//此处拼接内容
@@ -196,7 +220,6 @@
         });
 
     });
-
     function getRecentDay(day) {
         var today = new Date();
         var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
@@ -286,7 +309,10 @@
         };
         myChart.setOption(option);
     }
-
+    $(".search").click(function(){
+       $(".testDiv2").delay(100).show(100)
+    })
 </script>
+
 </body>
 </html>

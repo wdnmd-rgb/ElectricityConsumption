@@ -6,6 +6,26 @@
     <script src="js/jquery-3.4.1.js"></script>
     <title>Title</title>
     <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        #testDiv2{
+          display: inline-block !important;
+        }
+        .btn-a{
+           display: inline-block;
+           width: 100px;
+           height: 30px;
+           line-height: 32px;
+           text-align: center;
+           border-radius: 4px;
+           border: 1px solid #ccc;
+           background: linear-gradient(#F2F1F2 20%,#DEDFDE 80%);
+           box-shadow: 0 0 3px 0px #ccc;
+       }
+       #testDiv2 a{
+           display: none;
+       }
+    </style>
 </head>
 <body style="overflow:hidden;transform-origin:top left;">
 <div style="padding-top: 30px;text-align:center;">
@@ -24,7 +44,7 @@
                 </button>
             </div>
             <div class="layui-inline" style="display: none" id="testDiv2"> <!-- 注意：这一层元素并不是必须的 -->
-                <a class="layui-btn" href="" download id="update">下载结果</a>
+                <a class="btn-a" href="" download id="update">下载结果</a>
             </div>
         </div>
     </form>
@@ -66,6 +86,7 @@
     </div>
 </div>
 <script src="layui/layui.js"></script>
+<script src="./js/jquery.min.js"></script>
 <script type="text/javascript">
     layui.use(['laydate', 'form', 'table','element'], function () {
 		var $ = layui.jquery
@@ -126,7 +147,7 @@
             var traget = document.getElementById("testDiv");
             traget.style.display = "";
             $("#testDiv2").css("display", "none");
-			$("#testDiv3").css("display", "none");
+			$("#testDiv3").css("display", "block");
             var formData = data.field;
             var areaCode = formData.areaCode;
             var consNo = formData.consNo;
@@ -214,6 +235,14 @@
         };
         myChart.setOption(option);
     }
+
+
+    // 下载按钮的显示
+    $("#search").click(function(){
+    //    $("选择元素").delay(时间值).hide(动画持续时间) 
+       $("#testDiv2 a").delay(600).show(600)
+       $("#testDiv2 a").css("display","inline-block")
+   })
 </script>
 </body>
 </html>

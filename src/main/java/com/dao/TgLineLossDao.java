@@ -22,4 +22,9 @@ public interface TgLineLossDao {
     int selectOrgReportNum(String orgNo);
     List<TgConsReport> queryTgConsReport(TgConsReport tgConsReport);
     int selectTgConsReportNum(TgConsReport tgConsReport);
+    List<TgLossReport> queryTgLossReport(TgLossReport tgLossReport);
+    int selectTgLossReportNum(TgLossReport tgLossReport);
+    List<ExcConsReport> queryExcConsReport(ExcConsReport excConsReport);
+    int selectExcConsReportNum(ExcConsReport excConsReport);
+    List<Relation> queryRelation(Relation relation);
 }
