@@ -45,10 +45,12 @@ public class TgLineLossController {
         List<TgLineLoss> lineLosses = new ArrayList<>();
         String[] time = new String[(24 / index) - 1];
         Double[] ppq = new Double[(24 / index) - 1];
+        Double[] loss = new Double[(24 / index) - 1];
         Double[] upq = new Double[(24 / index) - 1];
         Double[] lossPer = new Double[(24 / index) - 1];
         Double[] ppqTol = new Double[(24 / index) - 1];
         Double[] upqTol = new Double[(24 / index) - 1];
+        Double[] lossTol = new Double[(24 / index) - 1];
         Double[] lossPerTol = new Double[(24 / index) - 1];
         Integer[] remarks = new Integer[(24 / index) - 1];
         Long startTime = System.currentTimeMillis();
@@ -82,9 +84,11 @@ public class TgLineLossController {
             time[i] = tgLineLoss.getEventTime();
             ppq[i] = tgLineLoss.getPpq();
             upq[i] = tgLineLoss.getUpq();
+            loss[i] = tgLineLoss.getLossPq();
             lossPer[i] = tgLineLoss.getLossPer();
             ppqTol[i] = tgLineLoss.getPpqTol();
             upqTol[i] = tgLineLoss.getUpqTol();
+            lossTol[i] = tgLineLoss.getLossPqTol();
             lossPerTol[i] = tgLineLoss.getLossPerTol();
             remarks[i] = tgLineLoss.getRemark();
         }
@@ -130,7 +134,7 @@ public class TgLineLossController {
         }
         Long endTime5 = System.currentTimeMillis();
         System.out.println("获取Excel：" + (endTime5 - endTime4));
-        Object[] obj = new Object[]{time, ppq, upq, lossPer, ("file/" + fileName), remarks, ppqTol, upqTol, lossPerTol};
+        Object[] obj = new Object[]{time, ppq, loss, lossPer, ("file/" + fileName), remarks, ppqTol, lossTol, lossPerTol};
         map.put("msg", obj);
         map.put("count", "");
         map.put("data", tgResults);
@@ -182,7 +186,7 @@ public class TgLineLossController {
         return Result.fail("添加失败！");
     }
 
-    @RequiresPermissions({"tgLineLoss:select"})
+
     @RequestMapping("queryTgReport")
     public void queryTgReport(String tgNo, String date, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response) {
         List<TgReport> list = tgLineLossService.queryTgReport(tgNo, date, page, limit);
@@ -259,7 +263,10 @@ public class TgLineLossController {
     @RequiresPermissions({"tgLineLoss:select"})
     @RequestMapping("queryTgLossReport")
     public void queryTgLossReport(TgLossReport tgLossReport, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response) {
-        List<TgLossReport> list = tgLineLossService.queryTgLossReport(tgLossReport, page, limit);
+        System.out.println(tgLossReport);
+        System.out.println("in");
+        List<TgLossReport> list =  tgLineLossService.queryTgLossReport(tgLossReport, page, limit);
+        System.out.println(list.size());
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("code", 0);
         resultMap.put("msg", "");
@@ -273,10 +280,61 @@ public class TgLineLossController {
             e.printStackTrace();
         }
     }
+    @RequestMapping("queryExcCons")
+    public void queryExcCons(ExcConsReport excConsReport, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, HttpServletResponse response) {
+        System.out.println("in");
+        List<ExcConsReport> list = tgLineLossService.queryExcConsReport(excConsReport, page, limit);
+        System.out.println(list.size());
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count", tgLineLossService.selectExcConsReportNum(excConsReport));
+        resultMap.put("data", list);
+        try {
+            JsonUtil.responseWriteJson(response, resultMap);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    @RequestMapping("queryRelation")
-    public void queryCityNo(Relation relation, HttpServletResponse response){
-        List<Relation> list = tgLineLossService.queryRelation(relation);
+    @RequestMapping("queryRelationCity")
+    public void queryRelationCity(HttpServletResponse response){
+        List<Relation> list = tgLineLossService.queryRelationCity();
+        try {
+            JsonUtil.responseWriteJson(response,list);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("queryRelationCounty")
+    public void queryRelationCounty(Relation relation,HttpServletResponse response){
+        List<Relation> list = tgLineLossService.queryRelationCounty(relation);
+        try {
+            JsonUtil.responseWriteJson(response,list);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("queryRelationOrg")
+    public void queryRelationOrg(Relation relation,HttpServletResponse response){
+        List<Relation> list = tgLineLossService.queryRelationOrg(relation);
+        try {
+            JsonUtil.responseWriteJson(response,list);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("queryRelationTg")
+    public void queryRelationTg(Relation relation,HttpServletResponse response){
+        List<Relation> list = tgLineLossService.queryRelationTg(relation);
         try {
             JsonUtil.responseWriteJson(response,list);
         } catch (ServletException e) {

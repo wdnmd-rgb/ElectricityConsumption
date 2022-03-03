@@ -5,14 +5,8 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="layui/css/layui.css">
-    <link rel="stylesheet" href="./css/layuimini.css">
-    <link rel="stylesheet" href="./css/public.css">
     <link rel="stylesheet" href="css/base.css">
     <style>
-        body {
-            padding: 20px;
-        }
-        
         .btn-a {
             display: inline-block;
             width: 100px;
@@ -21,28 +15,35 @@
             text-align: center;
             border-radius: 4px;
             border: 1px solid #ccc;
-            background: linear-gradient(#F2F1F2 20%, #DEDFDE 80%);
+            /* background: linear-gradient(#F2F1F2 20%, #DEDFDE 80%); */
             box-shadow: 0 0 3px 0px #ccc;
         }
-        
+
+        .inp {
+            width: 300px;
+            float: left;
+        }
+
         #searchs {
             margin-top: 40px;
         }
-        
+
         .layui-btn1 {
             width: 120px;
         }
-        
+
         .layui-inline {
             margin: 20px;
         }
+
         /* 表格特效 */
-        
+
         .layui-inline1 {
             margin-left: -0px;
         }
+
         /* 横条样式 */
-        
+
         .bar {
             width: 105%;
             height: 28px;
@@ -50,424 +51,555 @@
             line-height: 28px;
             background: linear-gradient(#D4EEF4 40%, #bad6e7 60%);
         }
+
+        #barDemo {
+            background-color: rgb(56, 67, 221) !important;
+        }
     </style>
 </head>
 
 <body>
-    <!-- <div class="layuimini-container">
-        <div class="layuimini-main">
-            <form class="layui-form" action="" style="padding:20px;">
-                <div class="layui-form-item" id="area-picker">
-                    <div class="layui-form-label">网点地址</div>
-                    <div class="layui-input-inline" style="width: 200px;">
-                        <select name="province" class="province-selector" data-value="广东省" lay-filter="province-1">
-                            <option value="">请选择省</option>
-                        </select>
-                    </div>
-                    <div class="layui-input-inline" style="width: 200px;">
-                        <select name="city" class="city-selector" data-value="深圳市" lay-filter="city-1">
-                            <option value="">请选择市</option>
-                        </select>
-                    </div>
-                    <div class="layui-input-inline" style="width: 200px;">
-                        <select name="county" class="county-selector" data-value="龙岗区" lay-filter="county-1">
-                            <option value="">请选择区</option>
-                        </select>
-                    </div>
-                    <div class="layui-input-inline" style="width: 200px;">
-                        <select name="areas" class="areas-selector" data-value="龙岗区" lay-filter="areas-1">
-                            <option value="">请选择区</option>
-                        </select>
-                    </div>
+<form class="layui-form" action="" id="complain_search">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <!-- 表单联动效果 -->
+            <form class="layui-form" action="">
+                <div class="layui-input-inline">
+                    <select name="city" lay-filter="city" id="city">
+                        <option value="">请选择市公司</option>
+                    </select>
                 </div>
-            </form>
-        </div>
-    </div>
-
- -->
-    <form class="layui-form" action="" id="complain_search">
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <!-- 表单联动效果 -->
-                <form class="layui-form" action="">
-                    <div class="layui-input-inline">
-                        <select name="province" lay-filter="province" class="province"> 
-                  <option value="0">请选择省</option> 
-                 </select>
-                    </div>
-                    <div class="layui-input-inline">
-                        <select name="city" lay-filter="city" class="city" disabled> 
-                  <option value="0">请选择市</option> 
-                 </select>
-                    </div>
-                    <div class="layui-input-inline">
-                        <select name="county" lay-filter="county" class="county" disabled> 
-                  <option value="0">请选择县</option> 
-                 </select>
-                    </div>
-                    <div class="layui-input-inline">
-                        <select name="area" lay-filter="area" class="county" disabled> 
-                  <option value="0">请选择台区</option> 
-                 </select>
-                    </div>
-                </form>
+                <div class="layui-input-inline">
+                    <select name="county" lay-filter="county" id="county">
+                        <option value="">请选择县公司</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="org" lay-filter="org" id="org">
+                        <option value="">请选择供电所</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="tg" lay-filter="tg" id="tg">
+                        <option value="">请选择台区</option>
+                    </select>
+                </div>
                 <br/>
                 <div class="layui-inline layui-inline1">
+                    <input type="text" name="fzRyName" id="fzRyName" value="" required placeholder="请输入台区责任人"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-inline">
                     <!-- 注意：这一层元素并不是必须的 -->
                     <input type="text" class="layui-input" id="date" name="date">
                 </div>
                 <div class="layui-inline">
-                    <button id="search" class="layui-btn" lay-submit lay-filter="provinceSearch">查找
-             </button>
+                    <button id="search" class="layui-btn layui-btn-primary" lay-submit lay-filter="citySearch">查找
+                    </button>
                 </div>
-                <div class="layui-inline" id="testDiv2" style="display: none;">
-                    <!-- 注意：这一层元素并不是必须的 -->
-                    <a class="btn-a" href="" download id="update">下载结果</a>
-                </div>
-            </div>
+                <!-- <div class="layui-inline" id="testDiv2" style="display: none;"> -->
+                <!-- 注意：这一层元素并不是必须的 -->
+                <!-- <a class="btn-a" href="" download id="update">下载结果</a>
+                </div> -->
+            </form>
         </div>
-    </form>
-    <div id="testDiv" style="display: none;">
-        <table class="layui-hide" id="test"></table>
     </div>
-    <div id="searchs">
-    </div>
-    <!-- 横条样式 -->
-    <div class="bar">
+</form>
+<!-- <div id="searchs">
+</div> -->
+<!-- 横条样式 -->
+<div class="bar">
 
-    </div>
-    <!-- 表格样式 -->
-    <div class="layui-tab layui-tab-card" lay-filter="demo">
-        <ul class="layui-tab-title">
-            <li class="layui-this">网站设置</li>
-            <li>用户管理</li>
-        </ul>
-        <div class="layui-tab-content" style="height: 100%;">
-            <div class="layui-tab-item layui-show">
-                <!-- 表格数据 -->
-                <table id="demo" lay-filter="test"></table>
-            </div>
-            <div class="layui-tab-item">
-                <!-- 表格数据 -->
-                <table id="test2" lay-filter="test2"></table>
-            </div>
+</div>
+<!-- 表格样式 -->
+<div class="layui-tab layui-tab-card" lay-filter="demo">
+    <ul class="layui-tab-title">
+        <li class="layui-this">台区情况</li>
+        <li>用户情况</li>
+    </ul>
+    <div class="layui-tab-content" style="height: 100%;">
+        <div class="layui-tab-item layui-show">
+            <!-- 表格数据 -->
+            <table id="table" lay-filter="table"></table>
+        </div>
+        <div class="layui-tab-item">
+            <!-- 表格数据 -->
+            <table id="table2" lay-filter="table2"></table>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="layui/layui.js"></script>
-    <script src="./js/lay-config.js"></script>
-    <script type="text/javascript">
-        var orgNo = "";
-        var titleTpl = function(d) {
-            var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec"  name="jump">' + d.orgNo + '</a>';
-            return html;
+</div>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="select">查看</a>
+</script>
+<div style="padding-top: 30px;display:none;text-align:center;" id="map">
+    <div id="main" style="width: 1300px;height:600px;"></div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="layui/layui.js"></script>
+<script src="js/echarts.min.js"></script>
+<script type="text/javascript">
+    var orgNo = "";
+    var titleTpl = function (d) {
+        var html = '<a style="color:#1E9FFF" href="javascript:void(0);" lay-event="showRec"  name="jump">' + d.orgNo + '</a>';
+        return html;
+    }
+
+    layui.use(['form', 'table', 'dropdown', 'element'], function () {
+        var laydate = layui.laydate,
+            table = layui.table,
+            form = layui.form,
+            element = layui.element;
+        //时间联动
+
+        //执行一个laydate实例---->日期对象
+        laydate.render({
+            elem: '#date', //指定元素
+            value: getRecentDay(-1)
+        });
+
+        table.render({
+            id: "testReload",
+            elem: '#table',
+            url: 'tgLine/queryTgLossReport',
+            method: 'post',
+            where: {
+                dateDayEnd: getRecentDay(-1)
+            },
+            cols: [
+                [{
+                    field: 'tgNo',
+                    title: '台区编号',
+                    //templet: titleTpl
+                    event: 'viewReport'
+                }, {
+                    field: 'tgName',
+                    title: '台区名称'
+                }, {
+                    field: 'consCount',
+                    title: '台区用户数'
+                }, {
+                    field: 'dateDayStart',
+                    title: '起始时间'
+                }, {
+                    field: 'dateDayEnd',
+                    title: '终止时间'
+                }, {
+                    field: 'lossPerAvg',
+                    title: '日累积线损率'
+                },
+                    {
+                        field: 'ppq',
+                        title: '售电量'
+                    },
+                    {
+                        field: 'upq',
+                        title: '用电量'
+                    },
+                    {
+                        field: 'lossEle',
+                        title: '损失电量'
+                    }, {
+                    field: 'tgTypeName',
+                    title: '台区类别'
+                }, {
+                    field: 'tgClass',
+                    title: '细分标签'
+                }, {
+                    field: 'mergeLinelossRate',
+                    title: '目标线损率'
+                }, {
+                    field: 'excConsCount',
+                    title: '异常用户数'
+                }, {
+                    field: 'fzRyName',
+                    title: '台区负责人'
+                }]
+            ],
+            page: true,
+            done: function () {
+                // $('a[name="jump"]').on('click', function() {
+                //     var orgNo = $(this).html();
+                //     var url = "tgConsReport.html"; //此处拼接内容
+                //     document.cookie = ("orgNo=" + orgNo);
+                //     document.cookie = ("date=" + getRecentDay(-1));
+                //     document.cookie = "name=a";
+                //     window.location.href = url;
+                // })
+
+            }
+        });
+        form.render();
+        layer.ready(function () {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "tgLine/queryRelationCity",
+                datatype: "JSON",
+                success: function (data) {
+                    $("#city").html('');
+                    var list = data;
+                    var cityHtml = "<option value=''>请选择市公司</option>";
+                    console.log(data);
+                    $.each(list, function (index, city) {
+                        cityHtml += '<option value="' + city.cityNo + '" >' + city.cityName + '</option>';
+                    });
+                    $("#city").html(cityHtml);
+                    form.render('select');
+                }
+            });
+        });
+        // 点击查看事件
+        form.on('submit(citySearch)', function (data) {
+            var city = $("#city").val();
+            var county = $("#county").val();
+            var org = $("#org").val();
+            var tg = $("#tg").val();
+            var date = $("#date").val();
+            var fzRyName = $("#fzRyName").val();
+            table.reload('testReload', {
+                where: {
+                    cityNo: city,
+                    countyNo: county,
+                    orgNo: org,
+                    tgNo: tg,
+                    dateDayEnd: date,
+                    fzRyName: fzRyName
+                },
+                url: 'tgLine/queryTgLossReport',
+                method: 'post'
+            });
+            return false;
+        });
+
+
+        // table.on('row(test)', function(obj) {
+        //     var data = obj.data;
+        //     orgNo = data.orgNo;
+        //     // 获取事件名
+        //     var eventName = obj.event;
+        //     console.log(eventName)
+        // });
+
+        // 点击表格数据，跳转到另一个tab项
+        table.on("tool(table)", function (obj) {
+            // console.log(obj);
+            var eventName = obj.event;
+            var data = obj.data;
+            var dateDayEnd = data.dateDayEnd;
+            var tgNo = data.tgNo;
+            // console.log(eventName);
+            if (eventName == 'viewReport') {
+                $(".layui-this").removeClass('layui-this').siblings("li").css({
+                    backgroundColor: '#fff'
+                }).addClass('layui.this2');
+                $(".layui-show").removeClass('layui-show').siblings("div").addClass('layui-show');
+                table.render({
+                    elem: "#table2",
+                    where: {
+                        tgNo: tgNo,
+                        dateDayEnd: dateDayEnd
+                    },
+                    url: 'tgLine/queryExcCons',
+                    method: 'post',
+                    cols: [
+                        [{
+                            field: 'consNo',
+                            title: '用户编号'
+                        }, {
+                            field: 'consName',
+                            title: '用户名称'
+                        }, {
+                            field: 'consAddr',
+                            title: '用户地址'
+                        }, {
+                            field: 'assetNo',
+                            title: '资产编号'
+                        }, {
+                            field: 'rid',
+                            title: '设备ID'
+                        }, {
+                            field: 'pearson',
+                            title: '相关系数'
+                        }, {
+                            field: 'ele',
+                            title: '用户电量'
+                        }, {
+                            field: 'maxIndex',
+                            title: '相关性高的时间段'
+                        }, {
+                            field: 'eleArray',
+                            title: '用户电量数组',
+                            hide: true
+                        }, {
+                            field: 'tgEleArray',
+                            title: '台区损失电量数组',
+                            hide: true
+                        }, {
+                            field: 'dateDayStart',
+                            title: '起始时间'
+                        }, {
+                            field: 'dateDayEnd',
+                            title: '终止时间'
+                        }, {
+                            field: 'tgNo',
+                            title: '台区编号'
+                        }, {
+                            field: 'timeArray',
+                            title: '时间数组',
+                            hide: true
+                        }, {
+                            fixed: 'right',
+                            align: 'center',
+                            toolbar: '#barDemo'
+                        }]
+                    ],
+                    page: true,
+                });
+            }
+        });
+        table.on('tool(table2)', function (obj) {
+            if (obj.event === 'select') {
+                var data = obj.data;
+                var eleArray = data.eleArray;
+                var tgEleArray = data.tgEleArray;
+                var timeArray = data.timeArray;
+                var consNo = data.consNo;
+                var pearson = data.pearson;
+                var tgNo = data.tgNo;
+                var assetNo = data.assetNo;
+                var index = eleArray.indexOf("[");
+                var index2 = eleArray.indexOf("]");
+                eleArray = eleArray.substring((index + 1), index2);
+                eleArray = eleArray.split(",");
+                index = tgEleArray.indexOf("[");
+                index2 = tgEleArray.indexOf("]");
+                tgEleArray = tgEleArray.substring((index + 1), index2);
+                tgEleArray = tgEleArray.split(",");
+                index = timeArray.indexOf("[");
+                index2 = timeArray.indexOf("]");
+                timeArray = timeArray.substring((index + 1), index2);
+                timeArray = timeArray.split(",");
+                show(eleArray, tgEleArray, timeArray, consNo, pearson, tgNo, assetNo);
+                $("#map").css("display", "none");
+                layer.open({
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['1400px', '700px'], //宽高
+                    content: $("#map")
+                });
+            }
+        });
+
+        //一些事件监听
+        element.on('tab(demo)', function (data) {
+            // console.log(data)
+            // console.log(data.index); //得到当前Tab的所在下标
+            if (data.index == 0) {
+                $('.layui-tab-title li').eq(1).css({
+                    backgroundColor: '#FAFAFA'
+                })
+                // searchCon(pageNum, pageSize,gradeId,subjectId);
+            } else if (data.index == 1) {
+                $('.layui-tab-title li').eq(1).css({
+                    backgroundColor: '#fff'
+                });
+            }
+        });
+
+        // 监听市公司下拉菜单的点击事件
+        form.on('select(city)', function (data) {
+            var cityNo = data.value;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "tgLine/queryRelationCounty",
+                data: {
+                    cityNo: cityNo
+                },
+                datatype: "JSON",
+                success: function (data) {
+                    console.log(data)
+                    $("#county").html('');
+                    $("#org").html('');
+                    var list = data;
+                    var countyHtml = "<option value=''>请选择县公司</option>";
+                    $.each(list, function (index, county) {
+                        countyHtml += '<option value="' + county.countyNo + '" >' + county.countyName + '</option>';
+                    });
+                    $("#county").html(countyHtml);
+                    form.render('select');
+                }
+            });
+        });
+
+        // 监听县公司下拉菜单的点击事件
+        form.on('select(county)', function (data) {
+            var countyNo = data.value;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "tgLine/queryRelationOrg",
+                data: {
+                    countyNo: countyNo
+                },
+                datatype: "JSON",
+                success: function (data) {
+
+                    $("#org").html('');
+                    $("#tg").html('');
+                    var list = data;
+                    var orgHtml = "<option value=''>请选择供电所</option>";
+                    $.each(list, function (index, org) {
+                        orgHtml += '<option value="' + org.orgNo + '" >' + org.orgName + '</option>';
+                    });
+                    $("#org").html(orgHtml);
+                    form.render('select');
+                }
+            });
+        });
+
+        // 监听供电所下拉菜单的点击事件
+        form.on('select(org)', function (data) {
+            var orgNo = data.value;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "tgLine/queryRelationTg",
+                data: {
+                    orgNo: orgNo
+                },
+                datatype: "JSON",
+                success: function (data) {
+                    $("#tg").html('');
+                    var list = data;
+                    var tgHtml = "<option value=''>请选择台区</option>";
+                    $.each(list, function (index, tg) {
+                        tgHtml += '<option value="' + tg.tgNo + '" >' + tg.tgName + '</option>';
+                    });
+                    $("#tg").html(tgHtml);
+                    form.render('select');
+                }
+            });
+        });
+
+        function getRecentDay(day) {
+            var today = new Date();
+            var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+            today.setTime(targetday_milliseconds);
+            var tYear = today.getFullYear();
+            var tMonth = today.getMonth();
+            var tDate = today.getDate();
+            tMonth = doHandleMonth(tMonth + 1);
+            tDate = doHandleMonth(tDate);
+
+            return tYear + "-" + tMonth + "-" + tDate;
         }
 
-        layui.use(['form', 'table', 'layarea', 'dropdown', 'element'], function() {
-            (function() {
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "POST",
-                    url: "tgLine/queryRelation",
-                    datatype: "JSON",
-                    success: function(data) {
-                        $("#province").html('');
-                        var list = data.data;
-                        var provincesHtml = "<option value='0'>请选择市公司名称</option>";
-                        console.log(data);
-                        $.each(list, function(index, province) {
-                            provincesHtml += '<option value="' + province.cityNo + '" >' + province.cityName + '</option>';
-                        });
-                        $("#province").html(provincesHtml);
-                        form.render('select');
-                    }
-                });
-            })();
-            var laydate = layui.laydate,
-                table = layui.table,
-                form = layui.form,
-                element = layui.element,
-                layarea = layui.layarea;
-
-            // 地区联动
-            layarea.render({
-                elem: '#area-picker',
-                change: function(res) {
-                    //选择结果
-                    console.log(res);
-                }
-            });
-
-            //时间联动
-
-            //执行一个laydate实例---->日期对象
-            laydate.render({
-                elem: '#date', //指定元素
-                value: new Date(),
-                min: -10,
-                max: 0
-            });
-            /* table.render({
-                id: "testReload",
-                elem: '#test',
-                url: 'tgLine/queryOrgReport',
-                method: 'post',
-                cols: [
-                    [{
-                        field: 'cityName',
-                        title: '市公司名称'
-                    }, {
-                        field: 'countyName',
-                        title: '县公司名称'
-                    }, {
-                        field: 'orgNo',
-                        title: '供电所编号',
-                        templet: titleTpl
-                    }, {
-                        field: 'orgName',
-                        title: '供电所名称'
-                    }, {
-                        field: 'tgCount',
-                        title: '台区数量'
-                    }, {
-                        field: 'hplcCount',
-                        title: 'hplc台区数量'
-                    }, {
-                        field: 'monitoringCount',
-                        title: '监控台区数量'
-                    }, {
-                        field: 'a',
-                        title: '优秀稳定台区'
-                    }, {
-                        field: 'b',
-                        title: '合理耗损台区'
-                    }, {
-                        field: 'c',
-                        title: '精益治损台区'
-                    }, {
-                        field: 'd',
-                        title: '高损攻坚台区'
-                    }, {
-                        field: 'e',
-                        title: '供售异常台区'
-                    }, {
-                        field: 'releCount',
-                        title: '相关性次数'
-                    }]
-                ],
-                page: true,
-                done: function() {
-                    $('a[name="jump"]').on('click', function() {
-                        var orgNo = $(this).html();
-                        var url = "tgConsReport.html"; //此处拼接内容
-                        document.cookie = ("orgNo=" + orgNo);
-                        document.cookie = ("date=" + getRecentDay(-1));
-                        document.cookie = "name=a";
-                        window.location.href = url;
-                    })
-                }
-            });
-            */
-            table.render({
-                elem: "#demo", // elem属性用来绑定id值
-                url: "js/user.json", // 数据接口
-                page: true,
-                height: 325,
-                cols: [
-                    [
-                        // 设置序号
-                        {
-                            field: 'A',
-                            type: "numbers"
-                        },
-                        // 设置复选框
-                        {
-                            field: 'A',
-                            type: "checkbox"
-                        }, {
-                            field: "id",
-                            title: "用户编号",
-                            sort: true,
-                            width: 150,
-                            event: 'viewReport'
-                        }, {
-                            field: "username",
-                            title: "用户姓名",
-                            edit: 'text'
-                        }, {
-                            field: "sex",
-                            title: "性别",
-                            sort: true
-                        }, {
-                            field: "city",
-                            title: "城市"
-                        }, {
-                            field: "sign",
-                            title: "签名"
-                        }, {
-                            title: "操作",
-                            toolbar: "#barDemo"
-                        }
-                    ]
-                ],
-            });
-
-            form.render();
-            form.on('submit(provinceSearch)', function(data) {
-                var formData = data.field;
-                var orgNo = formData.orgNo;
-                table.reload('testReload', {
-                    where: {
-                        orgNo: orgNo
-                    },
-                    url: 'tgLine/queryOrgReport',
-                    method: 'post'
-                });
-                return false;
-            });
-
-
-            table.on('row(test)', function(obj) {
-                var data = obj.data;
-                orgNo = data.orgNo;
-                // 获取事件名
-                var eventName = obj.event;
-                console.log(eventName)
-            });
-
-            table.on("tool(test)", function(obj) {
-                // console.log(obj);
-                var eventName = obj.event;
-                // console.log(eventName);
-                if (eventName == 'viewReport') {
-                    $(".layui-this").removeClass('layui-this').siblings("li").css({
-                        backgroundColor: '#fff'
-                    }).addClass('layui.this2');
-                    $(".layui-show").removeClass('layui-show').siblings("div").addClass('layui-show');
-                }
-            });
-
-            //一些事件监听
-            element.on('tab(demo)', function(data) {
-                // console.log(data)
-                // console.log(data.index); //得到当前Tab的所在下标
-                if (data.index == 0) {
-                    $('.layui-tab-title li').eq(1).css({
-                            backgroundColor: '#FAFAFA'
-                        })
-                        // searchCon(pageNum, pageSize,gradeId,subjectId);
-                } else if (data.index == 1) {
-                    $('.layui-tab-title li').eq(1).css({
-                        backgroundColor: '#fff'
-                    });
-                }
-            });
-
-
-            form.on('select(province)', function(data) {
-                var cityid = data.value;
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "POST",
-                    url: "/Order/city",
-                    data: {
-                        cityid: cityid
-                    },
-                    datatype: "JSON",
-                    success: function(data) {
-                        $("#city").html('');
-                        $("#district").html('');
-                        var list = data.data;
-                        var citysHtml = "<option value='0'>请选择城市</option>";
-                        $.each(list, function(index, city) {
-                            citysHtml += '<option value="' + city.id + '" >' + city.name + '</option>';
-                        });
-                        $("#city").html(citysHtml);
-                        form.render('select');
-                    }
-                });
-
-            });
-            form.on('select(city)', function(data) {
-                var cityid = data.value;
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "POST",
-                    url: "/Order/district",
-                    data: {
-                        cityid: cityid
-                    },
-                    datatype: "JSON",
-                    success: function(data) {
-                        // var json =  JSON.parse(data);
-                        var list = data.data;
-                        $("#district").empty();
-                        $("#district").append("<option value='0'>请选择地区</option>");
-                        $.each(list, function(index) {
-                            $("#district").append("<option value=" + list[index].id + ">" + list[index].name + "</option>");
-                        });
-                        form.render('select');
-                    }
-                });
-            });
-
-            function getRecentDay(day) {
-                var today = new Date();
-                var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
-                today.setTime(targetday_milliseconds);
-                var tYear = today.getFullYear();
-                var tMonth = today.getMonth();
-                var tDate = today.getDate();
-                tMonth = doHandleMonth(tMonth + 1);
-                tDate = doHandleMonth(tDate);
-
-                return tYear + "-" + tMonth + "-" + tDate;
+        function doHandleMonth(month) {
+            var m = month;
+            if (month.toString().length == 1) {
+                m = "0" + month;
             }
+            return m;
+        }
 
-            function doHandleMonth(month) {
-                var m = month;
-                if (month.toString().length == 1) {
-                    m = "0" + month;
-                }
-                return m;
-            }
+        // // 超链接跳转
+        // $("#search").click(function(){
+        //     $("#right-bottom").load('tgConsReport.html')
+        // })
 
-            // // 超链接跳转
-            // $("#search").click(function(){
-            //     $("#right-bottom").load('tgConsReport.html')
-            // })
-
-            $("#search").click(function() {
-                //    $("选择元素").delay(时间值).hide(动画持续时间) 
-                $("#testDiv2").delay(600).show(600)
-                $("#testDiv").show()
-            })
-
-            //下拉效果
-
-            //超链接跳转
-
-
-            $("#search").click(function() {
-                $("#searchs").load('tgConsReport.html')
-            })
-
-            //   三级联动
-            // layui.config({
-            //     base: "./js/address.js" //address.js的路径 
-            // }).use(['layer', 'jquery', "address"], function() {
-            //     var layer = layui.layer,
-            //         $ = layui.jquery,
-            //         address = layui.address();
-            // });
+        $("#search").click(function () {
+            //    $("选择元素").delay(时间值).hide(动画持续时间)
+            $("#testDiv2").delay(600).show(600)
+            $("#testDiv").show()
         })
-    </script>
+
+        //下拉效果
+
+        //超链接跳转
+
+
+        $("#search").click(function () {
+            $("#searchs").load('tgConsReport.html')
+        })
+    })
+
+    function show(array1, array2, timeArray, consNo, pearson, tgNo, assetNo) {
+        var chartDom = document.getElementById("main");
+        var myChart = echarts.init(chartDom);
+        var option;
+        option = {
+            title: {
+                text: "台区编号：" + tgNo + " 用户编号：" + consNo + " 相关系数：" + pearson + " 资产编号：" + assetNo,
+                x: 'center',
+                y: 'top'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ["用户电量", "台区损失电量"],
+                top: '30'
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {
+                        readOnly: false
+                    },
+                    magicType: {
+                        type: ['line', 'bar']
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: timeArray
+            },
+            yAxis: [{
+                name: '用户电量',
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value}'
+                },
+                position: 'right'
+            }, {
+                name: '台区损失电量',
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value}'
+                },
+                position: 'left'
+            }],
+            series: [{
+                name: "用户电量",
+                type: 'line',
+                yAxisIndex: 0,
+                data: array1
+            }, {
+                name: "台区损失电量",
+                type: 'line',
+                yAxisIndex: 1,
+                data: array2
+            }]
+        };
+        myChart.setOption(option);
+    }
+</script>
 </body>
 
 </html>

@@ -77,7 +77,7 @@ a{
   text-align: center;
   border-radius: 4px;
   border: 1px solid #ccc;
-  background: linear-gradient(#F2F1F2 20%,#DEDFDE 80%);
+    /*background: linear-gradient(#F2F1F2 20%,#DEDFDE 80%);*/
   box-shadow: 0 0 3px 0px #ccc;
 }
 /* 表单 */

@@ -134,11 +134,14 @@
         <result property="tgTypeName" column="tg_type_name" jdbcType="VARCHAR"/>
         <result property="tgClass" column="tg_class" jdbcType="VARCHAR"/>
         <result property="mergeLinelossRate" column="merge_lineloss_rate" jdbcType="VARCHAR"/>
-        <result property="excConsCount" column="exc_cons_count" jdbcType="NUMERIC"/>
-        <result property="relaDayCount" column="rela_day_count" jdbcType="NUMERIC"/>
+        <result property="excConsCount" column="exc_cons_count" jdbcType="INTEGER"/>
+        <result property="relaDayCount" column="rela_day_count" jdbcType="INTEGER"/>
         <result property="cityNo" column="city_no" jdbcType="VARCHAR"/>
         <result property="countyNo" column="county_no" jdbcType="VARCHAR"/>
         <result property="orgNo" column="org_no" jdbcType="VARCHAR"/>
+        <result property="fzRyName" column="fz_ry_name" jdbcType="VARCHAR"/>
+        <result property="ppq" column="ppq" jdbcType="NUMERIC"/>
+        <result property="upq" column="upq" jdbcType="NUMERIC"/>
     </resultMap>
     <resultMap id="ExcConsReportMap" type="com.entity.ExcConsReport">
         <result property="consNo" column="cons_no" jdbcType="VARCHAR"/>
@@ -181,11 +184,14 @@
         ,date_day_end,tg_no,time_array
         from dws_elecon.dws_cst_exc_cons_report_df
         <where>
-            <if test="tg_no != null">
+            <if test="tgNo != null and tgNo != ''">
                 and tg_no = #{tgNo}
             </if>
-            <if test="cons_no != null">
+            <if test="consNo != null and consNo != ''">
                 and cons_no = #{consNo}
+            </if>
+            <if test="dateDayEnd != null and dateDayEnd !=''">
+                and date_day_end = #{dateDayEnd}
             </if>
         </where>
     </select>
@@ -193,34 +199,40 @@
         select count(*)
         from dws_elecon.dws_cst_exc_cons_report_df
         <where>
-            <if test="tg_no != null">
+            <if test="tgNo != null and tgNo != ''">
                 and tg_no = #{tgNo}
             </if>
-            <if test="cons_no != null">
+            <if test="consNo != null and consNo != ''">
                 and cons_no = #{consNo}
+            </if>
+            <if test="dateDayEnd != null and dateDayEnd !=''">
+                and date_day_end = #{dateDayEnd}
             </if>
         </where>
     </select>
     <select id="queryTgLossReport" resultMap="TgLossReportMap">
         select
         tg_no,tg_name,cons_count,date_day_start,date_day_end,loss_per_avg,loss_ele,tg_type_name,tg_class,merge_lineloss_rate,exc_cons_count,city_no,county_no,org_no,fz_ry_name
-        ,rela_day_count
+        ,rela_day_count,ppq,upq
         from dws_elecon.dws_cst_tg_loss_report_df
         <where>
-            <if test="city_no != null">
+            <if test="cityNo != null and cityNo != ''">
                 and city_no = #{cityNo}
             </if>
-            <if test="county_no != null">
+            <if test="tgNo != null and tgNo != ''">
                 and county_no = #{tgNo}
             </if>
-            <if test="tg_no != null">
+            <if test="orgNo != null and orgNo!=''">
+                and org_no = #{orgNo}
+            </if>
+            <if test="tgNo != null and tgNo!=''">
                 and tg_no = #{tgNo}
             </if>
-            <if test="tg_no != null">
-                and tg_no = #{tgNo}
-            </if>
-            <if test="fz_ry_name != null">
+            <if test="fzRyName != null and fzRyName !=''">
                 and fz_ry_name = #{fzRyName}
+            </if>
+            <if test="dateDayEnd != null and dateDayEnd !=''">
+                and date_day_end = #{dateDayEnd}
             </if>
         </where>
     </select>
@@ -228,17 +240,23 @@
         select count(*)
         from dws_elecon.dws_cst_tg_loss_report_df
         <where>
-            <if test="city_no != null">
+            <if test="cityNo != null and cityNo != ''">
                 and city_no = #{cityNo}
             </if>
-            <if test="county_no != null">
+            <if test="tgNo != null and tgNo != ''">
                 and county_no = #{tgNo}
             </if>
-            <if test="tg_no != null">
+            <if test="orgNo != null and orgNo!=''">
+                and org_no = #{orgNo}
+            </if>
+            <if test="tgNo != null and tgNo!=''">
                 and tg_no = #{tgNo}
             </if>
-            <if test="tg_no != null">
-                and tg_no = #{tgNo}
+            <if test="fzRyName != null and fzRyName !=''">
+                and fz_ry_name = #{fzRyName}
+            </if>
+            <if test="dateDayEnd != null and dateDayEnd !=''">
+                and date_day_end = #{dateDayEnd}
             </if>
         </where>
     </select>
@@ -404,4 +422,78 @@
             </if>
         </where>
     </select>
+    <select id="queryRelationCity" resultMap="RelationMap">
+        select
+        distinct a.city_no,a.city_name
+        from dws_elecon.dim_cst_relation_yf a,dws_elecon.dim_cst_monitoring_tg_wf b
+        <where>
+            <if test=" 1 == 1">
+                and b.remark = '1'
+            </if>
+            <if test=" 1 == 1">
+                and a.tg_no = b.tg_no
+            </if>
+            <if test="cityNo != null and cityNo != ''">
+                and a.city_no = #{cityNo}
+            </if>
+            <if test="countyNo != null and countyNo != ''">
+                and a.county_no = #{countyNo}
+            </if>
+            <if test="orgNo != null and orgNo != ''">
+                and a.org_no = #{orgNo}
+            </if>
+            <if test="tgNo != null and tgNo != ''">
+                and a.tg_no = #{tgNo}
+            </if>
+        </where>
+    </select>
+    <select id="queryRelationCounty" resultMap="RelationMap">
+        select
+        distinct a.county_no,a.county_name
+        from dws_elecon.dim_cst_relation_yf a,dws_elecon.dim_cst_monitoring_tg_wf b
+        <where>
+            <if test=" 1 == 1">
+                and b.remark = '1'
+            </if>
+            <if test=" 1 == 1">
+                and a.tg_no = b.tg_no
+            </if>
+            <if test="cityNo != null and cityNo != ''">
+                and a.city_no = #{cityNo}
+            </if>
+        </where>
+    </select>
+    <select id="queryRelationOrg" resultMap="RelationMap">
+        select
+        distinct a.org_no,a.org_name
+        from dws_elecon.dim_cst_relation_yf a,dws_elecon.dim_cst_monitoring_tg_wf b
+        <where>
+            <if test=" 1 == 1">
+                and b.remark = '1'
+            </if>
+            <if test=" 1 == 1">
+                and a.tg_no = b.tg_no
+            </if>
+            <if test="countyNo != null and countyNo != ''">
+                and a.county_no = #{countyNo}
+            </if>
+        </where>
+    </select>
+    <select id="queryRelationTg" resultMap="RelationMap">
+        select
+        distinct a.tg_no,a.tg_name
+        from dws_elecon.dim_cst_relation_yf a,dws_elecon.dim_cst_monitoring_tg_wf b
+        <where>
+            <if test=" 1 == 1">
+                and b.remark = '1'
+            </if>
+            <if test=" 1 == 1">
+                and a.tg_no = b.tg_no
+            </if>
+            <if test="orgNo != null and orgNo != ''">
+                and a.org_no = #{orgNo}
+            </if>
+        </where>
+    </select>
+
 </mapper>

@@ -24,5 +24,9 @@ public interface TgLineLossService {
     int selectTgLossReportNum(TgLossReport tgLossReport);
     List<ExcConsReport> queryExcConsReport(ExcConsReport excConsReport,Integer pageNum,Integer pageSize);
     int selectExcConsReportNum(ExcConsReport excConsReport);
-    List<Relation> queryRelation(Relation relation);
+    List<Relation> queryRelationCity();
+    List<Relation> queryRelationCounty(Relation relation);
+    List<Relation> queryRelationOrg(Relation relation);
+    List<Relation> queryRelationTg(Relation relation);
+
 }

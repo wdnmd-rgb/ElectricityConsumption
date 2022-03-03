@@ -37,7 +37,7 @@
 				<button type="button">登录</button>
 			</div>
 		</div> -->
-		<script src="js/jquery-3.4.1.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<script>
 			$(document).keydown(function (event) {
 				if (event.keyCode == 13) {
@@ -48,7 +48,7 @@
 		        $.post("user/login",{"name":$("#name").val(),"password":$("#password").val()},function (result) {
 		                if(result == 1){
 		                    alert("登录成功！");
-		                    location.href='admin.jsp';
+		                    location.href='nav.html';
 		                }else{
 		                    alert("登录失败！账号密码有误！")
 		                }

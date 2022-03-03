@@ -10,12 +10,6 @@
         <property name="filterChainDefinitions">
             <value>
                 /index.html=anon
-                /admin.jsp=authc
-                /update.html=authc,perms["update:*"]
-                /show.html=authc,perms["elecon:select"]
-                /selectTgLineLoss.html=authc,perms["tgLineLoss:select"]
-                /selectMonitoringTg.html=authc,perms["tgLineLoss:select"]
-                /selectTgOrg.html=authc,perms["elecon:select"]
             </value>
         </property>
     </bean>

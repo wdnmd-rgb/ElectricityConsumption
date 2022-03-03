@@ -116,8 +116,8 @@
                 done: function (res) {
                     console.log(res.msg);
                     $("#update").attr("href", res.msg[4]);
-                    show("main",res.msg[0],res.msg[1],res.msg[2],res.msg[3],res.msg[5]);
-                    show("main1",res.msg[0],res.msg[6],res.msg[7],res.msg[8],res.msg[5]);
+                    show("main",res.msg[0],res.msg[2],res.msg[3],res.msg[5]);
+                    show("main1",res.msg[0],res.msg[7],res.msg[8],res.msg[5]);
                     layer.close(loading);
                     $("#testDiv").css("display", "");
                     $("#testDiv2").css("display", "");
@@ -131,7 +131,7 @@
 
     });
 
-    function show(id,time,array1,array2,array3,array4) {
+    function show(id,time,array1,array2,array3) {
         var chartDom = document.getElementById(id);
         var myChart = echarts.init(chartDom);
         var option;
@@ -145,7 +145,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data: ['考核表电量', '用户表电量','线损率','缺点数']
+                data: ['损失电量', '线损率']
             },
             toolbox: {
                 show: true,
@@ -166,7 +166,7 @@
             },
             yAxis: [
                 {
-                    name:'电量',
+                    name:'损失电量',
                     type: 'value',
                     offset: 30,
                     axisLabel: {
@@ -181,42 +181,26 @@
                     axisLabel: {
                         formatter: '{value}%'
                     },
-                    position: 'left'
-                },
-                {
-                    name:'缺点数',
-                    type: 'value',
-                    offset: 80,
-                    axisLabel: {
-                        formatter: '{value}'
-                    },
+		    axisTick: {
+			show: true
+		   },
                     position: 'left'
                 }
             ],
             series: [
                 {
-                    name: '考核表电量',
-                    type: 'bar',
+                    name: '损失电量',
+                    type: 'line',
                     yAxisIndex:0,
                     barWidth : 20,
                     data: array1
                 },
                 {
-                    name: '用户表电量',
-                    type: 'bar',
-                    yAxisIndex:0,
-                    barWidth : 20,
-                    data: array2
-                },{
                     name: '线损率',
                     type: 'line',
                     yAxisIndex:1,
-                    data: array3
-                },{
-                    name: '缺点数',
-                    type: 'line',
-                    yAxisIndex:2,
-                    data: array4
+                    barWidth : 20,
+                    data: array2
                 }
             ]
         };

@@ -92,7 +92,7 @@ public class TgLineLossServiceImpl implements TgLineLossService {
 
     @Override
     public List<TgLossReport> queryTgLossReport(TgLossReport tgLossReport,Integer pageNum,Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum,pageSize,true).setOrderBy("id desc");
         return tgLineLossDao.queryTgLossReport(tgLossReport);
     }
 
@@ -113,7 +113,22 @@ public class TgLineLossServiceImpl implements TgLineLossService {
     }
 
     @Override
-    public List<Relation> queryRelation(Relation relation) {
-        return tgLineLossDao.queryRelation(relation);
+    public List<Relation> queryRelationCity() {
+        return tgLineLossDao.queryRelationCity();
+    }
+
+    @Override
+    public List<Relation> queryRelationCounty(Relation relation) {
+        return tgLineLossDao.queryRelationCounty(relation);
+    }
+
+    @Override
+    public List<Relation> queryRelationOrg(Relation relation) {
+        return tgLineLossDao.queryRelationOrg(relation);
+    }
+
+    @Override
+    public List<Relation> queryRelationTg(Relation relation) {
+        return tgLineLossDao.queryRelationTg(relation);
     }
 }

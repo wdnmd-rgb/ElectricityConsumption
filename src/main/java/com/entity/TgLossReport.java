@@ -17,6 +17,8 @@ public class TgLossReport {
     private String countyNo;
     private String orgNo;
     private String fzRyName;
+    private Double ppq;
+    private Double upq;
 
     public String getTgNo() {
         return tgNo;
@@ -146,6 +148,22 @@ public class TgLossReport {
         this.fzRyName = fzRyName;
     }
 
+    public Double getPpq() {
+        return ppq;
+    }
+
+    public void setPpq(Double ppq) {
+        this.ppq = ppq;
+    }
+
+    public Double getUpq() {
+        return upq;
+    }
+
+    public void setUpq(Double upq) {
+        this.upq = upq;
+    }
+
     @Override
     public String toString() {
         return "TgLossReport{" +
@@ -165,6 +183,8 @@ public class TgLossReport {
                 ", countyNo='" + countyNo + '\'' +
                 ", orgNo='" + orgNo + '\'' +
                 ", fzRyName='" + fzRyName + '\'' +
+                ", ppq=" + ppq +
+                ", upq=" + upq +
                 '}';
     }
 }
